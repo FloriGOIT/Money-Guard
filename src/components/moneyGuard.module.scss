@@ -1,0 +1,58 @@
+* {
+  background-color: blueviolet;
+}
+
+.loginWrapper {
+  box-sizing: border-box;
+  padding: 160px 0px;
+  height: 100vh;
+}
+
+.logoWrapper {
+  margin: 0px auto;
+  color: white;
+  font-size: 20px;
+  width: 400;
+  text-align: center;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.formLogIn {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  .formLogInInput { display:flex; align-items: center;
+        color: hsla(0, 0%, 100%, 0.603);
+        font-size: 20px; font-weight: 400;
+        border-bottom: 1px solid hsla(0, 0%, 100%, 0.603);
+        padding: 0px 8px;
+        svg{width: 25px; height: 20px;}
+    input {margin-left: 3px;
+        font-size: 20px; color:rgba(0, 0, 0, 0.76);
+      padding: 5px 10px;
+      border: none;
+      width: calc(100vw - 120px);
+      padding-bottom: 2px;
+      outline: none;
+    }
+    input:placeholder-shown {
+      color: hsla(0, 0%, 100%, 0.603);
+      font-weight: 400;
+      font-size: 20px;
+    }
+  }
+
+  button {
+    width: 200px;
+  }
+}
