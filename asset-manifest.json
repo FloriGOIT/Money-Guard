@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.7acaea2f.css",
-    "main.js": "/react-homework-template/static/js/main.07d3183d.js",
-    "index.html": "/react-homework-template/index.html",
-    "main.7acaea2f.css.map": "/react-homework-template/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/react-homework-template/static/js/main.07d3183d.js.map"
+    "main.css": "/Money-Guard/static/css/main.18dd39cb.css",
+    "main.js": "/Money-Guard/static/js/main.8baea5e1.js",
+    "index.html": "/Money-Guard/index.html",
+    "main.18dd39cb.css.map": "/Money-Guard/static/css/main.18dd39cb.css.map",
+    "main.8baea5e1.js.map": "/Money-Guard/static/js/main.8baea5e1.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.18dd39cb.css",
+    "static/js/main.8baea5e1.js"
   ]
 }
