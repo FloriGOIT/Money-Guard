@@ -1,10 +1,10 @@
-import Login from '../pages/Login';
+import Register from '../pages/Register';
+import SharedLayout from './SharedLayout';
 
-function App() {
-  return (
-    <>
-      <Login />
-    </>
-  );
+const App =() =>{
+  return (<>
+    <SharedLayout/>
+      <Register/>
+    </>);
 }
 export default App;
