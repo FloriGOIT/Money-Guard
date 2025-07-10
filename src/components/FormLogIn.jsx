@@ -29,8 +29,8 @@ const FormLogIn = () => {
         />
       </div>
 
-      <button type="submit">LOG IN</button>
-      <button type="button">REGISTER</button>
+      <button type="submit" className={style.formSelectedBtn}>LOG IN</button>
+      <button type="button" className={style.formNotSelectedBtn}>REGISTER</button>
     </form>
   );
 };

@@ -3,42 +3,47 @@
 }
 
 .loginWrapper {
+  padding: calc((100vh - 360px)/2);
   box-sizing: border-box;
-  padding: 160px 0px;
-  height: 100vh;
+  width: auto;
 }
 
 .logoWrapper {
   margin: 0px auto;
   color: white;
   font-size: 20px;
-  width: 400;
   text-align: center;
-  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
-
   img {
     width: 28px;
     height: 28px;
   }
+  span{width: 150px;}
 }
 
 .formLogIn {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 35px;
   align-items: center;
-  .formLogInInput { display:flex; align-items: center;
-        color: hsla(0, 0%, 100%, 0.603);
-        font-size: 20px; font-weight: 400;
-        border-bottom: 1px solid hsla(0, 0%, 100%, 0.603);
-        padding: 0px 8px;
-        svg{width: 25px; height: 20px;}
-    input {margin-left: 3px;
-        font-size: 20px; color:rgba(0, 0, 0, 0.76);
+  .formLogInInput {
+    display: flex;
+    align-items: center;
+    color: hsla(0, 0%, 100%, 0.603);
+    font-size: 20px;
+    font-weight: 400;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.603);
+    padding: 0px 8px;
+    svg {
+      height: 20px;
+    }
+    input {
+      margin-left: 3px;
+      font-size: 20px;
+      color: rgba(0, 0, 0, 0.76);
       padding: 5px 10px;
       border: none;
       width: calc(100vw - 120px);
@@ -51,8 +56,23 @@
       font-size: 20px;
     }
   }
-
-  button {
-    width: 200px;
+  button{font-size: 20px;
+    font-weight: 400;
+    height: 50px;
+    width: calc(100vw - 120px);
+    border-radius: 30px;
+    border: 0px;
+   
   }
+
+  .formSelectedBtn{background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+    background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%)); color:white}
+  .formNotSelectedBtn {
+    color: blueviolet;
+    background: none;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
 }
