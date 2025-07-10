@@ -1,16 +1,21 @@
-export const App = () => {
+import AppTasksAsyncReduxStore from "./home-work-7/AppTasksReduxAsync"
+
+
+function App() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <h1>React homework redone</h1>
+      <div
+        style={{
+          borderWidth: 3,
+          borderColor: 'brown',
+          borderStyle: 'solid',
+          padding: 15,
+        }}
+      >
+<AppTasksAsyncReduxStore/>
+      </div>
+    </>
   );
-};
+}
+export default App;
