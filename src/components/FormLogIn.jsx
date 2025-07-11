@@ -1,6 +1,7 @@
 import style from './moneyGuard.module.scss';
 import { IoMdMail } from "react-icons/io";
 import { PiLockKeyFill } from "react-icons/pi";
+import { Link } from 'react-router-dom';
 
 
 
@@ -31,8 +32,8 @@ const FormLogIn = () => {
         />
       </div>
 
-      <button type="submit" className={style.formSelectedBtn}>LOG IN</button>
-      <button type="button" className={style.formNotSelectedBtn}>REGISTER</button>
+      <Link  className={`${style.bigButton} ${style.selectedBtn}`}>LOG IN</Link>
+      <Link to="/register"className={`${style.bigButton} ${style.notSelectedBtn}`}>REGISTER</Link>
     </form>
   );
 };

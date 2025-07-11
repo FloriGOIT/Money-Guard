@@ -1,10 +1,13 @@
-import Register from '../pages/Register';
-import SharedLayout from './SharedLayout';
+import { BrowserRouter } from 'react-router-dom';
+import MoneyGuardApp from './MoneyGuardApp';
 
-const App =() =>{
-  return (<>
-    <SharedLayout/>
-      <Register/>
-    </>);
-}
+const App = () => {
+  return (
+    <>
+      <BrowserRouter basename="/Money-Guard">
+        <MoneyGuardApp />
+      </BrowserRouter>
+    </>
+  );
+};
 export default App;

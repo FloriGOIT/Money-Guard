@@ -3,6 +3,7 @@ import { IoMdMail } from 'react-icons/io';
 import { PiLockKeyFill } from 'react-icons/pi';
 import { BiSolidUser } from "react-icons/bi";
 import Logo from 'components/Logo';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   return (
@@ -55,12 +56,12 @@ const Register = () => {
             title="Password must be at least 8 characters, include uppercase and lowercase letters, a number, and a special character."
           />
         </div>
-        <button type="button" className={style.formSelectedBtn}>
+        <Link className={`${style.bigButton} ${style.selectedBtn}`}>
           REGISTER
-        </button>
-        <button type="submit" className={style.formNotSelectedBtn}>
+        </Link>
+        <Link to="/login" className={`${style.bigButton} ${style.notSelectedBtn}`}>
           LOG IN
-        </button>
+        </Link>
 
       </form>
     </section>

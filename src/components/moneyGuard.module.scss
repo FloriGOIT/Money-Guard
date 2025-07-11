@@ -32,10 +32,11 @@ body {
     justify-content: center;
     align-items: center;
     button {
-      font-size: 20px;padding-top: 6px;
+      font-size: 24px;
+      padding-top: 6px;
       border: none;
       background-color: inherit;
-      color: rgb(156, 154, 154); 
+      color: rgb(156, 154, 154);
     }
   }
 }
@@ -47,6 +48,7 @@ body {
 }
 .registerWrapper {
   padding: calc((100vh - 520px) / 2);
+
 }
 
 .logoWrapper {
@@ -67,10 +69,11 @@ body {
 }
 
 .formLogIn {
-  margin-top: 30px;
+  
+  margin: 40px auto;
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 40px;
   align-items: center;
   .formLogInInput {
     display: flex;
@@ -100,25 +103,46 @@ body {
       font-size: 20px;
     }
   }
-  button {
-    font-size: 20px;
-    font-weight: 400;
-    height: 50px;
-    width: calc(100vw - 120px);
-    border-radius: 30px;
-    border: 0px;
-  }
+}
 
-  .formSelectedBtn {
-    background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-    background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-    color: white;
-  }
-  .formNotSelectedBtn {
-    color: rgb(113, 40, 182);
-    background: none;
-    background-color: white;
+.bigButton {
+  display: block;
+  text-align: center;
+  padding: 15px 0px;
+ text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  width: 280px;
+  border-radius: 30px;
+  border: 0px;
+}
+
+.selectedBtn {
+  background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+  background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+  color: white;
+}
+
+.notSelectedBtn {
+  color: rgb(113, 40, 182);
+  background: none;
+  background-color: white;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.logoutWrapper {
+  margin: calc((100vh - 320px)/2) auto;
+  display: flex;
+  flex-direction: column;
+   gap:25px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid green;
+  p{color: rgb(184, 181, 181);
     font-size: 20px;
     font-weight: 400;
-  }
+     width: 200px; text-align: center;
+     margin-bottom: 25px;
+    }
 }
