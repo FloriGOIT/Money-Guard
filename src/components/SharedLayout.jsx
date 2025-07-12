@@ -2,7 +2,7 @@ import Logo from './Logo';
 import style from './moneyGuard.module.scss';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { IoHomeSharp } from 'react-icons/io5';
-import { BiStats } from 'react-icons/bi';
+import { ImStatsDots } from "react-icons/im";
 import { BsCurrencyExchange } from 'react-icons/bs';
 
 import { Link, Outlet } from 'react-router-dom';
@@ -25,7 +25,7 @@ const SharedLayout = () => {
           <IoHomeSharp />
         </Link>
         <Link to="/statistics">
-          <BiStats />
+          <ImStatsDots />
         </Link>
         <Link to="/currency">
           <BsCurrencyExchange />
