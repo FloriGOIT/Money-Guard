@@ -1,19 +1,38 @@
+import Logo from './Logo';
+import style from './moneyGuard.module.scss';
+import { RiLogoutCircleRLine } from 'react-icons/ri';
+import { IoHomeSharp } from 'react-icons/io5';
+import { BiStats } from 'react-icons/bi';
+import { BsCurrencyExchange } from 'react-icons/bs';
 
-
-import Logo from "./Logo";
-import style from "./moneyGuard.module.scss";
-import { RiLogoutCircleRLine } from "react-icons/ri";
+import { Link, Outlet } from 'react-router-dom';
 
 const SharedLayout = () => {
-        return (<header className={style.sharedLayout}>
-                <Logo />
-                <div className={style.sharedLayoutUser}>
-                        <p>Florentina</p>
-                       <button type="button" title="Log Out"><RiLogoutCircleRLine/></button> 
+  return (
+    <section>
+      <header className={style.sharedLayout}>
+        <Logo />
+        <div className={style.sharedLayoutUser}>
+          <p>Florentina</p>
+          <button type="button" title="Log Out">
+            <RiLogoutCircleRLine />
+          </button>
+        </div>
+      </header>
 
-                </div>
-
-
-        </header>)
-}
-export default SharedLayout
+      <nav className={style.navLinks}>
+        <Link to="/" className={style.selectedNav}>
+          <IoHomeSharp />
+        </Link>
+        <Link to="/statistics">
+          <BiStats />
+        </Link>
+        <Link to="/currency">
+          <BsCurrencyExchange />
+        </Link>
+      </nav>
+      <Outlet />
+    </section>
+  );
+};
+export default SharedLayout;
