@@ -4,7 +4,6 @@ import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { IoHomeSharp } from 'react-icons/io5';
 import { ImStatsDots } from "react-icons/im";
 import { BsCurrencyExchange } from 'react-icons/bs';
-
 import { Link, Outlet } from 'react-router-dom';
 
 const SharedLayout = () => {
@@ -14,7 +13,7 @@ const SharedLayout = () => {
         <Logo />
         <div className={style.sharedLayoutUser}>
           <p>Florentina</p>
-          <button type="button" title="Log Out">
+          <button title="Log Out">
             <RiLogoutCircleRLine />
           </button>
         </div>

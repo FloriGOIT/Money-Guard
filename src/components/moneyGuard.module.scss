@@ -48,7 +48,6 @@ body {
 }
 .registerWrapper {
   padding: calc((100vh - 520px) / 2);
-
 }
 
 .logoWrapper {
@@ -69,7 +68,6 @@ body {
 }
 
 .formLogIn {
-  
   margin: 40px auto;
   display: flex;
   flex-direction: column;
@@ -109,7 +107,7 @@ body {
   display: block;
   text-align: center;
   padding: 15px 0px;
- text-decoration: none;
+  text-decoration: none;
   font-size: 20px;
   font-weight: 400;
   width: 280px;
@@ -132,29 +130,103 @@ body {
 }
 
 .logoutWrapper {
-  margin: calc((100vh - 320px)/2) auto;
+  margin: calc((100vh - 320px) / 2) auto;
   display: flex;
   flex-direction: column;
-   gap:25px;
+  gap: 25px;
   justify-content: center;
   align-items: center;
   border: 1px solid green;
-  p{color: rgba(206, 204, 204, 0.664);
+  p {
+    color: rgba(206, 204, 204, 0.664);
     font-size: 20px;
     font-weight: 400;
-     width: 200px; text-align: center;
-     margin-bottom: 25px;
-    }
+    width: 200px;
+    text-align: center;
+    margin-bottom: 25px;
+  }
 }
 
-.navLinks{display: flex; gap: 40px; justify-content: center; align-items: center; margin-top: 20px;
-  a { padding: 5px;
-      font-size: 38px;
-      height: 44px;
-      color:rgb(66, 3, 124);
-      background-color:rgba(236, 231, 231, 0.664);
+.navLinks {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  a {
+    padding: 5px;
+    font-size: 38px;
+    height: 44px;
+    color: rgb(66, 3, 124);
+    background-color: rgba(236, 231, 231, 0.664);
+    border: 1px solid rgba(56, 4, 104, 0.678);
+    border-radius: 10px;
+  }
+  .selectedNav {
+    color: white;
+    background-color: rgb(122, 79, 240);
+  }
+}
+.listCards {
+  .totalSum {
+     box-sizing: border-box;
+      background-color: rgb(132, 72, 189);
+        width: 290px;
+        border: 1px solid rgba(56, 4, 104, 0.678);
+        margin: 0 auto 15px auto;
+        padding: 10px 25px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        font-size: 20px;
+          color: white;
+  }
+
+  .cardwithColor {
+    width: 285px;
+    border-radius: 10px;
+    margin: 0px auto 15px auto;
+
+    
+    .card {
+      background-color: rgb(132, 72, 189);
+      width: 280px;
       border: 1px solid rgba(56, 4, 104, 0.678);
-      border-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border-top-right-radius: 10px;
+      margin-left: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+
+      .cardRow {
+        border-bottom: 1px solid rgba(206, 204, 204, 0.664);
+        font-size: 16px;
+        color: white;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 15px;
+        align-items: center;
+        height: 50px;
+      }
+
+      .cardRowButtons {
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px;
+
+        button {
+          border-radius: 20px;
+          height: 35px;
+          width: 80px;
+        }
+      }
     }
-  .selectedNav{color: white; background-color:rgb(122, 79, 240);}
-} 
+  }
+}
