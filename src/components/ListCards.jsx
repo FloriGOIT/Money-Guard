@@ -12,7 +12,7 @@ const ListCards = () => {
        console.log(balance)
         return (<section className={style.listCards}>
                 <div className={style.totalSum}>
-                        <span>Balance: <span style={{color:  balance <= 0 ? "#cc242496" : "rgb(194, 240, 126)", fontWeight:900 }}>{balance}</span> RON</span>
+                        <span>Balance: <span style={{color:  balance <= 0 ? "#b91a1a96" : "rgb(194, 240, 126)", fontWeight:900 }}>{balance}</span> RON</span>
                 </div>
                 {dataCard.map(data => 
                         <Card data={data} key={nanoid()} />)}
