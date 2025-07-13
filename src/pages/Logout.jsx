@@ -1,4 +1,4 @@
-import style from './moneyGuard.module.scss';
+import style from '../components/moneyGuard.module.scss';
 
 const Logout = () => {
   return (
