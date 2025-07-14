@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 
 const FormLogIn = () => {
   return (
-    <form className={style.formLogIn}>
-      <div className={style.formLogInInput}>
+    <form className={style.form}>
+      <div className={style.formInput}>
         <IoMdMail />
         <input
           type="email"
@@ -20,7 +20,7 @@ const FormLogIn = () => {
         />
       </div>
 
-      <div className={style.formLogInInput}>
+      <div className={style.formInput}>
         <PiLockKeyFill />
         <input
           type="password"

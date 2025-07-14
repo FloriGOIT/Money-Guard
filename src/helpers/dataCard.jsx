@@ -11,7 +11,7 @@ const dataCard = [
     details: 'Money Guard',
     sum: 600,
   },
-  {
+    {
     date: today,
     type: 'Expense',
     category: 'Car',
@@ -25,6 +25,11 @@ const dataCard = [
     details: 'Monthly',
     sum: 800,
   },
+
 ];
 
 export default dataCard;
+/*
+
+
+*/

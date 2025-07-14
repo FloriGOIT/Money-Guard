@@ -13,9 +13,9 @@ const SharedLayout = () => {
         <Logo />
         <div className={style.sharedLayoutUser}>
           <p>Florentina</p>
-          <button title="Log Out">
+          <Link to="/logout" title="Log Out">
             <RiLogoutCircleRLine />
-          </button>
+          </Link>
         </div>
       </header>
 

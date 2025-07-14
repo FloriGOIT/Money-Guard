@@ -9,8 +9,8 @@ const Register = () => {
   return (
     <section className={style.registerWrapper}>
       <Logo />
-      <form className={style.formLogIn}>
-      <div className={style.formLogInInput}>
+      <form className={style.form}>
+      <div className={style.formInput}>
           <BiSolidUser />
           <input
             type="email"
@@ -21,7 +21,7 @@ const Register = () => {
   title="Please enter a valid name. Only letters, spaces, hyphens, and apostrophes are allowed."
           />
         </div>
-        <div className={style.formLogInInput}>
+        <div className={style.formInput}>
           <IoMdMail />
           <input
             type="email"
@@ -33,7 +33,7 @@ const Register = () => {
           />
         </div>
 
-        <div className={style.formLogInInput}>
+        <div className={style.formInput}>
           <PiLockKeyFill />
           <input
             type="password"
@@ -45,7 +45,7 @@ const Register = () => {
           />
         </div>
         
-        <div className={style.formLogInInput}>
+        <div className={style.formInput}>
           <PiLockKeyFill />
           <input
             type="password"

@@ -1,13 +1,18 @@
 body {
   background: RGB(101, 41, 204);
-  background: radial-gradient(circle, rgb(92, 38, 187) 40%, rgba(58, 28, 143, 1) 66%, rgb(51, 25, 124) 100%);
+  background: radial-gradient(
+    circle,
+    rgb(92, 38, 187) 40%,
+    rgba(58, 28, 143, 1) 66%,
+    rgb(51, 25, 124) 100%
+  );
   margin: 0px;
 }
 
-
+//&:hover {box-shadow: 2px 2px 3px rgb(66, 3, 124);}
 
 .sharedLayoutHeader {
-  padding: 10px 15px;
+  padding: 10px 20px;
   display: flex;
   flex-direction: row;
   background-color: rgb(40, 19, 97);
@@ -34,15 +39,20 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    button {
+    p{margin-right: 10px;}
+    
+    a {
       font-size: 24px;
       padding-top: 6px;
       border: none;
       background-color: inherit;
       color: rgba(206, 204, 204, 0.664);
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(92, 38, 187);
+        border-radius: 20px;
+      }
     }
   }
-
 }
 
 .navLinks {
@@ -59,14 +69,17 @@ body {
     color: rgb(51, 25, 124);
     background-color: rgba(236, 231, 231, 0.664);
     border-radius: 10px;
-    &:hover{box-shadow: 2px 2px 3px rgb(40, 19, 97)}
+    &:hover {
+      box-shadow: 2px 2px 3px rgb(40, 19, 97);
+    }
   }
-  
+
   .selectedNav {
     color: white;
     background-color: rgb(122, 79, 240);
     &:hover {
-        box-shadow: none}
+      box-shadow: none;
+    }
   }
 }
 
@@ -96,13 +109,13 @@ body {
   }
 }
 
-.formLogIn {
+.form {
   margin: 40px auto;
   display: flex;
   flex-direction: column;
   gap: 40px;
   align-items: center;
-  .formLogInInput {
+  .formInput {
     display: flex;
     align-items: center;
     color: rgba(206, 204, 204, 0.664);
@@ -117,7 +130,7 @@ body {
       background-color: inherit;
       margin-left: 3px;
       font-size: 20px;
-      color: rgba(0, 0, 0, 0.76);
+      color: white;
       padding: 5px 10px;
       border: none;
       width: calc(100vw - 120px);
@@ -130,24 +143,30 @@ body {
       font-size: 20px;
     }
   }
-}
-
-.bigButton {
-  display: block;
-  text-align: center;
-  padding: 15px 0px;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: 400;
-  width: 280px;
-  border-radius: 30px;
-  border: 0px;
+  .bigButton {
+    display: block;
+    text-align: center;
+    padding: 15px 0px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    width: 280px;
+    border-radius: 30px;
+    border: 0px;
+    &:hover {
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    }
+  }
 }
 
 .selectedBtn {
   background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
   background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
   color: white;
+  border: none;
+  &:hover {
+    box-shadow: 2px 2px 3px rgb(66, 3, 124);
+  }
 }
 
 .notSelectedBtn {
@@ -156,6 +175,10 @@ body {
   background-color: white;
   font-size: 20px;
   font-weight: 400;
+  border: none;
+  &:hover {
+    box-shadow: 2px 2px 3px rgb(66, 3, 124);
+  }
 }
 
 .logoutWrapper {
@@ -165,33 +188,48 @@ body {
   gap: 25px;
   justify-content: center;
   align-items: center;
-  
+
   p {
     color: rgba(206, 204, 204, 0.664);
-    font-size: 20px;
+    font-size: 26px;
     font-weight: 400;
     width: 200px;
     text-align: center;
     margin-bottom: 25px;
   }
+  .bigButton {
+    display: block;
+    text-align: center;
+    padding: 15px 0px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    width: 280px;
+    border-radius: 30px;
+    border: 0px;
+
+    &:hover {
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    }
+  }
 }
 
-
 .listCards {
+  margin-bottom: 0px;
   .totalSum {
-     box-sizing: border-box;
-      background-color: rgb(132, 72, 189);
-        width: 290px;
-        border: 1px solid rgba(56, 4, 104, 0.678);
-        margin: 0 auto 15px auto;
-        padding: 10px 25px;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-shadow: 2px 2px 3px rgb(66, 3, 124);
-        font-size: 20px;
-          color: white;
+    box-sizing: border-box;
+    background-color: rgba(93, 38, 187);
+    width: 290px;
+    border: 1px solid rgba(56, 4, 104, 0.678);
+    margin: 0 auto 15px auto;
+    padding: 10px 25px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    font-size: 20px;
+    color: white;
   }
 
   .cardwithColor {
@@ -199,11 +237,10 @@ body {
     border-radius: 10px;
     margin: 0px auto 15px auto;
 
-    
     .card {
-      background-color: rgb(132, 72, 189);
+      background-color: rgb(92, 38, 187);
       width: 280px;
-      border: 1px solid rgba(56, 4, 104, 0.678);
+      border: 1px solid rgba(58, 28, 143, 1) ;
       border-bottom-right-radius: 10px;
       border-top-right-radius: 10px;
       margin-left: 5px;
@@ -211,6 +248,7 @@ body {
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    
 
       .cardRow {
         border-bottom: 1px solid rgba(206, 204, 204, 0.664);
@@ -239,4 +277,6 @@ body {
       }
     }
   }
+  .addCard{position: sticky; left:calc(100vw - 80px); bottom: 10px;
+    font-size: 50px;font-weight: 900; width: 60px;border-radius:50%;padding-top: 10px;}
 }
