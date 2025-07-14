@@ -9,7 +9,7 @@ import { Link, Outlet } from 'react-router-dom';
 const SharedLayout = () => {
   return (
     <section>
-      <header className={style.sharedLayout}>
+      <header className={style.sharedLayoutHeader}>
         <Logo />
         <div className={style.sharedLayoutUser}>
           <p>Florentina</p>
