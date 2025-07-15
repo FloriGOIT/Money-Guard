@@ -1,5 +1,5 @@
 body {
-  background: RGB(101, 41, 204);
+  background: rgb(101, 41, 204);
   background: radial-gradient(
     circle,
     rgb(92, 38, 187) 40%,
@@ -277,15 +277,16 @@ body {
       }
     }
   }
-  .addCard {
+  .addCardButton {
     position: sticky;
     left: calc(100vw - 80px);
     bottom: 10px;
-    font-size: 50px;
+  
+    font-size: 40px;
     font-weight: 900;
-    width: 60px;
     border-radius: 50%;
-    padding-top: 10px;
+    text-align: center;
+    padding: 10px 10px 0px 10px;
   }
 }
 .addCardWrapper {
@@ -312,7 +313,7 @@ body {
       position: relative;
       display: inline-block;
       width: 80px;
-      height: 34px;
+      height: 38px;
 
       input {
         opacity: 0;
@@ -338,6 +339,7 @@ body {
         align-items: center;
         justify-content: center;
         content: '+';
+        padding-top: 5px;
         font-size: 38px;
         font-weight: bold;
         color: white;
@@ -362,11 +364,11 @@ body {
 
   .addCardForm {
     background-color: inherit;
-
+    outline: none;
     .addCardFormSelect {
       color: white;
       background-color: inherit;
-      font-size: 20px;
+      font-size: 16px;
       text-align: center;
       width: 500px;
       border: none;
@@ -374,7 +376,8 @@ body {
       outline: none;
       .addCardOption {
         text-align: center;
-        background-color: inherit;
+        background-color:rgb(92, 38, 187); 
+        border: none;
       }
     }
   }

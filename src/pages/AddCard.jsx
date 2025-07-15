@@ -22,12 +22,12 @@ const AddCard = () => {
         <span style={{color: isIncome?"rgb(211, 76, 76)":"white"}}>Expense</span>
       </div>
 
-      <ul className={style.addCardForm}>
+      <form className={style.addCardForm}>
         <select className={style.addCardFormSelect}>
           <option className={style.addCardOption} disabled selected hidden>Select an option...</option>
           {arrCategory.map(category => <option key={category} value={category.toLowerCase()} className={style.addCardOption}>{category}</option>)}
         </select>
-      </ul>
+      </form>
     </section>
   );
 };
