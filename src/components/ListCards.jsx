@@ -20,7 +20,7 @@ const ListCards = () => {
                 </div>
                 {dataCard.map(data => 
                         <Card data={data} key={nanoid()} />)}
-                <Link to="/addCard" className={`${style.addCardButton} ${style.selectedBtn}`}><IoAddSharp/></Link>
+                <Link to="/newCard" className={`${style.addCardButton} ${style.selectedBtn}`}><IoAddSharp/></Link>
         </section>)
 }
 

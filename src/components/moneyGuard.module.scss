@@ -281,7 +281,7 @@ body {
     position: sticky;
     left: calc(100vw - 80px);
     bottom: 10px;
-  
+
     font-size: 40px;
     font-weight: 900;
     border-radius: 50%;
@@ -289,7 +289,7 @@ body {
     padding: 10px 10px 0px 10px;
   }
 }
-.addCardWrapper {
+.newCardWrapper {
   margin: 0px auto;
   padding: 20px 20px;
   width: 500px;
@@ -303,11 +303,12 @@ body {
   h2 {
     font-size: 24px;
   }
-  .addCardToggle {
+  .newCardToggle {
     display: flex;
     gap: 25px;
     span {
-      font-size: 20px;
+      font-size: 22px;
+      font-weight: 400;
     }
     .switch {
       position: relative;
@@ -339,7 +340,7 @@ body {
         align-items: center;
         justify-content: center;
         content: '+';
-        padding-top: 5px;
+        padding-top: 2px;
         font-size: 38px;
         font-weight: bold;
         color: white;
@@ -362,23 +363,72 @@ body {
     }
   }
 
-  .addCardForm {
+  .newCardForm {
     background-color: inherit;
     outline: none;
-    .addCardFormSelect {
-      color: white;
-      background-color: inherit;
-      font-size: 16px;
-      text-align: center;
+    color: rgba(228, 223, 223, 0.664);
+    .placeholderOption {
       width: 500px;
-      border: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       border-bottom: 1px solid rgba(206, 204, 204, 0.664);
-      outline: none;
-      .addCardOption {
-        text-align: center;
-        background-color:rgb(92, 38, 187); 
+      color: inherit;
+
+      input {
+        text-align: start;
+        font-size: 22px;
+        font-weight: 400;
+        color: inherit;
+        background-color: inherit;
         border: none;
+        outline: none;
       }
+
+      button {
+        font-size: 25px;
+        color: inherit;
+        background-color: inherit;
+        border: none;
+        padding-bottom: 0px;
+      }
+    }
+
+    .newCardList {
+      list-style-type: none;
+      background: #692fcc;
+      background: linear-gradient(
+        190deg,
+        rgb(92, 28, 202) 30%,
+        rgb(119, 70, 202) 80%,
+        rgba(150, 135, 168, 1) 100%
+      );
+      width: 500px;
+      border: 1px solid rgba(206, 204, 204, 0.664);
+
+      .newCardOption {
+        padding: 5px 15px 5px 15px;
+        text-align: center;
+
+        input {
+          background-color: inherit;
+          border: none;
+          outline: none;
+          color: inherit;
+          font-size: 20px;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+
+      .newCardOption.income:hover {
+        color: rgb(211, 76, 76);
+        background-color: rgb(160, 116, 236);
+      }
+      .newCardOption.expense:hover {
+        color: rgb(194, 240, 126);
+        background-color: rgb(160, 116, 236);
+        }
     }
   }
 }
