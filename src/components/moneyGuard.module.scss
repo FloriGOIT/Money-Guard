@@ -292,13 +292,12 @@ body {
 .newCardWrapper {
   margin: 0px auto;
   padding: 20px 20px;
-  width: 500px;
-  border: 1px solid rgb(51, 25, 124);
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 35px;
+  gap: 25px;
   color: white;
   h2 {
     font-size: 24px;
@@ -367,32 +366,59 @@ body {
     background-color: inherit;
     outline: none;
     color: rgba(228, 223, 223, 0.664);
+    padding: 0px 10px;
+
     .placeholderOption {
-      width: 500px;
+
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       border-bottom: 1px solid rgba(206, 204, 204, 0.664);
       color: inherit;
-
+      margin: 30px 0px;
       input {
         text-align: start;
         font-size: 22px;
         font-weight: 400;
-        color: inherit;
+        color: white;
         background-color: inherit;
         border: none;
         outline: none;
-      }
-
-      button {
-        font-size: 25px;
-        color: inherit;
-        background-color: inherit;
-        border: none;
-        padding-bottom: 0px;
+        padding-left: 15px;
       }
     }
+
+    button {
+      font-size: 25px;
+      color: inherit;
+      background-color: inherit;
+      border: none;
+      padding-bottom: 0px;
+      padding-right: 15px;
+    }
+
+    .amountAndDate {
+      display: flex;
+      flex-direction: column;
+      input:nth-child(1) {
+        border-bottom: 1px solid rgba(206, 204, 204, 0.664);
+      }
+      input:nth-child(2) {
+        margin: 30px 0px 0px 0px;
+
+      }
+      input:placeholder-shown {
+        color: rgb(224, 221, 221);
+      }
+            input[type="date"]::-webkit-calendar-picker-indicator {
+              filter: invert(1);
+font-size: 30px;
+            }
+    }
+
+      .comment:placeholder-shown {
+        color: rgb(224, 221, 221);;
+      }
 
     .newCardList {
       list-style-type: none;
@@ -421,15 +447,15 @@ body {
         }
       }
 
-    .newCardOption.income:hover {
-      color: rgb(207, 47, 47);
-      background-color: rgb(160, 116, 236);
-    }
-  
-    .newCardOption.expense:hover {
-      color: rgb(119, 235, 65);
-      background-color: rgb(160, 116, 236);
-    }
+      .newCardOption.income:hover {
+        color: rgb(207, 47, 47);
+        background-color: rgb(160, 116, 236);
+      }
+
+      .newCardOption.expense:hover {
+        color: rgb(119, 235, 65);
+        background-color: rgb(160, 116, 236);
+      }
     }
   }
 }
