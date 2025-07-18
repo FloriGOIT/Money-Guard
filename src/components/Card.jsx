@@ -5,7 +5,7 @@ import { MdOutlineModeEdit } from 'react-icons/md';
 const Card = ({data}) => {
         const { date, type, category, details, sum } = data;
   return (
-    <div className={styles.cardwithColor} style={{backgroundColor: `${type}` === "Expense" ? "#cc242496" : "rgb(194, 240, 126)"}}>
+    <div className={styles.cardwithColor} style={{backgroundColor: `${type}` === "Expense" ? "rgb(207, 47, 47)" : "rgb(119, 235, 65)"}}>
       <div className={styles.card}>
         <div className={styles.cardRow}>
           <span className={styles.cardRowName}>Date</span>

@@ -348,7 +348,7 @@ body {
         width: 45px;
         left: -10px;
         bottom: -5px;
-        background-color: rgb(194, 240, 126);
+        background-color: rgb(119, 235, 65);
         border-radius: 50%;
         transition: 0.4s;
       }
@@ -421,14 +421,15 @@ body {
         }
       }
 
-      .newCardOption.income:hover {
-        color: rgb(211, 76, 76);
-        background-color: rgb(160, 116, 236);
-      }
-      .newCardOption.expense:hover {
-        color: rgb(194, 240, 126);
-        background-color: rgb(160, 116, 236);
-        }
+    .newCardOption.income:hover {
+      color: rgb(207, 47, 47);
+      background-color: rgb(160, 116, 236);
+    }
+  
+    .newCardOption.expense:hover {
+      color: rgb(119, 235, 65);
+      background-color: rgb(160, 116, 236);
+    }
     }
   }
 }
