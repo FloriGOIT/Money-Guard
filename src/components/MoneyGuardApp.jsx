@@ -14,8 +14,8 @@ const MoneyGuardApp = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/newCard" element={<NewCard />}/>
+                <Route path="/logout" element={<Logout />} />
+        <Route path="/newCard" element={<NewCard />} />
       </Route>
     </Routes>
   );
