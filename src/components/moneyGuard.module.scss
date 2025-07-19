@@ -291,8 +291,9 @@ body {
   }
 }
 .newCardWrapper {
+  box-sizing: border-box;
   margin: 0px auto;
-  padding: 20px 20px;
+  padding: 20px 0px;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -368,15 +369,16 @@ body {
     outline: none;
     color: rgba(228, 223, 223, 0.664);
     padding: 0px 10px;
-
+    width: 300px;
     .placeholderOption {
-
+          width: 300px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       border-bottom: 1px solid rgba(206, 204, 204, 0.664);
       color: inherit;
       margin: 30px 0px;
+      padding: 0px 10px;
       input {
         text-align: start;
         font-size: 22px;
@@ -385,7 +387,7 @@ body {
         background-color: inherit;
         border: none;
         outline: none;
-        padding-left: 15px;
+
       }
     }
 
@@ -395,7 +397,6 @@ body {
       background-color: inherit;
       border: none;
       padding-bottom: 0px;
-      padding-right: 15px;
     }
 
     .amountAndDate {
