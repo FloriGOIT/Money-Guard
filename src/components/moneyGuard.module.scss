@@ -10,453 +10,442 @@ body {
 }
 //&:hover {box-shadow: 2px 2px 3px rgb(66, 3, 124);}
 
-.sharedLayoutHeader {
-  padding: 10px 20px;
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(40, 19, 97);
-  justify-content: space-between;
-  border-bottom: 2px solid rgb(25, 2, 46);
-  width: 100%;
-  .logoWrapper {
-    margin: 0px;
-    img {
-      width: 20px;
-      height: 20px;
-    }
-
-    span {
-      font-size: 15px;
-      width: 100px;
-      background-color: inherit;
-    }
-  }
-  .sharedLayoutUser {
-    font-size: 18px;
-    font-weight: 400;
-    color: rgba(206, 204, 204, 0.664);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    p {
-      margin-right: 10px;
-    }
-
-    a {
-      font-size: 24px;
-      padding-top: 6px;
-      border: none;
-      background-color: inherit;
-      color: rgba(206, 204, 204, 0.664);
-      &:hover {
-        box-shadow: 2px 2px 3px rgb(92, 38, 187);
-        border-radius: 20px;
-      }
-    }
-  }
-}
-
-.navLinks {
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-  align-items: center;
-  margin: 30px;
-
-  a {
-    padding: 6px;
-    font-size: 38px;
-    height: 44px;
-    color: rgb(51, 25, 124);
-    background-color: rgba(236, 231, 231, 0.664);
-    border-radius: 10px;
-    &:hover {
-      box-shadow: 2px 2px 3px rgb(40, 19, 97);
-    }
-  }
-
-  .selectedNav {
-    color: white;
-    background-color: rgb(122, 79, 240);
-    &:hover {
-      box-shadow: none;
-    }
-  }
-}
-
 .loginWrapper {
   padding: calc((100vh - 360px) / 2);
   box-sizing: border-box;
   width: auto;
 }
+
 .registerWrapper {
   padding: calc((100vh - 520px) / 2);
 }
-
-.logoWrapper {
-  margin: 0px auto;
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  img {
-    width: 28px;
-    height: 28px;
-  }
-  span {
-    width: 150px;
-  }
-}
-
-.form {
-  margin: 40px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  align-items: center;
-  .formInput {
-    display: flex;
-    align-items: center;
-    color: rgba(206, 204, 204, 0.664);
-    font-size: 20px;
-    font-weight: 400;
-    border-bottom: 1px solid rgba(206, 204, 204, 0.664);
-    padding: 0px 8px;
-    svg {
-      height: 20px;
-    }
-    input {
-      background-color: inherit;
-      margin-left: 3px;
-      font-size: 20px;
-      color: white;
-      padding: 5px 10px;
-      border: none;
-      width: calc(100vw - 120px);
-      padding-bottom: 2px;
-      outline: none;
-    }
-    input:placeholder-shown {
-      color: rgba(206, 204, 204, 0.664);
-      font-weight: 400;
-      font-size: 20px;
-    }
-  }
-  .bigButton {
-    display: block;
-    text-align: center;
-    padding: 15px 0px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 400;
-    width: 280px;
-    border-radius: 30px;
-    border: 0px;
-    &:hover {
-      box-shadow: 2px 2px 3px rgb(66, 3, 124);
-    }
-  }
-}
-
-.selectedBtn {
-  background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-  background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-  color: white;
-  border: none;
-  &:hover {
-    box-shadow: 2px 2px 3px rgb(66, 3, 124);
-  }
-}
-
-.notSelectedBtn {
-  color: rgb(92, 38, 187);
-  background: none;
-  background-color: white;
-  font-size: 20px;
-  font-weight: 400;
-  border: none;
-  &:hover {
-    box-shadow: 2px 2px 3px rgb(66, 3, 124);
-  }
-}
-
-.logoutWrapper {
-  margin: calc((100vh - 320px) / 2) auto;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  justify-content: center;
-  align-items: center;
-
-  p {
-    color: rgba(206, 204, 204, 0.664);
-    font-size: 26px;
-    font-weight: 400;
-    width: 200px;
-    text-align: center;
-    margin-bottom: 25px;
-  }
-  .bigButton {
-    display: block;
-    text-align: center;
-    padding: 15px 0px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 400;
-    width: 280px;
-    border-radius: 30px;
-    border: 0px;
-
-    &:hover {
-      box-shadow: 2px 2px 3px rgb(66, 3, 124);
-    }
-  }
-}
-
-.listCards {
-  margin-bottom: 0px;
-  .totalSum {
+.sharedLayout {
+  max-width: 320px;
+  width: 100%;
+  .sharedLayoutHeader {
     box-sizing: border-box;
-    background-color: rgba(93, 38, 187);
-    width: 290px;
-    border: 1px solid rgba(56, 4, 104, 0.678);
-    margin: 0 auto 15px auto;
-    padding: 10px 25px;
-    border-radius: 10px;
+    padding: 10px 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    background-color: rgb(40, 19, 97);
     justify-content: space-between;
-    box-shadow: 2px 2px 3px rgb(66, 3, 124);
-    font-size: 20px;
-    color: white;
-  }
+    border-bottom: 2px solid rgb(25, 2, 46);
+    width: 320px;
 
-  .cardwithColor {
-    width: 285px;
-    border-radius: 10px;
-    margin: 0px auto 15px auto;
-
-    .card {
-      background-color: rgb(92, 38, 187);
-      width: 280px;
-      border: 1px solid rgba(58, 28, 143, 1);
-      border-bottom-right-radius: 10px;
-      border-top-right-radius: 10px;
-      margin-left: 5px;
+    .logoWrapper {
+      color: rgba(206, 204, 204, 0.664);
+      font-size: 14px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 2px 2px 3px rgb(66, 3, 124);
-
-      .cardRow {
-        border-bottom: 1px solid rgba(206, 204, 204, 0.664);
-        font-size: 16px;
-        color: white;
-        font-weight: 600;
-        display: flex;
-        justify-content: space-between;
-        padding: 0px 15px;
-        align-items: center;
-        height: 50px;
+      justify-content: center;
+      img {
+        width: 20px;
+        height: 20px;
+        margin: 0px auto;
+      }
+    }
+    .sharedLayoutUser {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(206, 204, 204, 0.664);
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      p {
+        margin-right: 10px;
       }
 
-      .cardRowButtons {
-        height: 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0px 10px;
-
-        button {
+      a {
+        font-size: 24px;
+        padding-top: 6px;
+        border: none;
+        background-color: inherit;
+        color: rgba(206, 204, 204, 0.664);
+        &:hover {
+          box-shadow: 2px 2px 3px rgb(92, 38, 187);
           border-radius: 20px;
-          height: 35px;
-          width: 80px;
         }
       }
     }
   }
-  .addCardButton {
-    position: sticky;
-    left: calc(100vw - 80px);
-    bottom: 10px;
 
-    font-size: 40px;
-    font-weight: 900;
-    border-radius: 50%;
-    text-align: center;
-    padding: 10px 10px 0px 10px;
-  }
-}
-.newCardWrapper {
-  box-sizing: border-box;
-  margin: 0px auto;
-  padding: 20px 0px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-  color: white;
-  h2 {
-    font-size: 24px;
-  }
-  .newCardToggle {
+  .navLinks {
     display: flex;
-    gap: 25px;
-    span {
-      font-size: 22px;
-      font-weight: 400;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    a {
+      padding: 6px;
+      font-size: 38px;
+      height: 44px;
+      color: rgb(51, 25, 124);
+      background-color: rgba(236, 231, 231, 0.664);
+      border-radius: 10px;
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(40, 19, 97);
+      }
     }
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 80px;
-      height: 38px;
 
-      input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: white;
-        transition: 0.4s;
-        border-radius: 34px;
-      }
-
-      .slider:before {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        content: '+';
-        padding-top: 2px;
-        font-size: 38px;
-        font-weight: bold;
-        color: white;
-        height: 45px;
-        width: 45px;
-        left: -10px;
-        bottom: -5px;
-        background-color: rgb(119, 235, 65);
-        border-radius: 50%;
-        transition: 0.4s;
-      }
-
-      input:checked + .slider:before {
-        content: '−';
-        font-size: 38px;
-        color: white;
-        background-color: rgb(211, 76, 76);
-        transform: translateX(50px);
+    .selectedNav {
+      color: white;
+      background-color: rgb(122, 79, 240);
+      &:hover {
+        box-shadow: none;
       }
     }
   }
 
-  .newCardForm {
-    background-color: inherit;
-    outline: none;
-    color: rgba(228, 223, 223, 0.664);
-    padding: 0px 10px;
-    width: 300px;
-    .placeholderOption {
-          width: 300px;
+  .form {
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    .formInput {
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      align-items: center;
+      color: rgba(206, 204, 204, 0.664);
+      font-size: 20px;
+      font-weight: 400;
       border-bottom: 1px solid rgba(206, 204, 204, 0.664);
-      color: inherit;
-      margin: 30px 0px;
-      padding: 0px 10px;
+      padding: 0px 8px;
+      svg {
+        height: 20px;
+      }
       input {
-        text-align: start;
-        font-size: 22px;
-        font-weight: 400;
-        color: white;
         background-color: inherit;
+        margin-left: 3px;
+        font-size: 20px;
+        color: white;
+        padding: 5px 10px;
         border: none;
+        width: calc(100vw - 120px);
+        padding-bottom: 2px;
         outline: none;
-
-      }
-    }
-
-    button {
-      font-size: 25px;
-      color: inherit;
-      background-color: inherit;
-      border: none;
-      padding-bottom: 0px;
-    }
-
-    .amountAndDate {
-      display: flex;
-      flex-direction: column;
-      input:nth-child(1) {
-        border-bottom: 1px solid rgba(206, 204, 204, 0.664);
-      }
-      input:nth-child(2) {
-        margin: 30px 0px 0px 0px;
-
       }
       input:placeholder-shown {
-        color: rgb(224, 221, 221);
+        color: rgba(206, 204, 204, 0.664);
+        font-weight: 400;
+        font-size: 20px;
       }
-            input[type="date"]::-webkit-calendar-picker-indicator {
-              filter: invert(1);
-font-size: 30px;
-            }
     }
+    .bigButton {
+      display: block;
+      text-align: center;
+      padding: 15px 0px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 400;
+      width: 280px;
+      border-radius: 30px;
+      border: 0px;
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+    }
+  }
 
-      .comment:placeholder-shown {
-        color: rgb(224, 221, 221);;
+  .selectedBtn {
+    background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+    background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+    color: white;
+    border: none;
+    &:hover {
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    }
+  }
+
+  .notSelectedBtn {
+    color: rgb(92, 38, 187);
+    background: none;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 400;
+    border: none;
+    &:hover {
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    }
+  }
+
+  .logoutWrapper {
+    margin: calc((100vh - 320px) / 2) auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      color: rgba(206, 204, 204, 0.664);
+      font-size: 26px;
+      font-weight: 400;
+      width: 200px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .bigButton {
+      display: block;
+      text-align: center;
+      padding: 15px 0px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 400;
+      width: 280px;
+      border-radius: 30px;
+      border: 0px;
+
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+    }
+  }
+  .homePage {
+    max-width: 320px;
+    .listCards {
+      width: 300px;
+      margin-bottom: 0px;
+      margin: 0 auto;
+      .totalSum {
+        box-sizing: border-box;
+        background-color: rgba(93, 38, 187);
+        width: 290px;
+        border: 1px solid rgba(56, 4, 104, 0.678);
+        margin: 0 auto 15px auto;
+        padding: 10px 25px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        font-size: 20px;
+        color: white;
       }
 
-    .newCardList {
-      list-style-type: none;
-      background: #692fcc;
-      background: linear-gradient(
-        190deg,
-        rgb(92, 28, 202) 30%,
-        rgb(119, 70, 202) 80%,
-        rgba(150, 135, 168, 1) 100%
-      );
-      width: 500px;
-      border: 1px solid rgba(206, 204, 204, 0.664);
+      .cardwithColor {
+        width: 285px;
+        border-radius: 10px;
+        margin: 0px auto 15px auto;
 
-      .newCardOption {
-        padding: 5px 15px 5px 15px;
+        .card {
+          background-color: rgb(92, 38, 187);
+          width: 280px;
+          border: 1px solid rgba(58, 28, 143, 1);
+          border-bottom-right-radius: 10px;
+          border-top-right-radius: 10px;
+          margin-left: 5px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          box-shadow: 2px 2px 3px rgb(66, 3, 124);
+
+          .cardRow {
+            border-bottom: 1px solid rgba(206, 204, 204, 0.664);
+            font-size: 16px;
+            color: white;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 15px;
+            align-items: center;
+            height: 50px;
+          }
+
+          .cardRowButtons {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 10px;
+
+            button {
+              border-radius: 20px;
+              height: 35px;
+              width: 80px;
+            }
+          }
+        }
+      }
+      .addCardButton {
+        position: sticky;
+        left: calc(100vw - 60px);
+        bottom: 10px;
+        font-size: 30px;
+        font-weight: 900;
+        border-radius: 50%;
         text-align: center;
+        padding: 5px 5px 0px 5px;
+      }
+    }
+  }
+  .newCardWrapper {
+    box-sizing: border-box;
+    margin: 0px auto;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    color: white;
+    h2 {
+      font-size: 24px;
+    }
+    .newCardToggle {
+      display: flex;
+      justify-content: space-between;
+      width: 280px;
+      span {
+        font-size: 22px;
+        font-weight: 400;
+      }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 80px;
+        height: 38px;
 
         input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: white;
+          transition: 0.4s;
+          border-radius: 34px;
+        }
+
+        .slider:before {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          content: '+';
+          padding-top: 2px;
+          font-size: 38px;
+          font-weight: bold;
+          color: white;
+          height: 45px;
+          width: 45px;
+          left: -10px;
+          bottom: -5px;
+          background-color: rgb(119, 235, 65);
+          border-radius: 50%;
+          transition: 0.4s;
+        }
+
+        input:checked + .slider:before {
+          content: '−';
+          font-size: 38px;
+          color: white;
+          background-color: rgb(211, 76, 76);
+          transform: translateX(50px);
+        }
+      }
+    }
+
+    .newCardForm {
+      background-color: inherit;
+      outline: none;
+      color: rgba(228, 223, 223, 0.664);
+      padding: 0px 10px;
+      width: 280px;
+      margin: 0px auto;
+      .placeholderOption {
+        width: 280px;
+        display: flex;
+        flex-direction: row;
+        color: inherit;
+        margin: 30px auto;
+
+        input {
+          text-align: start;
+          font-size: 22px;
+          font-weight: 400;
+          color: white;
           background-color: inherit;
           border: none;
           outline: none;
+        }
+        button {
+          font-size: 25px;
           color: inherit;
-          font-size: 20px;
-          text-align: center;
-          cursor: pointer;
+          background-color: inherit;
+          border: none;
+          padding-bottom: 0px;
+
+        }
+                border-bottom: 1px solid rgba(206, 204, 204, 0.664);
+      }
+
+      .amountAndDate {
+        width: 260px;
+        display: flex;
+        flex-direction: column;
+        input:nth-child(1) {
+          border-bottom: 1px solid rgba(206, 204, 204, 0.664);
+        }
+        input:nth-child(2) {
+          margin: 30px 0px 0px 0px;
+        }
+        input:placeholder-shown {
+          color: rgb(224, 221, 221);
+        }
+        input[type='date']::-webkit-calendar-picker-indicator {
+          filter: invert(1);
+          font-size: 30px;
         }
       }
 
-      .newCardOption.income:hover {
-        color: rgb(207, 47, 47);
-        background-color: rgb(160, 116, 236);
+      .comment:placeholder-shown {
+        color: rgb(224, 221, 221);
       }
 
-      .newCardOption.expense:hover {
-        color: rgb(119, 235, 65);
-        background-color: rgb(160, 116, 236);
+      .newCardList {
+        list-style-type: none;
+        background: #692fcc;
+        background: linear-gradient(
+          190deg,
+          rgb(92, 28, 202) 30%,
+          rgb(119, 70, 202) 80%,
+          rgba(150, 135, 168, 1) 100%
+        );
+        width: 500px;
+        border: 1px solid rgba(206, 204, 204, 0.664);
+
+        .newCardOption {
+          padding: 5px 15px 5px 15px;
+          text-align: center;
+
+          input {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            color: inherit;
+            font-size: 20px;
+            text-align: center;
+            cursor: pointer;
+          }
+        }
+
+        .newCardOption.income:hover {
+          color: rgb(207, 47, 47);
+          background-color: rgb(160, 116, 236);
+        }
+
+        .newCardOption.expense:hover {
+          color: rgb(119, 235, 65);
+          background-color: rgb(160, 116, 236);
+        }
       }
     }
   }

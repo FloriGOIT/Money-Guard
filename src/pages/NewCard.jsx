@@ -57,7 +57,7 @@ const today = new Date().toISOString().slice(0, 10);
                   ? 'rgba(206, 204, 204, 0.664)'
                   : 'white',
             }}
-          />{' '}
+          />
           <button onClick={handleSelectedForm}>{buttonArrow}</button>
         </span>
         {isSelectOpened ? (
