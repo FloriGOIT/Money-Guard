@@ -10,15 +10,109 @@ body {
 }
 //&:hover {box-shadow: 2px 2px 3px rgb(66, 3, 124);}
 
-.loginWrapper {
-  padding: calc((100vh - 360px) / 2);
+.loginWrapper,
+.registerWrapper {
+  margin: 40px auto;
   box-sizing: border-box;
-  width: auto;
+  width: 320px;
+
+  .logoWrapper {
+    color: rgba(206, 204, 204, 0.664);
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 30px;
+      height: 30px;
+      margin: 0px auto;
+    }
+  }
+
+  .form {
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+
+    .formInput {
+      display: flex;
+      align-items: center;
+      color: rgba(206, 204, 204, 0.664);
+      font-size: 20px;
+      font-weight: 400;
+      border-bottom: 1px solid rgba(206, 204, 204, 0.664);
+      padding: 0px 8px;
+
+      svg {
+        height: 20px;
+      }
+
+      input {
+        background-color: inherit;
+        margin-left: 3px;
+        font-size: 20px;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        width: calc(100vw - 120px);
+        padding-bottom: 2px;
+        outline: none;
+      }
+
+      input:placeholder-shown {
+        color: rgba(206, 204, 204, 0.664);
+        font-weight: 400;
+        font-size: 20px;
+      }
+    }
+
+    .bigButton {
+      display: block;
+      text-align: center;
+      padding: 15px 0px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 400;
+      width: 280px;
+      border-radius: 30px;
+      border: 0px;
+
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+    }
+
+    .selectedBtn {
+      background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+      background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+      color: white;
+      border: none;
+
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+    }
+
+    .notSelectedBtn {
+      color: rgb(92, 38, 187);
+      background: none;
+      background-color: white;
+      font-size: 20px;
+      font-weight: 400;
+      border: none;
+
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+    }
+  }
 }
 
-.registerWrapper {
-  padding: calc((100vh - 520px) / 2);
-}
+
 .sharedLayout {
   max-width: 320px;
   width: 100%;
@@ -33,11 +127,7 @@ body {
     width: 320px;
 
     .logoWrapper {
-      color: rgba(206, 204, 204, 0.664);
       font-size: 14px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       img {
         width: 20px;
         height: 20px;
@@ -93,56 +183,6 @@ body {
       background-color: rgb(122, 79, 240);
       &:hover {
         box-shadow: none;
-      }
-    }
-  }
-
-  .form {
-    margin: 40px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-    .formInput {
-      display: flex;
-      align-items: center;
-      color: rgba(206, 204, 204, 0.664);
-      font-size: 20px;
-      font-weight: 400;
-      border-bottom: 1px solid rgba(206, 204, 204, 0.664);
-      padding: 0px 8px;
-      svg {
-        height: 20px;
-      }
-      input {
-        background-color: inherit;
-        margin-left: 3px;
-        font-size: 20px;
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        width: calc(100vw - 120px);
-        padding-bottom: 2px;
-        outline: none;
-      }
-      input:placeholder-shown {
-        color: rgba(206, 204, 204, 0.664);
-        font-weight: 400;
-        font-size: 20px;
-      }
-    }
-    .bigButton {
-      display: block;
-      text-align: center;
-      padding: 15px 0px;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: 400;
-      width: 280px;
-      border-radius: 30px;
-      border: 0px;
-      &:hover {
-        box-shadow: 2px 2px 3px rgb(66, 3, 124);
       }
     }
   }
@@ -289,7 +329,6 @@ body {
     gap: 25px;
     color: white;
 
-
     h2 {
       font-size: 24px;
     }
@@ -435,7 +474,7 @@ body {
         display: flex;
         flex-direction: column;
         border-bottom: none;
-        
+
         input:placeholder-shown {
           padding-left: 15px;
         }
@@ -473,7 +512,15 @@ body {
           font-size: 30px;
         }
       }
-      .comment{border: none; outline: none;background-color: inherit; text-align: start;font-size: 20px; padding-left:0px; color:white}
+      .comment {
+        border: none;
+        outline: none;
+        background-color: inherit;
+        text-align: start;
+        font-size: 20px;
+        padding-left: 0px;
+        color: white;
+      }
       .comment:placeholder-shown {
         color: rgb(224, 221, 221);
         font-size: 20px;
