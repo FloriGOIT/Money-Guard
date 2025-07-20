@@ -8,7 +8,7 @@ const NewCard = () => {
   const [isIncome, setIsIncome] = useState(false);
   const [isSelectOpened, setIsSelectOpened] = useState(false);
   const [isOption, setIsOption] = useState('Select a category');
-const today = new Date().toISOString().slice(0, 10);
+  const today = new Date().toISOString().slice(0, 10);
   const object = {
     category: 'Select a category',
     amount: '0.00',
@@ -47,7 +47,7 @@ const today = new Date().toISOString().slice(0, 10);
       </div>
 
       <form className={style.newCardForm}>
-        <span className={style.placeholderOption}>
+        <div className={`${style.rowFormNewCard} ${style.categorySelection}`}>
           <input
             type="text"
             value={isOption}
@@ -58,8 +58,13 @@ const today = new Date().toISOString().slice(0, 10);
                   : 'white',
             }}
           />
-          <button onClick={handleSelectedForm}>{buttonArrow}</button>
-        </span>
+          <button
+            onClick={handleSelectedForm}
+            className={style.rowFormNewCardElem2}
+          >
+            {buttonArrow}
+          </button>
+        </div>
         {isSelectOpened ? (
           <ul className={style.newCardList}>
             {arrCategory.map(category => (
@@ -76,8 +81,11 @@ const today = new Date().toISOString().slice(0, 10);
             ))}
           </ul>
         ) : null}
-        <span className={`${style.placeholderOption} ${style.amountAndDate}`}>
+        <div
+          className={`${style.rowFormNewCard} ${style.amountAndDateSelection}`}
+        >
           <input
+            className={style.amount}
             type="text"
             name="amount"
             placeholder={object.amount}
@@ -86,14 +94,23 @@ const today = new Date().toISOString().slice(0, 10);
             required
             autoComplete="off"
           />
-          <input type="date" className={style.date} value={object.date}/>
-        </span>
-        <span className={style.placeholderOption}>
-          <input type="text" className={style.comment} placeholder={object.comment}/>
-        </span>
+          <input type="date" className={style.date} value={object.date} />
+        </div>
+        <div className={`${style.rowFormNewCard} ${style.commentSelection}`}>
+          <input
+            type="text"
+            className={style.comment}
+            placeholder={object.comment}
+          />
+        </div>
       </form>
     </section>
   );
 };
 
 export default NewCard;
+
+/*
+
+
+*/
