@@ -124,7 +124,7 @@ body {
     background-color: rgb(40, 19, 97);
     justify-content: space-between;
     border-bottom: 2px solid rgb(25, 2, 46);
-    width: 320px;
+    width: inherit;
 
     .logoWrapper {
       color: rgba(206, 204, 204, 0.664);
@@ -400,7 +400,7 @@ body {
       background-color: inherit;
       outline: none;
       color: rgba(228, 223, 223, 0.664);
-      padding: 0px 10px;
+      padding: 0px 0px;
       width: 280px;
       margin: 0px auto;
 
@@ -486,7 +486,7 @@ body {
           border: none;
           width: 280px;
           font-size: 22px;
-          border-bottom: 1px solid rgba(206, 204, 204, 0.664);
+          border-bottom: 2px solid rgba(206, 204, 204, 0.664);
           color: white;
           padding-left: 15px;
         }
@@ -506,7 +506,7 @@ body {
           text-align: start;
           color: rgb(224, 221, 221);
           border-bottom: 2px solid rgba(165, 163, 163, 0.664);
-          padding: 0px 15px 0px 15px;
+          padding: 0px 10px 0px 13px;
         }
         .date::-webkit-calendar-picker-indicator {
           filter: invert(1);
@@ -528,6 +528,13 @@ body {
         padding-left: 0px;
       }
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+    font-size: 18px;
   }
 }
 
