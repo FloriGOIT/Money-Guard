@@ -1,117 +1,127 @@
 body {
-  background: rgb(101, 41, 204);
-  background: radial-gradient(
-    circle,
-    rgb(92, 38, 187) 40%,
-    rgba(58, 28, 143, 1) 66%,
-    rgb(51, 25, 124) 100%
-  );
   margin: 0px;
 }
 //&:hover {box-shadow: 2px 2px 3px rgb(66, 3, 124);}
-
-.loginWrapper,
-.registerWrapper {
-  margin: 40px auto;
+.preSharedWrapper {
   box-sizing: border-box;
-  width: 320px;
 
-  .logoWrapper {
-    color: rgba(206, 204, 204, 0.664);
-    font-size: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background-color: rgb(101, 41, 204);
+  background-color: radial-gradient(
+    circle,
+    rgb(124, 69, 219) 40%,
+    rgb(75, 40, 168) 76%,
+    rgb(36, 18, 87) 100%
+  );
+  width: 100vw;
+  height: 100vh;
+  padding: 30px 0px 0px 0px;
+  .loginWrapper,
+  .registerWrapper {
+    margin: 0px auto;
+    box-sizing: border-box;
 
-    img {
-      width: 30px;
-      height: 30px;
-      margin: 0px auto;
-    }
-  }
-
-  .form {
-    margin: 40px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-
-    .formInput {
-      display: flex;
-      align-items: center;
+    .logoWrapper {
       color: rgba(206, 204, 204, 0.664);
-      font-size: 20px;
-      font-weight: 400;
-      border-bottom: 1px solid rgba(206, 204, 204, 0.664);
-      padding: 0px 8px;
+      font-size: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-      svg {
-        height: 20px;
+      img {
+        width: 30px;
+        height: 30px;
+        margin: 0px auto;
       }
+    }
 
-      input {
-        background-color: inherit;
-        margin-left: 3px;
-        font-size: 20px;
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        width: calc(100vw - 120px);
-        padding-bottom: 2px;
-        outline: none;
-      }
+    .form {
+      margin: 40px auto 0px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
 
-      input:placeholder-shown {
+      .formInput {
+        display: flex;
+        align-items: center;
         color: rgba(206, 204, 204, 0.664);
-        font-weight: 400;
         font-size: 20px;
+        font-weight: 400;
+        border-bottom: 1px solid hsla(0, 2%, 80%, 0.664);
+        padding: 0px 8px;
+        max-width: 400px;
+
+        svg {
+          min-height: 40px;
+          min-width: 20px;
+        }
+
+        input {
+          background-color: inherit;
+          margin-left: 3px;
+          font-size: 20px;
+          color: white;
+          padding: 5px 10px;
+          border: none;
+          width: calc(100vw - 120px);
+          padding-bottom: 2px;
+          outline: none;
+        }
+
+        input:placeholder-shown {
+          color: rgba(206, 204, 204, 0.664);
+          font-weight: 400;
+          font-size: 20px;
+        }
       }
-    }
 
-    .bigButton {
-      display: block;
-      text-align: center;
-      padding: 15px 0px;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: 400;
-      width: 280px;
-      border-radius: 30px;
-      border: 0px;
+      .bigButton {
+        display: block;
+        text-align: center;
+        padding: 15px 0px;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 400;
+        width: 280px;
+        border-radius: 30px;
+        border: 0px;
 
-      &:hover {
-        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        &:hover {
+          box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        }
       }
-    }
 
-    .selectedBtn {
-      background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-      background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-      color: white;
-      border: none;
+      .selectedBtn {
+        background: -webkit-linear-gradient(
+          to right,
+          #f3a73c,
+          hwb(288 30% 11%)
+        );
+        background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+        color: white;
+        border: none;
 
-      &:hover {
-        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        &:hover {
+          box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        }
       }
-    }
 
-    .notSelectedBtn {
-      color: rgb(92, 38, 187);
-      background: none;
-      background-color: white;
-      font-size: 20px;
-      font-weight: 400;
-      border: none;
+      .notSelectedBtn {
+        color: rgb(92, 38, 187);
+        background: none;
+        background-color: white;
+        font-size: 20px;
+        font-weight: 400;
+        border: none;
 
-      &:hover {
-        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        &:hover {
+          box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        }
       }
     }
   }
 }
-
 
 .sharedLayout {
   max-width: 320px;
@@ -313,7 +323,7 @@ body {
         bottom: 10px;
         font-size: 30px;
         font-weight: 900;
-        border-radius: 50%;
+        border-radius: 40%;
         text-align: center;
         padding: 5px 5px 0px 5px;
       }
@@ -531,14 +541,66 @@ body {
   }
 }
 
-@media (min-width: 768px) {
-  .container {
-    padding: 2rem;
-    font-size: 18px;
+@media screen and (min-width: 480px) {
+  .loginWrapper,
+  .registerWrapper {
+    .form {
+      .formInput svg {
+        min-width: 40px;
+        min-height: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .preSharedWrapper {
+    background-image: url('../helpers/coins.png'),
+      url('../helpers/SimpleBackground.webp');
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    background-size: cover, cover;
+    background-attachment: fixed;
+
+    .loginWrapper,
+    .registerWrapper {
+      margin: 30px auto;
+      width: 500px;
+      border-radius: 10px;
+      background: linear-gradient(
+        219.62deg,
+        rgba(58, 22, 187, 0.73) 50.31%,
+        rgba(85, 29, 122, 0.73) 70.76%
+      );
+      padding: 10px 0px 15px 0px;
+
+      .form {
+        .formInput svg {
+          min-width: 30px;
+          min-height: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .loginWrapper,
+  .registerWrapper {
+    .form {
+      .formInput svg {
+        min-width: 30px;
+        min-height: 30px;
+      }
+    }
   }
 }
 
 /*
-
+    background-color: rgb(101, 41, 204);
+    background-color: radial-gradient(circle,
+      rgb(124, 69, 219) 40%,
+      rgb(75, 40, 168) 76%,
+      rgb(36, 18, 87) 100%);
 
 */
