@@ -4,9 +4,11 @@ import Nav from 'components/Nav';
 
 const Home = () => {
   return (
-    <section className={style.homePage}>
+    <section className={style.homePageWrapper}>
+      <div  className={style.homePage}>
       <Nav/>
-      <ListCards />
+        <ListCards />
+        </div>
     </section>
   );
 };
