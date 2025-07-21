@@ -10,7 +10,7 @@ const Register = () => {
     <section className={style.preSharedWrapper}>
           <div className={style.registerWrapper}>
       <Logo />
-      <form className={style.form}>
+      <form className={style.formLogReg}>
       <div className={style.formInput}>
           <BiSolidUser />
           <input

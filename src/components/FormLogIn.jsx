@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const FormLogIn = () => {
   return (
-    <form className={style.form}>
+    <form className={style.formLogReg}>
       <div className={style.formInput}>
         <IoMdMail />
         <input
