@@ -4,8 +4,8 @@ import FormLogIn from 'components/FormLogIn';
 
 const Login = () => {
   return (
-    <section className={style.preSharedWrapper}>
-      <div className={style.loginWrapper}>
+    <section className={style.logRegWrapper}>
+      <div className={style.loginContainer}>
         <Logo />
         <FormLogIn />
       </div>

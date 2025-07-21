@@ -4,7 +4,7 @@ body {
   margin: 0px;
 }
 //Login/Register
-.preSharedWrapper {
+.logRegWrapper {
   background: radial-gradient(
     circle,
     rgb(124, 69, 219) 30%,
@@ -17,8 +17,8 @@ body {
   margin: 0px;
 }
 
-.loginWrapper,
-.registerWrapper {
+.loginContainer,
+.registerContainer {
   padding: 60px 0px 0px 0px;
   width: inherit;
 
@@ -123,7 +123,7 @@ body {
 
 //Shared Layout
 
-.sharedLayout {
+.sharedLayoutWrapper {
   width: 100%;
 
   .sharedLayoutHeader {
@@ -131,17 +131,18 @@ body {
     padding: 10px 20px;
     display: flex;
     flex-direction: row;
-    background-color: rgb(40, 19, 97);
+    background-color:  rgb(29, 11, 73);
     justify-content: space-between;
     border-bottom: 2px solid rgb(25, 2, 46);
     width: inherit;
 
     .logoWrapper {
       margin: 0px 0px;
-      color: rgba(206, 204, 204, 0.664);
+      color: white;
       font-size: 14px;
 
       img {
+        margin: 0px auto;
         width: 20px;
         height: 20px;
       }
@@ -150,7 +151,7 @@ body {
     .sharedLayoutUser {
       font-size: 18px;
       font-weight: 400;
-      color: rgba(206, 204, 204, 0.664);
+      color: white;
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -214,13 +215,10 @@ body {
   width: 100%;
   height: 100%;
 
-  background: linear-gradient(
-    270deg,
-    rgb(64, 49, 197) 20.2%,
-    rgb(57, 42, 114) 70.98%
-  );
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 40px 0px,
-    rgba(0, 0, 0, 0.1) 0px -3px 2px 0px inset;
+  background: radial-gradient(circle,
+        rgb(124, 69, 219) 30%,
+        rgb(75, 40, 168) 66%,
+        rgb(36, 18, 87) 100%);
 }
 
 .homePage {
@@ -377,9 +375,246 @@ body {
   }
 }
 
+//newCard
+.newCardWrapper{
+  height: 100vh;
+}
+.newCardContainer {
+  
+  box-sizing: border-box;
+  padding: 25px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  color: white;
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .newCardToggle {
+    display: flex;
+    justify-content: space-between;
+    width: 280px;
+    margin: 0px auto;
+
+    span {
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 80px;
+      height: 38px;
+
+      input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        content: '+';
+        padding-top: 2px;
+        font-size: 38px;
+        font-weight: bold;
+        color: white;
+        height: 45px;
+        width: 45px;
+        left: -10px;
+        bottom: -5px;
+        background-color: rgb(119, 235, 65);
+        border-radius: 50%;
+        transition: 0.4s;
+      }
+
+      input:checked+.slider:before {
+        content: '−';
+        font-size: 38px;
+        color: white;
+        background-color: rgb(211, 76, 76);
+        transform: translateX(50px);
+      }
+    }
+  }
+
+  .newCardForm {
+    background-color: inherit;
+    outline: none;
+    color: rgba(228, 223, 223, 0.664);
+    padding: 0px 0px;
+    width: 280px;
+    margin: 0px auto;
+
+    .rowFormNewCard {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      color: inherit;
+      margin-top: 30px;
+      width: 280px;
+      border-bottom: 2px solid rgba(206, 204, 204, 0.664);
+    }
+
+    .categorySelection input {
+      text-align: start;
+      font-size: 22px;
+      font-weight: 400;
+      color: white;
+      background-color: inherit;
+      border: none;
+      outline: none;
+      max-width: 200px;
+    }
+
+    .categorySelection button {
+      font-size: 25px;
+      color: inherit;
+      background-color: inherit;
+      border: none;
+      padding: 0px;
+    }
+
+    .newCardList {
+      width: 280px;
+      list-style-type: none;
+      background: #692fcc;
+      background: linear-gradient(190deg,
+          rgb(92, 28, 202) 30%,
+          rgb(119, 70, 202) 80%,
+          rgba(150, 135, 168, 1) 100%);
+      border: 1px solid rgba(206, 204, 204, 0.664);
+
+      .newCardOption {
+        padding: 5px 15px 5px 15px;
+        text-align: center;
+
+        input {
+          background-color: inherit;
+          border: none;
+          outline: none;
+          color: inherit;
+          font-size: 20px;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+
+      .newCardOption.income:hover {
+        color: rgb(207, 47, 47);
+        background-color: rgb(160, 116, 236);
+      }
+
+      .newCardOption.expense:hover {
+        color: rgb(119, 235, 65);
+        background-color: rgb(160, 116, 236);
+      }
+    }
+
+    .amountAndDateSelection {
+      display: flex;
+      flex-direction: column;
+      border-bottom: none;
+
+      input:placeholder-shown {
+        padding-left: 15px;
+      }
+
+      .amount {
+        box-sizing: border-box;
+        background-color: inherit;
+        outline: none;
+        border: none;
+        width: 280px;
+        font-size: 22px;
+        border-bottom: 2px solid rgba(206, 204, 204, 0.664);
+        color: white;
+        padding-left: 15px;
+      }
+
+      .amount:placeholder-shown {
+        box-sizing: border-box;
+        color: rgb(224, 221, 221);
+      }
+
+      .date {
+        box-sizing: border-box;
+        background-color: inherit;
+        outline: none;
+        border: none;
+        outline: none;
+        font-size: 22px;
+        width: 280px;
+        margin: 25px 0px 0px 0px;
+        text-align: start;
+        color: rgb(224, 221, 221);
+        border-bottom: 2px solid rgba(165, 163, 163, 0.664);
+        padding: 0px 10px 0px 13px;
+      }
+
+      .date::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+        font-size: 30px;
+      }
+    }
+
+    .comment {
+      border: none;
+      outline: none;
+      background-color: inherit;
+      text-align: start;
+      font-size: 20px;
+      padding-left: 0px;
+      color: white;
+    }
+
+    .comment:placeholder-shown {
+      color: rgb(224, 221, 221);
+      font-size: 20px;
+      padding-left: 0px;
+    }
+  }
+}
+
+
+@media screen and (min-width: 480px) {
+
+  .loginContainer,
+  .registerContainer {
+    .form {
+      .formInput svg {
+        min-width: 40px;
+        min-height: 40px;
+      }
+    }
+  }
+}
+
 @media screen and (min-width: 768px) {
-  .preSharedWrapper,
-  .homePageWrapper {
+  .logRegWrapper,
+  .homePageWrapper,
+  .newCardWrapper {
     background-image: url('../helpers//coins.png'),
       url('../helpers/SimpleBackground.webp');
     background-repeat: no-repeat, no-repeat;
@@ -387,12 +622,14 @@ body {
     background-size: cover, cover;
     background-attachment: fixed;
   }
-  .preSharedWrapper {
+
+  .logRegWrapper {
     box-sizing: border-box;
     padding: 50px 0px 0px 0px;
   }
-  .loginWrapper,
-  .registerWrapper {
+  .loginContainer,
+  .registerContainer,
+  .newCardContainer {
     padding: 20px 0px 20px 0px;
     border-radius: 20px;
     width: 450px;

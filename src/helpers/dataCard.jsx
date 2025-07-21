@@ -3,6 +3,7 @@ const today = new Date().toLocaleDateString('ro-Ro', {
   month: 'numeric',
   day: 'numeric',
 });
+console.log("today",today)
 const dataCard = [
   {
     date: today,

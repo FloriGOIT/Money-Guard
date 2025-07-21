@@ -5,7 +5,7 @@ import { Link, Outlet } from 'react-router-dom';
 
 const SharedLayout = () => {
   return (
-    <section className={style.sharedLayout}>
+    <section className={style.sharedLayoutWrapper}>
       <header className={style.sharedLayoutHeader}>
         <Logo />
         <div className={style.sharedLayoutUser}>

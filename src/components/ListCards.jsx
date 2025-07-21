@@ -14,7 +14,7 @@ const ListCards = () => {
     }
     return acc;
   }, 0);
-  console.log(balance);
+
   return (
     <section className={style.listCards}>
       <div className={style.totalSum}>

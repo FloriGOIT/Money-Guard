@@ -31,79 +31,81 @@ const NewCard = () => {
   };
   return (
     <section className={style.newCardWrapper}>
-      <h2>Add transaction</h2>
+      <div className={style.newCardContainer}>
+        <h2>Add transaction</h2>
 
-      <div className={style.newCardToggle}>
-        <span style={{ color: isIncome ? 'white' : 'rgb(194, 240, 126)' }}>
-          Income
-        </span>
-        <label className={style.switch}>
-          <input type="checkbox" checked={isIncome} onChange={handleToggle} />
-          <span className={`${style.slider} ${style.round}`}></span>
-        </label>
-        <span style={{ color: isIncome ? 'rgb(211, 76, 76)' : 'white' }}>
-          Expense
-        </span>
-      </div>
+        <div className={style.newCardToggle}>
+          <span style={{ color: isIncome ? 'white' : 'rgb(194, 240, 126)' }}>
+            Income
+          </span>
+          <label className={style.switch}>
+            <input type="checkbox" checked={isIncome} onChange={handleToggle} />
+            <span className={`${style.slider} ${style.round}`}></span>
+          </label>
+          <span style={{ color: isIncome ? 'rgb(211, 76, 76)' : 'white' }}>
+            Expense
+          </span>
+        </div>
 
-      <form className={style.newCardForm}>
-        <div className={`${style.rowFormNewCard} ${style.categorySelection}`}>
-          <input
-            type="text"
-            value={isOption}
-            style={{
-              color:
-                isOption === 'Select a category'
-                  ? 'rgba(206, 204, 204, 0.664)'
-                  : 'white',
-            }}
-          />
-          <button
-            onClick={handleSelectedForm}
-            className={style.rowFormNewCardElem2}
+        <form className={style.newCardForm}>
+          <div className={`${style.rowFormNewCard} ${style.categorySelection}`}>
+            <input
+              type="text"
+              value={isOption}
+              style={{
+                color:
+                  isOption === 'Select a category'
+                    ? 'rgba(206, 204, 204, 0.664)'
+                    : 'white',
+              }}
+            />
+            <button
+              onClick={handleSelectedForm}
+              className={style.rowFormNewCardElem2}
+            >
+              {buttonArrow}
+            </button>
+          </div>
+          {isSelectOpened ? (
+            <ul className={style.newCardList}>
+              {arrCategory.map(category => (
+                <li
+                  key={category}
+                  value={category.toLowerCase()}
+                  className={`${style.newCardOption} ${
+                    isIncome ? style.income : style.expense
+                  }`}
+                  onClick={() => handleOption(category)}
+                >
+                  <input type="text" value={category} readOnly />
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          <div
+            className={`${style.rowFormNewCard} ${style.amountAndDateSelection}`}
           >
-            {buttonArrow}
-          </button>
-        </div>
-        {isSelectOpened ? (
-          <ul className={style.newCardList}>
-            {arrCategory.map(category => (
-              <li
-                key={category}
-                value={category.toLowerCase()}
-                className={`${style.newCardOption} ${
-                  isIncome ? style.income : style.expense
-                }`}
-                onClick={() => handleOption(category)}
-              >
-                <input type="text" value={category} readOnly />
-              </li>
-            ))}
-          </ul>
-        ) : null}
-        <div
-          className={`${style.rowFormNewCard} ${style.amountAndDateSelection}`}
-        >
-          <input
-            className={style.amount}
-            type="text"
-            name="amount"
-            placeholder={object.amount}
-            pattern="^\d+(\.\d{1,2})?$"
-            title="Enter an amount like 5, 5.5 or 5.00"
-            required
-            autoComplete="off"
-          />
-          <input type="date" className={style.date} value={object.date} />
-        </div>
-        <div className={`${style.rowFormNewCard} ${style.commentSelection}`}>
-          <input
-            type="text"
-            className={style.comment}
-            placeholder={object.comment}
-          />
-        </div>
-      </form>
+            <input
+              className={style.amount}
+              type="text"
+              name="amount"
+              placeholder={object.amount}
+              pattern="^\d+(\.\d{1,2})?$"
+              title="Enter an amount like 5, 5.5 or 5.00"
+              required
+              autoComplete="off"
+            />
+            <input type="date" className={style.date} value={object.date} />
+          </div>
+          <div className={`${style.rowFormNewCard} ${style.commentSelection}`}>
+            <input
+              type="text"
+              className={style.comment}
+              placeholder={object.comment}
+            />
+          </div>
+        </form>
+      </div>
     </section>
   );
 };
