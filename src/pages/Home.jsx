@@ -5,10 +5,10 @@ import Nav from 'components/Nav';
 const Home = () => {
   return (
     <section className={style.homePageWrapper}>
-      <div  className={style.homePage}>
-      <Nav/>
+      <div className={style.homePage}>
+        <Nav />
         <ListCards />
-        </div>
+      </div>
     </section>
   );
 };
