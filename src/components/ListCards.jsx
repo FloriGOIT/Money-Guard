@@ -14,6 +14,12 @@ const ListCards = () => {
     }
     return acc;
   }, 0);
+  const currentMonth = (new Date().getMonth()+1).toString().padStart(2, '0');
+  console.log(currentMonth)
+  const arrDataToDisplay = dataCard.filter(data => {
+   return currentMonth === data.date.split(".")[1]
+  })
+console.log("arrDataToDisplay",arrDataToDisplay)
 
   return (
     <section className={style.listCards}>
@@ -25,13 +31,12 @@ const ListCards = () => {
               color: balance <= 0 ? '#be242496' : 'rgb(194, 240, 126)',
               fontWeight: 900,
             }}
-          >
-            {balance}
-          </span>{' '}
-          RON
+          > {' '}{new Intl.NumberFormat('fr-FR').format(balance)}
+          </span>
+          {' '}RON
         </span>
       </div>
-      {dataCard.map(data => (
+      {arrDataToDisplay.map(data => (
         <Card data={data} key={nanoid()} />
       ))}
       <Link

@@ -145,6 +145,8 @@ body {
   width: 100%;
 
   .sharedLayoutHeader {
+        position: sticky;
+          top: 0px;
     box-sizing: border-box;
     padding: 10px 20px;
     display: flex;
