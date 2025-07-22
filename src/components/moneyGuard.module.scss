@@ -42,7 +42,7 @@ body {
 .registerContainer {
   .logoWrapper {
     margin: 0px auto;
-    color: rgba(206, 204, 204, 0.664);
+    color: white;
     font-size: 24px;
     display: flex;
     flex-direction: column;
@@ -346,7 +346,7 @@ body {
       font-weight: 900;
       border-radius: 40%;
       text-align: center;
-      padding: 5px 5px 0px 5px;
+      padding: 8px 10px 0px 10px;
       background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
       background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
       color: white;

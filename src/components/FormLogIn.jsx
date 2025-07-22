@@ -32,7 +32,7 @@ const FormLogIn = () => {
         />
       </div>
 
-      <Link  className={`${style.bigButton} ${style.selectedBtn}`}>LOG IN</Link>
+      <Link to="/" className={`${style.bigButton} ${style.selectedBtn}`}>LOG IN</Link>
       <Link to="/register"className={`${style.bigButton} ${style.notSelectedBtn}`}>REGISTER</Link>
     </form>
   );
