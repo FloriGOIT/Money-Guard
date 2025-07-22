@@ -4,7 +4,7 @@ import FormLogIn from 'components/FormLogIn';
 
 const Login = () => {
   return (
-    <section className={style.logRegWrapper}>
+    <section className={style.logWrapper}>
       <div className={style.loginContainer}>
         <Logo />
         <FormLogIn />

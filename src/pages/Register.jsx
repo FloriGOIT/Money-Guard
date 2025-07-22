@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
   return (
-    <section className={style.logRegWrapper}>
+    <section className={style.regWrapper}>
           <div className={style.registerContainer}>
       <Logo />
       <form className={style.formLogReg}>

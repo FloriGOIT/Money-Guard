@@ -1,10 +1,14 @@
 //&:hover {box-shadow: 2px 2px 3px rgb(66, 3, 124);}
 
 body {
+  box-sizing: border-box;
   margin: 0px;
 }
 //Login/Register
-.logRegWrapper {
+.logWrapper,
+.regWrapper,
+.logoutWrapper {
+  box-sizing: border-box;
   background: radial-gradient(
     circle,
     rgb(124, 69, 219) 30%,
@@ -12,16 +16,30 @@ body {
     rgb(36, 18, 87) 100%
   );
   width: 100vw;
-  height: 100vh;
-  padding: 0px 0px 0px 0px;
   margin: 0px;
+}
+
+.logWrapper {
+  height: 100vh;
+  padding-top: calc((100vh - 378px - 100px) / 2);
+}
+.regWrapper {
+  height: 100vh;
+  padding-top: calc((100vh - 520px) / 2);
+}
+
+.loginContainer {
+  padding: 0px;
+  width: inherit;
+}
+.registerContainer {
+  padding: 0px;
+
+  width: inherit;
 }
 
 .loginContainer,
 .registerContainer {
-  padding: 60px 0px 0px 0px;
-  width: inherit;
-
   .logoWrapper {
     margin: 0px auto;
     color: rgba(206, 204, 204, 0.664);
@@ -343,45 +361,72 @@ body {
 
 //Log out
 .logoutWrapper {
-  margin: calc((100vh - 320px) / 2) auto;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  justify-content: center;
-  align-items: center;
+  padding-top: calc((100vh - 260px - 64px - 200px) / 2);
 
-  p {
-    color: rgba(206, 204, 204, 0.664);
-    font-size: 26px;
-    font-weight: 400;
-    width: 200px;
-    text-align: center;
-    margin-bottom: 25px;
-  }
+  .logoutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  .bigButton {
-    display: block;
-    text-align: center;
-    padding: 15px 0px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 400;
-    width: 280px;
-    border-radius: 30px;
-    border: 0px;
+    p {
+      color: rgba(236, 230, 230, 0.664);
+      font-size: 30px;
+      font-weight: 400;
+      width: 250px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
 
-    &:hover {
-      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    .bigButton {
+      display: block;
+      text-align: center;
+      padding: 15px 0px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 400;
+      width: 280px;
+      border-radius: 30px;
+      border: 0px;
+
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+    }
+
+    .selectedBtn {
+      background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+      background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+      color: white;
+      border: none;
+      margin-bottom: 25px;
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+    }
+
+    .notSelectedBtn {
+      color: rgb(92, 38, 187);
+      background: none;
+      background-color: white;
+      font-size: 20px;
+      font-weight: 400;
+      border: none;
+
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
     }
   }
 }
 
 //newCard
-.newCardWrapper {
+.newCardWrapper,
+.logoutWrapper {
   box-sizing: border-box;
   width: 100vw;
   height: calc(100vh - 64px);
-  padding-top: 0px;
+
   background: radial-gradient(
     circle,
     rgb(124, 69, 219) 30%,
@@ -389,8 +434,11 @@ body {
     rgb(36, 18, 87) 100%
   );
 }
+
+.newCardWrapper {
+  padding-top: calc((100vh - 541px) / 2);
+}
 .newCardContainer {
-  padding: 25px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -511,9 +559,9 @@ body {
       list-style-type: none;
       background: linear-gradient(
         140deg,
-rgb(247, 201, 141) 10%,
+        rgb(247, 201, 141) 10%,
         rgb(151, 85, 204) 45%,
-        rgb(123, 20, 192) 80%,
+        rgb(123, 20, 192) 80%
       );
       border: 1px solid rgba(206, 204, 204, 0.664);
 
@@ -668,9 +716,11 @@ rgb(247, 201, 141) 10%,
 }
 
 @media screen and (min-width: 768px) {
-  .logRegWrapper,
+  .logWrapper,
+  .regWrapper,
   .homePageWrapper,
-  .newCardWrapper {
+  .newCardWrapper,
+  .logoutWrapper {
     background-image: url('../helpers//coins.png'),
       url('../helpers/SimpleBackground.webp');
     background-repeat: no-repeat, no-repeat;
@@ -679,14 +729,23 @@ rgb(247, 201, 141) 10%,
     background-attachment: fixed;
   }
 
-  .logRegWrapper,
-  .newCardWrapper {
-    box-sizing: border-box;
-    padding: 15px 0px 0px 0px;
+  .logWrapper {
+    height: 100vh;
+    padding-top: calc((100vh - 378px) / 2);
   }
+
+  .regWrapper {
+    height: 100vh;
+    padding-top: calc((100vh - 520px) / 2);
+  }
+  .logoutWrapper {
+    padding-top: calc((100vh - 260px - 64px) / 2);
+  }
+
   .loginContainer,
   .registerContainer,
-  .newCardContainer {
+  .newCardContainer,
+  .logoutContainer {
     padding: 10px 0px 15px 0px;
     border-radius: 20px;
     width: 450px;
