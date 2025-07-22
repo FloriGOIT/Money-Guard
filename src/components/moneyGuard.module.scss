@@ -471,7 +471,7 @@ body {
     outline: none;
     color: rgba(228, 223, 223, 0.664);
     padding: 0px 0px;
-    width: 280px;
+    width: 300px;
     margin: 0px auto;
 
     .rowFormNewCard {
@@ -481,7 +481,7 @@ body {
       align-items: center;
       color: inherit;
       margin-top: 30px;
-      width: 280px;
+      width: 300px;
       border-bottom: 2px solid rgba(206, 204, 204, 0.664);
     }
 
@@ -507,13 +507,13 @@ body {
     .newCardList {
       position: absolute;
       z-index: 1;
-      width: 280px;
+      width: 300px;
       list-style-type: none;
       background: linear-gradient(
-        190deg,
-        rgb(83, 20, 192) 30%,
-        rgb(119, 70, 202) 60%,
-        rgba(150, 135, 168, 1) 100%
+        140deg,
+rgb(247, 201, 141) 10%,
+        rgb(151, 85, 204) 45%,
+        rgb(123, 20, 192) 80%,
       );
       border: 1px solid rgba(206, 204, 204, 0.664);
 
@@ -607,6 +607,7 @@ body {
     }
     .newCardButtons {
       padding-top: 25px;
+      padding-left: 1px;
       .bigButton {
         display: block;
         text-align: center;
