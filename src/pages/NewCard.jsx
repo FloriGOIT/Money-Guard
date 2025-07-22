@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { mainIncome, mainExpenses } from 'helpers/categories';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const NewCard = () => {
   const [isIncome, setIsIncome] = useState(false);
@@ -48,6 +49,7 @@ const NewCard = () => {
         </div>
 
         <form className={style.newCardForm}>
+          
           <div className={`${style.rowFormNewCard} ${style.categorySelection}`}>
             <input
               type="text"
@@ -66,6 +68,7 @@ const NewCard = () => {
               {buttonArrow}
             </button>
           </div>
+
           {isSelectOpened ? (
             <ul className={style.newCardList}>
               {arrCategory.map(category => (
@@ -82,6 +85,7 @@ const NewCard = () => {
               ))}
             </ul>
           ) : null}
+
           <div
             className={`${style.rowFormNewCard} ${style.amountAndDateSelection}`}
           >
@@ -97,6 +101,7 @@ const NewCard = () => {
             />
             <input type="date" className={style.date} value={object.date} />
           </div>
+
           <div className={`${style.rowFormNewCard} ${style.commentSelection}`}>
             <input
               type="text"
@@ -104,6 +109,19 @@ const NewCard = () => {
               placeholder={object.comment}
             />
           </div>
+
+          <div className={style.newCardButtons}>
+            <Link className={`${style.bigButton} ${style.selectedBtn}`}>
+              Add
+            </Link>
+            <Link
+              to="/login"
+              className={`${style.bigButton} ${style.notSelectedBtn}`}
+            >
+              Cancel
+            </Link>
+          </div>
+
         </form>
       </div>
     </section>

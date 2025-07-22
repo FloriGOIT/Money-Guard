@@ -131,7 +131,7 @@ body {
     padding: 10px 20px;
     display: flex;
     flex-direction: row;
-    background-color:  rgb(29, 11, 73);
+    background-color: rgb(29, 11, 73);
     justify-content: space-between;
     border-bottom: 2px solid rgb(25, 2, 46);
     width: inherit;
@@ -215,10 +215,12 @@ body {
   width: 100%;
   height: 100%;
 
-  background: radial-gradient(circle,
-        rgb(124, 69, 219) 30%,
-        rgb(75, 40, 168) 66%,
-        rgb(36, 18, 87) 100%);
+  background: radial-gradient(
+    circle,
+    rgb(124, 69, 219) 30%,
+    rgb(75, 40, 168) 66%,
+    rgb(36, 18, 87) 100%
+  );
 }
 
 .homePage {
@@ -327,16 +329,15 @@ body {
       border-radius: 40%;
       text-align: center;
       padding: 5px 5px 0px 5px;
-            background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-              background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-              color: white;
-              border: none;
-            
-              &:hover {
-                box-shadow: 2px 2px 3px rgb(66, 3, 124);
-              }
-    }
+      background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+      background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+      color: white;
+      border: none;
 
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+    }
   }
 }
 
@@ -376,23 +377,25 @@ body {
 }
 
 //newCard
-.newCardWrapper{
-  height: 100vh;
-  padding-top: 50px;
-    background: radial-gradient(circle,
-          rgb(124, 69, 219) 30%,
-          rgb(75, 40, 168) 66%,
-          rgb(36, 18, 87) 100%);
+.newCardWrapper {
+  box-sizing: border-box;
+  width: 100vw;
+  height: calc(100vh - 64px);
+  padding-top: 0px;
+  background: radial-gradient(
+    circle,
+    rgb(124, 69, 219) 30%,
+    rgb(75, 40, 168) 66%,
+    rgb(36, 18, 87) 100%
+  );
 }
 .newCardContainer {
-  padding: 25px 0px;
-  box-sizing: border-box;
   padding: 25px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 18px;
   color: white;
 
   h2 {
@@ -453,7 +456,7 @@ body {
         transition: 0.4s;
       }
 
-      input:checked+.slider:before {
+      input:checked + .slider:before {
         content: '−';
         font-size: 38px;
         color: white;
@@ -502,12 +505,16 @@ body {
     }
 
     .newCardList {
+      position: absolute;
+      z-index: 1;
       width: 280px;
       list-style-type: none;
-      background: linear-gradient(190deg,
-          rgb(83, 20, 192) 30%,
-          rgb(119, 70, 202) 60%,
-          rgba(150, 135, 168, 1) 100%);
+      background: linear-gradient(
+        190deg,
+        rgb(83, 20, 192) 30%,
+        rgb(119, 70, 202) 60%,
+        rgba(150, 135, 168, 1) 100%
+      );
       border: 1px solid rgba(206, 204, 204, 0.664);
 
       .newCardOption {
@@ -598,12 +605,56 @@ body {
       font-size: 20px;
       padding-left: 0px;
     }
+    .newCardButtons {
+      padding-top: 25px;
+      .bigButton {
+        display: block;
+        text-align: center;
+        padding: 15px 0px;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 400;
+        width: 300px;
+        border-radius: 30px;
+        border: 0px;
+
+        &:hover {
+          box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        }
+      }
+
+      .selectedBtn {
+        background: -webkit-linear-gradient(
+          to right,
+          #f3a73c,
+          hwb(288 30% 11%)
+        );
+        background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+        color: white;
+        border: none;
+        margin-bottom: 20px;
+        &:hover {
+          box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        }
+      }
+
+      .notSelectedBtn {
+        color: rgb(92, 38, 187);
+        background: none;
+        background-color: white;
+        font-size: 20px;
+        font-weight: 400;
+        border: none;
+
+        &:hover {
+          box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        }
+      }
+    }
   }
 }
 
-
 @media screen and (min-width: 480px) {
-
   .loginContainer,
   .registerContainer {
     .form {
@@ -627,14 +678,15 @@ body {
     background-attachment: fixed;
   }
 
-  .logRegWrapper {
+  .logRegWrapper,
+  .newCardWrapper {
     box-sizing: border-box;
-    padding: 50px 0px 0px 0px;
+    padding: 15px 0px 0px 0px;
   }
   .loginContainer,
   .registerContainer,
   .newCardContainer {
-    padding: 20px 0px 20px 0px;
+    padding: 10px 0px 15px 0px;
     border-radius: 20px;
     width: 450px;
     margin: 0px auto;
