@@ -15,9 +15,9 @@ const ListCards = () => {
     return acc;
   }, 0);
   const currentMonth = (new Date().getMonth()+1).toString().padStart(2, '0');
-  console.log(currentMonth)
+
   const arrDataToDisplay = dataCard.filter(data => {
-   return currentMonth === data.date.split(".")[1]
+   return currentMonth === data.date.split("-")[1]
   })
 console.log("arrDataToDisplay",arrDataToDisplay)
 

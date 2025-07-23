@@ -1,13 +1,13 @@
-const today = new Date().toLocaleDateString('ro-Ro', {
-  year: 'numeric',
-  month: 'numeric',
-  day: 'numeric',
-});
-console.log("today",today)
+  const todayNewDate = new Date();
+  const year = todayNewDate.getFullYear();
+  const month = (todayNewDate.getMonth()+1).toString().padStart(2, "0");
+  const day = todayNewDate.getDate().toString().padStart(2, "0")
+  const today = `${year}-${month}-${day}`;
+
 const dataCard = [
 
   {
-    date: "15.06.2025",
+    date: "2025-06-15",
     type: 'Income',
     category: 'Project',
     details: 'several',
@@ -15,7 +15,7 @@ const dataCard = [
   },
 
   {
-    date: "19.04.2025",
+    date: "2025-04-10",
     type: 'Expense',
     category: 'Self Care',
     details: 'Living',

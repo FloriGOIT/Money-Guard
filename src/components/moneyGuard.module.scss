@@ -438,7 +438,7 @@ body {
 }
 
 .newCardWrapper {
-  padding-top: calc((100vh - 541px - 100px) / 2);
+  padding-top: calc((100vh - 516px - 100px) / 2);
 }
 .newCardContainer {
   display: flex;
@@ -743,8 +743,8 @@ body {
   .logoutWrapper {
     padding-top: calc((100vh - 260px - 64px) / 2);
   }
-    .newCardWrapper {
-      padding-top: calc((100vh - 541px - 64px) / 2);
+  .newCardWrapper {
+      padding-top: calc((100vh - 516px - 64px) / 2);
     }
 
   .loginContainer,
