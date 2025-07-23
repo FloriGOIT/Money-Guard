@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 const ListCards = () => {
   const balance = dataCard.reduce((acc, data) => {
     if (data.type === 'Income') {
-      return acc + data.sum;
+      return acc + Number(data.sum);
     } else if (data.type === 'Expense') {
-      return acc - data.sum;
+      return acc - Number(data.sum);
     }
     return acc;
   }, 0);
@@ -19,7 +19,7 @@ const ListCards = () => {
   const arrDataToDisplay = dataCard.filter(data => {
    return currentMonth === data.date.split("-")[1]
   })
-console.log("arrDataToDisplay",arrDataToDisplay)
+
 
   return (
     <section className={style.listCards}>
@@ -31,7 +31,7 @@ console.log("arrDataToDisplay",arrDataToDisplay)
               color: balance <= 0 ? '#be242496' : 'rgb(194, 240, 126)',
               fontWeight: 900,
             }}
-          > {' '}{new Intl.NumberFormat('fr-FR').format(balance)}
+          > {' '}{new Intl.NumberFormat('fr-FR').format(balance.toFixed(2))}
           </span>
           {' '}RON
         </span>

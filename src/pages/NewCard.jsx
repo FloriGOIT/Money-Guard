@@ -1,11 +1,11 @@
 import style from '../components/moneyGuard.module.scss';
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
 import { mainIncome, mainExpenses } from 'helpers/categories';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import dataCard from 'helpers/dataCard';
-
+import { useNavigate } from 'react-router-dom';
 const todayNewDate = new Date();
 const year = todayNewDate.getFullYear();
 const month = (todayNewDate.getMonth() + 1).toString().padStart(2, '0');
@@ -13,63 +13,74 @@ const day = todayNewDate.getDate().toString().padStart(2, '0');
 const today = `${year}-${month}-${day}`;
 
 const NewCard = () => {
-  const [isIncome, setIsIncome] = useState(false);
-  const [isSelectOpened, setIsSelectOpened] = useState(false);
+  const [isExpense, setIsExpense] = useState(false);
+  const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
   const [isOption, setIsOption] = useState('Select a category');
-  const [isAmount, setIsAmount] = useState(0);
   const [isDate, setIsDate] = useState(today);
-  const [isComment, setIstComment] = useState('-');
+  const navigate = useNavigate()
 
-  useEffect(()=>{setIsSelectOpened(prev => !prev);},[isOption])
-  const objectDefaultCard = {
-    date: isDate,
-    type: isIncome ? 'Expense' : 'Income',
-    category: isOption,
-    details: isComment,
-    sum: isAmount,
-  };
-  console.log('objectDefaultCard', objectDefaultCard);
-  let arrCategory = isIncome ? mainExpenses : mainIncome;
-  const buttonArrow = isSelectOpened ? <FaChevronUp /> : <FaAngleDown />;
+  //useEffect(()=>{setIsListCategoriesOn(prev => !prev);},[isOption])
+  
+
+  let arrCategory = isExpense ? mainExpenses: mainIncome ;
+  const buttonArrow = isListCategoriesOn ? <FaChevronUp /> : <FaAngleDown />;
+
   const handleToggle = () => {
-    setIsIncome(prev => !prev);
+    setIsExpense(prev => !prev);
     setIsOption('Select a category');
   };
-  const handleSelectedForm = e => {
+  const handleSelectedCategory = e => {
     e.preventDefault();
-    setIsSelectOpened(prev => !prev);
+    setIsListCategoriesOn(prev => !prev);
   };
   const handleOption = input => {
     setIsOption(input);
+    setIsListCategoriesOn(prev => !prev);
   };
 
-  const submitNewCard = e => {
+
+  const submitNewCard = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const info = form.elements.selectAcategory.value;
-    console.log('info', info);
+    const typeInput = isExpense ? 'Expense' : 'Income'
+    const sumInput= form.elements.amount.value;
+    const dateInput = isDate;
+    const detailsInput = form.elements.comment.value;
+
+    
+    const objectNewCard = {
+    date: dateInput,
+    type: typeInput,
+    category: isOption,
+    details: detailsInput,
+    sum: sumInput,
+    };
+    console.log('objectNewCard', objectNewCard);
+    dataCard.push(objectNewCard)
+    navigate("/")
   };
 
   return (
     <section className={style.newCardWrapper}>
       <div className={style.newCardContainer}>
         <h2>Add transaction</h2>
-
+        
         <form className={style.newCardForm} onSubmit={submitNewCard}>
           <div className={style.newCardToggle}>
-            <span style={{ color: isIncome ? 'white' : 'rgb(194, 240, 126)' }}>
+            <span style={{ color: isExpense ? 'white' : 'rgb(194, 240, 126)' }}>
               Income
             </span>
             <label className={style.switch}>
               <input
                 type="checkbox"
                 name="toggleNewCard"
-                checked={isIncome}
-                onChange={handleToggle}
+                      checked={isExpense}
+                onClick={handleToggle}
+                autoComplete="off"
               />
               <span className={`${style.slider} ${style.round}`}></span>
             </label>
-            <span style={{ color: isIncome ? 'rgb(211, 76, 76)' : 'white' }}>
+            <span style={{ color: isExpense ? 'rgb(211, 76, 76)' : 'white' }}>
               Expense
             </span>
           </div>
@@ -77,31 +88,28 @@ const NewCard = () => {
           <div className={`${style.rowFormNewCard} ${style.categorySelection}`}>
             <input
               type="text"
-              placeholder={isOption}
+              value={isOption}
+              readOnly
               name="selectAcategory"
-              style={{
-                color:
-                  isOption === 'Select a category'
-                    ? 'rgba(206, 204, 204, 0.664)'
-                    : 'white',
-              }}
+              style={{ color: isOption === 'Select a category' ? "rgba(206, 204, 204, 0.664)" : "white" }}
+              autoComplete="off"
             />
             <button
-              onClick={handleSelectedForm}
+              onClick={handleSelectedCategory}
               className={style.rowFormNewCardElem2}
             >
               {buttonArrow}
             </button>
           </div>
 
-          {isSelectOpened ? (
+          {isListCategoriesOn ? (
             <ul className={style.newCardList}>
               {arrCategory.map(category => (
                 <li
                   key={category}
                   value={category.toLowerCase()}
                   className={`${style.newCardOption} ${
-                    isIncome ? style.income : style.expense
+                    isExpense ? style.income : style.expense
                   }`}
                   onClick={() => handleOption(category)}
                 >
@@ -110,6 +118,7 @@ const NewCard = () => {
                     name="category"
                     value={category}
                     readOnly
+                    autoComplete="off"
                   />
                 </li>
               ))}
@@ -133,7 +142,9 @@ const NewCard = () => {
               type="date"
               name="dateNewCard"
               className={style.date}
-              value={objectDefaultCard.date}
+              value={isDate}
+              onChange={e => setIsDate(e.target.value)}
+              autoComplete="off"
             />
           </div>
 
@@ -142,22 +153,22 @@ const NewCard = () => {
               type="text"
               name="comment"
               className={style.comment}
-              placeholder={objectDefaultCard.comment}
+              placeholder="-"
+              autoComplete="off"
             />
           </div>
 
           <div className={style.newCardButtons}>
-            <Link>
+
               <button
                 type="submit"
                 className={`${style.bigButton} ${style.selectedBtn}`}
-              >
-                Add
+              >Add
               </button>
-            </Link>
+
 
             <Link
-              to="/login"
+              to="/"
               className={`${style.bigButton} ${style.notSelectedBtn}`}
             >
               Cancel

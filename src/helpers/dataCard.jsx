@@ -11,7 +11,7 @@ const dataCard = [
     type: 'Income',
     category: 'Project',
     details: 'several',
-    sum: 58000,
+    sum: "58000",
   },
 
   {
@@ -19,7 +19,7 @@ const dataCard = [
     type: 'Expense',
     category: 'Self Care',
     details: 'Living',
-    sum: 8000,
+    sum: "8000",
   },
 
   {
@@ -27,21 +27,21 @@ const dataCard = [
     type: 'Income',
     category: 'Project',
     details: 'Money Guard',
-    sum: 600,
+    sum: "600",
   },
     {
     date: today,
     type: 'Expense',
     category: 'Car',
     details: 'Benzina',
-    sum: 100,
+    sum: "100",
   },
   {
     date: today,
     type: 'Income',
     category: 'Salary',
     details: 'Monthly',
-    sum: 800,
+    sum: "800",
   },
 
 ];
