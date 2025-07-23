@@ -264,7 +264,8 @@ body {
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
-      font-size: 20px;
+      font-size: 25px;
+      font-weight: 100;
       color: white;
     }
 
@@ -348,7 +349,7 @@ body {
       font-weight: 900;
       border-radius: 40%;
       text-align: center;
-      padding: 8px 10px 0px 10px;
+      padding: 8px 8px 0px 8px;
       background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
       background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
       color: white;
@@ -661,7 +662,6 @@ body {
       .bigButton {
         display: block;
         text-align: center;
-        padding: 15px 0px;
         text-decoration: none;
         font-size: 20px;
         font-weight: 400;
@@ -675,11 +675,13 @@ body {
       }
 
       .selectedBtn {
+                padding: 18.5px 0px;
         background: -webkit-linear-gradient(
           to right,
           #f3a73c,
           hwb(288 30% 11%)
         );
+        
         background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
         color: white;
         border: none;
@@ -690,6 +692,7 @@ body {
       }
 
       .notSelectedBtn {
+        padding: 15px 0px;
         color: rgb(92, 38, 187);
         background: none;
         background-color: white;

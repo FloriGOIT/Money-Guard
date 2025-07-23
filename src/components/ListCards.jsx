@@ -1,12 +1,17 @@
-import dataCard from '../helpers/dataCard';
+
 import style from './moneyGuard.module.scss';
 import Card from './Card';
 import { nanoid } from 'nanoid';
 import { IoAddSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
-const ListCards = () => {
-  const balance = dataCard.reduce((acc, data) => {
+const localDataCardsNotParsed = localStorage.getItem("listCards")
+const localDataCardsParsed = JSON.parse(localDataCardsNotParsed);
+console.log("dataCard2Parsed",localDataCardsParsed)
+
+const ListCards = ({info}) => {
+
+  const balance = info.reduce((acc, data) => {
     if (data.type === 'Income') {
       return acc + Number(data.sum);
     } else if (data.type === 'Expense') {
@@ -16,7 +21,7 @@ const ListCards = () => {
   }, 0);
   const currentMonth = (new Date().getMonth()+1).toString().padStart(2, '0');
 
-  const arrDataToDisplay = dataCard.filter(data => {
+  const arrDataToDisplay = info.filter(data => {
    return currentMonth === data.date.split("-")[1]
   })
 
@@ -25,7 +30,7 @@ const ListCards = () => {
     <section className={style.listCards}>
       <div className={style.totalSum}>
         <span>
-          Balance:{' '}
+          Balance:{' '}<br/>
           <span
             style={{
               color: balance <= 0 ? '#be242496' : 'rgb(194, 240, 126)',
