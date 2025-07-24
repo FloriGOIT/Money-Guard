@@ -1,13 +1,11 @@
 
 import style from './moneyGuard.module.scss';
 import Card from './Card';
-import { nanoid } from 'nanoid';
 import { IoAddSharp } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 
 const ListCards = ({info,handleDeleteCard}) => {
-
   const balance = info.reduce((acc, data) => {
     if (data.type === 'Income') {
       return acc + Number(data.sum);
@@ -38,8 +36,8 @@ const ListCards = ({info,handleDeleteCard}) => {
           {' '}RON
         </span>
       </div>
-      {arrDataToDisplay.map(data => (
-        <Card data={data} key={nanoid()} handleDeleteCard={handleDeleteCard} />
+      {arrDataToDisplay.map((data,index) => (
+        <Card data={data} key={index+1} handleDeleteCard={handleDeleteCard} id={index+1} />
       ))}
       <Link
         to="/newCard"

@@ -3,9 +3,9 @@ import {useState } from 'react';
 import { mainIncome, mainExpenses } from 'helpers/categories';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { nanoid } from 'nanoid';
+
 
 
 const todayNewDate = new Date();
@@ -19,9 +19,11 @@ const NewCard = ({info}) => {
   const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
   const [isOption, setIsOption] = useState('Select a category');
   const [isDate, setIsDate] = useState(today);
-
-  const navigate = useNavigate()
- 
+  const navigate = useNavigate();
+  const { id } = useParams();
+ console.log("info",info)
+  const selectedCard = info.filter(card => Number(card.id) === Number(id));
+  console.log("selectedCard",selectedCard)
 
   let arrCategory = isExpense ? mainExpenses: mainIncome ;
   const buttonArrow = isListCategoriesOn ? <FaChevronUp /> : <FaAngleDown />;
@@ -58,7 +60,7 @@ const NewCard = ({info}) => {
   return;
 }
     const objectNewCard = {
-      id: nanoid(),
+      id: info.length+1,
     date: dateInput,
     type: typeInput,
     category: isOption,

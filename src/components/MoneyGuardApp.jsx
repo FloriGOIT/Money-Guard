@@ -9,24 +9,9 @@ const Logout = lazy(() => (import("../pages/Logout")))
 const NewCard = lazy(() => (import("../pages/NewCard")))
 
 const MoneyGuardApp = () => {
-
-  const [isArr, setIsArr] = useState([]);
-
-
-    useEffect(() => {
-      const localDataCardsNotParsed = localStorage.getItem("listCards");
-      //console.log("localDataCardsNotParsed",localDataCardsNotParsed)
-    if (localDataCardsNotParsed) {
-      try {
-        const localDataCardsParsed = JSON.parse(localDataCardsNotParsed);
-              //console.log("localDataCardsParsed",localDataCardsParsed)
-        setIsArr(localDataCardsParsed || []);
-      } catch (e) {
-        setIsArr([]);
-        console.error("Error parsing localStorage data:", e.message);
-      }
-    }
-  }, []);
+  const localDataCardsNotParsed = localStorage.getItem("listCards") || "[]";
+  const localDataCardsParsed = JSON.parse(localDataCardsNotParsed);
+  const [isArr, setIsArr] = useState(localDataCardsParsed);
 
   useEffect(() => localStorage.setItem("listCards", JSON.stringify(isArr)) , [isArr])
   
@@ -41,7 +26,8 @@ const MoneyGuardApp = () => {
       <Route path="/" element={<SharedLayout />}>
        <Route index element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />} />
                 <Route path="/logout" element={<Logout />} />
-        <Route path="/newCard" element={<NewCard info={isArr}/>} />
+       <Route path="/newCard" element={<NewCard info={isArr} />} />
+       <Route path="/newCard/:id" element={<NewCard info={isArr} />} />
       </Route>
     </Routes>
   );

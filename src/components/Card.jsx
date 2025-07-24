@@ -1,5 +1,5 @@
 import styles from '../components/moneyGuard.module.scss';
- 
+import { Link } from 'react-router-dom';
 import { MdOutlineModeEdit } from 'react-icons/md';
 
 const Card = ({data,handleDeleteCard}) => {
@@ -24,7 +24,7 @@ const Card = ({data,handleDeleteCard}) => {
 
         <div className={styles.cardRow}>
           <span className={styles.cardRowName}>Details</span>
-          <span className={styles.cardRowValue}>{details}</span>
+          <span className={styles.cardRowValue} style={{color:'wheat', textAlign:"end", wordSpacing:"0.3em"}}>{details}</span>
         </div>
 
         <div className={styles.cardRow}>
@@ -36,9 +36,12 @@ const Card = ({data,handleDeleteCard}) => {
           <button type="button" className={styles.selectedBtn} onClick={()=>handleDeleteCard(id)}>
             Delete
           </button>
-          <button type="button" className={styles.notSelectedBtn}>
-            <MdOutlineModeEdit />
-          </button>
+          <Link to={`/newCard/${id}`}>
+            <button type="button" className={styles.notSelectedBtn}>
+              <MdOutlineModeEdit />
+            </button>
+          </Link>
+          
         </div>
       </div>
     </div>
