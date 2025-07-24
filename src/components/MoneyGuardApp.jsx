@@ -10,16 +10,24 @@ const Logout = lazy(() => (import("../pages/Logout")))
 const NewCard = lazy(() => (import("../pages/NewCard")))
 
 const MoneyGuardApp = () => {
+
   const [isArr, setIsArr] = useState([])
 
 
-  useEffect(()=>{    const localDataCardsNotParsed = localStorage.getItem("listCards")
-  const localDataCardsParsed = JSON.parse(localDataCardsNotParsed);
-    setIsArr(localDataCardsParsed)
-  }, [])
+    useEffect(() => {
+    const localDataCardsNotParsed = localStorage.getItem("listCards");
+    if (localDataCardsNotParsed) {
+      try {
+        const localDataCardsParsed = JSON.parse(localDataCardsNotParsed);
+        setIsArr(localDataCardsParsed || []);
+      } catch (e) {
+        console.error("Error parsing localStorage data:", e);
+        setIsArr([]);
+      }
+    }
+  }, []);
 
-
-  return (
+ return (
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
