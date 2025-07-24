@@ -9,17 +9,6 @@ const Home = lazy(()=>(import("../pages/Home")))
 const Logout = lazy(() => (import("../pages/Logout")))
 const NewCard = lazy(() => (import("../pages/NewCard")))
 
-const initialCard = [
-  {
-    date: "2025-07-01",
-    type: 'Income',
-    category: 'Project',
-    details: 'several',
-    sum: "58000",
-  },
-
-];
-localStorage.setItem("listCards",JSON.stringify(initialCard))
 const MoneyGuardApp = () => {
   const [isArr, setIsArr] = useState([])
 
@@ -28,6 +17,7 @@ const MoneyGuardApp = () => {
   const localDataCardsParsed = JSON.parse(localDataCardsNotParsed);
     setIsArr(localDataCardsParsed)
   }, [])
+
 
   return (
     <Routes>
