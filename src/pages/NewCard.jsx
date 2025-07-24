@@ -5,6 +5,8 @@ import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { nanoid } from 'nanoid';
+
 
 const todayNewDate = new Date();
 const year = todayNewDate.getFullYear();
@@ -56,6 +58,7 @@ const NewCard = ({info}) => {
   return;
 }
     const objectNewCard = {
+      id: nanoid(),
     date: dateInput,
     type: typeInput,
     category: isOption,

@@ -5,11 +5,8 @@ import { nanoid } from 'nanoid';
 import { IoAddSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
-const localDataCardsNotParsed = localStorage.getItem("listCards")
-const localDataCardsParsed = JSON.parse(localDataCardsNotParsed);
-console.log("dataCard2Parsed",localDataCardsParsed)
 
-const ListCards = ({info}) => {
+const ListCards = ({info,handleDeleteCard}) => {
 
   const balance = info.reduce((acc, data) => {
     if (data.type === 'Income') {
@@ -42,7 +39,7 @@ const ListCards = ({info}) => {
         </span>
       </div>
       {arrDataToDisplay.map(data => (
-        <Card data={data} key={nanoid()} />
+        <Card data={data} key={nanoid()} handleDeleteCard={handleDeleteCard} />
       ))}
       <Link
         to="/newCard"
