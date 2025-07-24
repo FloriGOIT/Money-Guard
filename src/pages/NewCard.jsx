@@ -1,10 +1,11 @@
 import style from '../components/moneyGuard.module.scss';
-import {useState } from 'react';
+import {useEffect, useState } from 'react';
 import { mainIncome, mainExpenses } from 'helpers/categories';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 import { Link,useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -19,11 +20,30 @@ const NewCard = ({info}) => {
   const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
   const [isOption, setIsOption] = useState('Select a category');
   const [isDate, setIsDate] = useState(today);
+  const [isAmount, setIsAmount] = useState("");
+  const [isDetails, setIsDetails] = useState("");
   const navigate = useNavigate();
+
+      const defaultCard = {
+      id: info.length + 1,
+      date: isDate,
+      type: isExpense,
+      category: isOption,
+      details: isDetails,
+      amount: isAmount}
+
   const { id } = useParams();
- console.log("info",info)
-  const selectedCard = info.filter(card => Number(card.id) === Number(id));
-  console.log("selectedCard",selectedCard)
+  
+  const selectedCard = info.find(card => Number(card.id) === Number(id));
+  useEffect(()=>{ if (selectedCard) {
+    
+    setIsExpense(selectedCard.type); 
+    setIsOption(selectedCard.category);
+    setIsDate(selectedCard.date);
+    setIsAmount(selectedCard.amount);
+    setIsDetails(selectedCard.details);
+  }},[selectedCard])
+ 
 
   let arrCategory = isExpense ? mainExpenses: mainIncome ;
   const buttonArrow = isListCategoriesOn ? <FaChevronUp /> : <FaAngleDown />;
@@ -44,33 +64,32 @@ const NewCard = ({info}) => {
 
   const submitNewCard = (e) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const typeInput = isExpense ? 'Expense' : 'Income'
-    const sumInput= form.elements.amount.value;
-    const dateInput = isDate;
-    const detailsInput = form.elements.comment.value;
+
 
     if (isOption === 'Select a category') {
   alert("Please select a type of income or expense.");
   return;
 }
 
-    if ( sumInput < 0.01) {
+    if ( isAmount === '') {
   alert("Please add a value higher than 0.00");
   return;
-}
-    const objectNewCard = {
-      id: info.length+1,
-    date: dateInput,
-    type: typeInput,
-    category: isOption,
-    details: detailsInput,
-    sum: sumInput,
-    };
+    }
 
-    info.push(objectNewCard)
-    localStorage.setItem("listCards",JSON.stringify(info))
-    navigate("/")
+   
+    if(id){ info.splice(id - 1, 1);defaultCard.id = Number(id)};
+info.push(defaultCard)
+    localStorage.setItem("listCards", JSON.stringify(info))
+    setIsExpense(false);
+    setIsListCategoriesOn(false);
+    setIsOption('Select a category');
+    setIsDate(today);
+    setIsAmount("");
+    setIsDetails("");
+
+  navigate("/")
+ 
+    
   };
 
   return (
@@ -87,7 +106,7 @@ const NewCard = ({info}) => {
               <input
                 type="checkbox"
                 name="toggleNewCard"
-                      checked={isExpense}
+                checked={isExpense}
                 onChange={handleToggle}
                 autoComplete="off"
               />
@@ -146,11 +165,13 @@ const NewCard = ({info}) => {
               className={style.amount}
               type="text"
               name="amount"
-              placeholder="0.00"
               pattern="^\d+(\.\d{1,2})?$"
+              value={isAmount}
               title="Enter an amount highet than 0, that has the followig format 5, 5.5 or 5.00"
+              placeholder="0.00"
               required
               autoComplete="off"
+              onChange={e=>setIsAmount(e.target.value)}
             />
             <input
               type="date"
@@ -167,8 +188,10 @@ const NewCard = ({info}) => {
               type="text"
               name="comment"
               className={style.comment}
+              value={isDetails}
               placeholder="-"
               autoComplete="off"
+               onChange={e=>setIsDetails(e.target.value)}
             />
           </div>
 

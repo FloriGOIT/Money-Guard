@@ -7,10 +7,10 @@ import { Link} from 'react-router-dom';
 
 const ListCards = ({info,handleDeleteCard}) => {
   const balance = info.reduce((acc, data) => {
-    if (data.type === 'Income') {
-      return acc + Number(data.sum);
-    } else if (data.type === 'Expense') {
-      return acc - Number(data.sum);
+    if (data.type === false) {
+      return acc + Number(data.amount);
+    } else if (data.type === true) {
+      return acc - Number(data.amount);
     }
     return acc;
   }, 0);
