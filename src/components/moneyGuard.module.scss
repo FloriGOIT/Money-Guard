@@ -611,7 +611,7 @@ body {
         background-color: inherit;
         outline: none;
         border: none;
-        width: 280px;
+        width: 300px;
         font-size: 22px;
         border-bottom: 2px solid rgba(206, 204, 204, 0.664);
         color: white;
@@ -630,7 +630,7 @@ body {
         border: none;
         outline: none;
         font-size: 22px;
-        width: 280px;
+        width: 300px;
         margin: 25px 0px 0px 0px;
         text-align: start;
         color: white;
@@ -650,14 +650,15 @@ body {
       background-color: inherit;
       text-align: start;
       font-size: 20px;
-      padding-left: 0px;
+      padding-left: 15px;
       color: white;
+      width: 300px;
     }
 
     .comment:placeholder-shown {
       color: rgb(224, 221, 221);
       font-size: 20px;
-      padding-left: 0px;
+      padding-left: 15px;
     }
     .newCardButtons {
       padding-top: 25px;
