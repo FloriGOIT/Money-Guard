@@ -1,6 +1,6 @@
 import style from '../components/moneyGuard.module.scss';
 import {useEffect, useState } from 'react';
-import { mainIncome, mainExpenses } from 'helpers/categories';
+import { mainIncomes, mainExpenses } from 'helpers/categories';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 import { Link,useParams } from 'react-router-dom';
@@ -46,7 +46,7 @@ const NewCard = ({info}) => {
   }},[selectedCard])
  
 
-  let arrCategory = isExpense ? mainExpenses: mainIncome ;
+  let arrCategory = isExpense ? mainExpenses: mainIncomes ;
   const buttonArrow = isListCategoriesOn ? <FaChevronUp /> : <FaAngleDown />;
 
   const handleToggle = () => {
@@ -141,20 +141,19 @@ const NewCard = ({info}) => {
             <ul className={style.newCardList}>
               {arrCategory.map(category => (
                 <li
-                  key={category}
-                  value={category.toLowerCase()}
-                  className={`${style.newCardOption} ${
-                    isExpense ? style.income : style.expense
-                  }`}
-                  onClick={() => handleOption(category)}
+                  key={category.type}
+                  value={category.type.toLowerCase()}
+                  className={style.newCardOption }
+                  onClick={() => handleOption(category.type)}
                 >
                   <input
                     type="text"
-                    name="category"
-                    value={category}
+                    name={category.type}
+                    value={category.type}
                     readOnly
                     autoComplete="off"
                     required
+                    className={!isExpense ? `${style.income}` : `${style.expense}`}
                   />
                 </li>
               ))}

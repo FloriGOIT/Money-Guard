@@ -7,6 +7,7 @@ const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(()=>(import("../pages/Home")))
 const Logout = lazy(() => (import("../pages/Logout")))
 const NewCard = lazy(() => (import("../pages/NewCard")))
+const ExpensesStatistics = lazy(()=>import("../pages/ExpensesStatistics"))
 
 const MoneyGuardApp = () => {
   const localDataCardsNotParsed = localStorage.getItem("listCards") || "[]";
@@ -28,6 +29,7 @@ const MoneyGuardApp = () => {
                 <Route path="/logout" element={<Logout />} />
        <Route path="/newCard" element={<NewCard info={isArr} />} />
        <Route path="/newCard/:id" element={<NewCard info={isArr} />} />
+       <Route path="/statistics" element={<ExpensesStatistics />} />
       </Route>
     </Routes>
   );
