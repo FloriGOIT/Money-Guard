@@ -5,7 +5,7 @@ import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 import { Link,useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { nanoid } from 'nanoid';
 
 
 
@@ -25,7 +25,7 @@ const NewCard = ({info}) => {
   const navigate = useNavigate();
 
       const defaultCard = {
-      id: info.length + 1,
+      id: nanoid(),
       date: isDate,
       type: isExpense,
       category: isOption,
@@ -34,7 +34,8 @@ const NewCard = ({info}) => {
 
   const { id } = useParams();
   
-  const selectedCard = info.find(card => Number(card.id) === Number(id));
+  const selectedCard = info.find(card => card.id === id);
+  console.log("selectedCard",selectedCard)
   useEffect(()=>{ if (selectedCard) {
     
     setIsExpense(selectedCard.type); 
@@ -64,21 +65,22 @@ const NewCard = ({info}) => {
 
   const submitNewCard = (e) => {
     e.preventDefault();
-
-
+    const index = info.findIndex(card=>card.id===id)
+    if (id) { info.splice(index, 1); }
     if (isOption === 'Select a category') {
-  alert("Please select a type of income or expense.");
-  return;
-}
+      alert("Please select a type of income or expense.");
+      return;
+    }
 
-    if ( isAmount === '') {
-  alert("Please add a value higher than 0.00");
-  return;
+    if (isAmount === '') {
+      alert("Please add a value higher than 0.00");
+      return;
     }
 
    
-    if(id){ info.splice(id - 1, 1);defaultCard.id = Number(id)};
-info.push(defaultCard)
+    
+    info.push(defaultCard);
+    console.log("info",info)
     localStorage.setItem("listCards", JSON.stringify(info))
     setIsExpense(false);
     setIsListCategoriesOn(false);
@@ -86,6 +88,7 @@ info.push(defaultCard)
     setIsDate(today);
     setIsAmount("");
     setIsDetails("");
+
 
   navigate("/")
  
