@@ -6,14 +6,9 @@ import { FaChevronUp } from 'react-icons/fa';
 import { Link,useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import {today} from "../helpers/timeInfo"
 
 
-
-const todayNewDate = new Date();
-const year = todayNewDate.getFullYear();
-const month = (todayNewDate.getMonth() + 1).toString().padStart(2, '0');
-const day = todayNewDate.getDate().toString().padStart(2, '0');
-const today = `${year}-${month}-${day}`;
 
 const NewCard = ({info}) => {
   const [isExpense, setIsExpense] = useState(false);

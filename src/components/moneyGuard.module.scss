@@ -4,6 +4,10 @@ body {
   box-sizing: border-box;
   margin: 0px;
 }
+
+ul li {
+  list-style-type: none;
+}
 //Login/Register
 .logWrapper,
 .regWrapper,
@@ -723,7 +727,86 @@ body {
 }
 
 //Statistics
-.statistics{color:white}
+.statistics {
+  position: relative;
+  box-sizing: border-box;
+  color: white;
+  width: 300px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .statisticsPeriod {
+    .headerPeriod {
+      box-sizing: border-box;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: inherit;
+      padding: 5px 10px;
+      border: 1px solid rgba(206, 204, 204, 0.664);
+      background-color: inherit;
+      border-radius: 10px;
+      span {
+        padding-left: 6px;
+        padding-top: 7px;
+      }
+      button {
+        border: none;
+        background-color: inherit;
+        color: inherit;
+        font-size: 21px;
+        margin-top: 5px;
+      }
+    }
+    .listPeriod {
+      width: 300px;
+      background: linear-gradient(
+        140deg,
+        rgb(247, 201, 141) 10%,
+        rgb(151, 85, 204) 45%,
+        rgb(123, 20, 192) 80%
+      );
+      border: 1px solid rgba(206, 204, 204, 0.664);
+      border-radius: 0px 0px 10px 10px;
+      border-top: none;
+      margin-top: 2px;
+      li {
+        cursor: pointer;
+      }
+      li button {
+        background-color: inherit;
+        box-sizing: border-box;
+        width: 100%;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 5px 15px;
+      }
+
+      li:hover {
+        background-color: rgb(160, 116, 236);
+      }
+      li:last-of-type:hover,
+      li:last-of-type button:hover {
+        background-color: rgb(160, 116, 236);
+        border-radius: 0px 0px 10px 10px;
+      }
+    }
+    .years {
+      position: absolute;
+      z-index: 1;
+    }
+    .months {
+      position: absolute;
+      z-index: 2;
+    }
+  }
+}
 
 @media screen and (min-width: 480px) {
   .loginContainer,
@@ -785,3 +868,12 @@ body {
     );
   }
 }
+/*
+            background: linear-gradient(140deg,
+              rgb(247, 201, 141) 10%,
+              rgb(151, 85, 204) 45%,
+              rgb(123, 20, 192) 80%)
+
+
+
+*/
