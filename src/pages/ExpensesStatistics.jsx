@@ -11,8 +11,28 @@ const ExpensesStatistics = () => {
     <section className={style.statisticsWrapper}>
       <Nav />
       <div className={style.statistics}>
-        <ModalTime initialValue={initialValueMonth} info={months} name="months" />
-        <ModalTime initialValue={currentYear} info={years} name="years"/>
+        <ModalTime
+          initialValue={initialValueMonth}
+          info={months}
+          name="months"
+        />
+
+        <ModalTime initialValue={currentYear} info={years} name="years" />
+
+        <div className={style.tableHeaderCategories}>
+          <span>Category</span>
+          <span>Sum</span>
+        </div>
+
+        <div className={style.tableBodyCategories}>
+          <div className={style.categoryWithColor}>
+            <span>COLOR</span>
+            <span>EXPENSE</span>
+          </div>
+          <span>AMOUNT</span>
+        </div>
+
+
       </div>
     </section>
   );
