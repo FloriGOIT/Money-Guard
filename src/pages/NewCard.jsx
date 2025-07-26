@@ -1,13 +1,12 @@
 import style from '../components/moneyGuard.module.scss';
 import {useEffect, useState } from 'react';
-import { mainIncomes, mainExpenses } from 'helpers/categories';
+import { mainIncomes, mainExpenses,allCategories } from 'helpers/categories';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 import { Link,useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import {today} from "../helpers/timeInfo"
-
+import { today } from "../helpers/timeInfo";
 
 
 const NewCard = ({info}) => {
@@ -17,6 +16,7 @@ const NewCard = ({info}) => {
   const [isDate, setIsDate] = useState(today);
   const [isAmount, setIsAmount] = useState("");
   const [isDetails, setIsDetails] = useState("");
+  const [isColor, setIsColor] = useState("")
   const navigate = useNavigate();
 
       const defaultCard = {
@@ -25,12 +25,14 @@ const NewCard = ({info}) => {
       type: isExpense,
       category: isOption,
       details: isDetails,
-      amount: isAmount}
+        amount: isAmount,
+      color:isColor
+      }
 
   const { id } = useParams();
   
   const selectedCard = info.find(card => card.id === id);
-  console.log("selectedCard",selectedCard)
+
   useEffect(()=>{ if (selectedCard) {
     
     setIsExpense(selectedCard.type); 
@@ -38,6 +40,7 @@ const NewCard = ({info}) => {
     setIsDate(selectedCard.date);
     setIsAmount(selectedCard.amount);
     setIsDetails(selectedCard.details);
+    setIsColor(selectedCard.color)
   }},[selectedCard])
  
 
@@ -54,10 +57,13 @@ const NewCard = ({info}) => {
   };
   const handleOption = input => {
     setIsOption(input);
+    const identifyColor = allCategories.find(category => category.type === input)
+    setIsColor(identifyColor.color)
     setIsListCategoriesOn(prev => !prev);
   };
 
 
+  
   const submitNewCard = (e) => {
     e.preventDefault();
     const index = info.findIndex(card=>card.id===id)
@@ -72,10 +78,10 @@ const NewCard = ({info}) => {
       return;
     }
 
-   
     
+    
+
     info.push(defaultCard);
-    console.log("info",info)
     localStorage.setItem("listCards", JSON.stringify(info))
     setIsExpense(false);
     setIsListCategoriesOn(false);
@@ -83,6 +89,7 @@ const NewCard = ({info}) => {
     setIsDate(today);
     setIsAmount("");
     setIsDetails("");
+    setIsColor("")
 
 
   navigate("/")

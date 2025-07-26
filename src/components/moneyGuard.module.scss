@@ -749,6 +749,7 @@ ul li {
       border: 1px solid rgba(206, 204, 204, 0.664);
       background-color: inherit;
       border-radius: 10px;
+
       span {
         padding-left: 6px;
         padding-top: 7px;
@@ -759,6 +760,7 @@ ul li {
         color: inherit;
         font-size: 21px;
         margin-top: 5px;
+        cursor: pointer;
       }
     }
     .listPeriod {
@@ -786,6 +788,7 @@ ul li {
         font-size: 16px;
         font-weight: 400;
         padding: 5px 15px;
+        cursor: pointer;
       }
 
       li:hover {
@@ -806,16 +809,64 @@ ul li {
       z-index: 2;
     }
   }
-  .tableHeaderCategories{
+  .tableHeaderCategories {
     box-sizing: border-box;
     padding: 15px;
     border: 1px solid rgba(206, 204, 204, 0.664);
     border-radius: 10px;
-    display:flex; flex-direction:row; justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: rgb(75, 40, 168);
-    span{font-size: 20px; font-weight: 400;} }
-}
+    span {
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+  .tableRowsCategories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 15px;
+    border-bottom: 2px solid rgba(165, 163, 163, 0.664);
+    padding-bottom: 5px;
+    .categoryWithColor {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 10px;
 
+      span:first-of-type {
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-radius: 20%;
+      }
+    }
+  }
+  .totalCategories {
+    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    .totalExpenses,
+    .totalIncomes {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+            font-size: 20px;
+              font-weight: 400;
+    }
+
+    .totalExpenses span:last-of-type{
+      color: rgb(211, 76, 76);
+    }
+    .totalIncomes span:last-of-type{
+      color: rgb(194, 240, 126);
+    }
+  }
+}
 
 @media screen and (min-width: 480px) {
   .loginContainer,

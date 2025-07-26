@@ -36,8 +36,8 @@ const MoneyGuardApp = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/newCard" element={<NewCard info={isArr} />} />
         <Route path="/newCard/:id" element={<NewCard info={isArr} />} />
-        <Route path="/statistics" element={<ExpensesStatistics />} />
-        <Route path="/currency" element={<Currency />} />
+        <Route path="/statistics" element={<ExpensesStatistics info={isArr} />} />
+        <Route path="/currency" element={<Currency  />} />
       </Route>
     </Routes>
   );
