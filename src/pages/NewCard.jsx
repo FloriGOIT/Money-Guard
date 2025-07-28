@@ -9,7 +9,8 @@ import { nanoid } from 'nanoid';
 import { today,months } from "../helpers/timeInfo";
 
 
-const NewCard = ({info}) => {
+const NewCard = ({ info }) => {
+
   const [isExpense, setIsExpense] = useState(false);
   const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
   const [isOption, setIsOption] = useState('Select a category');
@@ -18,9 +19,8 @@ const NewCard = ({info}) => {
   const [isDetails, setIsDetails] = useState("");
   const [isColor, setIsColor] = useState("")
   const navigate = useNavigate();
-  
 
-  const monthPreLether = months.filter(month => month.number === isDate.split("-")[1]);
+  const monthPreLether = months.filter(month => month.number === isDate.split("-")[1] );
   const monthLether = monthPreLether[0].name;
       const defaultCard = {
       id: nanoid(),
@@ -33,7 +33,7 @@ const NewCard = ({info}) => {
         amount: isAmount,
       color:isColor
       }
-console.log("defaultCard0", defaultCard)
+
   const { id } = useParams();
   
   const selectedCard = info.find(card => card.id === id);
@@ -86,6 +86,7 @@ console.log("defaultCard0", defaultCard)
     
     
     console.log("defaultCard1", defaultCard)
+    if (Number(defaultCard.year) < 2020) { alert("Please enter a date that starts with year 2020"); return }
     info.push(defaultCard);
     localStorage.setItem("listCards", JSON.stringify(info))
     setIsExpense(false);
@@ -186,7 +187,6 @@ console.log("defaultCard0", defaultCard)
               type="date"
               name="dateNewCard"
               className={style.date}
-              value={isDate}
               onChange={e => setIsDate(e.target.value)}
               autoComplete="off"
             />
