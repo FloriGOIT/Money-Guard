@@ -1,48 +1,66 @@
 import style from '../components/moneyGuard.module.scss';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 
-const ModalTime = ({ info, initialValue, name,handleMonth,handleYear }) => {
+const ModalTime = ({ info, initialValue, name, handleMonth, handleYear }) => {
   const [isModalOn, setisModalOn] = useState(false);
-  const [isModalHeader, setIsModalHeader] = useState(initialValue);
-  const handleOptionSelect = value => {
-    setIsModalHeader(value);
-    setisModalOn(prev => (prev = !prev));
-    if (name === "months") { handleMonth(value) }
-    if(name === "years"){handleYear(value)}
+  const modalRef = useRef(null); // Step 1: Create a ref
+
+  // Step 2: Click outside logic
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setisModalOn(false);
+      }
+    };
+
+    if (isModalOn) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalOn]);
+
+  const handleOptionSelect = (value) => {
+    setisModalOn(false);
+    if (name === "months") handleMonth(value);
+    if (name === "years") {
+      handleMonth("-");
+      handleYear(value);
+    }
   };
 
   return (
-    <div className={style.statisticsPeriod}>
+    <div className={style.statisticsPeriod} ref={modalRef}>
       <div className={style.headerPeriod}>
-        <span>{isModalHeader}</span>
+        <span>{initialValue}</span>
         <button
           type="button"
-          onClick={e => {
+          onClick={(e) => {
             e.preventDefault();
-            setisModalOn(prev => (prev = !prev));
+            setisModalOn((prev) => !prev);
           }}
         >
           {isModalOn ? <FaChevronUp /> : <FaAngleDown />}
         </button>
       </div>
-      {isModalOn ? (
+      {isModalOn && (
         <ul className={`${style.listPeriod} ${style[name]}`}>
-          {info.map(info => (
-            <li key={info.name}>
-              <button
-                type="button"
-                onClick={() => handleOptionSelect(info.name)}
-              >
-                {info.name}
+          {info.map((item) => (
+            <li key={item.name}>
+              <button type="button" onClick={() => handleOptionSelect(item.name)}>
+                {item.name}
               </button>
             </li>
           ))}
         </ul>
-      ) : null}
+      )}
     </div>
   );
 };
 
 export default ModalTime;
+

@@ -1,31 +1,51 @@
 import Nav from 'components/Nav';
 import style from '../components/moneyGuard.module.scss';
 import { months } from '../helpers/timeInfo';
-import { currentMonth, currentYear } from '../helpers/timeInfo';
+import {currentYear } from '../helpers/timeInfo';
 import ModalTime from '../components/ModalTime';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ExpensesStatistics = ({ info }) => {
-  const monthObj = months.find(month => month.number === currentMonth);
-  const initialValueMonth = monthObj.name;
-  const [isSelectedMonth, setIsSelectedMonth] = useState(initialValueMonth);
+
+  const [isSelectedMonth, setIsSelectedMonth] = useState("-");
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
+  const [arrayMonthInSelectedYear, setArrayMonthInSelectedYear] = useState([]);
+  const [selectedMonthAndYear, setSelectedMonthAndYear] = useState([]);
+
 
   const handleMonth = value => setIsSelectedMonth(value);
-  const handleYear = value => setIsSelectedYear(value);
-  console.log('PERIOD', isSelectedMonth, isSelectedYear);
+  const handleYear = value => setIsSelectedYear(value)
+
+  useEffect(() => {
+      const selectedYear = info.filter(info => Number(info.year) === Number(isSelectedYear));
+  const  availableMonths = selectedYear.map(info => info.month)
+  const uniqueMonths = [...new Set(availableMonths)];
+  const filteredMonths = months.filter(month=>uniqueMonths.includes(month.name))
+  setArrayMonthInSelectedYear(filteredMonths)
+
+  },[isSelectedYear,info])
   
-  const selectedInfo = info.filter(info => info.month === isSelectedMonth);
-  console.log("selectedInfo", selectedInfo)
+ 
   
-  const expensesArr = info.filter(transaction => transaction.type);
+  useEffect(() => {
+    const arr = info.filter(info => Number(info.year) === Number(isSelectedYear));
+    const filteredArr = isSelectedMonth !== "-" ? arr.filter(info => info.month === isSelectedMonth): arr
+
+      setSelectedMonthAndYear(filteredArr)
+    }
+    
+    , [info, isSelectedMonth,isSelectedYear])
+
+  
+
+  const expensesArr = selectedMonthAndYear.filter(transaction => transaction.type) || [];
   const expensesArrReducer = expensesArr.reduce((acc, item) => {
     const { category, amount, color } = item;
     const numericAmount = parseFloat(amount);
     if (!acc[category]) {
       acc[category] = {
         total: 0,
-        color: color, // Save the color from the first item of this category
+        color: color, 
       };
     }
     acc[category].total += numericAmount;
@@ -40,17 +60,27 @@ const ExpensesStatistics = ({ info }) => {
     }))
     .sort((a, b) => b.total - a.total);
 
-  const infoReducer = info.reduce((acc, item) => {
-    const category = item.type === true ? 'expenses' : 'incomes';
-    const amount = parseFloat(item.amount);
-    if (!acc[category]) {
-      acc[category] = 0;
-    }
-    acc[category] += amount;
-    return acc;
-  }, {});
+ const infoReducer = selectedMonthAndYear.reduce(
+  (acc, item) => {
+    const category = item.type === true ? 'expenses'
+                   : item.type === false ? 'incomes'
+                   : null;
+    if (!category) return acc;
 
-  const filterYears = info
+    const amount = parseFloat(item.amount);
+    acc[category] += amount;
+
+    return acc;
+  },
+  {
+    incomes: 0,
+    expenses: 0,
+  }
+);
+
+
+
+  const filterYearsForSelection = info
     .map(info => info.date.split('-')[0])
     .filter((year, index, array) => array.indexOf(year) === index)
     .sort((a, b) => a.localeCompare(b))
@@ -58,7 +88,6 @@ const ExpensesStatistics = ({ info }) => {
       return { number: year, name: year };
     });
 
-  // Convert to array of objects
 
   return (
     <section className={style.statisticsWrapper}>
@@ -66,15 +95,17 @@ const ExpensesStatistics = ({ info }) => {
       <div className={style.statistics}>
         <ModalTime
           initialValue={isSelectedYear}
-          info={filterYears}
-          handleYear={handleYear}
+          info={filterYearsForSelection}
+                    handleYear={handleYear}
+  handleMonth={handleMonth}
           name="years"
         />
 
         <ModalTime
           initialValue={isSelectedMonth}
-          info={months}
-          handleMonth={handleMonth}
+          info={arrayMonthInSelectedYear}
+handleMonth={handleMonth}
+
           name="months"
         />
 
