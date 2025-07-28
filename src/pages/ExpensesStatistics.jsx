@@ -1,14 +1,24 @@
 import Nav from 'components/Nav';
 import style from '../components/moneyGuard.module.scss';
-import { months, years } from '../helpers/timeInfo';
+import { months } from '../helpers/timeInfo';
 import { currentMonth, currentYear } from '../helpers/timeInfo';
 import ModalTime from '../components/ModalTime';
+import { useState } from 'react';
 
 const ExpensesStatistics = ({ info }) => {
   const monthObj = months.find(month => month.number === currentMonth);
   const initialValueMonth = monthObj.name;
-  const expensesArr = info.filter(transaction => transaction.type);
+  const [isSelectedMonth, setIsSelectedMonth] = useState(initialValueMonth);
+  const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
 
+  const handleMonth = value => setIsSelectedMonth(value);
+  const handleYear = value => setIsSelectedYear(value);
+  console.log('PERIOD', isSelectedMonth, isSelectedYear);
+  
+  const selectedInfo = info.filter(info => info.month === isSelectedMonth);
+  console.log("selectedInfo", selectedInfo)
+  
+  const expensesArr = info.filter(transaction => transaction.type);
   const expensesArrReducer = expensesArr.reduce((acc, item) => {
     const { category, amount, color } = item;
     const numericAmount = parseFloat(amount);
@@ -22,14 +32,13 @@ const ExpensesStatistics = ({ info }) => {
     return acc;
   }, {});
 
-  const cumulatedExpenes = Object.entries(expensesArrReducer).map(
-    ([category, data]) => ({
+  const cumulatedExpenes = Object.entries(expensesArrReducer)
+    .map(([category, data]) => ({
       category,
       total: data.total,
       color: data.color,
-    })
-  ).sort((a, b) => b.total - a.total);
-  
+    }))
+    .sort((a, b) => b.total - a.total);
 
   const infoReducer = info.reduce((acc, item) => {
     const category = item.type === true ? 'expenses' : 'incomes';
@@ -41,7 +50,13 @@ const ExpensesStatistics = ({ info }) => {
     return acc;
   }, {});
 
-  console.log('infoReducer', infoReducer);
+  const filterYears = info
+    .map(info => info.date.split('-')[0])
+    .filter((year, index, array) => array.indexOf(year) === index)
+    .sort((a, b) => a.localeCompare(b))
+    .map(year => {
+      return { number: year, name: year };
+    });
 
   // Convert to array of objects
 
@@ -50,12 +65,18 @@ const ExpensesStatistics = ({ info }) => {
       <Nav />
       <div className={style.statistics}>
         <ModalTime
-          initialValue={initialValueMonth}
-          info={months}
-          name="months"
+          initialValue={isSelectedYear}
+          info={filterYears}
+          handleYear={handleYear}
+          name="years"
         />
 
-        <ModalTime initialValue={currentYear} info={years} name="years" />
+        <ModalTime
+          initialValue={isSelectedMonth}
+          info={months}
+          handleMonth={handleMonth}
+          name="months"
+        />
 
         <div className={style.tableHeaderCategories}>
           <span>Category</span>
@@ -76,7 +97,6 @@ const ExpensesStatistics = ({ info }) => {
         })}
 
         <div className={style.totalCategories}>
-          
           <div className={style.totalIncomes}>
             <span>Incomes:</span>
             <span>{Number(infoReducer.incomes).toFixed(2)}</span>
@@ -86,7 +106,6 @@ const ExpensesStatistics = ({ info }) => {
             <span>Expenses:</span>
             <span>{Number(infoReducer.expenses).toFixed(2)}</span>
           </div>
-
         </div>
       </div>
     </section>

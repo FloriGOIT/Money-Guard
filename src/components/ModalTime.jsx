@@ -3,12 +3,14 @@ import { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 
-const ModalTime = ({ info, initialValue, name }) => {
+const ModalTime = ({ info, initialValue, name,handleMonth,handleYear }) => {
   const [isModalOn, setisModalOn] = useState(false);
-  const [isModalHeader, setIsModalHeader] = useState(initialValue); //2025
+  const [isModalHeader, setIsModalHeader] = useState(initialValue);
   const handleOptionSelect = value => {
     setIsModalHeader(value);
     setisModalOn(prev => (prev = !prev));
+    if (name === "months") { handleMonth(value) }
+    if(name === "years"){handleYear(value)}
   };
 
   return (

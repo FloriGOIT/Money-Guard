@@ -6,7 +6,7 @@ import { FaChevronUp } from 'react-icons/fa';
 import { Link,useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { today } from "../helpers/timeInfo";
+import { today,months } from "../helpers/timeInfo";
 
 
 const NewCard = ({info}) => {
@@ -18,17 +18,22 @@ const NewCard = ({info}) => {
   const [isDetails, setIsDetails] = useState("");
   const [isColor, setIsColor] = useState("")
   const navigate = useNavigate();
+  
 
+  const monthPreLether = months.filter(month => month.number === isDate.split("-")[1]);
+  const monthLether = monthPreLether[0].name;
       const defaultCard = {
       id: nanoid(),
-      date: isDate,
+        date: isDate,
+        year: isDate.split("-")[0],
+      month:monthLether,
       type: isExpense,
       category: isOption,
       details: isDetails,
         amount: isAmount,
       color:isColor
       }
-
+console.log("defaultCard0", defaultCard)
   const { id } = useParams();
   
   const selectedCard = info.find(card => card.id === id);
@@ -80,7 +85,7 @@ const NewCard = ({info}) => {
 
     
     
-
+    console.log("defaultCard1", defaultCard)
     info.push(defaultCard);
     localStorage.setItem("listCards", JSON.stringify(info))
     setIsExpense(false);
