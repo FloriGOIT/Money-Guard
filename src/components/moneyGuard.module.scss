@@ -238,6 +238,7 @@ ul li {
 
 .homePageWrapper,
 .statisticsWrapper {
+
   width: 100%;
   min-height: calc(100vh - 64px);
 
@@ -248,6 +249,7 @@ ul li {
     rgb(36, 18, 87) 100%
   );
 }
+
 
 .homePage {
   margin: 0px auto;
@@ -732,7 +734,7 @@ ul li {
   box-sizing: border-box;
   color: white;
   width: 300px;
-  margin: 0px auto;
+  margin: 20px auto 0px auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
