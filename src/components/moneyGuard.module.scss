@@ -174,6 +174,7 @@ ul li {
     }
 
     .sharedLayoutUser {
+
       font-size: 18px;
       font-weight: 400;
       color: white;
@@ -729,6 +730,18 @@ ul li {
 }
 
 //Statistics
+
+
+.chartWrapper {
+  text-align: center;
+  padding-top: 40px;
+
+  .chart {
+    margin: 0 auto;
+    position: relative;
+  }
+}
+
 .statistics {
   position: relative;
   box-sizing: border-box;

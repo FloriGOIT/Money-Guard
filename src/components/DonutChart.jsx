@@ -32,15 +32,15 @@ const DonutChart = ({info}) => {
   const totalSum = info.reduce((acc, item) => acc + item.total, 0);
 
   return (
-    <div style={{ textAlign: 'center', width: '320px', margin: '0 auto' }} className={style.chart}>
+          <div style={{ textAlign: 'center', width: '320px',margin: '0 auto' }} className={style.chart}>
       <h2 style={{color: "white", textAlign: 'start', fontWeight:400, fontSize:"30px"}}>Statistics</h2>
-      <PieChart width={320} height={320}>
+                  <PieChart width={270} height={270} style={{ margin: '0 auto' } }>
         <Pie
           data={info}
           cx="50%"
           cy="50%"
-          innerRadius={100}
-          outerRadius={160}
+          innerRadius={80}
+          outerRadius={120}
           dataKey="total"
           nameKey="category"
         >
@@ -54,11 +54,11 @@ const DonutChart = ({info}) => {
       {/* Center text */}
       <div style={{
         position: 'absolute',
-        top: '370px',
+        top: '170px',
         left: '50%',
         transform: 'translateX(-50%)',
         fontWeight: 'bold',
-        fontSize: '30px',
+        fontSize: '28px',
         color:"rgb(211, 76, 76)"
       }}>
         {totalSum.toLocaleString("en-US", { minimumFractionDigits: 2 })}
