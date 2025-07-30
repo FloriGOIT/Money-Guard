@@ -34,11 +34,11 @@ const DonutChart = ({ info }) => {
 
   return (
     <div
-      style={{ textAlign: 'center', width: '300px', margin: '0 auto' }}
+      style={{ textAlign: 'center', width: '300px', margin: '0 auto', position:"static" }}
       className={style.chart}
     >
 
-      <div style={{ margin: '0 auto' }}>
+      <div style={{ margin: '0 auto', position:"relative" }}>
         <PieChart width={270} height={270} style={{ margin: '0 auto' }}>
           <Pie
             data={info}
@@ -60,7 +60,7 @@ const DonutChart = ({ info }) => {
         <div
           style={{
             position: 'absolute',
-            top: '480px',
+            top: '120px',
             left: '50%',
             transform: 'translateX(-50%)',
             fontWeight: 'bold',

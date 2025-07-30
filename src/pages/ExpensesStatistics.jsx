@@ -115,9 +115,9 @@ const ExpensesStatistics = ({ info }) => {
           name="months"
         />
 
-        <div className={style.chartWrapper}>
+        {infoReducer.expenses > 0 ? <div className={style.chartWrapper}>
           <DonutChart info={cumulatedExpenes} />
-        </div>
+        </div> : null}
 
         <div className={style.tableHeaderCategories}>
           <span>Category</span>
