@@ -35,7 +35,7 @@ const ModalTime = ({ info, initialValue, name, handleMonth, handleYear }) => {
 
   return (
     <div className={style.statisticsPeriod} ref={modalRef}>
-      <div className={style.headerPeriod}>
+      <div className={isModalOn ? `${style.headerPeriodOff} ${style.headerPeriodOn}`: `${style.headerPeriodOff}`}>
         <span>{initialValue}</span>
         <button
           type="button"

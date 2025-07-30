@@ -3,7 +3,7 @@ import currencyBNR from 'helpers/currencyBNR';
 
 const CurrencyTable = () => {
   return (
-    <div className={style.currencyTable}>
+    <div className={style.currencyContainer}>
       <div className={style.currancyTableHeader}>
         <span>Currency</span>
         <span>NBR</span>
