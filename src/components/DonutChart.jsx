@@ -39,13 +39,13 @@ const DonutChart = ({ info }) => {
     >
 
       <div style={{ margin: '0 auto', position:"relative" }}>
-        <PieChart width={270} height={270} style={{ margin: '0 auto' }}>
+        <PieChart width={285} height={285} style={{ margin: '0 auto' }}>
           <Pie
             data={info}
             cx="50%"
             cy="50%"
             innerRadius={80}
-            outerRadius={120}
+            outerRadius={140}
             dataKey="total"
             nameKey="category"
           >
