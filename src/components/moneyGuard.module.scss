@@ -175,7 +175,6 @@ ul li {
     }
 
     .sharedLayoutUser {
-
       font-size: 18px;
       font-weight: 400;
       color: white;
@@ -214,7 +213,7 @@ ul li {
   align-items: center;
   margin: 60px auto 0px auto;
   padding: 30px 0px;
-  
+
   a {
     padding: 6px;
     font-size: 38px;
@@ -234,7 +233,8 @@ ul li {
     box-shadow: 2px 2px 2px rgb(51, 25, 124);
 
     &:hover {
-      box-shadow: none; box-shadow: 2px 2px 2px rgb(51, 25, 124);
+      box-shadow: none;
+      box-shadow: 2px 2px 2px rgb(51, 25, 124);
     }
   }
 }
@@ -242,18 +242,16 @@ ul li {
 .homePageWrapper,
 .statisticsWrapper,
 .currencyWrapper {
-
   width: 100%;
   min-height: calc(100vh - 64px);
 
   background: radial-gradient(
     circle,
-rgb(69 77 219) 30%,
-  rgb(54 40 168) 66%,
-  rgb(36, 18, 87) 100%
+    rgb(69 77 219) 30%,
+    rgb(54 40 168) 66%,
+    rgb(36, 18, 87) 100%
   );
 }
-
 
 .homePage {
   margin: 0px auto;
@@ -451,7 +449,9 @@ rgb(69 77 219) 30%,
 
   background: radial-gradient(
     circle,
-rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
+    rgb(69 77 219) 30%,
+    rgb(54 40 168) 66%,
+    rgb(36, 18, 87) 100%
   );
 }
 
@@ -584,7 +584,7 @@ rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
         rgb(123, 20, 192) 80%
       );
       border: 1px solid rgba(206, 204, 204, 0.664);
-      border-radius: 0px 0px 10px 10px; 
+      border-radius: 0px 0px 10px 10px;
       .newCardOption {
         padding: 5px 15px 5px 15px;
         text-align: center;
@@ -731,7 +731,13 @@ rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
 }
 
 //Statistics
-.statisticsWrapper{h2{color:white; font-size: 30px; font-weight: 300;}}
+.statisticsWrapper {
+  h2 {
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+  }
+}
 
 .chartWrapper {
   text-align: center;
@@ -761,7 +767,7 @@ rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
       border: 1px solid rgba(206, 204, 204, 0.664);
       background-color: rgb(75, 40, 168);
       border-radius: 10px;
-      
+
       span {
         padding-left: 6px;
         padding-top: 7px;
@@ -776,8 +782,8 @@ rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
       }
     }
     .headerPeriodOn {
-          border-radius: 10px 10px 0px 0px;
-        }
+      border-radius: 10px 10px 0px 0px;
+    }
     .listPeriod {
       box-sizing: border-box;
       width: 300px;
@@ -790,7 +796,7 @@ rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
       border: 1px solid rgba(206, 204, 204, 0.664);
       border-radius: 0px 0px 10px 10px;
       border-top: none;
-    
+
       li {
         cursor: pointer;
       }
@@ -816,7 +822,6 @@ rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
         border-radius: 0px 0px 10px 10px;
       }
     }
-
   }
   .tableHeaderCategories {
     box-sizing: border-box;
@@ -864,37 +869,75 @@ rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-            font-size: 20px;
-              font-weight: 400;
+      font-size: 20px;
+      font-weight: 400;
     }
 
-    .totalExpenses span:last-of-type{
+    .totalExpenses span:last-of-type {
       color: rgb(211, 76, 76);
     }
-    .totalIncomes span:last-of-type{
+    .totalIncomes span:last-of-type {
       color: rgb(194, 240, 126);
     }
   }
 }
 
-
 //Currency
-.currencyWrapper{height: 100vh; width: 100vw;}
-.currencyContainer{ width: 300px;  margin:0px auto;border-radius: 10px; padding:15px 15px 15px 15px ; box-sizing: border-box;
-  display: flex;flex-direction: column;gap:20px; background-color: rgb(92, 38, 187);
-      background-image: url('../helpers/graphBackground.jpg');
-        background-repeat:no-repeat;
-        background-position:center;
-        background-size:cover;
-
-
-  span{max-width: 67px;text-align: center; color: white;}
-
-.currancyTableHeader,
-.currancyTableRow{display: flex; flex-direction: row; justify-content: space-between;gap:10px
+.currencyWrapper {
+  height: 100vh;
+  width: 100vw;
+  .currencyContainer {
+    margin: 0px auto;
+    width: 320px;
+    h2 {
+      margin-bottom: 20px;
+            color: white;
+            font-size: 30px;
+            font-weight: 300;
+    }
+  }
 }
+.currencyTable {
+  width: 300px;
+  border-radius: 10px;
+  padding: 15px 15px 15px 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgb(92, 38, 187);
+  background-image: url('../helpers/graphBackground.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
+  span {
+    text-align: center;
+    color: white;
+    padding-top: 5px;
+  }
 
+  .currancyTableHeader,
+  .currancyTableRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .editCurrency {
+    text-align: center;
+    color: rgb(92, 38, 187);
+    background: none;
+    background-color: white;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    border-radius: 20%;
+    padding-top: 5px;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    }
+  }
 }
 
 @media screen and (min-width: 480px) {
@@ -920,7 +963,7 @@ rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
     background-image: url('../helpers/coins.png'),
       url('../helpers/simpleBackground.jpg');
     background-repeat: no-repeat, no-repeat;
-    background-position: center, center;
+    background-position: center top 55px, center;
     background-size: cover, cover;
     background-attachment: fixed;
   }
@@ -945,7 +988,7 @@ rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
   .registerContainer,
   .newCardContainer,
   .logoutContainer,
-  .currencyContainer {
+  .currencyTable {
     padding: 10px 0px 15px 0px;
     border-radius: 20px;
     width: 450px;
@@ -959,12 +1002,30 @@ rgb(69 77 219) 30%, rgb(54 40 168) 66%, rgb(36, 18, 87) 100%
     );
   }
 
-  .currencyContainer { padding: 15px 15px 15px 15px;
-    
-      span {color:white;
-        max-width: 110px;
-        text-align: center;
-      }}
+  .currencyTable {
+    padding: 15px 15px 15px 15px;
+
+    span {
+      color: white;
+      width: 75px;
+      text-align: center;
+      font-size: 21px;
+    }
+    .editCurrency {
+      width: 75px;
+      color: rgb(92, 38, 187);
+      background: none;
+      background-color: white;
+      font-size: 20px;
+      font-weight: 400;
+      border: none;
+      cursor: pointer;
+      border-radius: 30px;
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+    }
+  }
 }
 /*
             background: linear-gradient(140deg,

@@ -97,7 +97,7 @@ const ExpensesStatistics = ({ info }) => {
   return (
     <section className={style.statisticsWrapper}>
       <Nav />
-
+      
       <div className={style.statistics}>
         <h2>Statistics</h2>
         <ModalTime
