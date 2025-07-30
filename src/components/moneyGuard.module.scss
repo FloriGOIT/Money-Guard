@@ -150,7 +150,8 @@ ul li {
   width: 100%;
   min-height: calc(100vh - 64px);
   .sharedLayoutHeader {
-    position: sticky;
+    position: fixed;
+    z-index: 200;
     top: 0px;
     box-sizing: border-box;
     padding: 10px 20px;
@@ -211,7 +212,7 @@ ul li {
   gap: 40px;
   justify-content: center;
   align-items: center;
-  margin: 0px auto;
+  margin: 60px auto 0px auto;
   padding: 30px 0px;
 
   a {
@@ -357,7 +358,7 @@ ul li {
     }
 
     .addCardButton {
-      position: sticky;
+      position: fixed;
       left: calc(100vw - 60px);
       bottom: 10px;
       font-size: 30px;
@@ -730,24 +731,20 @@ ul li {
 }
 
 //Statistics
-
+.statisticsWrapper{h2{color:white; font-size: 30px; font-weight: 300;}}
 
 .chartWrapper {
   text-align: center;
-  padding-top: 40px;
-
   .chart {
     margin: 0 auto;
-    position: relative;
   }
 }
 
 .statistics {
-  position: relative;
   box-sizing: border-box;
   color: white;
   width: 300px;
-  margin: 20px auto 0px auto;
+  margin: 0px auto 0px auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -815,14 +812,7 @@ ul li {
         border-radius: 0px 0px 10px 10px;
       }
     }
-    .years {
-      position: absolute;
-      z-index: 1;
-    }
-    .months {
-      position: absolute;
-      z-index: 2;
-    }
+
   }
   .tableHeaderCategories {
     box-sizing: border-box;

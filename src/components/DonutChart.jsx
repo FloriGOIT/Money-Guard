@@ -1,7 +1,5 @@
-
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
-import style from "./moneyGuard.module.scss"
-
+import style from './moneyGuard.module.scss';
 
 const CustomTooltip = ({ active, payload, info }) => {
   if (active && payload && payload.length) {
@@ -10,16 +8,20 @@ const CustomTooltip = ({ active, payload, info }) => {
     const percentage = ((total / totalSum) * 100).toFixed(1);
 
     return (
-      <div style={{
-        background: '#1f1f1f',
-        padding: '8px 8px',
-        borderRadius: '10px',
-        color: '#fff',
-        border: `2px solid ${color}`,
-        boxShadow: '0 0 5px rgba(0,0,0,0.3)'
-      }}>
-        <p style={{ margin: 0, fontWeight: 'bold',fontSize:"14px" }}>{category}</p>
-        <p style={{ margin: 0,fontSize:"14px" }}>{percentage}%</p>
+      <div
+        style={{
+          background: '#1f1f1f',
+          padding: '8px 8px',
+          borderRadius: '10px',
+          color: '#fff',
+          border: `2px solid ${color}`,
+          boxShadow: '0 0 5px rgba(0,0,0,0.3)',
+        }}
+      >
+        <p style={{ margin: 0, fontWeight: 'bold', fontSize: '14px' }}>
+          {category}
+        </p>
+        <p style={{ margin: 0, fontSize: '14px' }}>{percentage}%</p>
       </div>
     );
   }
@@ -27,41 +29,48 @@ const CustomTooltip = ({ active, payload, info }) => {
   return null;
 };
 
-
-const DonutChart = ({info}) => {
+const DonutChart = ({ info }) => {
   const totalSum = info.reduce((acc, item) => acc + item.total, 0);
 
   return (
-          <div style={{ textAlign: 'center', width: '320px',margin: '0 auto' }} className={style.chart}>
-      <h2 style={{color: "white", textAlign: 'start', fontWeight:400, fontSize:"30px"}}>Statistics</h2>
-                  <PieChart width={270} height={270} style={{ margin: '0 auto' } }>
-        <Pie
-          data={info}
-          cx="50%"
-          cy="50%"
-          innerRadius={80}
-          outerRadius={120}
-          dataKey="total"
-          nameKey="category"
-        >
-          {info.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.color} />
-          ))}
-        </Pie>
-        <Tooltip content={<CustomTooltip />} info={info} />
-      </PieChart>
+    <div
+      style={{ textAlign: 'center', width: '300px', margin: '0 auto' }}
+      className={style.chart}
+    >
 
-      {/* Center text */}
-      <div style={{
-        position: 'absolute',
-        top: '170px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        fontWeight: 'bold',
-        fontSize: '28px',
-        color:"rgb(211, 76, 76)"
-      }}>
-        {totalSum.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+      <div style={{ margin: '0 auto' }}>
+        <PieChart width={270} height={270} style={{ margin: '0 auto' }}>
+          <Pie
+            data={info}
+            cx="50%"
+            cy="50%"
+            innerRadius={80}
+            outerRadius={120}
+            dataKey="total"
+            nameKey="category"
+          >
+            {info.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Pie>
+          <Tooltip content={<CustomTooltip />} info={info} />
+        </PieChart>
+
+        {/* Center text */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '480px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            fontWeight: 'bold',
+            fontSize: '28px',
+            color: 'white',
+            paddingLeft:"10px"
+          }}
+        >
+          {totalSum.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+        </div>
       </div>
     </div>
   );

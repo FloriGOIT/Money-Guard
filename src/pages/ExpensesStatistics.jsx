@@ -97,11 +97,9 @@ const ExpensesStatistics = ({ info }) => {
   return (
     <section className={style.statisticsWrapper}>
       <Nav />
-      <div className={style.chartWrapper}>
-        <DonutChart info={cumulatedExpenes} />
-      </div>
 
       <div className={style.statistics}>
+        <h2>Statistics</h2>
         <ModalTime
           initialValue={isSelectedYear}
           info={filterYearsForSelection}
@@ -116,6 +114,10 @@ const ExpensesStatistics = ({ info }) => {
           handleMonth={handleMonth}
           name="months"
         />
+
+        <div className={style.chartWrapper}>
+          <DonutChart info={cumulatedExpenes} />
+        </div>
 
         <div className={style.tableHeaderCategories}>
           <span>Category</span>
