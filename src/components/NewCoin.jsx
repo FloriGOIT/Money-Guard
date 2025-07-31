@@ -1,20 +1,41 @@
 import style from './moneyGuard.module.scss';
 import BigButtonsContainer from './BigButtonsContainer';
 import currency from 'helpers/currencyBNR';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams} from 'react-router-dom';
 import { useState } from 'react';
 
+
+
 const NewCoin = () => {
+
+  const [isCurrencyName, setIsCurrencyName] = useState("");
+  const [isCurrencyNBR, setIsCurrencyNBR] = useState("");
+  const [isCurrencyBuy, setIsCurrencyBuy] = useState("");
+  const [isCurrencySell, setIsCurrencySell] = useState("");
   const navigation = useNavigate();
+  const param = useParams().name;
+
+  let newCurrency = {
+    currencyName: isCurrencyName,
+    nbrRate: isCurrencyNBR,
+    buyRate: isCurrencyBuy,
+    sellRate: isCurrencySell,
+  }
+  if (param) { newCurrency = currency.find(currency => currency.currencyName === param) }
+
   const [isCurrency, setIsCurrency] = useState("")
+  const checkDuplicateCurrency = currency.find(currency => currency.currencyName === isCurrency);
+  
+  
   //console.log("isCurrency",isCurrency)
- const matchCurrency = currency.find(currency => currency.currencyName === isCurrency);
-    //console.log("matchCurrency",matchCurrency)
+  //console.log("matchCurrency",matchCurrency)
+  
+
   const handleNewCoin = e => {
     e.preventDefault();
     const form = e.target;
     const currencyName = form.elements.currencyName.value.toUpperCase();
-    if (matchCurrency) {
+    if (checkDuplicateCurrency) {
       alert("This currency is already available. Enter other name or cancel request."); return
     }
     const nbrRate= form.elements.nbrRate.value;
@@ -35,6 +56,7 @@ const NewCoin = () => {
             name="currencyName"
             pattern="^[A-Za-z]{3}$"
             title="Enter exactly 3 letters.Example: USD, RON, EUR"
+            value={newCurrency.currencyName}
             required
             autoComplete="off"
             placeholder="Currency name"
@@ -45,6 +67,7 @@ const NewCoin = () => {
             name="nbrRate"
             pattern="^\d+(\.\d{1,4})?$"
             title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
+            value={newCurrency.nbrRate}
             required
             autoComplete="off"
             placeholder="Central bank rate"
@@ -54,6 +77,7 @@ const NewCoin = () => {
             name="buyRate"
             pattern="^\d+(\.\d{1,4})?$"
             title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
+            value={newCurrency.buyRate}
             required
             autoComplete="off"
             placeholder="Buy rate"
@@ -63,6 +87,7 @@ const NewCoin = () => {
             name="sellRate"
             pattern="^\d+(\.\d{1,4})?$"
             title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
+            value={newCurrency.sellRate}
             required
             autoComplete="off"
             placeholder="Sell rate"

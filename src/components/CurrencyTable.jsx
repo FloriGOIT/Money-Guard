@@ -5,7 +5,7 @@ import { Link} from 'react-router-dom';
 import { MdOutlineModeEdit } from 'react-icons/md';
 
 const CurrencyTable = () => {
-  
+
   return (
     <div className={style.currencyTable}>  
       <div className={style.currancyTableHeader}>
@@ -15,16 +15,16 @@ const CurrencyTable = () => {
         <span>Sell</span>
         <span></span>
       </div>
-      {currency.map(currency => (
-        <div className={style.currancyTableRow} key={currency.currencyName}>
+      {currency.map(currency => {
+        const location = `/currency/${currency.currencyName}`;
+        return (<div className={style.currancyTableRow} key={currency.currencyName}>
           <span>{currency.currencyName}</span>
           <span>{currency.nbrRate}</span>
           <span>{currency.buyRate}</span>
           <span>{currency.sellRate}</span>
-          <Link to="/currency/newCoin" className={style.editCurrency}> <MdOutlineModeEdit /></Link>
-
-        </div>
-      ))}
+          <Link to={location} className={style.editCurrency}> <MdOutlineModeEdit /></Link>
+        </div>)
+      })}
     </div>
   );
 };
