@@ -1,5 +1,5 @@
 import style from './moneyGuard.module.scss';
-import currencyBNR from 'helpers/currencyBNR';
+import currency from 'helpers/currencyBNR';
 import { Link} from 'react-router-dom';
 
 import { MdOutlineModeEdit } from 'react-icons/md';
@@ -14,12 +14,12 @@ const CurrencyTable = () => {
         <span>Sell</span>
         <span></span>
       </div>
-      {currencyBNR.map(currency => (
-        <div className={style.currancyTableRow} key={currency.name}>
-          <span>{currency.name}</span>
-          <span>{currency.NBR}</span>
-          <span>{currency.buy}</span>
-          <span>{currency.sell}</span>
+      {currency.map(currency => (
+        <div className={style.currancyTableRow} key={currency.currencyName}>
+          <span>{currency.currencyName}</span>
+          <span>{currency.nbrRate}</span>
+          <span>{currency.buyRate}</span>
+          <span>{currency.sellRate}</span>
           <Link to="/currency/newCoin" className={style.editCurrency}> <MdOutlineModeEdit /></Link>
 
         </div>

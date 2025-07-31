@@ -8,6 +8,64 @@ body {
 ul li {
   list-style-type: none;
 }
+
+.newCoinFormButtons{
+.bigButton {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  width: 300px;
+  border-radius: 30px;
+  border: 0px;
+  margin:0px auto;
+  &:hover {
+    box-shadow: 2px 2px 3px rgb(66, 3, 124);
+  }
+}
+
+.selectedBtn {
+  background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+  background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+    padding: 18.5px 0px;
+  &:hover {
+    box-shadow: 2px 2px 3px rgb(66, 3, 124);
+  }
+}
+.notSelectedBtn {
+  color: rgb(92, 38, 187);
+  background: none;
+  background-color: white;
+  font-size: 20px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  padding: 15px 0px;
+  &:hover {
+    box-shadow: 2px 2px 3px rgb(66, 3, 124);
+  }
+}
+
+.notSelectedBtn {
+  color: rgb(92, 38, 187);
+  background: none;
+  background-color: white;
+  font-size: 20px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 2px 2px 3px rgb(66, 3, 124);
+  }
+}}
+
+
 //Login/Register
 .logWrapper,
 .regWrapper,
@@ -380,7 +438,7 @@ ul li {
 
 //Log out
 .logoutWrapper {
-  padding-top: calc((100vh - 260px - 64px - 200px) / 2);
+  padding-top: calc((100vh - 260px - 64px) / 2);
 
   .logoutContainer {
     display: flex;
@@ -442,11 +500,11 @@ ul li {
 
 //newCard
 .newCardWrapper,
-.logoutWrapper {
+.logoutWrapper,
+.newCoinWrapper {
   box-sizing: border-box;
   width: 100vw;
-  height: calc(100vh - 64px);
-
+  height: 100vh;
   background: radial-gradient(
     circle,
     rgb(69 77 219) 30%,
@@ -456,8 +514,9 @@ ul li {
 }
 
 .newCardWrapper {
-  padding-top: calc((100vh - 516px - 100px) / 2);
+  padding-top: calc((100vh - 490px) / 2);
 }
+
 .newCardContainer {
   display: flex;
   flex-direction: column;
@@ -465,7 +524,6 @@ ul li {
   align-items: center;
   gap: 18px;
   color: white;
-
   h2 {
     font-size: 24px;
   }
@@ -886,14 +944,15 @@ ul li {
 .currencyWrapper {
   height: 100vh;
   width: 100vw;
+
   .currencyContainer {
     margin: 0px auto;
     width: 320px;
     h2 {
       margin-bottom: 20px;
-            color: white;
-            font-size: 30px;
-            font-weight: 300;
+      color: white;
+      font-size: 30px;
+      font-weight: 300;
     }
   }
 }
@@ -940,6 +999,48 @@ ul li {
   }
 }
 
+//NewCoin
+.newCoinWrapper {
+  padding-top: calc((100vh - 320px - 64px) / 2);
+}
+.newCoinContainer {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: inherit;
+  margin: 0px auto;
+  width: 320px;
+}
+.newCoinForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 15px 15px;
+  width: 300px;
+  margin:0px auto;
+  input {
+    padding: 5px 0px;
+    background-color: inherit;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(235, 232, 232);
+    font-size: 20px;
+    color: white;
+    padding-left:15px;
+    
+  }
+
+    input:first-of-type{margin-top: 20px;}
+
+  input:placeholder-shown {
+    color: rgb(235, 232, 232);
+    font-weight: 400;
+    font-size: 20px;
+  }
+}
+
+//different VH or VW
 @media screen and (min-width: 480px) {
   .loginContainer,
   .registerContainer {
@@ -959,7 +1060,8 @@ ul li {
   .newCardWrapper,
   .logoutWrapper,
   .statisticsWrapper,
-  .currencyWrapper {
+  .currencyWrapper,
+  .newCoinWrapper {
     background-image: url('../helpers/coins.png'),
       url('../helpers/simpleBackground.jpg');
     background-repeat: no-repeat, no-repeat;
@@ -968,27 +1070,11 @@ ul li {
     background-attachment: fixed;
   }
 
-  .logWrapper {
-    height: 100vh;
-    padding-top: calc((100vh - 378px) / 2);
-  }
-
-  .regWrapper {
-    height: 100vh;
-    padding-top: calc((100vh - 520px) / 2);
-  }
-  .logoutWrapper {
-    padding-top: calc((100vh - 260px - 64px) / 2);
-  }
-  .newCardWrapper {
-    padding-top: calc((100vh - 516px - 64px) / 2);
-  }
-
   .loginContainer,
   .registerContainer,
   .newCardContainer,
   .logoutContainer,
-  .currencyTable {
+  .newCoinContainer {
     padding: 10px 0px 15px 0px;
     border-radius: 20px;
     width: 450px;
@@ -1002,8 +1088,28 @@ ul li {
     );
   }
 
+  .logWrapper {
+    height: 100vh;
+    padding-top: calc((100vh - 378px) / 2);
+  }
+
+  .regWrapper {
+    height: 100vh;
+    padding-top: calc((100vh - 520px) / 2);
+  }
+
+  .logoutWrapper {
+    padding-top: calc((100vh - 260px - 64px) / 2);
+  }
+
+  .currencyWrapper .currencyContainer {
+    width: 450px;
+    margin: 0px auto;
+  
+  }
   .currencyTable {
     padding: 15px 15px 15px 15px;
+    width: 450px;
 
     span {
       color: white;
@@ -1026,13 +1132,5 @@ ul li {
       }
     }
   }
+
 }
-/*
-            background: linear-gradient(140deg,
-              rgb(247, 201, 141) 10%,
-              rgb(151, 85, 204) 45%,
-              rgb(123, 20, 192) 80%)
-
-
-
-*/
