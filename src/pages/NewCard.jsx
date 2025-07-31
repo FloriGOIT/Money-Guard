@@ -73,6 +73,8 @@ const NewCard = ({ info }) => {
     e.preventDefault();
     const index = info.findIndex(card=>card.id===id)
     if (id) { info.splice(index, 1); }
+
+
     if (isOption === 'Select a category') {
       alert("Please select a type of income or expense.");
       return;
@@ -82,12 +84,10 @@ const NewCard = ({ info }) => {
       alert("Please add a value higher than 0.00");
       return;
     }
-
-    
-    
-    console.log("defaultCard1", defaultCard)
     if (Number(defaultCard.year) < 2020) { alert("Please enter a date that starts with year 2020"); return }
-    info.push(defaultCard);
+    if (index !== -1) { info[index] = defaultCard }
+    else{info.push(defaultCard);}
+    
     localStorage.setItem("listCards", JSON.stringify(info))
     setIsExpense(false);
     setIsListCategoriesOn(false);

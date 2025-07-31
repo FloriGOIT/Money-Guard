@@ -1,9 +1,10 @@
 import style from './moneyGuard.module.scss';
 import { Link } from 'react-router-dom';
 
-const returnLocation="/currency"
 
-const BigButtonsContainer = ({firstBtn, secondBtn}) => {
+
+const BigButtonsContainer = ({ firstBtn, secondBtn, handleSubmit }) => {
+  const returnLocation = "/currency";
   return (
     <>
       <button

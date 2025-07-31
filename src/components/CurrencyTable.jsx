@@ -19,9 +19,9 @@ const CurrencyTable = () => {
         const location = `/currency/${currency.currencyName}`;
         return (<div className={style.currancyTableRow} key={currency.currencyName}>
           <span>{currency.currencyName}</span>
-          <span>{currency.nbrRate}</span>
-          <span>{currency.buyRate}</span>
-          <span>{currency.sellRate}</span>
+          <span>{Number(currency.nbrRate).toFixed(4)}</span>
+          <span>{Number(currency.buyRate).toFixed(4)}</span>
+          <span>{Number(currency.sellRate).toFixed(4)}</span>
           <Link to={location} className={style.editCurrency}> <MdOutlineModeEdit /></Link>
         </div>)
       })}

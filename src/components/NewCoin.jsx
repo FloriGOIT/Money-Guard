@@ -1,99 +1,117 @@
 import style from './moneyGuard.module.scss';
 import BigButtonsContainer from './BigButtonsContainer';
 import currency from 'helpers/currencyBNR';
-import { useNavigate, useParams} from 'react-router-dom';
-import { useState } from 'react';
-
-
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const NewCoin = () => {
+  const [isCurrency, setIsCurrency] = useState({
+    currencyName: '',
+    nbrRate: "",
+    buyRate: "",
+    sellRate: "",
+  });
 
-  const [isCurrencyName, setIsCurrencyName] = useState("");
-  const [isCurrencyNBR, setIsCurrencyNBR] = useState("");
-  const [isCurrencyBuy, setIsCurrencyBuy] = useState("");
-  const [isCurrencySell, setIsCurrencySell] = useState("");
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const param = useParams().name;
 
-  let newCurrency = {
-    currencyName: isCurrencyName,
-    nbrRate: isCurrencyNBR,
-    buyRate: isCurrencyBuy,
-    sellRate: isCurrencySell,
-  }
-  if (param) { newCurrency = currency.find(currency => currency.currencyName === param) }
+  useEffect(() => {
+    if (param) {
+      const newCurrency = currency.find(c => c.currencyName === param);
+      if (newCurrency) setIsCurrency(newCurrency);
+    }
 
-  const [isCurrency, setIsCurrency] = useState("")
-  const checkDuplicateCurrency = currency.find(currency => currency.currencyName === isCurrency);
-  
-  
-  //console.log("isCurrency",isCurrency)
-  //console.log("matchCurrency",matchCurrency)
-  
 
-  const handleNewCoin = e => {
+  }, [param]);
+
+
+
+  const handleSubmit = e => {
+
     e.preventDefault();
-    const form = e.target;
-    const currencyName = form.elements.currencyName.value.toUpperCase();
+
+    if (!param){const checkDuplicateCurrency = currency.find(currency => currency.currencyName === isCurrency.currencyName);
     if (checkDuplicateCurrency) {
       alert("This currency is already available. Enter other name or cancel request."); return
+    }}
+
+    const index = currency.findIndex(c => c.currencyName === isCurrency.currencyName);
+    if (index !== -1) {
+      currency[index] = isCurrency;
+    } else {
+      currency.push(isCurrency); 
     }
-    const nbrRate= form.elements.nbrRate.value;
-    const buyRate= form.elements.buyRate.value;
-    const sellRate= form.elements.sellRate.value;
-    const newCoin = {currencyName,nbrRate,buyRate,sellRate}
-    currency.push(newCoin);
-    form.reset();
-    navigation("/currency")
+    setIsCurrency({
+      currencyName: '',
+      nbrRate: '',
+      buyRate: '',
+      sellRate: '',
+    });
+
+    navigate('/currency');
   };
 
   return (
     <section className={style.newCoinWrapper}>
       <div className={style.newCoinContainer}>
-        <form onSubmit={e => handleNewCoin(e)} className={style.newCoinForm}>
+        <form className={style.newCoinForm} onSubmit={handleSubmit}>
           <input
             type="text"
             name="currencyName"
             pattern="^[A-Za-z]{3}$"
             title="Enter exactly 3 letters.Example: USD, RON, EUR"
-            value={newCurrency.currencyName}
+            value={isCurrency.currencyName}
             required
             autoComplete="off"
             placeholder="Currency name"
-            onChange={e=>setIsCurrency(e.target.value.toUpperCase())}
+            onChange={e =>
+              setIsCurrency(prev => ({
+                ...prev,
+                currencyName: e.target.value.toUpperCase(),
+              }))
+            }
           />
           <input
             type="text"
             name="nbrRate"
             pattern="^\d+(\.\d{1,4})?$"
             title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
-            value={newCurrency.nbrRate}
+            value={isCurrency.nbrRate}
             required
             autoComplete="off"
             placeholder="Central bank rate"
+            onChange={e =>
+              setIsCurrency(prev => ({ ...prev, nbrRate: e.target.value }))
+            }
           />
           <input
             type="text"
             name="buyRate"
             pattern="^\d+(\.\d{1,4})?$"
             title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
-            value={newCurrency.buyRate}
+            value={isCurrency.buyRate}
             required
             autoComplete="off"
             placeholder="Buy rate"
+            onChange={e =>
+              setIsCurrency(prev => ({ ...prev, buyRate: e.target.value }))
+            }
           />
           <input
             type="text"
             name="sellRate"
             pattern="^\d+(\.\d{1,4})?$"
             title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
-            value={newCurrency.sellRate}
+            value={isCurrency.sellRate}
             required
             autoComplete="off"
             placeholder="Sell rate"
+            onChange={e =>
+              setIsCurrency(prev => ({ ...prev, sellRate: e.target.value }))
+            }
           />
           <div className={style.newCoinFormButtons}>
-            <BigButtonsContainer firstBtn="Add" secondBtn="Close" />
+            <BigButtonsContainer firstBtn={param? "Update" : "Add"} secondBtn="Close" />
           </div>
         </form>
       </div>
@@ -102,3 +120,10 @@ const NewCoin = () => {
 };
 
 export default NewCoin;
+
+/*
+    const checkDuplicateCurrency = currency.find(currency => currency.currencyName === isCurrency.currencyName);
+    if (checkDuplicateCurrency) {
+      alert("This currency is already available. Enter other name or cancel request."); return
+    }
+*/
