@@ -281,18 +281,20 @@ ul li {
     border-radius: 10px;
     box-shadow: 2px 2px 2px rgb(51, 25, 124);
     &:hover {
-      box-shadow: 3px 3px 2px rgb(51, 25, 124);
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
     }
   }
 
   .selectedNav {
     color: white;
     background-color: rgb(93, 38, 187);
-    box-shadow: 2px 2px 2px rgb(51, 25, 124);
+    box-shadow: 2px 2px 3px rgb(66, 3, 124);
 
     &:hover {
       box-shadow: none;
-      box-shadow: 2px 2px 2px rgb(51, 25, 124);
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+
+
     }
   }
 }
@@ -524,6 +526,7 @@ ul li {
   align-items: center;
   gap: 18px;
   color: white;
+  
   h2 {
     font-size: 24px;
   }
@@ -948,6 +951,7 @@ ul li {
   .currencyContainer {
     margin: 0px auto;
     width: 320px;
+    
     h2 {
       margin-bottom: 20px;
       color: white;
@@ -969,7 +973,7 @@ ul li {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
+box-shadow: 2px 2px 3px rgb(66, 3, 124);
   span {
     text-align: center;
     color: white;
@@ -1011,6 +1015,7 @@ ul li {
   background-color: inherit;
   margin: 0px auto;
   width: 320px;
+  
 }
 .newCoinForm {
   display: flex;
@@ -1079,6 +1084,7 @@ ul li {
     border-radius: 20px;
     width: 450px;
     margin: 0px auto;
+    box-shadow: 2px 2px 3px rgb(66, 3, 124);
     background-color: rgb(101, 41, 204);
     background-color: radial-gradient(
       circle,

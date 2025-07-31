@@ -9,7 +9,8 @@ const Logout = lazy(() => import('../pages/Logout'));
 const NewCard = lazy(() => import('../pages/NewCard'));
 const Currency = lazy(() => import('../pages/Currency'));
 const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
-const NewCoin = lazy(()=>import("./NewCoin"))
+const NewCoin = lazy(() => import("./NewCoin"));
+
 
 const MoneyGuardApp = () => {
   const localDataCardsNotParsed = localStorage.getItem('listCards') || '[]';

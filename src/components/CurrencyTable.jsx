@@ -5,6 +5,7 @@ import { Link} from 'react-router-dom';
 import { MdOutlineModeEdit } from 'react-icons/md';
 
 const CurrencyTable = () => {
+  
   return (
     <div className={style.currencyTable}>  
       <div className={style.currancyTableHeader}>
