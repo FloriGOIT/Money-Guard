@@ -9,62 +9,62 @@ ul li {
   list-style-type: none;
 }
 
-.newCoinFormButtons{
-.bigButton {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: 400;
-  width: 300px;
-  border-radius: 30px;
-  border: 0px;
-  margin:0px auto;
-  &:hover {
-    box-shadow: 2px 2px 3px rgb(66, 3, 124);
+.newCoinFormButtons {
+  .bigButton {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    width: 300px;
+    border-radius: 30px;
+    border: 0px;
+    margin: 0px auto;
+    &:hover {
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    }
   }
-}
 
-.selectedBtn {
-  background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-  background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-bottom: 20px;
+  .selectedBtn {
+    background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+    background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
     padding: 18.5px 0px;
-  &:hover {
-    box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    &:hover {
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    }
+  }
+  .notSelectedBtn {
+    color: rgb(92, 38, 187);
+    background: none;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    padding: 15px 0px;
+    &:hover {
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    }
+  }
+
+  .notSelectedBtn {
+    color: rgb(92, 38, 187);
+    background: none;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+    }
   }
 }
-.notSelectedBtn {
-  color: rgb(92, 38, 187);
-  background: none;
-  background-color: white;
-  font-size: 20px;
-  font-weight: 400;
-  border: none;
-  cursor: pointer;
-  padding: 15px 0px;
-  &:hover {
-    box-shadow: 2px 2px 3px rgb(66, 3, 124);
-  }
-}
-
-.notSelectedBtn {
-  color: rgb(92, 38, 187);
-  background: none;
-  background-color: white;
-  font-size: 20px;
-  font-weight: 400;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 2px 2px 3px rgb(66, 3, 124);
-  }
-}}
-
 
 //Login/Register
 .logWrapper,
@@ -293,8 +293,6 @@ ul li {
     &:hover {
       box-shadow: none;
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
-
-
     }
   }
 }
@@ -526,7 +524,7 @@ ul li {
   align-items: center;
   gap: 18px;
   color: white;
-  
+
   h2 {
     font-size: 24px;
   }
@@ -951,12 +949,39 @@ ul li {
   .currencyContainer {
     margin: 0px auto;
     width: 320px;
-    
-    h2 {
+
+    .currencyContainerHeader {
       margin-bottom: 20px;
-      color: white;
-      font-size: 30px;
-      font-weight: 300;
+      h2 {
+        margin-bottom: 20px;
+        color: white;
+        font-size: 30px;
+        font-weight: 300;
+      }
+      .addCoinButton {
+                  display: flex;
+                    justify-content: flex-end;
+                    
+        svg {
+          font-size: 30px;
+          font-weight: 900;
+          border-radius: 40%;
+          text-align: center;
+          padding: 8px 8px 8px 8px;
+          background: -webkit-linear-gradient(
+            to right,
+            #f3a73c,
+            hwb(288 30% 11%)
+          );
+          background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+          color: white;
+          border: none;
+
+          &:hover {
+            box-shadow: 2px 2px 3px rgb(66, 3, 124);
+          }
+        }
+      }
     }
   }
 }
@@ -973,7 +998,7 @@ ul li {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-box-shadow: 2px 2px 3px rgb(66, 3, 124);
+  box-shadow: 2px 2px 3px rgb(66, 3, 124);
   span {
     text-align: center;
     color: white;
@@ -985,18 +1010,21 @@ box-shadow: 2px 2px 3px rgb(66, 3, 124);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    .currancyTableRate{width: 50px;}
+    .currancyTableNotRate{width: 35px;}
   }
   .editCurrency {
     text-align: center;
     color: rgb(92, 38, 187);
     background: none;
-    background-color: white;
+    
     font-size: 18px;
     font-weight: 400;
     border: none;
-    border-radius: 20%;
+
     padding-top: 5px;
     cursor: pointer;
+    svg{padding: 2px 8px; background-color: white; border-radius: 20px}
     &:hover {
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
     }
@@ -1015,7 +1043,6 @@ box-shadow: 2px 2px 3px rgb(66, 3, 124);
   background-color: inherit;
   margin: 0px auto;
   width: 320px;
-  
 }
 .newCoinForm {
   display: flex;
@@ -1023,7 +1050,7 @@ box-shadow: 2px 2px 3px rgb(66, 3, 124);
   gap: 20px;
   padding: 15px 15px;
   width: 300px;
-  margin:0px auto;
+  margin: 0px auto;
   input {
     padding: 5px 0px;
     background-color: inherit;
@@ -1032,11 +1059,12 @@ box-shadow: 2px 2px 3px rgb(66, 3, 124);
     border-bottom: 1px solid rgb(235, 232, 232);
     font-size: 20px;
     color: white;
-    padding-left:15px;
-    
+    padding-left: 15px;
   }
 
-    input:first-of-type{margin-top: 20px;}
+  input:first-of-type {
+    margin-top: 20px;
+  }
 
   input:placeholder-shown {
     color: rgb(235, 232, 232);
@@ -1094,32 +1122,29 @@ box-shadow: 2px 2px 3px rgb(66, 3, 124);
     );
   }
 
-  .logWrapper {
-    height: 100vh;
-    padding-top: calc((100vh - 378px) / 2);
-  }
-
-  .regWrapper {
-    height: 100vh;
-    padding-top: calc((100vh - 520px) / 2);
-  }
-
-  .logoutWrapper {
-    padding-top: calc((100vh - 260px - 64px) / 2);
-  }
 
   .currencyWrapper .currencyContainer {
     width: 450px;
     margin: 0px auto;
-  
   }
   .currencyTable {
     padding: 15px 15px 15px 15px;
     width: 450px;
+   
+  .currancyTableHeader,
+  .currancyTableRow {
+      .currancyTableRate {
+        width: 75px;
+      }
+      .currancyTableNotRate {
+        width: 75px;
+      }
+    }
+
 
     span {
       color: white;
-      width: 75px;
+padding: 5px 15px 5px 15px;
       text-align: center;
       font-size: 21px;
     }
@@ -1138,5 +1163,4 @@ box-shadow: 2px 2px 3px rgb(66, 3, 124);
       }
     }
   }
-
 }
