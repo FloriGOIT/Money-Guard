@@ -604,15 +604,17 @@ ul li {
     .rowFormNewCard {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       color: inherit;
       margin-top: 30px;
       width: 300px;
       border-bottom: 2px solid rgba(206, 204, 204, 0.664);
+      
     }
 
     .categorySelection input {
+      box-sizing: border-box;
       text-align: start;
       font-size: 22px;
       font-weight: 400;
@@ -621,6 +623,7 @@ ul li {
       border: none;
       outline: none;
       max-width: 200px;
+      padding-left: 13px;
     }
 
     .categorySelection button {
@@ -628,7 +631,7 @@ ul li {
       color: inherit;
       background-color: inherit;
       border: none;
-      padding: 0px;
+      padding-right: 13px;
     }
 
     .newCardList {
@@ -645,7 +648,7 @@ ul li {
       border: 1px solid rgba(206, 204, 204, 0.664);
       border-radius: 0px 0px 10px 10px;
       .newCardOption {
-        padding: 5px 15px 5px 15px;
+        padding: 5px 10px 5px 10px;
         text-align: center;
 
         input {
@@ -680,9 +683,9 @@ ul li {
       border-bottom: none;
 
       input:placeholder-shown {
-        padding-left: 15px;
+        padding-left: 13px;
       }
-
+ 
       .amount {
         box-sizing: border-box;
         background-color: inherit;
@@ -692,7 +695,7 @@ ul li {
         font-size: 22px;
         border-bottom: 2px solid rgba(206, 204, 204, 0.664);
         color: white;
-        padding-left: 15px;
+        padding-left: 13px;
       }
 
       .amount:placeholder-shown {
@@ -727,7 +730,8 @@ ul li {
       background-color: inherit;
       text-align: start;
       font-size: 20px;
-      padding-left: 15px;
+      padding-left: 13px;
+      padding-right: 5px;
       color: white;
       width: 300px;
     }
@@ -735,7 +739,7 @@ ul li {
     .comment:placeholder-shown {
       color: rgb(224, 221, 221);
       font-size: 20px;
-      padding-left: 15px;
+      padding-left: 13px;
     }
     .newCardButtons {
       padding-top: 25px;
