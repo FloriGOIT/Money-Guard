@@ -33,6 +33,7 @@ ul li {
     cursor: pointer;
     margin-bottom: 20px;
     padding: 18.5px 0px;
+
     &:hover {
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
     }
@@ -392,8 +393,13 @@ ul li {
             );
             background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
             color: white;
+            font-size: 22px;
+            font-weight: 400;
             border: none;
             cursor: pointer;
+            svg {
+              padding-top: 3px;
+            }
             &:hover {
               box-shadow: 2px 2px 3px rgb(66, 3, 124);
             }
@@ -403,10 +409,13 @@ ul li {
             color: rgb(92, 38, 187);
             background: none;
             background-color: white;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 400;
             border: none;
             cursor: pointer;
+            svg {
+              padding-top: 4px;
+            }
             &:hover {
               box-shadow: 2px 2px 3px rgb(66, 3, 124);
             }
@@ -610,7 +619,6 @@ ul li {
       margin-top: 30px;
       width: 300px;
       border-bottom: 2px solid rgba(206, 204, 204, 0.664);
-      
     }
 
     .categorySelection input {
@@ -685,7 +693,7 @@ ul li {
       input:placeholder-shown {
         padding-left: 13px;
       }
- 
+
       .amount {
         box-sizing: border-box;
         background-color: inherit;
@@ -953,7 +961,6 @@ ul li {
   .currencyContainer {
     margin: 0px auto;
     width: 320px;
-
     .currencyContainerHeader {
       margin-bottom: 20px;
       h2 {
@@ -963,9 +970,9 @@ ul li {
         font-weight: 300;
       }
       .addCoinButton {
-                  display: flex;
-                    justify-content: flex-end;
-                    
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 20px;
         svg {
           font-size: 30px;
           font-weight: 900;
@@ -990,47 +997,69 @@ ul li {
   }
 }
 .currencyTable {
+  font-size: 18px;
   width: 300px;
   border-radius: 10px;
-  padding: 15px 15px 15px 15px;
+  padding: 10px 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   background-color: rgb(92, 38, 187);
   background-image: url('../helpers/graphBackground.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   box-shadow: 2px 2px 3px rgb(66, 3, 124);
-  span {
-    text-align: center;
-    color: white;
-    padding-top: 5px;
-  }
 
-  .currancyTableHeader,
-  .currancyTableRow {
+  .currencyTableHeader {
+    padding-left: 45px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    .currancyTableRate{width: 50px;}
-    .currancyTableNotRate{width: 35px;}
+    width: 173px;
+    span {
+      font-weight: 600;
+      font-size: 16px;
+      display: block;
+      text-align: center;
+      width: 50px;
+      color: white;
+    }
   }
-  .editCurrency {
+  .currencyTableRow {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    .currencyTableRate {
+      width: 50px;
+    }
+    .currencyTableNotRate,
+    .currencyTableContent {
+      font-weight: 600;
+    }
+  }
+
+  .editCurrency,
+  .deletCurrency {
+    padding: 0px;
+    background-color: inherit;
     text-align: center;
-    color: rgb(92, 38, 187);
-    background: none;
-    
     font-size: 18px;
     font-weight: 400;
     border: none;
-
-    padding-top: 5px;
+    border-radius: 30%;
     cursor: pointer;
-    svg{padding: 2px 8px; background-color: white; border-radius: 20px}
+    height: 28px;
+    color: rgba(206, 204, 204, 0.664);
+    svg {
+      padding-top: 5px;
+    }
     &:hover {
-      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      color: white;
     }
   }
 }
@@ -1125,45 +1154,64 @@ ul li {
       rgb(36, 18, 87) 100%
     );
   }
-
-
   .currencyWrapper .currencyContainer {
     width: 450px;
     margin: 0px auto;
+        .currencyContainerHeader {
+          .addCoinButton {
+            padding-right: 0px;}}
+
   }
   .currencyTable {
-    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+    padding: 15px 10px 15px 10px;
     width: 450px;
-   
-  .currancyTableHeader,
-  .currancyTableRow {
-      .currancyTableRate {
-        width: 75px;
-      }
-      .currancyTableNotRate {
+
+    .currencyTableHeader {
+      padding-left: 55px;
+      width: 250px;
+
+      span {
+        font-size: 21px;
         width: 75px;
       }
     }
 
-
-    span {
-      color: white;
-padding: 5px 15px 5px 15px;
-      text-align: center;
+    .currencyTableRow {
       font-size: 21px;
+      .currencyTableRate {
+        box-sizing: border-box;
+        width: 75px;
+      }
+      .currencyTableNotRate,
+      .editCurrency,
+      .deletCurrency {
+        box-sizing: border-box;
+        width: 50px;
+      }
     }
-    .editCurrency {
-      width: 75px;
-      color: rgb(92, 38, 187);
-      background: none;
-      background-color: white;
+
+    .editCurrency,
+    .deletCurrency {
       font-size: 20px;
-      font-weight: 400;
-      border: none;
-      cursor: pointer;
+      width: 75px;
       border-radius: 30px;
       &:hover {
         box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+    }
+    .deletCurrency {
+      background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+      background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+      color: white;
+    }
+
+    .editCurrency {
+      background-color: white;
+      color: rgb(92, 38, 187);
+
+      svg {
+        padding-bottom: 10px;
       }
     }
   }

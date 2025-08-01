@@ -1,6 +1,7 @@
 import styles from '../components/moneyGuard.module.scss';
 import { Link } from 'react-router-dom';
 import { MdOutlineModeEdit } from 'react-icons/md';
+import { MdDeleteOutline } from 'react-icons/md';
 
 const Card = ({data,handleDeleteCard}) => {
         const {id, date, type, category, details, amount } = data;
@@ -34,7 +35,7 @@ const Card = ({data,handleDeleteCard}) => {
 
         <div className={styles.cardRowButtons}>
           <button type="button" className={styles.selectedBtn} onClick={()=>handleDeleteCard(id)}>
-            Delete
+            <MdDeleteOutline/>
           </button>
           <Link to={`/newCard/${id}`}>
             <button type="button" className={styles.notSelectedBtn}>
