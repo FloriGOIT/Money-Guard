@@ -25,7 +25,7 @@ const ExpensesStatistics = ({ info }) => {
       uniqueMonths.includes(month.name)
     );
     filteredMonths.push({ number: '-', name: '-' });
-    console.log('filteredMonths', filteredMonths);
+
     setArrayMonthInSelectedYear(filteredMonths);
   }, [isSelectedYear, info]);
 
@@ -93,7 +93,7 @@ const ExpensesStatistics = ({ info }) => {
       return { number: year, name: year };
     });
 
-  console.log('cumulatedExpenes', cumulatedExpenes);
+
   return (
     <section className={style.statisticsWrapper}>
       <Nav />

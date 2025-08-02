@@ -1209,10 +1209,14 @@ ul li {
     .editCurrency {
       background-color: white;
       color: rgb(92, 38, 187);
+      &:hover{color: rgb(92, 38, 187);}
 
       svg {
         padding-bottom: 10px;
       }
     }
   }
+    .newCoinWrapper {
+      padding-top: calc((100vh - 500px - 64px) / 2);
+    }
 }

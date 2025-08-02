@@ -1,11 +1,13 @@
 import style from './moneyGuard.module.scss';
 import BigButtonsContainer from './BigButtonsContainer';
-import currency from 'helpers/currencyBNR';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { nanoid } from 'nanoid';
+
 
 const NewCoin = () => {
   const [isCurrency, setIsCurrency] = useState({
+    id:nanoid(),
     currencyName: '',
     nbrRate: "",
     buyRate: "",
@@ -16,32 +18,39 @@ const NewCoin = () => {
   const param = useParams().name;
 
   useEffect(() => {
+
+     const localStorageArr = JSON.parse(localStorage.getItem("moneyGuardCurrency"));
     if (param) {
-      const newCurrency = currency.find(c => c.currencyName === param);
+      const newCurrency = localStorageArr.find(c => c.currencyName === param);
       if (newCurrency) setIsCurrency(newCurrency);
     }
-
-
   }, [param]);
 
-
+  console.log("isCurrency",isCurrency)
 
   const handleSubmit = e => {
 
     e.preventDefault();
 
-    if (!param){const checkDuplicateCurrency = currency.find(currency => currency.currencyName === isCurrency.currencyName);
+    const localStorageArr = JSON.parse(localStorage.getItem("moneyGuardCurrency"));
+
+    if (!param){const checkDuplicateCurrency = localStorageArr.find(c => c.currencyName === isCurrency.currencyName);
     if (checkDuplicateCurrency) {
       alert("This currency is already available. Enter other name or cancel request."); return
     }}
 
-    const index = currency.findIndex(c => c.currencyName === isCurrency.currencyName);
+    const index = localStorageArr.findIndex(c => c.id === isCurrency.id);
+    console.log("index",index)
     if (index !== -1) {
-      currency[index] = isCurrency;
+      localStorageArr[index] = isCurrency;
     } else {
-      currency.push(isCurrency); 
-    }
+      localStorageArr.push(isCurrency); 
+    };
+
+    localStorage.setItem("moneyGuardCurrency", JSON.stringify(localStorageArr))
+
     setIsCurrency({
+      id:nanoid(),
       currencyName: '',
       nbrRate: '',
       buyRate: '',
