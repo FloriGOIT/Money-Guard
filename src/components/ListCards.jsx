@@ -3,9 +3,16 @@ import style from './moneyGuard.module.scss';
 import Card from './Card';
 import { IoAddSharp } from 'react-icons/io5';
 import { Link} from 'react-router-dom';
+import ModalTime from './ModalTime';
+import { useState } from 'react';
+import { months, currentMonth, currentYear } from 'helpers/timeInfo';
 
 
-const ListCards = ({info,handleDeleteCard}) => {
+const ListCards = ({ info, handleDeleteCard }) => {
+  const monthLetter = months.filter(m=>m.number === currentMonth)
+  const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
+  const [isSelectedMonth, setIsSelectedMonth] = useState(monthLetter[0].name);
+  console.log("infoLIST", info)
   const balance = info.reduce((acc, data) => {
     if (data.type === false) {
       return acc + Number(data.amount);
@@ -14,11 +21,16 @@ const ListCards = ({info,handleDeleteCard}) => {
     }
     return acc;
   }, 0);
-  const currentMonth = (new Date().getMonth()+1).toString().padStart(2, '0');
+
+   //const filterYearsForSelection = info.filter(data => data.year === isSelectedYear)
+   //const arrayMonthInSelectedYear = filterYearsForSelection.filter(data => data.month === isSelectedMonth)
+
 
   const arrDataToDisplay = info.filter(data => {
    return currentMonth === data.date.split("-")[1]
   })
+
+
 
 
   return (
@@ -35,7 +47,25 @@ const ListCards = ({info,handleDeleteCard}) => {
           </span>
           {' '}RON
         </span>
+
+        
       </div>
+
+        <ModalTime
+          initialValue={isSelectedYear}
+          info={info}
+          //handleYear={handleYear}
+          //handleMonth={handleMonth}
+          name="years"
+        />
+
+        <ModalTime
+          initialValue={isSelectedMonth}
+          info={info}
+          //handleMonth={handleMonth}
+          name="months"
+        />
+
       {arrDataToDisplay.map((data,index) => (
         <Card data={data} key={index+1} handleDeleteCard={handleDeleteCard} id={index+1} />
       ))}

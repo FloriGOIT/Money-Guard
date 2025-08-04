@@ -6,7 +6,7 @@ import { FaChevronUp } from 'react-icons/fa';
 const ModalTime = ({ info, initialValue, name, handleMonth, handleYear }) => {
   const [isModalOn, setisModalOn] = useState(false);
   const modalRef = useRef(null); // Step 1: Create a ref
-
+console.log("infoModal", info)
   // Step 2: Click outside logic
   useEffect(() => {
     const handleClickOutside = (event) => {

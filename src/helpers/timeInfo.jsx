@@ -23,9 +23,7 @@ export const years = [
 
 export const todayNewDate = new Date();
 export const currentYear = todayNewDate.getFullYear();
-export const currentMonth = (todayNewDate.getMonth() + 1)
-  .toString()
-  .padStart(2, '0');
+export const currentMonth = (todayNewDate.getMonth() + 1).toString().padStart(2, '0');
 export const currentDay = todayNewDate.getDate().toString().padStart(2, '0');
 export const today = `${currentYear}-${currentMonth}-${currentDay}`;
 

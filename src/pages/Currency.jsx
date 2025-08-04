@@ -7,19 +7,18 @@ const Currency = () => {
   const returnLocation = '/currency';
   return (
     <section className={style.currencyWrapper}>
-      <Nav />
-      <div className={style.currencyContainer}>
+        <Nav />
+        <div className={style.currencyContainer}>
+          <div className={style.currencyContainerHeader}>
+            <h2>Currency exchange</h2>
+            <Link to="/currency/newCoin" className={style.addCoinButton}>
+              <IoAddSharp />
+            </Link>
+          </div>
 
-        <div className={style.currencyContainerHeader}>
-          <h2>Currency exchange</h2>
-          <Link to="/currency/newCoin" className={style.addCoinButton}>
-            <IoAddSharp />
-          </Link>
+          <CurrencyTable returnLocation={returnLocation} />
         </div>
 
-        <CurrencyTable returnLocation={returnLocation} />
-        
-      </div>
     </section>
   );
 };
