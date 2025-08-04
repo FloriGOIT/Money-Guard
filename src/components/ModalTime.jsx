@@ -2,11 +2,11 @@ import style from '../components/moneyGuard.module.scss';
 import { useState, useEffect, useRef } from 'react';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
+import { nanoid } from 'nanoid';
 
-const ModalTime = ({ info, initialValue, name, handleMonth, handleYear }) => {
+const ModalTime = ({ infoPeriod, initialValue, name, handleMonth, handleYear }) => {
   const [isModalOn, setisModalOn] = useState(false);
   const modalRef = useRef(null); // Step 1: Create a ref
-console.log("infoModal", info)
   // Step 2: Click outside logic
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -49,8 +49,8 @@ console.log("infoModal", info)
       </div>
       {isModalOn && (
         <ul className={`${style.listPeriod} ${style[name]}`}>
-          {info.map((item) => (
-            <li key={item.name}>
+          {infoPeriod.map((item) => (
+            <li key={nanoid()}>
               <button type="button" onClick={() => handleOptionSelect(item.name)}>
                 {item.name}
               </button>

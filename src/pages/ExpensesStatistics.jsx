@@ -102,7 +102,7 @@ const ExpensesStatistics = ({ info }) => {
         <h2>Statistics</h2>
         <ModalTime
           initialValue={isSelectedYear}
-          info={filterYearsForSelection}
+          infoPeriod={filterYearsForSelection}
           handleYear={handleYear}
           handleMonth={handleMonth}
           name="years"
@@ -110,7 +110,7 @@ const ExpensesStatistics = ({ info }) => {
 
         <ModalTime
           initialValue={isSelectedMonth}
-          info={arrayMonthInSelectedYear}
+          infoPeriod={arrayMonthInSelectedYear}
           handleMonth={handleMonth}
           name="months"
         />
