@@ -292,7 +292,6 @@ ul li {
     box-shadow: 2px 2px 3px rgb(66, 3, 124);
 
     &:hover {
-      box-shadow: none;
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
     }
   }
@@ -1187,6 +1186,58 @@ ul li {
     font-size: 20px;
   }
 }
+
+
+//allinOne
+
+.allinOneWrapper{
+background-image: url('../helpers/coins.png'),
+    url('../helpers/simpleBackground.jpg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: center top 55px, center;
+  background-size: cover, cover;
+  background-attachment: fixed;
+  height: 100vh;
+  padding-top:64px;
+  
+  nav{
+  padding: 20px; border: 1px solid black;
+  div{width: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 22px;
+    cursor: pointer;
+  svg {
+      padding: 5px;
+      text-align: center;
+      border-radius: 10px;}
+    span {
+      color: white;
+      font-weight: 400;
+      padding-left: 10px;
+      text-align: center;
+    }
+    }
+  .selectedNavAll{
+        //&:hover {box-shadow: none;box-shadow: 2px 2px 3px rgb(66, 3, 124);}
+    svg{   color: white;
+            background-color: rgb(93, 38, 187);
+            box-shadow: 2px 2px 3px rgb(66, 3, 124);}
+    span{font-weight: 600}
+  }
+
+  .notSelectedNavAll{
+    svg{color: rgb(51, 25, 124);
+      background-color: rgba(236, 231, 231, 0.664);
+        //&:hover {box-shadow: 2px 5px 3px rgb(66, 3, 124);}
+        }
+  }
+    }
+
+}
+
+
 
 //different VH or VW
 @media screen and (min-width: 480px) {

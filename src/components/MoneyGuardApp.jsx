@@ -9,8 +9,8 @@ const Logout = lazy(() => import('../pages/Logout'));
 const NewCard = lazy(() => import('../pages/NewCard'));
 const Currency = lazy(() => import('../pages/Currency'));
 const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
-const NewCoin = lazy(() => import("./NewCoin"));
-
+const NewCoin = lazy(() => import('./NewCoin'));
+const AllinOne = lazy(() => import('../pages/AllinOne'));
 
 const MoneyGuardApp = () => {
   const localDataCardsNotParsed = localStorage.getItem('listCards') || '[]';
@@ -38,11 +38,16 @@ const MoneyGuardApp = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/newCard" element={<NewCard info={isArr} />} />
         <Route path="/newCard/:id" element={<NewCard info={isArr} />} />
-        <Route path="/statistics" element={<ExpensesStatistics info={isArr} />} />
+        <Route
+          path="/statistics"
+          element={<ExpensesStatistics info={isArr} />}
+        />
         <Route path="/currency" element={<Currency />} />
-        <Route path="/currency/:name" element={<NewCoin/>} />
-        <Route path="/currency/newCoin" element={<NewCoin/>} />
+        <Route path="/currency/:name" element={<NewCoin />} />
+        <Route path="/currency/newCoin" element={<NewCoin />} />
+              <Route path="/all" element={<AllinOne />} />
       </Route>
+
     </Routes>
   );
 };
