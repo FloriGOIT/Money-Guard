@@ -1197,16 +1197,16 @@ ul li {
   height: 100vh;
   padding-top: 64px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   box-sizing: border-box;
   .allinOneContainerPermanent {
     display: flex;
     flex-direction: column;
     padding-left: 20px;
     height: 100vh;
-    width: 35vw;
+    width: 5vw;
+    overflow: hidden;
     border-right: 2px solid rgba(206, 204, 204, 0.664);
-
   }
   nav {
     width: fit-content;
@@ -1216,7 +1216,6 @@ ul li {
       display: flex;
       flex-direction: row;
       align-items: center;
-      font-size: 22px;
       cursor: pointer;
 
       svg {
@@ -1240,15 +1239,18 @@ ul li {
     .selectedNavAll {
       svg {
         color: white;
-        background-color: rgb(93, 38, 187);
+        background-color: rgb(115, 38, 187);
       }
       span {
+        font-size: 23px;
         font-weight: 600;
       }
     }
 
     .notSelectedNavAll {
-      //pointer-events: none;
+      span {
+        font-size: 22px;
+      }
       svg {
         color: rgb(51, 25, 124);
         background-color: rgba(236, 231, 231, 0.664);
@@ -1262,7 +1264,7 @@ ul li {
   .totalSum {
     width: inherit;
     box-sizing: border-box;
-    background-color: rgba(93, 38, 187);
+    background-color: rgba(115, 38, 187, 0.705);
     padding: 10px 20px;
     border-radius: 10px;
     border-top-right-radius: 0px;
@@ -1277,81 +1279,167 @@ ul li {
   }
 
   .currencyTable {
-      font-size: 18px;
-      width: inherit;
-      border-radius: 10px;
-          border-top-right-radius: 0px;
-            border-bottom-right-radius: 0px;
-      padding: 20px 20px;
-      box-sizing: border-box;
+    font-size: 18px;
+    width: inherit;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(92, 38, 187);
+    background-image: url('../helpers/graphBackground.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: none;
+    min-height: 250px;
+
+    .currencyTableHeader {
+      padding-left: 65px;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background-color: rgb(92, 38, 187);
-      background-image: url('../helpers/graphBackground.jpg');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      box-shadow: none;
-      min-height: 250px;
-  
-      .currencyTableHeader {
-        padding-left: 45px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 173px;
-  
-        span {
-          font-weight: 600;
-          font-size: 16px;
-          display: block;
-          text-align: center;
-          width: 50px;
-          color: white;
-        }
-      }
-  
-      .currencyTableRow {
-        color: white;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 16px;
-  
-        .currencyTableRate {
-          width: 50px;
-        }
-  
-        .currencyTableNotRate,
-        .currencyTableContent {
-          font-weight: 600;
-        }
-      }
-  
-      .editCurrency,
-      .deletCurrency {
-        padding: 0px;
-        background-color: inherit;
-        text-align: center;
-        font-size: 18px;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 219px;
+
+      span {
+        box-sizing: border-box;
         font-weight: 400;
-        border: none;
-        border-radius: 30%;
-        cursor: pointer;
-        height: 28px;
-        color: rgba(206, 204, 204, 0.664);
-  
-        svg {
-          padding-top: 5px;
+        font-size: 20px;
+        display: block;
+        text-align: center;
+        width: 73px;
+        color: white;
+      }
+    }
+
+    .currencyTableRow {
+      color: white;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .currencyTableRate {
+        font-size: 18px;
+        width: 50px;
+      }
+
+      .currencyTableNotRate,
+      .currencyTableContent {
+        font-size: 20px;
+        font-weight: 400;
+      }
+    }
+
+    .editCurrency,
+    .deletCurrency {
+      padding: 0px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 400;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      height: 28px;
+      color: white;
+      box-sizing: border-box;
+      width: 50px;
+      &:hover {
+        box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      }
+      svg {
+        padding-top: 5px;
+      }
+    }
+    .deletCurrency {
+      background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+      background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+      color: white;
+    }
+    .editCurrency {
+      background-color: white;
+      color: rgb(92, 38, 187);
+    }
+  }
+
+  .allinOneContainerRight {
+    .listCardsTabletContainer {
+      box-sizing: border-box;
+      width: 60vw;
+      margin: 20px 20px;
+      height: 500px;
+
+      table {
+        padding: 0px 10px;
+        width: 60vw;
+        border: 1px solid rgba(206, 204, 204, 0.664);
+        border-radius: 20px;
+        text-align: center;
+        background-color: rgba(115, 38, 187, 0.705);
+        thead, tbody{display: 'block'; width: inherit;}
+        tbody{overflow-y: auto;}
+        
+        .cardDate {
+          width: 85px;
         }
-  
-        &:hover {
+        .cardType {
+          width: 50px;
+        }
+        .cardCategory {
+          width: 100px;
+        }
+        .cardDetails {
+          width: 280px;
+        }
+        .cardAmount {
+          width: 100px;
+        }
+        .cardButton {
+          width: 60px;
+        }
+        .editCurrency,
+        .deletCurrency {
+          padding: 0px;
+          text-align: center;
+          font-size: 18px;
+          font-weight: 400;
+          border: none;
+          border-radius: 20px;
+          cursor: pointer;
+          height: 28px;
           color: white;
+          box-sizing: border-box;
+          width: 51px;
+
+          &:hover {
+            box-shadow: 2px 2px 3px rgb(66, 3, 124);
+          }
+
+          svg {
+            padding-top: 5px;
+          }
+        }
+
+        .deletCurrency {
+          background: -webkit-linear-gradient(
+            to right,
+            #f3a73c,
+            hwb(288 30% 11%)
+          );
+          background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+          color: white;
+        }
+
+        .editCurrency {
+          background-color: white;
+          color: rgb(92, 38, 187);
         }
       }
     }
+  }
 }
 
 //different VH or VW
@@ -1402,72 +1490,85 @@ ul li {
       rgb(36, 18, 87) 100%
     );
   }
-  .currencyWrapper .currencyContainer {
-    width: 450px;
-    margin: 0px auto;
-    .currencyContainerHeader {
-      .addCoinButton {
-        padding-right: 0px;
-      }
-    }
-  }
-  .currencyTable {
-    box-sizing: border-box;
-    padding: 15px 10px 15px 10px;
-    width: 450px;
 
-    .currencyTableHeader {
-      padding-left: 55px;
-      width: 250px;
-
-      span {
-        font-size: 21px;
-        width: 75px;
-      }
-    }
-
-    .currencyTableRow {
-      font-size: 21px;
-      .currencyTableRate {
-        box-sizing: border-box;
-        width: 75px;
-      }
-      .currencyTableNotRate,
-      .editCurrency,
-      .deletCurrency {
-        box-sizing: border-box;
-        width: 50px;
-      }
-    }
-
-    .editCurrency,
-    .deletCurrency {
-      font-size: 20px;
-      width: 75px;
-      border-radius: 30px;
-      &:hover {
-        box-shadow: 2px 2px 3px rgb(66, 3, 124);
-      }
-    }
-    .deletCurrency {
-      background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-      background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-      color: white;
-    }
-
-    .editCurrency {
-      background-color: white;
-      color: rgb(92, 38, 187);
-      &:hover {
-        color: rgb(92, 38, 187);
-      }
-
-      svg {
-        padding-bottom: 10px;
-      }
-    }
-  }
   .newCoinWrapper {
     padding-top: calc((100vh - 500px - 64px) / 2);
   }
 }
+
+/*
+
+    .currencyWrapper .currencyContainer {
+      width: 450px;
+      margin: 0px auto;
+  
+      .currencyContainerHeader {
+        .addCoinButton {
+          padding-right: 0px;
+        }
+      }
+    }
+  
+    .currencyTable {
+      box-sizing: border-box;
+      padding: 15px 10px 15px 10px;
+      width: 450px;
+  
+      .currencyTableHeader {
+        padding-left: 55px;
+        width: 250px;
+  
+        span {
+          font-size: 21px;
+          width: 75px;
+        }
+      }
+  
+      .currencyTableRow {
+        font-size: 21px;
+  
+        .currencyTableRate {
+          box-sizing: border-box;
+          width: 75px;
+        }
+  
+        .currencyTableNotRate,
+        .editCurrency,
+        .deletCurrency {
+          box-sizing: border-box;
+          width: 50px;
+        }
+      }
+  
+      .editCurrency,
+      .deletCurrency {
+        font-size: 20px;
+        width: 75px;
+        border-radius: 30px;
+  
+        &:hover {
+          box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        }
+      }
+  
+      .deletCurrency {
+        background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+        background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+        color: white;
+      }
+  
+      .editCurrency {
+        background-color: white;
+        color: rgb(92, 38, 187);
+  
+        &:hover {
+          color: rgb(92, 38, 187);
+        }
+  
+        svg {
+          padding-bottom: 10px;
+        }
+      }
+    }
+
+*/

@@ -1,5 +1,5 @@
 import style from '../components/moneyGuard.module.scss';
-import ListCards from '../components/ListCards';
+import ListCardsMobile from '../components/ListCardsMobile';
 import Nav from 'components/Nav';
 
 const Home = ({info,handleDeleteCard}) => {
@@ -7,7 +7,7 @@ const Home = ({info,handleDeleteCard}) => {
     <section className={style.homePageWrapper}>
       <div className={style.homePage}>
         <Nav />
-        <ListCards info={info} handleDeleteCard={handleDeleteCard} />
+        <ListCardsMobile info={info} handleDeleteCard={handleDeleteCard} />
       </div>
     </section>
   );

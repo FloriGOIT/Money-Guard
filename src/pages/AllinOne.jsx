@@ -4,6 +4,7 @@ import { ImStatsDots } from 'react-icons/im';
 import { useState } from 'react';
 import Balance from 'components/Balance';
 import CurrencyTable from "../components/CurrencyTable"
+import ListCardsTablet from 'components/ListCardsTablet';
 
 const AllinOne = ({ info }) => {
   const [isHomeSelected, setIsHomeSelected] = useState(true);
@@ -13,7 +14,10 @@ const AllinOne = ({ info }) => {
       <div className={style.allinOneContainerPermanent}>
         <NavAll isHomeSelected={isHomeSelected} handleNav={handleNav} />
         <Balance info={info} />
-        <CurrencyTable/>
+        <CurrencyTable />
+      </div>
+      <div className={style.allinOneContainerRight}>
+        <ListCardsTablet info={info} />
       </div>
     </section>
   );

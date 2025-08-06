@@ -7,7 +7,7 @@ import { useState,useEffect } from 'react';
 import { months, currentYear } from 'helpers/timeInfo';
 import Balance from './Balance';
 
-const ListCards = ({ info, handleDeleteCard }) => {
+const ListCardsMobile = ({ info, handleDeleteCard }) => {
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
   const [isSelectedMonth, setIsSelectedMonth] = useState('-');
   const [arrayMonthInSelectedYear, setArrayMonthInSelectedYear] = useState([]);
@@ -78,6 +78,6 @@ const handleMonth = value => setIsSelectedMonth(value);
   );
 };
 
-export default ListCards;
+export default ListCardsMobile;
 
 //<button type='button' className={`${style.addCard} ${style.selectedBtn}`}><IoAddSharp/></button>

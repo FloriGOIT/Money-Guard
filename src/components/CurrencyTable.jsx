@@ -60,3 +60,5 @@ const CurrencyTable = () => {
 };
 
 export default CurrencyTable;
+
+
