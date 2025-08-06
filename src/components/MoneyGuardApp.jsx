@@ -45,7 +45,7 @@ const MoneyGuardApp = () => {
         <Route path="/currency" element={<Currency />} />
         <Route path="/currency/:name" element={<NewCoin />} />
         <Route path="/currency/newCoin" element={<NewCoin />} />
-              <Route path="/all" element={<AllinOne />} />
+              <Route path="/all" element={<AllinOne info={isArr}/>} />
       </Route>
 
     </Routes>

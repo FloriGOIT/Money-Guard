@@ -4,21 +4,14 @@ import { IoAddSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import ModalTime from './ModalTime';
 import { useState,useEffect } from 'react';
-import { months,currentYear } from 'helpers/timeInfo';
+import { months, currentYear } from 'helpers/timeInfo';
+import Balance from './Balance';
 
 const ListCards = ({ info, handleDeleteCard }) => {
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
   const [isSelectedMonth, setIsSelectedMonth] = useState('-');
   const [arrayMonthInSelectedYear, setArrayMonthInSelectedYear] = useState([]);
 
-  const balance = info.reduce((acc, data) => {
-    if (data.type === false) {
-      return acc + Number(data.amount);
-    } else if (data.type === true) {
-      return acc - Number(data.amount);
-    }
-    return acc;
-  }, 0);
 
   const handleYear = value => setIsSelectedYear(value);
   const filterYearsForSelection = info
@@ -47,29 +40,13 @@ const handleMonth = value => setIsSelectedMonth(value);
 
   const arrDataByYear = info.filter(data => Number(data.year) === Number(isSelectedYear))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
-  console.log("arrDataByYear",arrDataByYear)
   const arrDataByYearAndMonth = arrDataByYear.filter(data => data.month === isSelectedMonth)
-  console.log("arrDataByYearAndMonth",arrDataByYearAndMonth)
   const arrDataToDisplay = isSelectedMonth === "-" ? arrDataByYear : arrDataByYearAndMonth
 
 
   return (
     <section className={style.listCards}>
-      <div className={style.totalSum}>
-        <span>
-          Balance: <br />
-          <span
-            style={{
-              color: balance <= 0 ? '#be242496' : 'rgb(194, 240, 126)',
-              fontWeight: 900,
-            }}
-          >
-            {' '}
-            {new Intl.NumberFormat('fr-FR').format(balance.toFixed(2))}
-          </span>{' '}
-          RON
-        </span>
-      </div>
+      <Balance info={info} />
 
       <ModalTime
         initialValue={isSelectedYear}

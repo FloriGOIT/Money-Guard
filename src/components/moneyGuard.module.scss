@@ -355,9 +355,8 @@ ul li {
         border-radius: 10px;
         margin-bottom: 0px;
         margin-left: 7px;
-        
+
         span {
-          
           padding-left: 6px;
           padding-top: 7px;
         }
@@ -389,7 +388,6 @@ ul li {
         border: 1px solid rgba(206, 204, 204, 0.664);
         border-radius: 0px 0px 10px 10px;
         border-top: none;
-
 
         li {
           cursor: pointer;
@@ -1187,57 +1185,174 @@ ul li {
   }
 }
 
-
 //allinOne
 
-.allinOneWrapper{
-background-image: url('../helpers/coins.png'),
+.allinOneWrapper {
+  background-image: url('../helpers/coins.png'),
     url('../helpers/simpleBackground.jpg');
   background-repeat: no-repeat, no-repeat;
   background-position: center top 55px, center;
   background-size: cover, cover;
   background-attachment: fixed;
   height: 100vh;
-  padding-top:64px;
-  
-  nav{
-  padding: 20px; border: 1px solid black;
-  div{width: 100px;
+  padding-top: 64px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  .allinOneContainerPermanent {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 22px;
-    cursor: pointer;
-  svg {
-      padding: 5px;
-      text-align: center;
-      border-radius: 10px;}
-    span {
-      color: white;
-      font-weight: 400;
-      padding-left: 10px;
-      text-align: center;
-    }
-    }
-  .selectedNavAll{
-        //&:hover {box-shadow: none;box-shadow: 2px 2px 3px rgb(66, 3, 124);}
-    svg{   color: white;
-            background-color: rgb(93, 38, 187);
-            box-shadow: 2px 2px 3px rgb(66, 3, 124);}
-    span{font-weight: 600}
-  }
+    flex-direction: column;
+    padding-left: 20px;
+    height: 100vh;
+    width: 35vw;
+    border-right: 2px solid rgba(206, 204, 204, 0.664);
 
-  .notSelectedNavAll{
-    svg{color: rgb(51, 25, 124);
-      background-color: rgba(236, 231, 231, 0.664);
-        //&:hover {box-shadow: 2px 5px 3px rgb(66, 3, 124);}
+  }
+  nav {
+    width: fit-content;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 22px;
+      cursor: pointer;
+
+      svg {
+        font-size: 22px;
+        padding: 5px;
+        text-align: center;
+        border-radius: 10px;
+        width: 24px;
+      }
+      span {
+        color: white;
+        font-weight: 400;
+        padding-left: 10px;
+        text-align: center;
+      }
+      &:first-child {
+        margin-bottom: 20px;
+      }
+    }
+
+    .selectedNavAll {
+      svg {
+        color: white;
+        background-color: rgb(93, 38, 187);
+      }
+      span {
+        font-weight: 600;
+      }
+    }
+
+    .notSelectedNavAll {
+      //pointer-events: none;
+      svg {
+        color: rgb(51, 25, 124);
+        background-color: rgba(236, 231, 231, 0.664);
+
+        &:hover {
+          box-shadow: 2px 2px 2px rgb(29, 11, 73);
         }
-  }
+      }
     }
+  }
+  .totalSum {
+    width: inherit;
+    box-sizing: border-box;
+    background-color: rgba(93, 38, 187);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 25px;
+    font-weight: 100;
+    color: white;
+    margin-bottom: 40px;
+  }
 
+  .currencyTable {
+      font-size: 18px;
+      width: inherit;
+      border-radius: 10px;
+          border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+      padding: 20px 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: rgb(92, 38, 187);
+      background-image: url('../helpers/graphBackground.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      box-shadow: none;
+      min-height: 250px;
+  
+      .currencyTableHeader {
+        padding-left: 45px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 173px;
+  
+        span {
+          font-weight: 600;
+          font-size: 16px;
+          display: block;
+          text-align: center;
+          width: 50px;
+          color: white;
+        }
+      }
+  
+      .currencyTableRow {
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+  
+        .currencyTableRate {
+          width: 50px;
+        }
+  
+        .currencyTableNotRate,
+        .currencyTableContent {
+          font-weight: 600;
+        }
+      }
+  
+      .editCurrency,
+      .deletCurrency {
+        padding: 0px;
+        background-color: inherit;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 400;
+        border: none;
+        border-radius: 30%;
+        cursor: pointer;
+        height: 28px;
+        color: rgba(206, 204, 204, 0.664);
+  
+        svg {
+          padding-top: 5px;
+        }
+  
+        &:hover {
+          color: white;
+        }
+      }
+    }
 }
-
-
 
 //different VH or VW
 @media screen and (min-width: 480px) {
