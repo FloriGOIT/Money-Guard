@@ -18,7 +18,6 @@ const AllinOne = ({ info }) => {
         <CurrencyTable />
       </div>
       <div className={style.allinOneContainerRight}>
-
         <ModalTimeSelect info={info} />
         <ListCardsTablet info={info} />
       </div>
