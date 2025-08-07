@@ -14,13 +14,13 @@ const ListCardsTablet = ({ info }) => {
       <table>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>
+            <th  style={{width: "100px"}}>Date</th>
+            <th className={style.piPlusMinusBold}>
               <PiPlusMinusBold />
             </th>
-            <th>Category</th>
-            <th>Comment</th>
-            <th>Sum</th>
+            <th style={{width: "100px"}}>Category</th>
+            <th style={{width: "340px"}}>Comment</th>
+            <th style={{width: "100px"}}>Sum</th>
             <th></th>
             <th></th>
           </tr>
@@ -28,19 +28,19 @@ const ListCardsTablet = ({ info }) => {
         <tbody>
           {info.map(card => (
             <tr key={card.id} >
-              <td className={style.cardDate}>{card.date}</td>
+              <td className={style.cardDate} style={{width: "100px"}}>{card.date}</td>
               <td className={style.cardType}>
-                {card.type ? <ImPlus /> : <ImMinus />}
+                {card.type ? <ImPlus className={style.imPlus}/> : <ImMinus className={style.imMinus}/>}
               </td>
-              <td className={style.cardCategory}>{card.category}</td>
-              <td className={style.cardDetails}>{card.details}</td>
-              <td className={style.cardAmount}>{card.amount}</td>
-              <td className={style.cardButton}>
+              <td className={style.cardCategory} style={{width: "100px"}}>{card.category}</td>
+              <td className={style.cardDetails} style={{width: "340px", color: "wheat"}}>{card.details}</td>
+              <td className={style.cardAmount} style={{width: "80px"}}>{card.amount}</td>
+              <td className={style.cardButton} style={{padding:"0px 5px 5px 5px"}}>
                 <div className={style.deletCurrency}>
                   <MdDeleteOutline />
                 </div>
               </td>
-              <td className={style.cardButton}>
+              <td className={style.cardButton} style={{padding:"0px 5px 5px 5px"}}>
                 <div className={style.editCurrency}>
                   <MdOutlineModeEdit />
                 </div>

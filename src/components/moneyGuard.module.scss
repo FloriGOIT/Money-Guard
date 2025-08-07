@@ -1202,7 +1202,7 @@ ul li {
     flex-direction: column;
     padding-left: 20px;
     height: 100vh;
-    width: 5vw;
+    width: 30vw;
     overflow: hidden;
     border-right: 2px solid rgba(206, 204, 204, 0.664);
   }
@@ -1368,45 +1368,68 @@ ul li {
       box-sizing: border-box;
       width: 60vw;
       margin: 40px 20px;
-      
 
       table {
-        padding: 0px 10px;
-        width: 60vw;
-        border: 1px solid rgba(206, 204, 204, 0.664);
+        width: 65vw;
+        table-layout: fixed;
+        border-collapse: collapse;
         border-radius: 20px;
         text-align: center;
-        background-color: rgba(115, 38, 187, 0.705);
+        background-color: rgba(115, 38, 187);
+        padding: 0px;
+        thead {
+          display: block;
+          font-size: 20px;
+          background-color: rgb(53, 21, 104);
+          padding: 0px 10px 10px 10px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          svg {
+            font-size: 25px;
+            padding-top:15px;
+          }
+        }
+
+        tbody {
+          display: block;
+          padding: 0px 10px 0px 10px;
+          overflow-y: scroll;
+          max-height: 400px;
+
+          tr{border-bottom: 2px solid rgba(206, 204, 204, 0.664);margin-top: 15px;}
+          &::-webkit-scrollbar {
+            width: 10px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background: rgba(115, 38, 187, 0.705);
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: rgba(206, 204, 204, 0.664);
+            border-radius: 8px;
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background: rgb(206, 204, 204);
+          }
+
+          .imPlus {
+            color:rgb(207, 47, 47);  text-align: center;
+          }
+          .imMinus {
+            color:  rgb(119, 235, 65); text-align: center;
+          }
+        }
 
         tr {
           display: table;
           width: 100%;
           table-layout: fixed;
+          color: white;
+        }
 
-          tbody {
-            display: block;
-            overflow-y: scroll;
-        height: 300px;
-          }
-        }
-        .cardDate {
-          width: 85px;
-        }
-        .cardType {
-          width: 50px;
-        }
-        .cardCategory {
-          width: 100px;
-        }
-        .cardDetails {
-          width: 280px;
-        }
-        .cardAmount {
-          width: 100px;
-        }
-        .cardButton {
-          width: 60px;
-        }
+
         .editCurrency,
         .deletCurrency {
           padding: 0px;
