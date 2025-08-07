@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 
 
-const NewCoin = () => {
+const NewCoin = ({origin}) => {
   const [isCurrency, setIsCurrency] = useState({
     id:nanoid(),
     currencyName: '',
@@ -57,7 +57,7 @@ const NewCoin = () => {
       sellRate: '',
     });
 
-    navigate('/currency');
+    navigate(origin);
   };
 
   return (

@@ -1,0 +1,138 @@
+import style from '../components/moneyGuard.module.scss';
+import { useState, useEffect, useRef } from 'react';
+import { FaAngleDown } from 'react-icons/fa6';
+import { FaChevronUp } from 'react-icons/fa';
+import { nanoid } from 'nanoid';
+import { currentYear, currentMonthLetter } from 'helpers/timeInfo';
+
+/*
+      <ModalTime
+        initialValue={isSelectedYear}
+        infoPeriod={filterYearsForSelection}
+        handleYear={handleYear}
+        handleMonth={handleMonth}
+        name="years"
+      />
+
+      <ModalTime
+          initialValue={isSelectedMonth}
+          infoPeriod={arrayMonthInSelectedYear}
+          handleMonth={handleMonth}
+          name="months"
+      />
+        //const [isSelectedMonth, setIsSelectedMonth] = useState(currentMonthLetter);
+*/
+
+const ModalTimeSelect = ({ info }) => {
+        const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
+        const [isSelectedMonth, setIsSelectedMonth] = useState(currentMonthLetter);
+        const [isModalYearOn, setisModalYearOn] = useState(false);
+        const [isModalMonthOn, setisModalMonthOn] = useState(false);
+
+  const modalRefYear = useRef(null);
+  const modalRefMonth = useRef(null);       // Step 1: Create a ref
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if ((modalRefYear.current && !modalRefYear.current.contains(event.target)) || (modalRefMonth.current && !modalRefMonth.current.contains(event.target))) {
+        setisModalYearOn(false); setisModalMonthOn(false);
+      }
+    };
+
+    if (isModalYearOn || isModalMonthOn) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalYearOn,isModalMonthOn]);
+
+  const optionsYears = info
+    .map(el => el.year)
+                .filter((el, idx, arr) => arr.indexOf(el) === idx);
+        
+        const optionsMonths = info.filter(el => Number(el.year) === Number(isSelectedYear))
+                                  .map(el => el.month)
+                                  .filter((el, idx, arr) => arr.indexOf(el) === idx)
+
+        console.log("optionsMonths",optionsMonths)
+
+  const handleOptionYear = value => {
+    setisModalYearOn(false);
+    setIsSelectedYear(value);
+        };
+          const handleOptionMonth = value => {
+    setisModalMonthOn(false);
+    setIsSelectedMonth(value);
+  };
+
+  return (
+    <div className={style.modalTimeSelect} ref={modalRefMonth}>
+      <div className={style.years}>
+        <div
+          className={
+            isModalYearOn
+              ? `${style.headerPeriodOff} ${style.headerPeriodOn}`
+              : `${style.headerPeriodOff}`
+          }
+        >
+          <span>{isSelectedYear}</span>
+          <button
+            type="button"
+            onClick={e => {
+              e.preventDefault();
+              setisModalYearOn(prev => !prev);
+            }}
+          >
+            {isModalYearOn ? <FaChevronUp /> : <FaAngleDown />}
+          </button>
+        </div>
+        {isModalYearOn && (
+          <ul className={`${style.listPeriod}`}>
+            {optionsYears.map(item => (
+              <li key={nanoid()}>
+                <button type="button" onClick={() => handleOptionYear(item)}>
+                  {item}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className={style.months}>
+        <div
+          className={
+            isModalMonthOn
+              ? `${style.headerPeriodOff} ${style.headerPeriodOn}`
+              : `${style.headerPeriodOff}`
+          }
+        >
+          <span>{isSelectedMonth}</span>
+          <button
+            type="button"
+            onClick={e => {
+              e.preventDefault();
+              setisModalMonthOn(prev => !prev);
+            }}
+          >
+            {isModalMonthOn ? <FaChevronUp /> : <FaAngleDown />}
+          </button>
+        </div>
+        {isModalMonthOn && (
+          <ul className={`${style.listPeriod}`}>
+            {optionsMonths.map(item => (
+              <li key={nanoid()}>
+                <button type="button" onClick={() => handleOptionMonth(item)}>
+                  {item}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default ModalTimeSelect;

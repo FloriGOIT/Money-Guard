@@ -1192,23 +1192,23 @@ ul li {
   background-position: center top 55px, center;
   background-size: cover, cover;
   background-attachment: fixed;
-  min-height: calc(100vh - 64px);
+  min-height: 100vh;
   padding-top: 64px;
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
   .allinOneContainerPermanent {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     padding-left: 20px;
-    height: 100vh;
-    width: 30vw;
+    padding-top: 30px;
+    width: 5vw;
     overflow: hidden;
     border-right: 2px solid rgba(206, 204, 204, 0.664);
   }
   nav {
     width: fit-content;
-    margin-top: 40px;
     margin-bottom: 40px;
     div {
       display: flex;
@@ -1262,8 +1262,8 @@ ul li {
   .totalSum {
     width: inherit;
     box-sizing: border-box;
-    background-color: rgba(115, 38, 187, 0.705);
-    padding: 10px 20px;
+    background-color: rgba(115, 38, 187, 0.789);
+    padding: 10px 10px;
     border-radius: 10px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -1282,7 +1282,7 @@ ul li {
     border-radius: 10px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    padding: 30px 20px;
+    padding: 30px 30px 30px 10px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -1364,24 +1364,97 @@ ul li {
   }
 
   .allinOneContainerRight {
+      width: 70vw;
+      .modalTimeSelect {
+          .headerPeriodOff {
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: inherit;
+            padding: 5px 10px;
+            border: 1px solid rgba(206, 204, 204, 0.664);
+            background-color: rgb(75, 40, 168);
+            border-radius: 10px;
+      
+            span {
+              padding-left: 6px;
+              padding-top: 7px;
+            }
+      
+            button {
+              border: none;
+              background-color: inherit;
+              color: inherit;
+              font-size: 21px;
+              margin-top: 5px;
+              cursor: pointer;
+            }
+          }
+      
+          .headerPeriodOn {
+            border-radius: 10px 10px 0px 0px;
+          }
+      
+          .listPeriod {
+            box-sizing: border-box;
+            width: 300px;
+            background: linear-gradient(140deg,
+                rgb(247, 201, 141) 10%,
+                rgb(151, 85, 204) 45%,
+                rgb(123, 20, 192) 80%);
+            border: 1px solid rgba(206, 204, 204, 0.664);
+            border-radius: 0px 0px 10px 10px;
+            border-top: none;
+      
+            li {
+              cursor: pointer;
+            }
+      
+            li button {
+              background-color: inherit;
+              box-sizing: border-box;
+              width: 100%;
+              border: none;
+              outline: none;
+              color: white;
+              font-size: 16px;
+              font-weight: 400;
+              padding: 5px 15px;
+              cursor: pointer;
+            }
+      
+            li:hover {
+              background-color: rgb(160, 116, 236);
+            }
+      
+            li:last-of-type:hover,
+            li:last-of-type button:hover {
+              background-color: rgb(160, 116, 236);
+              border-radius: 0px 0px 10px 10px;
+            }
+          }
+        }
     .listCardsTabletContainer {
       box-sizing: border-box;
-      width: 60vw;
-      margin: 40px 20px;
-
+      padding: 30px 0px;
+      width: 65vw;
+      margin: 0px auto;
       table {
-        width: 65vw;
         table-layout: fixed;
         border-collapse: collapse;
         border-radius: 20px;
         text-align: center;
-        background-color: rgba(115, 38, 187);
+        background-color: rgba(115, 38, 187, 0.876);
         padding: 0px;
+        
         thead {
           display: block;
           font-size: 20px;
-          background-color: rgb(53, 21, 104);
-          padding: 0px 10px 10px 10px;
+          background-color: rgb(53, 21, 104,0.876);
+          padding: 8px 10px 8px 10px;
           border-top-left-radius: 10px;
           border-top-right-radius: 10px;
           svg {
@@ -1394,9 +1467,8 @@ ul li {
           display: block;
           padding: 0px 10px 0px 10px;
           overflow-y: scroll;
-          max-height: 400px;
-
-          tr{border-bottom: 2px solid rgba(206, 204, 204, 0.664);margin-top: 15px;}
+          max-height: 350px;
+          tr{border-bottom: 2px solid rgba(206, 204, 204, 0.664); margin:5px 0px}
           &::-webkit-scrollbar {
             width: 10px;
           }
@@ -1427,6 +1499,7 @@ ul li {
           width: 100%;
           table-layout: fixed;
           color: white;
+          font-weight: 600;
         }
 
 
@@ -1527,21 +1600,5 @@ ul li {
 }
 
 /*
-                        &::-webkit-scrollbar {
-                          width: 8px;
-                        }
-            
-                        &::-webkit-scrollbar-track {
-                          background: #f1f1f1;
-                          border-radius: 8px;
-                        }
-            
-                        &::-webkit-scrollbar-thumb {
-                          background: #888;
-                          border-radius: 8px;
-                        }
-            
-                        &::-webkit-scrollbar-thumb:hover {
-                          background: #555;
-                        }
+
 */

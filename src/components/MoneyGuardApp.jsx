@@ -14,8 +14,9 @@ const AllinOne = lazy(() => import('../pages/AllinOne'));
 
 const MoneyGuardApp = () => {
   const localDataCardsNotParsed = localStorage.getItem('listCards') || '[]';
-  const localDataCardsParsed = JSON.parse(localDataCardsNotParsed);
-  const [isArr, setIsArr] = useState(localDataCardsParsed);
+  const localDataCardsParsed = JSON.parse(localDataCardsNotParsed)
+  const localDataCards = localDataCardsParsed.sort((a,b)=> new Date(b.date) - new Date(a.date))
+  const [isArr, setIsArr] = useState(localDataCards);
 
   useEffect(
     () => localStorage.setItem('listCards', JSON.stringify(isArr)),
@@ -43,11 +44,10 @@ const MoneyGuardApp = () => {
           element={<ExpensesStatistics info={isArr} />}
         />
         <Route path="/currency" element={<Currency />} />
-        <Route path="/currency/:name" element={<NewCoin />} />
-        <Route path="/currency/newCoin" element={<NewCoin />} />
-              <Route path="/all" element={<AllinOne info={isArr}/>} />
+        <Route path="/currency/:name" element={<NewCoin origin="/currency"/>} />
+        <Route path="/currency/newCoin" element={<NewCoin origin="/currency"/>} />
+        <Route path="/all" element={<AllinOne info={isArr} origin="/all" />} />
       </Route>
-
     </Routes>
   );
 };

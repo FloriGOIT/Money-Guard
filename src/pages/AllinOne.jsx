@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Balance from 'components/Balance';
 import CurrencyTable from "../components/CurrencyTable"
 import ListCardsTablet from 'components/ListCardsTablet';
+import ModalTimeSelect from 'components/ModalTimeSelect';
 
 const AllinOne = ({ info }) => {
   const [isHomeSelected, setIsHomeSelected] = useState(true);
@@ -17,6 +18,8 @@ const AllinOne = ({ info }) => {
         <CurrencyTable />
       </div>
       <div className={style.allinOneContainerRight}>
+
+        <ModalTimeSelect info={info} />
         <ListCardsTablet info={info} />
       </div>
     </section>
