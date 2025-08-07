@@ -301,15 +301,13 @@ ul li {
 .statisticsWrapper,
 .currencyWrapper {
   width: 100%;
-
+  min-height: calc(100vh - 64px);
   background: radial-gradient(
     circle,
     rgb(69 77 219) 30%,
     rgb(54 40 168) 66%,
     rgb(36, 18, 87) 100%
   );
-
-  overflow: hidden;
 }
 
 .homePage {
@@ -1194,7 +1192,7 @@ ul li {
   background-position: center top 55px, center;
   background-size: cover, cover;
   background-attachment: fixed;
-  height: 100vh;
+  min-height: calc(100vh - 64px);
   padding-top: 64px;
   display: flex;
   flex-direction: row;
@@ -1369,8 +1367,8 @@ ul li {
     .listCardsTabletContainer {
       box-sizing: border-box;
       width: 60vw;
-      margin: 20px 20px;
-      height: 500px;
+      margin: 40px 20px;
+      
 
       table {
         padding: 0px 10px;
@@ -1379,9 +1377,18 @@ ul li {
         border-radius: 20px;
         text-align: center;
         background-color: rgba(115, 38, 187, 0.705);
-        thead, tbody{display: 'block'; width: inherit;}
-        tbody{overflow-y: auto;}
-        
+
+        tr {
+          display: table;
+          width: 100%;
+          table-layout: fixed;
+
+          tbody {
+            display: block;
+            overflow-y: scroll;
+        height: 300px;
+          }
+        }
         .cardDate {
           width: 85px;
         }
@@ -1497,78 +1504,21 @@ ul li {
 }
 
 /*
-
-    .currencyWrapper .currencyContainer {
-      width: 450px;
-      margin: 0px auto;
-  
-      .currencyContainerHeader {
-        .addCoinButton {
-          padding-right: 0px;
-        }
-      }
-    }
-  
-    .currencyTable {
-      box-sizing: border-box;
-      padding: 15px 10px 15px 10px;
-      width: 450px;
-  
-      .currencyTableHeader {
-        padding-left: 55px;
-        width: 250px;
-  
-        span {
-          font-size: 21px;
-          width: 75px;
-        }
-      }
-  
-      .currencyTableRow {
-        font-size: 21px;
-  
-        .currencyTableRate {
-          box-sizing: border-box;
-          width: 75px;
-        }
-  
-        .currencyTableNotRate,
-        .editCurrency,
-        .deletCurrency {
-          box-sizing: border-box;
-          width: 50px;
-        }
-      }
-  
-      .editCurrency,
-      .deletCurrency {
-        font-size: 20px;
-        width: 75px;
-        border-radius: 30px;
-  
-        &:hover {
-          box-shadow: 2px 2px 3px rgb(66, 3, 124);
-        }
-      }
-  
-      .deletCurrency {
-        background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-        background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-        color: white;
-      }
-  
-      .editCurrency {
-        background-color: white;
-        color: rgb(92, 38, 187);
-  
-        &:hover {
-          color: rgb(92, 38, 187);
-        }
-  
-        svg {
-          padding-bottom: 10px;
-        }
-      }
-    }
-
+                        &::-webkit-scrollbar {
+                          width: 8px;
+                        }
+            
+                        &::-webkit-scrollbar-track {
+                          background: #f1f1f1;
+                          border-radius: 8px;
+                        }
+            
+                        &::-webkit-scrollbar-thumb {
+                          background: #888;
+                          border-radius: 8px;
+                        }
+            
+                        &::-webkit-scrollbar-thumb:hover {
+                          background: #555;
+                        }
 */
