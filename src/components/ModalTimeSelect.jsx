@@ -30,7 +30,7 @@ const ModalTimeSelect = ({ info }) => {
         const [isModalMonthOn, setisModalMonthOn] = useState(false);
 
   const modalRefYear = useRef(null);
-  const modalRefMonth = useRef(null);       // Step 1: Create a ref
+  const modalRefMonth = useRef(null); 
   useEffect(() => {
     const handleClickOutside = event => {
       if ((modalRefYear.current && !modalRefYear.current.contains(event.target)) || (modalRefMonth.current && !modalRefMonth.current.contains(event.target))) {
