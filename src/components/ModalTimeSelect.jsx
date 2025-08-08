@@ -31,21 +31,33 @@ const ModalTimeSelect = ({ info }) => {
 
   const modalRefYear = useRef(null);
   const modalRefMonth = useRef(null); 
-  useEffect(() => {
-    const handleClickOutside = event => {
-      if ((modalRefYear.current && !modalRefYear.current.contains(event.target)) || (modalRefMonth.current && !modalRefMonth.current.contains(event.target))) {
-        setisModalYearOn(false); setisModalMonthOn(false);
-      }
-    };
 
-    if (isModalYearOn || isModalMonthOn) {
-      document.addEventListener('mousedown', handleClickOutside);
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (
+      modalRefYear.current &&
+      !modalRefYear.current.contains(event.target)
+    ) {
+      setisModalYearOn(false);
     }
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isModalYearOn,isModalMonthOn]);
+    if (
+      modalRefMonth.current &&
+      !modalRefMonth.current.contains(event.target)
+    ) {
+      setisModalMonthOn(false);
+    }
+  };
+
+  if (isModalYearOn || isModalMonthOn) {
+    document.addEventListener('mousedown', handleClickOutside);
+  }
+
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
+}, [isModalYearOn, isModalMonthOn]);
+
 
   const optionsYears = info
     .map(el => el.year)

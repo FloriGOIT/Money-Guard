@@ -1083,7 +1083,7 @@ ul li {
   flex-direction: column;
   gap: 10px;
   background-color: rgb(92, 38, 187);
-  background-image: url('../helpers/graphBackground.jpg');
+  background-image: url('../helpers/images/graphBackground.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1186,8 +1186,8 @@ ul li {
 //allinOne
 
 .allinOneWrapper {
-  background-image: url('../helpers/coins.png'),
-    url('../helpers/simpleBackground.jpg');
+  background-image: url('../helpers/images/coins.png'),
+    url('../helpers/images/simpleBackground.jpg');
   background-repeat: no-repeat, no-repeat;
   background-position: center top 55px, center;
   background-size: cover, cover;
@@ -1207,17 +1207,17 @@ ul li {
     width: 30vw;
     //width: 5vw;
     overflow: hidden;
-    border-right: 2px solid rgba(206, 204, 204, 0.664);
+    border-right: 2px solid rgba(206, 204, 204, 0.364);
   }
   nav {
-    width: fit-content;
+    width: fit-content; 
     div {
       display: flex;
       flex-direction: row;
       align-items: center;
       cursor: pointer;
-
-      svg {
+      
+      svg {border: 1px solid rgba(206, 204, 204, 0.364);
         font-size: 22px;
         padding: 5px;
         text-align: center;
@@ -1261,6 +1261,7 @@ ul li {
     }
   }
   .totalSum {
+    border: 1px solid rgba(206, 204, 204, 0.364);
     width: inherit;
     box-sizing: border-box;
     background-color: rgba(115, 38, 187, 0.789);
@@ -1277,7 +1278,7 @@ ul li {
   }
 
   .currencyTable {
-    font-size: 18px;
+    border: 1px solid rgba(206, 204, 204, 0.364);
     width: inherit;
     border-radius: 10px;
     border-top-right-radius: 0px;
@@ -1288,7 +1289,7 @@ ul li {
     flex-direction: column;
     gap: 10px;
     background-color: rgb(92, 38, 187);
-    background-image: url('../helpers/graphBackground.jpg');
+    background-image: url('../helpers/images/graphBackground.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -1305,7 +1306,7 @@ ul li {
       span {
         box-sizing: border-box;
         font-weight: 400;
-        font-size: 20px;
+        font-size: 19px;
         display: block;
         text-align: center;
         width: 73px;
@@ -1377,8 +1378,9 @@ ul li {
       gap: 30px;
       width: 65vw;
       margin-left: 20px;
-
+      
       .headerPeriodOff {
+        border: 1px solid rgba(206, 204, 204, 0.364);
         box-sizing: border-box;
         font-size: 16px;
         font-weight: 600;
@@ -1420,7 +1422,7 @@ ul li {
           rgb(151, 85, 204) 45%,
           rgb(123, 20, 192) 80%
         );
-        border: 1px solid rgba(206, 204, 204, 0.664);
+        border: 1px solid rgba(206, 204, 204, 0.364);
         border-radius: 0px 0px 10px 10px;
         border-top: none;
 
@@ -1459,9 +1461,11 @@ ul li {
       padding: 0px 0px;
       width: 65vw;
       table {
+        
         table-layout: fixed;
         border-collapse: collapse;
-        border-radius: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
         text-align: center;
         background-color: rgba(115, 38, 187, 0.876);
         padding: 0px;
@@ -1471,6 +1475,8 @@ ul li {
           font-size: 20px;
           background-color: rgb(53, 21, 104, 0.876);
           padding: 8px 10px 8px 10px;
+          border: 1px solid rgba(206, 204, 204, 0.364);
+          border-bottom: none;
           border-top-left-radius: 10px;
           border-top-right-radius: 10px;
           svg {
@@ -1587,8 +1593,8 @@ ul li {
   .statisticsWrapper,
   .currencyWrapper,
   .newCoinWrapper {
-    background-image: url('../helpers/coins.png'),
-      url('../helpers/simpleBackground.jpg');
+    background-image: url('../helpers/images/coins.png'),
+      url('../helpers/images/simpleBackground.jpg');
     background-repeat: no-repeat, no-repeat;
     background-position: center top 55px, center;
     background-size: cover, cover;
