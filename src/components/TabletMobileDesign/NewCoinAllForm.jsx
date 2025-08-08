@@ -1,11 +1,10 @@
-import style from './moneyGuard.module.scss';
-import BigButtonsContainer from './BigButtonsContainer';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import style from '../moneyGuard.module.scss';
+import BigButtonsContainer from '../BigButtonsContainer';
+import {useState } from 'react';
 import { nanoid } from 'nanoid';
 
 
-const NewCoinAll = ({origin}) => {
+const NewCoinAllForm = () => {
   const [isCurrency, setIsCurrency] = useState({
     id:nanoid(),
     currencyName: '',
@@ -14,31 +13,11 @@ const NewCoinAll = ({origin}) => {
     sellRate: "",
   });
 
-  const navigate = useNavigate();
-  const param = useParams().name;
 
-  useEffect(() => {
-
-     const localStorageArr = JSON.parse(localStorage.getItem("moneyGuardCurrency"));
-    if (param) {
-      const newCurrency = localStorageArr.find(c => c.currencyName === param);
-      if (newCurrency) setIsCurrency(newCurrency);
-    }
-  }, [param]);
-
-  console.log("isCurrency",isCurrency)
-
-  const handleSubmit = e => {
+  /*const handleSubmit = e => {
 
     e.preventDefault();
-
     const localStorageArr = JSON.parse(localStorage.getItem("moneyGuardCurrency"));
-
-    if (!param){const checkDuplicateCurrency = localStorageArr.find(c => c.currencyName === isCurrency.currencyName);
-    if (checkDuplicateCurrency) {
-      alert("This currency is already available. Enter other name or cancel request."); return
-    }}
-
     const index = localStorageArr.findIndex(c => c.id === isCurrency.id);
     console.log("index",index)
     if (index !== -1) {
@@ -57,13 +36,12 @@ const NewCoinAll = ({origin}) => {
       sellRate: '',
     });
 
-    navigate(origin);
   };
+  */
 
   return (
-    <section className={style.newCoinWrapper}>
-      <div className={style.newCoinContainer}>
-        <form className={style.newCoinForm} onSubmit={handleSubmit}>
+
+        <form className={style.newCoinAllForm} >
           <input
             type="text"
             name="currencyName"
@@ -120,19 +98,14 @@ const NewCoinAll = ({origin}) => {
             }
           />
           <div className={style.newCoinFormButtons}>
-            <BigButtonsContainer firstBtn={param? "Update" : "Add"} secondBtn="Close" />
+            <BigButtonsContainer firstBtn="Add" secondBtn="Close" />
           </div>
         </form>
-      </div>
-    </section>
   );
 };
 
-export default NewCoinAll;
+export default NewCoinAllForm;
 
 /*
-    const checkDuplicateCurrency = currency.find(currency => currency.currencyName === isCurrency.currencyName);
-    if (checkDuplicateCurrency) {
-      alert("This currency is already available. Enter other name or cancel request."); return
-    }
+
 */
