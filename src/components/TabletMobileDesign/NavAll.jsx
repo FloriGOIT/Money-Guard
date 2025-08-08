@@ -1,6 +1,6 @@
 import { IoHomeSharp } from 'react-icons/io5';
 import { ImStatsDots } from 'react-icons/im';
-import style from "./moneyGuard.module.scss"
+import style from "../../components/moneyGuard.module.scss"
 
 const NavAll = ({ isHomeSelected, handleNav }) => {
   return (

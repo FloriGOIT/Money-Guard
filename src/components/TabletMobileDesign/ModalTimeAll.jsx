@@ -1,11 +1,11 @@
-import style from '../components/moneyGuard.module.scss';
+import style from '../../components/moneyGuard.module.scss';
 import { useState, useEffect, useRef } from 'react';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 import { nanoid } from 'nanoid';
 import { currentYear, currentMonthLetter } from 'helpers/timeInfo';
 
-const ModalTimeSelect = ({ info, handleYearMonth }) => {
+const ModalTimeAll = ({ info, handleYearMonth }) => {
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
   const [isSelectedMonth, setIsSelectedMonth] = useState(currentMonthLetter);
   const [isModalYearOn, setisModalYearOn] = useState(false);
@@ -131,4 +131,4 @@ const ModalTimeSelect = ({ info, handleYearMonth }) => {
   );
 };
 
-export default ModalTimeSelect;
+export default ModalTimeAll;

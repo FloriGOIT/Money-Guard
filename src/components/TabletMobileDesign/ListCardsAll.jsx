@@ -1,4 +1,4 @@
-import style from '../components/moneyGuard.module.scss';
+import style from '../../components/moneyGuard.module.scss';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { MdDeleteOutline } from 'react-icons/md';
 import { ImMinus } from 'react-icons/im';
@@ -6,12 +6,11 @@ import { PiPlusMinusBold } from 'react-icons/pi';
 import { ImPlus } from 'react-icons/im';
 
 
-const ListCardsTablet = ({ info, isYearMonthForFilter }) => {
+const ListCardsAll = ({ info, isYearMonthForFilter }) => {
   
   const filteredInfoOnPeriod = info.filter(el => Number(el.year) === Number(isYearMonthForFilter.year))
                                    .filter(el => {if(isYearMonthForFilter.month === "-"){ return el }
                                                   else{ return el.month === isYearMonthForFilter.month}})
-  console.log("filteredInfoOnPeriod", filteredInfoOnPeriod)
   
   return (
     <div className={style.listCardsTabletContainer}>
@@ -57,7 +56,7 @@ const ListCardsTablet = ({ info, isYearMonthForFilter }) => {
   );
 };
 
-export default ListCardsTablet;
+export default ListCardsAll;
 
 /* <tbody></tbody>
 

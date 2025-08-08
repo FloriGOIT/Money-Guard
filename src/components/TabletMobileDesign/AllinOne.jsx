@@ -1,12 +1,12 @@
-import style from '../components/moneyGuard.module.scss';
+import style from '../../components/moneyGuard.module.scss';
 import { useState } from 'react';
 import Balance from 'components/Balance';
-import CurrencyTable from "../components/CurrencyTable"
-import ListCardsTablet from 'components/ListCardsTablet';
-import ModalTimeSelect from 'components/ModalTimeSelect';
-import NavAll from 'components/NavAll';
-import { currentYear, currentMonthLetter } from '../helpers/timeInfo';
-import handleFormatNumber from '../helpers/numberFormat';
+import CurrencyTable from "../CurrencyTable"
+import ListCardsAll from 'components/TabletMobileDesign/ListCardsAll';
+import ModalTimeAll from 'components/TabletMobileDesign/ModalTimeAll';
+import NavAll from 'components/TabletMobileDesign/NavAll';
+import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
+
 
 
 const AllinOne = ({ info }) => {
@@ -20,12 +20,12 @@ const AllinOne = ({ info }) => {
     <section className={style.allinOneWrapper}>
       <div className={style.allinOneContainerPermanent}>
         <NavAll isHomeSelected={isHomeSelected} handleNav={handleNav} />
-        <Balance info={info} handleFormatNumber={handleFormatNumber} />
+        <Balance info={info} />
         <CurrencyTable />
       </div>
       <div className={style.allinOneContainerRight}>
-        <ModalTimeSelect info={info} handleYearMonth={handleYearMonth} />
-        <ListCardsTablet info={info} isYearMonthForFilter={isYearMonthForFilter} handleFormatNumber={handleFormatNumber}/>
+        <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
+        <ListCardsAll info={info} isYearMonthForFilter={isYearMonthForFilter} />
       </div>
     </section>
   );
