@@ -20,3 +20,4 @@ const currency = [
 ];
 
 export default currency;
+//new Intl.NumberFormat('fr-FR').format(Number(amount).toFixed(2))

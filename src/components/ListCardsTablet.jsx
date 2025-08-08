@@ -38,7 +38,7 @@ const ListCardsTablet = ({ info, isYearMonthForFilter }) => {
               </td>
               <td className={style.cardCategory} style={{width: "100px"}}>{card.category}</td>
               <td className={style.cardDetails} style={{width: "340px", color: "wheat"}}>{card.details}</td>
-              <td className={style.cardAmount} style={{width: "80px"}}>{card.amount}</td>
+              <td className={style.cardAmount} style={{width: "80px"}}>{new Intl.NumberFormat('fr-FR').format(Number(card.amount).toFixed(2))}</td>
               <td className={style.cardButton} style={{padding:"0px 5px 5px 5px"}}>
                 <div className={style.deletCurrency}>
                   <MdDeleteOutline />
