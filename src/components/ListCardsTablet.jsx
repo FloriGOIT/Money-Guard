@@ -6,9 +6,13 @@ import { PiPlusMinusBold } from 'react-icons/pi';
 import { ImPlus } from 'react-icons/im';
 
 
-const ListCardsTablet = ({ info }) => {
-
-
+const ListCardsTablet = ({ info, isYearMonthForFilter }) => {
+  
+  const filteredInfoOnPeriod = info.filter(el => Number(el.year) === Number(isYearMonthForFilter.year))
+                                   .filter(el => {if(isYearMonthForFilter.month === "-"){ return el }
+                                                  else{ return el.month === isYearMonthForFilter.month}})
+  console.log("filteredInfoOnPeriod", filteredInfoOnPeriod)
+  
   return (
     <div className={style.listCardsTabletContainer}>
       <table>
@@ -26,7 +30,7 @@ const ListCardsTablet = ({ info }) => {
           </tr>
         </thead>
         <tbody>
-          {info.map(card => (
+          {filteredInfoOnPeriod.map(card => (
             <tr key={card.id} >
               <td className={style.cardDate} style={{width: "100px"}}>{card.date}</td>
               <td className={style.cardType}>

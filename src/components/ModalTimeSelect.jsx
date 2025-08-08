@@ -5,77 +5,61 @@ import { FaChevronUp } from 'react-icons/fa';
 import { nanoid } from 'nanoid';
 import { currentYear, currentMonthLetter } from 'helpers/timeInfo';
 
-/*
-      <ModalTime
-        initialValue={isSelectedYear}
-        infoPeriod={filterYearsForSelection}
-        handleYear={handleYear}
-        handleMonth={handleMonth}
-        name="years"
-      />
-
-      <ModalTime
-          initialValue={isSelectedMonth}
-          infoPeriod={arrayMonthInSelectedYear}
-          handleMonth={handleMonth}
-          name="months"
-      />
-        //const [isSelectedMonth, setIsSelectedMonth] = useState(currentMonthLetter);
-*/
-
-const ModalTimeSelect = ({ info }) => {
-        const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
-        const [isSelectedMonth, setIsSelectedMonth] = useState(currentMonthLetter);
-        const [isModalYearOn, setisModalYearOn] = useState(false);
-        const [isModalMonthOn, setisModalMonthOn] = useState(false);
+const ModalTimeSelect = ({ info, handleYearMonth }) => {
+  const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
+  const [isSelectedMonth, setIsSelectedMonth] = useState(currentMonthLetter);
+  const [isModalYearOn, setisModalYearOn] = useState(false);
+  const [isModalMonthOn, setisModalMonthOn] = useState(false);
 
   const modalRefYear = useRef(null);
-  const modalRefMonth = useRef(null); 
+  const modalRefMonth = useRef(null);
 
   useEffect(() => {
-  const handleClickOutside = (event) => {
-    if (
-      modalRefYear.current &&
-      !modalRefYear.current.contains(event.target)
-    ) {
-      setisModalYearOn(false);
+    const handleClickOutside = event => {
+      if (
+        modalRefYear.current &&
+        !modalRefYear.current.contains(event.target)
+      ) {
+        setisModalYearOn(false);
+      }
+
+      if (
+        modalRefMonth.current &&
+        !modalRefMonth.current.contains(event.target)
+      ) {
+        setisModalMonthOn(false);
+      }
+    };
+
+    if (isModalYearOn || isModalMonthOn) {
+      document.addEventListener('mousedown', handleClickOutside);
     }
 
-    if (
-      modalRefMonth.current &&
-      !modalRefMonth.current.contains(event.target)
-    ) {
-      setisModalMonthOn(false);
-    }
-  };
-
-  if (isModalYearOn || isModalMonthOn) {
-    document.addEventListener('mousedown', handleClickOutside);
-  }
-
-  return () => {
-    document.removeEventListener('mousedown', handleClickOutside);
-  };
-}, [isModalYearOn, isModalMonthOn]);
-
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalYearOn, isModalMonthOn]);
 
   const optionsYears = info
     .map(el => el.year)
-                .filter((el, idx, arr) => arr.indexOf(el) === idx);
-        
-        const optionsMonths = info.filter(el => Number(el.year) === Number(isSelectedYear))
-                                  .map(el => el.month)
-                                  .filter((el, idx, arr) => arr.indexOf(el) === idx)
+    .filter((el, idx, arr) => arr.indexOf(el) === idx);
 
-        console.log("optionsMonths",optionsMonths)
-
+  const optionsMonths = info
+    .filter(el => Number(el.year) === Number(isSelectedYear))
+    .map(el => el.month)
+    .filter((el, idx, arr) => arr.indexOf(el) === idx);
+  optionsMonths.push("-");
   const handleOptionYear = value => {
     setisModalYearOn(false);
+    setIsSelectedMonth("-");
+    handleYearMonth(prev => ({ ...prev, year: value, month:"-" }));
     setIsSelectedYear(value);
-        };
-          const handleOptionMonth = value => {
+  };
+
+  const handleOptionMonth = value => {
     setisModalMonthOn(false);
     setIsSelectedMonth(value);
+    handleYearMonth(prev => ({ ...prev, month: value }));
   };
 
   return (

@@ -6,10 +6,15 @@ import Balance from 'components/Balance';
 import CurrencyTable from "../components/CurrencyTable"
 import ListCardsTablet from 'components/ListCardsTablet';
 import ModalTimeSelect from 'components/ModalTimeSelect';
+import { currentYear, currentMonthLetter } from '../helpers/timeInfo';
 
 const AllinOne = ({ info }) => {
   const [isHomeSelected, setIsHomeSelected] = useState(true);
+  const [isYearMonthForFilter, setisYearMonthForFilter] = useState({ year: currentYear, month: currentMonthLetter });
+
+  const handleYearMonth = value => setisYearMonthForFilter(value)
   const handleNav = () => setIsHomeSelected(pre => !pre);
+
   return (
     <section className={style.allinOneWrapper}>
       <div className={style.allinOneContainerPermanent}>
@@ -18,8 +23,8 @@ const AllinOne = ({ info }) => {
         <CurrencyTable />
       </div>
       <div className={style.allinOneContainerRight}>
-        <ModalTimeSelect info={info} />
-        <ListCardsTablet info={info} />
+        <ModalTimeSelect info={info} handleYearMonth={handleYearMonth} />
+        <ListCardsTablet info={info} isYearMonthForFilter={isYearMonthForFilter} />
       </div>
     </section>
   );

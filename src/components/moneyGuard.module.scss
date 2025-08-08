@@ -1208,159 +1208,174 @@ ul li {
     //width: 5vw;
     overflow: hidden;
     border-right: 2px solid rgba(206, 204, 204, 0.364);
-  }
-  nav {
-    width: fit-content; 
-    div {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      cursor: pointer;
-      
-      svg {border: 1px solid rgba(206, 204, 204, 0.364);
-        font-size: 22px;
-        padding: 5px;
-        text-align: center;
-        border-radius: 10px;
-        width: 24px;
-      }
-      span {
-        color: white;
-        font-weight: 400;
-        padding-left: 10px;
-        text-align: center;
-      }
-      &:first-child {
-        margin-bottom: 20px;
-      }
-    }
+    nav {
+      width: fit-content;
 
-    .selectedNavAll {
-      svg {
-        color: white;
-        background-color: rgb(115, 38, 187);
-      }
-      span {
-        font-size: 23px;
-        font-weight: 600;
-      }
-    }
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
 
-    .notSelectedNavAll {
-      span {
-        font-size: 22px;
-      }
-      svg {
-        color: rgb(51, 25, 124);
-        background-color: rgba(236, 231, 231, 0.664);
+        svg {
+          border: 1px solid rgba(206, 204, 204, 0.364);
+          font-size: 22px;
+          padding: 5px;
+          text-align: center;
+          border-radius: 10px;
+          width: 24px;
+        }
 
-        &:hover {
-          box-shadow: 2px 2px 2px rgb(29, 11, 73);
+        span {
+          color: white;
+          font-weight: 400;
+          padding-left: 10px;
+          text-align: center;
+        }
+
+        &:first-child {
+          margin-bottom: 20px;
+        }
+      }
+
+      .selectedNavAll {
+        svg {
+          color: white;
+          background-color: rgb(115, 38, 187);
+        }
+
+        span {
+          font-size: 23px;
+          font-weight: 600;
+        }
+      }
+
+      .notSelectedNavAll {
+        span {
+          font-size: 22px;
+        }
+
+        svg {
+          color: rgb(51, 25, 124);
+          background-color: rgba(236, 231, 231, 0.664);
+
+          &:hover {
+            box-shadow: 2px 2px 2px rgb(29, 11, 73);
+          }
         }
       }
     }
-  }
-  .totalSum {
-    border: 1px solid rgba(206, 204, 204, 0.364);
-    width: inherit;
-    box-sizing: border-box;
-    background-color: rgba(115, 38, 187, 0.789);
-    padding: 10px 10px;
-    border-radius: 10px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 25px;
-    font-weight: 100;
-    color: white;
-  }
 
-  .currencyTable {
-    border: 1px solid rgba(206, 204, 204, 0.364);
-    width: inherit;
-    border-radius: 10px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    padding: 30px 30px 30px 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: rgb(92, 38, 187);
-    background-image: url('../helpers/images/graphBackground.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    box-shadow: none;
-    min-height: 250px;
-
-    .currencyTableHeader {
-      padding-left: 65px;
+    .totalSum {
+      border: 1px solid rgba(206, 204, 204, 0.364);
+      width: inherit;
+      box-sizing: border-box;
+      background-color: rgba(115, 38, 187, 0.789);
+      padding: 10px 10px;
+      border-radius: 8px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-between;
-      width: 219px;
+      font-size: 25px;
+      font-weight: 100;
+      color: white;
+    }
 
-      span {
-        box-sizing: border-box;
-        font-weight: 400;
-        font-size: 19px;
-        display: block;
+    .currencyTable {
+      border: 1px solid rgba(206, 204, 204, 0.364);
+      width: inherit;
+      border-radius: 10px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      padding: 30px 30px 30px 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: rgb(92, 38, 187);
+      background-image: url('../helpers/images/graphBackground.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      box-shadow: none;
+      min-height: 250px;
+
+      .currencyTableHeader {
+        padding-left: 65px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 219px;
+
+        span {
+          box-sizing: border-box;
+          font-weight: 400;
+          font-size: 19px;
+          display: block;
+          text-align: center;
+          width: 73px;
+          color: white;
+        }
+      }
+
+      .currencyTableRow {
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .currencyTableRate {
+          font-size: 18px;
+          width: 50px;
+        }
+
+        .currencyTableNotRate,
+        .currencyTableContent {
+          font-size: 20px;
+          font-weight: 400;
+        }
+      }
+
+      .editCurrency,
+      .deletCurrency {
+        padding: 0px;
         text-align: center;
-        width: 73px;
+        font-size: 18px;
+        font-weight: 400;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        height: 28px;
+        color: white;
+        box-sizing: border-box;
+        width: 50px;
+
+        &:hover {
+          box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        }
+
+        svg {
+          padding-top: 5px;
+        }
+      }
+
+      .deletCurrency {
+        background: -webkit-linear-gradient(
+          to right,
+          #f3a73c,
+          hwb(288 30% 11%)
+        );
+        background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
         color: white;
       }
-    }
 
-    .currencyTableRow {
-      color: white;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-
-      .currencyTableRate {
-        font-size: 18px;
-        width: 50px;
+      .editCurrency {
+        background-color: white;
+        color: rgb(92, 38, 187);
       }
-
-      .currencyTableNotRate,
-      .currencyTableContent {
-        font-size: 20px;
-        font-weight: 400;
-      }
-    }
-
-    .editCurrency,
-    .deletCurrency {
-      padding: 0px;
-      text-align: center;
-      font-size: 18px;
-      font-weight: 400;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      height: 28px;
-      color: white;
-      box-sizing: border-box;
-      width: 50px;
-      &:hover {
-        box-shadow: 2px 2px 3px rgb(66, 3, 124);
-      }
-      svg {
-        padding-top: 5px;
-      }
-    }
-    .deletCurrency {
-      background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-      background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-      color: white;
-    }
-    .editCurrency {
-      background-color: white;
-      color: rgb(92, 38, 187);
     }
   }
 
@@ -1372,13 +1387,13 @@ ul li {
     gap: 20px;
     padding-top: 30px;
     .modalTimeSelect {
-      z-index:1;
+      z-index: 1;
       display: flex;
       flex-direction: row;
       gap: 30px;
       width: 65vw;
       margin-left: 20px;
-      
+
       .headerPeriodOff {
         border: 1px solid rgba(206, 204, 204, 0.364);
         box-sizing: border-box;
@@ -1390,18 +1405,18 @@ ul li {
         width: 200px;
         padding: 5px 10px;
         background-color: rgba(115, 38, 187, 0.876);
-        border-radius: 10px;
+        border-radius: 8px;
 
         span {
           padding-left: 6px;
           padding-top: 7px;
-          color:white;
+          color: white;
           font-size: 18px;
         }
 
         button {
           border: none;
-          background-color: inherit;
+          background-color: rgba(115, 38, 187, 0.876);
           color: white;
           font-size: 21px;
           margin-top: 5px;
@@ -1450,22 +1465,24 @@ ul li {
         li:last-of-type:hover,
         li:last-of-type button:hover {
           background-color: rgb(160, 116, 236);
-          border-radius: 0px 0px 10px 10px;
+          border-radius: 0px 0px 8px 8px;
         }
       }
     }
     .listCardsTabletContainer {
       position: absolute;
-      top: 100px; left:20px;
+      top: 100px;
+      left: 20px;
       box-sizing: border-box;
       padding: 0px 0px;
       width: 65vw;
       table {
-        
         table-layout: fixed;
         border-collapse: collapse;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
         text-align: center;
         background-color: rgba(115, 38, 187, 0.876);
         padding: 0px;
@@ -1477,8 +1494,8 @@ ul li {
           padding: 8px 10px 8px 10px;
           border: 1px solid rgba(206, 204, 204, 0.364);
           border-bottom: none;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
           svg {
             font-size: 25px;
             padding-top: 15px;
@@ -1486,6 +1503,9 @@ ul li {
         }
 
         tbody {
+          border: 1px solid rgba(206, 204, 204, 0.364);
+          border-radius: 8px;
+          border-top:none;
           display: block;
           padding: 0px 10px 0px 10px;
           overflow-y: scroll;
@@ -1500,6 +1520,7 @@ ul li {
 
           &::-webkit-scrollbar-track {
             background: rgba(115, 38, 187, 0.705);
+            border-radius: 8px;
           }
 
           &::-webkit-scrollbar-thumb {
