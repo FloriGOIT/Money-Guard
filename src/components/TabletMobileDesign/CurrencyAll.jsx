@@ -2,6 +2,8 @@ import style from '../moneyGuard.module.scss';
 import currency from '../../helpers/currencyBNR';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { MdDeleteOutline } from 'react-icons/md';
+import AddButton from './AddButton';
+//import AddButton from "./AddButton"
 
 const CurrencyAll = () => {
   return (
@@ -12,8 +14,7 @@ const CurrencyAll = () => {
           <th className={style.withRate}>NBR</th>
           <th className={style.withRate}>Buy</th>
           <th className={style.withRate}>Sell</th>
-          <th className={style.nonRate}></th>
-          <th className={style.nonRate}></th>
+          <th ><AddButton/></th>
         </tr>
       </thead>
       <tbody>

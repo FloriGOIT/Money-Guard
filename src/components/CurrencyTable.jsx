@@ -6,7 +6,7 @@ import { MdDeleteOutline } from 'react-icons/md';
 import { useEffect, useState } from 'react';
 
 const CurrencyTable = () => {
-  const [isModalNewCoinOn, setisModalNewCoinOn] = useState(false)
+  //const [isModalNewCoinOn, setisModalNewCoinOn] = useState(false)
   const [arrCurrency, setArrCurrency] = useState([]);
 
   useEffect(() => {

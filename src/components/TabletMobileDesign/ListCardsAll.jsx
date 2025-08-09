@@ -4,6 +4,7 @@ import { MdDeleteOutline } from 'react-icons/md';
 import { ImMinus } from 'react-icons/im';
 import { PiPlusMinusBold } from 'react-icons/pi';
 import { ImPlus } from 'react-icons/im';
+import AddButton from './AddButton';
 
 
 const ListCardsAll = ({ info, isYearMonthForFilter }) => {
@@ -19,12 +20,12 @@ const ListCardsAll = ({ info, isYearMonthForFilter }) => {
           <tr>
             <th  style={{width: "100px"}}>Date</th>
             <th className={style.piPlusMinusBold}>
-              <PiPlusMinusBold />
+              <PiPlusMinusBold className={style.plusMinus} />
             </th>
             <th style={{width: "100px"}}>Category</th>
             <th style={{width: "340px"}}>Comment</th>
-            <th style={{width: "100px"}}>Sum</th>
-            <th></th>
+            <th style={{width: "80px"}}>Sum</th>
+            <th><AddButton/></th>
             <th></th>
           </tr>
         </thead>
