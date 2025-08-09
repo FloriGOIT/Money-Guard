@@ -4,7 +4,7 @@ import {useState } from 'react';
 import { nanoid } from 'nanoid';
 
 
-const NewCoinAllForm = () => {
+const NewCoinFormAll = ({handleAddCoin}) => {
   const [isCurrency, setIsCurrency] = useState({
     id:nanoid(),
     currencyName: '',
@@ -98,13 +98,13 @@ const NewCoinAllForm = () => {
             }
           />
           <div className={style.newCoinFormButtons}>
-            <BigButtonsContainer firstBtn="Add" secondBtn="Close" />
+            <BigButtonsContainer firstBtn="Add" secondBtn="Close"/>
           </div>
         </form>
   );
 };
 
-export default NewCoinAllForm;
+export default NewCoinFormAll;
 
 /*
 

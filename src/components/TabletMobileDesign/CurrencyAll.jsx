@@ -5,7 +5,7 @@ import { MdDeleteOutline } from 'react-icons/md';
 import AddButton from './AddButton';
 //import AddButton from "./AddButton"
 
-const CurrencyAll = () => {
+const CurrencyAll = ({handleAddCoin}) => {
   return (
     <table className={style.currencyTableAll}>
       <thead>
@@ -14,7 +14,7 @@ const CurrencyAll = () => {
           <th className={style.withRate}>NBR</th>
           <th className={style.withRate}>Buy</th>
           <th className={style.withRate}>Sell</th>
-          <th ><AddButton/></th>
+          <th onClick={handleAddCoin}><AddButton/></th>
         </tr>
       </thead>
       <tbody>

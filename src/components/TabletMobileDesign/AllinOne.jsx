@@ -5,26 +5,29 @@ import CurrencyAll from './CurrencyAll';
 import ListCardsAll from 'components/TabletMobileDesign/ListCardsAll';
 import ModalTimeAll from 'components/TabletMobileDesign/ModalTimeAll';
 import NavAll from 'components/TabletMobileDesign/NavAll';
-import NewCoinAllForm from './NewCoinAllForm';
+import NewCoinFormAll from './NewCoinFormAll';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 
 const AllinOne = ({ info }) => {
-  const [isHomeSelected, setIsHomeSelected] = useState(false);
+  const [isHomeNavSelected, setIsHomeNavSelected] = useState(false);
+  const [isNewCoinModalOn, setisNewCoinModalOn] = useState(false)
+
   const [isYearMonthForFilter, setisYearMonthForFilter] = useState({
     year: currentYear,
     month: currentMonthLetter,
   });
 
   const handleYearMonth = value => setisYearMonthForFilter(value);
-  const handleNav = () => setIsHomeSelected(pre => !pre);
+  const handleNav = () => setIsHomeNavSelected(pre => !pre);
+  const handleAddCoin = () => setisNewCoinModalOn(prev=> !prev)
 
   return (
     <section className={style.allinOneWrapper}>
 
         <div className={style.allinOneContainerPermanent}>
-          <NavAll isHomeSelected={isHomeSelected} handleNav={handleNav} />
+          <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
           <Balance info={info} />
-          <CurrencyAll />
+        <CurrencyAll handleAddCoin={handleAddCoin} />
         </div>
         <div className={style.allinOneContainerRight}>
           <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
@@ -33,8 +36,8 @@ const AllinOne = ({ info }) => {
             isYearMonthForFilter={isYearMonthForFilter}
           />
       </div>
-     {isHomeSelected? <div className={style.newCoinAllFormContainer}>
-        <NewCoinAllForm /> 
+     {isNewCoinModalOn? <div className={style.newCoinAllFormContainer}>
+        <NewCoinFormAll  /> 
       </div> : null}
     </section>
   );
