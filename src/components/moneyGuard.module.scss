@@ -20,6 +20,7 @@ ul li {
     border-radius: 30px;
     border: 0px;
     margin: 0px auto;
+
     &:hover {
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
     }
@@ -38,6 +39,7 @@ ul li {
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
     }
   }
+
   .notSelectedBtn {
     color: rgb(92, 38, 187);
     background: none;
@@ -47,6 +49,7 @@ ul li {
     border: none;
     cursor: pointer;
     padding: 15px 0px;
+
     &:hover {
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
     }
@@ -72,12 +75,10 @@ ul li {
 .regWrapper,
 .logoutWrapper {
   box-sizing: border-box;
-  background: radial-gradient(
-    circle,
-    rgb(124, 69, 219) 30%,
-    rgb(75, 40, 168) 66%,
-    rgb(36, 18, 87) 100%
-  );
+  background: radial-gradient(circle,
+      rgb(124, 69, 219) 30%,
+      rgb(75, 40, 168) 66%,
+      rgb(36, 18, 87) 100%);
   width: 100vw;
   margin: 0px;
 }
@@ -86,6 +87,7 @@ ul li {
   height: 100vh;
   padding-top: calc((100vh - 378px - 100px) / 2);
 }
+
 .regWrapper {
   height: 100vh;
   padding-top: calc((100vh - 520px) / 2);
@@ -95,6 +97,7 @@ ul li {
   padding: 0px;
   width: inherit;
 }
+
 .registerContainer {
   padding: 0px;
 
@@ -196,6 +199,7 @@ ul li {
       font-weight: 400;
       border: none;
       cursor: pointer;
+
       &:hover {
         box-shadow: 2px 2px 3px rgb(66, 3, 124);
       }
@@ -208,6 +212,7 @@ ul li {
 .sharedLayoutWrapper {
   width: 100%;
   min-height: calc(100vh - 64px);
+
   .sharedLayoutHeader {
     position: fixed;
     z-index: 200;
@@ -281,6 +286,7 @@ ul li {
     background-color: rgba(236, 231, 231, 0.664);
     border-radius: 10px;
     box-shadow: 2px 2px 2px rgb(51, 25, 124);
+
     &:hover {
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
     }
@@ -302,12 +308,10 @@ ul li {
 .currencyWrapper {
   width: 100%;
   min-height: calc(100vh - 64px);
-  background: radial-gradient(
-    circle,
-    rgb(69 77 219) 30%,
-    rgb(54 40 168) 66%,
-    rgb(36, 18, 87) 100%
-  );
+  background: radial-gradient(circle,
+      rgb(69 77 219) 30%,
+      rgb(54 40 168) 66%,
+      rgb(36, 18, 87) 100%);
 }
 
 .homePage {
@@ -339,6 +343,7 @@ ul li {
     .statisticsPeriod {
       color: white;
       margin-bottom: 20px;
+
       .headerPeriodOff {
         box-sizing: border-box;
         font-size: 16px;
@@ -377,12 +382,10 @@ ul li {
         box-sizing: border-box;
         width: 290px;
         margin-left: 7px;
-        background: linear-gradient(
-          140deg,
-          rgb(247, 201, 141) 10%,
-          rgb(151, 85, 204) 45%,
-          rgb(123, 20, 192) 80%
-        );
+        background: linear-gradient(140deg,
+            rgb(247, 201, 141) 10%,
+            rgb(151, 85, 204) 45%,
+            rgb(123, 20, 192) 80%);
         border: 1px solid rgba(206, 204, 204, 0.664);
         border-radius: 0px 0px 10px 10px;
         border-top: none;
@@ -445,6 +448,7 @@ ul li {
           align-items: center;
           min-height: 50px;
           gap: 40px;
+
           .cardRowValue {
             max-width: 170px;
             text-align: justify;
@@ -463,21 +467,22 @@ ul li {
             height: 35px;
             width: 80px;
           }
+
           .selectedBtn {
-            background: -webkit-linear-gradient(
-              to right,
-              #f3a73c,
-              hwb(288 30% 11%)
-            );
+            background: -webkit-linear-gradient(to right,
+                #f3a73c,
+                hwb(288 30% 11%));
             background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
             color: white;
             font-size: 22px;
             font-weight: 400;
             border: none;
             cursor: pointer;
+
             svg {
               padding-top: 3px;
             }
+
             &:hover {
               box-shadow: 2px 2px 3px rgb(66, 3, 124);
             }
@@ -491,9 +496,11 @@ ul li {
             font-weight: 400;
             border: none;
             cursor: pointer;
+
             svg {
               padding-top: 4px;
             }
+
             &:hover {
               box-shadow: 2px 2px 3px rgb(66, 3, 124);
             }
@@ -565,6 +572,7 @@ ul li {
       border: none;
       margin-bottom: 25px;
       cursor: pointer;
+
       &:hover {
         box-shadow: 2px 2px 3px rgb(66, 3, 124);
       }
@@ -578,6 +586,7 @@ ul li {
       font-weight: 400;
       border: none;
       cursor: pointer;
+
       &:hover {
         box-shadow: 2px 2px 3px rgb(66, 3, 124);
       }
@@ -592,12 +601,10 @@ ul li {
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(
-    circle,
-    rgb(69 77 219) 30%,
-    rgb(54 40 168) 66%,
-    rgb(36, 18, 87) 100%
-  );
+  background: radial-gradient(circle,
+      rgb(69 77 219) 30%,
+      rgb(54 40 168) 66%,
+      rgb(36, 18, 87) 100%);
 }
 
 .newCardWrapper {
@@ -670,7 +677,7 @@ ul li {
         transition: 0.4s;
       }
 
-      input:checked + .slider:before {
+      input:checked+.slider:before {
         content: '−';
         font-size: 38px;
         color: white;
@@ -725,14 +732,13 @@ ul li {
       z-index: 1;
       width: 300px;
       list-style-type: none;
-      background: linear-gradient(
-        140deg,
-        rgb(247, 201, 141) 10%,
-        rgb(151, 85, 204) 45%,
-        rgb(123, 20, 192) 80%
-      );
+      background: linear-gradient(140deg,
+          rgb(247, 201, 141) 10%,
+          rgb(151, 85, 204) 45%,
+          rgb(123, 20, 192) 80%);
       border: 1px solid rgba(206, 204, 204, 0.664);
       border-radius: 0px 0px 10px 10px;
+
       .newCardOption {
         padding: 5px 10px 5px 10px;
         text-align: center;
@@ -746,10 +752,12 @@ ul li {
           text-align: center;
           cursor: pointer;
         }
+
         .income,
         .expense {
           transition: color 0.1s ease-in-out;
         }
+
         .income:hover {
           color: rgb(119, 235, 65);
         }
@@ -758,6 +766,7 @@ ul li {
           color: rgb(207, 47, 47);
         }
       }
+
       .newCardOption:hover {
         background-color: rgb(160, 116, 236);
       }
@@ -827,9 +836,11 @@ ul li {
       font-size: 20px;
       padding-left: 13px;
     }
+
     .newCardButtons {
       padding-top: 25px;
       padding-left: 1px;
+
       .bigButton {
         display: block;
         text-align: center;
@@ -847,16 +858,15 @@ ul li {
 
       .selectedBtn {
         padding: 18.5px 0px;
-        background: -webkit-linear-gradient(
-          to right,
-          #f3a73c,
-          hwb(288 30% 11%)
-        );
+        background: -webkit-linear-gradient(to right,
+            #f3a73c,
+            hwb(288 30% 11%));
         cursor: pointer;
         background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
         color: white;
         border: none;
         margin-bottom: 20px;
+
         &:hover {
           box-shadow: 2px 2px 3px rgb(66, 3, 124);
         }
@@ -871,6 +881,7 @@ ul li {
         font-weight: 400;
         border: none;
         cursor: pointer;
+
         &:hover {
           box-shadow: 2px 2px 3px rgb(66, 3, 124);
         }
@@ -890,6 +901,7 @@ ul li {
 
 .chartWrapper {
   text-align: center;
+
   .chart {
     margin: 0 auto;
   }
@@ -903,6 +915,7 @@ ul li {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
   .statisticsPeriod {
     .headerPeriodOff {
       box-sizing: border-box;
@@ -921,6 +934,7 @@ ul li {
         padding-left: 6px;
         padding-top: 7px;
       }
+
       button {
         border: none;
         background-color: inherit;
@@ -930,18 +944,18 @@ ul li {
         cursor: pointer;
       }
     }
+
     .headerPeriodOn {
       border-radius: 10px 10px 0px 0px;
     }
+
     .listPeriod {
       box-sizing: border-box;
       width: 300px;
-      background: linear-gradient(
-        140deg,
-        rgb(247, 201, 141) 10%,
-        rgb(151, 85, 204) 45%,
-        rgb(123, 20, 192) 80%
-      );
+      background: linear-gradient(140deg,
+          rgb(247, 201, 141) 10%,
+          rgb(151, 85, 204) 45%,
+          rgb(123, 20, 192) 80%);
       border: 1px solid rgba(206, 204, 204, 0.664);
       border-radius: 0px 0px 10px 10px;
       border-top: none;
@@ -949,6 +963,7 @@ ul li {
       li {
         cursor: pointer;
       }
+
       li button {
         background-color: inherit;
         box-sizing: border-box;
@@ -965,6 +980,7 @@ ul li {
       li:hover {
         background-color: rgb(160, 116, 236);
       }
+
       li:last-of-type:hover,
       li:last-of-type button:hover {
         background-color: rgb(160, 116, 236);
@@ -972,6 +988,7 @@ ul li {
       }
     }
   }
+
   .tableHeaderCategories {
     box-sizing: border-box;
     padding: 15px;
@@ -981,11 +998,13 @@ ul li {
     flex-direction: row;
     justify-content: space-between;
     background-color: rgb(75, 40, 168);
+
     span {
       font-size: 20px;
       font-weight: 400;
     }
   }
+
   .tableRowsCategories {
     display: flex;
     flex-direction: row;
@@ -993,6 +1012,7 @@ ul li {
     padding: 0px 15px;
     border-bottom: 2px solid rgba(165, 163, 163, 0.664);
     padding-bottom: 5px;
+
     .categoryWithColor {
       display: flex;
       flex-direction: row;
@@ -1007,12 +1027,14 @@ ul li {
       }
     }
   }
+
   .totalCategories {
     padding: 0px 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
+
     .totalExpenses,
     .totalIncomes {
       display: flex;
@@ -1025,6 +1047,7 @@ ul li {
     .totalExpenses span:last-of-type {
       color: rgb(211, 76, 76);
     }
+
     .totalIncomes span:last-of-type {
       color: rgb(194, 240, 126);
     }
@@ -1039,28 +1062,30 @@ ul li {
   .currencyContainer {
     margin: 0px auto;
     width: 300px;
+
     .currencyContainerHeader {
       margin-bottom: 20px;
+
       h2 {
         margin-bottom: 20px;
         color: white;
         font-size: 30px;
         font-weight: 300;
       }
+
       .addCoinButton {
         display: flex;
         justify-content: flex-end;
+
         svg {
           font-size: 30px;
           font-weight: 900;
           border-radius: 40%;
           text-align: center;
           padding: 8px 8px 8px 8px;
-          background: -webkit-linear-gradient(
-            to right,
-            #f3a73c,
-            hwb(288 30% 11%)
-          );
+          background: -webkit-linear-gradient(to right,
+              #f3a73c,
+              hwb(288 30% 11%));
           background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
           color: white;
           border: none;
@@ -1073,6 +1098,7 @@ ul li {
     }
   }
 }
+
 .currencyTable {
   font-size: 18px;
   width: 300px;
@@ -1095,6 +1121,7 @@ ul li {
     flex-direction: row;
     justify-content: space-between;
     width: 173px;
+
     span {
       font-weight: 600;
       font-size: 16px;
@@ -1104,6 +1131,7 @@ ul li {
       color: white;
     }
   }
+
   .currencyTableRow {
     color: white;
     display: flex;
@@ -1111,9 +1139,11 @@ ul li {
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
+
     .currencyTableRate {
       width: 50px;
     }
+
     .currencyTableNotRate,
     .currencyTableContent {
       font-weight: 600;
@@ -1132,9 +1162,11 @@ ul li {
     cursor: pointer;
     height: 28px;
     color: rgba(206, 204, 204, 0.664);
+
     svg {
       padding-top: 5px;
     }
+
     &:hover {
       color: white;
     }
@@ -1145,6 +1177,7 @@ ul li {
 .newCoinWrapper {
   padding-top: calc((100vh - 320px - 64px) / 2);
 }
+
 .newCoinContainer {
   border-radius: 20px;
   display: flex;
@@ -1154,6 +1187,7 @@ ul li {
   margin: 0px auto;
   width: 320px;
 }
+
 .newCoinForm {
   display: flex;
   flex-direction: column;
@@ -1161,6 +1195,7 @@ ul li {
   padding: 15px 15px;
   width: 300px;
   margin: 0px auto;
+
   input {
     padding: 5px 0px;
     background-color: inherit;
@@ -1182,7 +1217,6 @@ ul li {
     font-size: 20px;
   }
 }
-
 //allinOne
 
 .allinOneWrapper {
@@ -1205,7 +1239,7 @@ ul li {
     gap: 50px;
     padding-left: 20px;
     padding-top: 30px;
-    width: 30vw;
+    width: 33vw;
     //width: 5vw;
     overflow: hidden;
     border-right: 2px solid rgba(206, 204, 204, 0.364);
@@ -1266,6 +1300,8 @@ ul li {
         }
       }
     }
+      }
+
 
     .totalSum {
       border: 1px solid rgba(206, 204, 204, 0.364);
@@ -1284,98 +1320,105 @@ ul li {
       color: white;
     }
 
-    .currencyTable {
-      border: 1px solid rgba(206, 204, 204, 0.364);
-      width: inherit;
-      border-radius: 10px;
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-      padding: 30px 30px 30px 10px;
+    .currencyTableAll {
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background-color: rgb(92, 38, 187);
+      width: 398px;
+      height: 250px;
+      border: 1px solid rgba(206, 204, 204, 0.364);
+      border-right: none;
+      border-radius: 10px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      background-color: rgb(92, 38, 187,0.705);
       background-image: url('../helpers/images/graphBackground.jpg');
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      box-shadow: none;
-      min-height: 250px;
-
-      .currencyTableHeader {
-        padding-left: 65px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 219px;
-
-        span {
-          box-sizing: border-box;
-          font-weight: 400;
-          font-size: 19px;
-          display: block;
+      color: white;
+      table-layout: fixed;
+      border-collapse: collapse;
+      padding: 10px;
+      padding-right: 0px;
+      thead {
+        box-sizing: border-box;
+        
+        th {
+          font-size: 25px;
+          font-weight: 100;
           text-align: center;
-          width: 73px;
+          &.nonRate{width: 45px;}
+          &.withRate {width: 70px;}
+        }
+      }
+      tbody {
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 8px;
+          }
+        
+          &::-webkit-scrollbar-track {
+            background: rgba(115, 38, 187, 0.705);
+            border-radius: 8px;
+          }
+        
+          &::-webkit-scrollbar-thumb {
+            background: rgba(206, 204, 204, 0.664);
+            border-radius: 8px;
+          }
+        
+          &::-webkit-scrollbar-thumb:hover {
+            background: rgb(206, 204, 204);
+          }
+        td{font-size: 19px;
+          padding: 8px 0px;
+        &.nonRate {
+            width:45px; color:wheat; font-weight: 600;
+          }
+        &.withRate {
+            width: 70px; text-align: center;
+          }
+        &.smallBtn{
+        .editCurrency,
+        .deletCurrency {
+          padding: 0px;
+          text-align: center;
+          font-size: 18px;
+          font-weight: 400;
+          border: none;
+          border-radius: 20px;
+          cursor: pointer;
+          height: 28px;
+          color: white;
+          box-sizing: border-box;
+          width: 51px;
+
+          &:hover {
+            box-shadow: 2px 2px 3px rgb(66, 3, 124);
+          }
+
+          svg {
+            padding-top: 5px;
+          }
+        }
+
+        .deletCurrency {
+          background: -webkit-linear-gradient(
+            to right,
+            #f3a73c,
+            hwb(288 30% 11%)
+          );
+          background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
           color: white;
         }
-      }
 
-      .currencyTableRow {
-        color: white;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-        .currencyTableRate {
-          font-size: 18px;
-          width: 50px;
-        }
-
-        .currencyTableNotRate,
-        .currencyTableContent {
-          font-size: 20px;
-          font-weight: 400;
+        .editCurrency {
+          background-color: white;
+          color: rgb(92, 38, 187);
         }
       }
-
-      .editCurrency,
-      .deletCurrency {
-        padding: 0px;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 400;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-        height: 28px;
-        color: white;
-        box-sizing: border-box;
-        width: 50px;
-
-        &:hover {
-          box-shadow: 2px 2px 3px rgb(66, 3, 124);
-        }
-
-        svg {
-          padding-top: 5px;
-        }
-      }
-
-      .deletCurrency {
-        background: -webkit-linear-gradient(
-          to right,
-          #f3a73c,
-          hwb(288 30% 11%)
-        );
-        background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-        color: white;
-      }
-
-      .editCurrency {
-        background-color: white;
-        color: rgb(92, 38, 187);
       }
     }
   }
@@ -1517,7 +1560,7 @@ ul li {
             margin: 5px 0px;
           }
           &::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
           }
 
           &::-webkit-scrollbar-track {
@@ -1693,6 +1736,7 @@ ul li {
 
 //different VH or VW
 @media screen and (min-width: 480px) {
+
   .loginContainer,
   .registerContainer {
     .form {
@@ -1705,6 +1749,7 @@ ul li {
 }
 
 @media screen and (min-width: 768px) {
+
   .logWrapper,
   .regWrapper,
   .homePageWrapper,
@@ -1732,12 +1777,10 @@ ul li {
     margin: 0px auto;
     box-shadow: 2px 2px 3px rgb(66, 3, 124);
     background-color: rgb(101, 41, 204);
-    background-color: radial-gradient(
-      circle,
-      rgb(124, 69, 219) 40%,
-      rgb(75, 40, 168) 76%,
-      rgb(36, 18, 87) 100%
-    );
+    background-color: radial-gradient(circle,
+        rgb(124, 69, 219) 40%,
+        rgb(75, 40, 168) 76%,
+        rgb(36, 18, 87) 100%);
   }
 
   .newCoinWrapper {

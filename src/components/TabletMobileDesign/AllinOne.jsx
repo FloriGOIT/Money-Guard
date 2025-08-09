@@ -1,7 +1,7 @@
 import style from '../moneyGuard.module.scss';
 import { useState } from 'react';
 import Balance from 'components/Balance';
-import CurrencyTable from '../CurrencyTable';
+import CurrencyAll from './CurrencyAll';
 import ListCardsAll from 'components/TabletMobileDesign/ListCardsAll';
 import ModalTimeAll from 'components/TabletMobileDesign/ModalTimeAll';
 import NavAll from 'components/TabletMobileDesign/NavAll';
@@ -24,7 +24,7 @@ const AllinOne = ({ info }) => {
         <div className={style.allinOneContainerPermanent}>
           <NavAll isHomeSelected={isHomeSelected} handleNav={handleNav} />
           <Balance info={info} />
-          <CurrencyTable />
+          <CurrencyAll />
         </div>
         <div className={style.allinOneContainerRight}>
           <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
