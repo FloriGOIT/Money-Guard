@@ -9,7 +9,7 @@ ul li {
   list-style-type: none;
 }
 
-.newCoinFormButtons {
+.newCoinFormButtons{
   .bigButton {
     display: block;
     text-align: center;
@@ -1785,6 +1785,30 @@ ul li {
       }
     }
 }
+
+.bigButtons{display: flex;flex-direction: column; gap:20px; margin:0px auto;
+   button{border: none;
+  cursor: pointer;
+  width: 300px;
+  padding: 15px 0px;
+  font-size: 22px;
+  border-radius: 30px;}}
+
+.bigBtnWithColor{background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+  background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+  color: white;
+  border: none;
+  &:hover {
+    box-shadow: 2px 2px 3px rgb(66, 3, 124);
+  }}
+.bigBtnNoColor{
+      color: rgb(92, 38, 187);      
+        &:hover {
+          box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        }
+}
+
+
 
 
 //different VH or VW
