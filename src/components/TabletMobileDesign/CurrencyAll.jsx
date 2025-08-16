@@ -3,9 +3,17 @@ import currency from '../../helpers/currencyBNR';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { MdDeleteOutline } from 'react-icons/md';
 import AddButton from './AddButton';
+import { useEffect } from 'react';
 //import AddButton from "./AddButton"
 
-const CurrencyAll = ({handleAddCoin}) => {
+const CurrencyAll = ({ handleAddCoin }) => {
+  const [listCurrencies, setListCurrencies] = usestate([])
+
+  useEffect(() => {
+    const currencies = localStorage.getItem("moneyGuardCurrency")
+  },[])
+  
+
   return (
     <table className={style.currencyTableAll}>
       <thead>
