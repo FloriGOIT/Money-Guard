@@ -1379,7 +1379,7 @@ ul li {
       }
     }
     tbody {
-      overflow-y: scroll;
+      overflow:auto;
       &::-webkit-scrollbar {
         width: 8px;
       }
@@ -1399,7 +1399,7 @@ ul li {
       }
       td {
         font-size: 19px;
-        padding: 8px 0px;
+        padding: 8px 4px;
         &.nonRate {
           color: wheat;
           font-weight: 600;

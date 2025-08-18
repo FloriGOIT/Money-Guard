@@ -23,7 +23,13 @@ const AllinOne = ({ info }) => {
 
 
   const handleAddNewCoin = value => {
-    setIsListCurrencies(prev => [...prev, value]);
+    if (!isIdForCoinUpdate) { setIsListCurrencies(prev => [...prev, value]) }
+    else {
+      const findIndex = isListCurrencies.findIndex(el=>el.id===isIdForCoinUpdate)
+      isListCurrencies.splice(findIndex,1,value)
+      setIsListCurrencies(isListCurrencies)
+    }
+    
     setisNewCoinModalOn(prev=> !prev)
   }
   

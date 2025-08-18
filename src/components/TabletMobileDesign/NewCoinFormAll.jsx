@@ -11,7 +11,13 @@ const NewCoinFormAll = ({
   isListCurrencies,
 }) => {
 
-  const [isCurrency, setIsCurrency] = useState({});
+  const [isCurrency, setIsCurrency] = useState({
+      id: nanoid(),
+      currencyName: '',
+      nbrRate: '',
+      buyRate: '',
+      sellRate: '',
+    });
 
 
 
@@ -22,14 +28,6 @@ const NewCoinFormAll = ({
     
     if (isIdForCoinUpdate) {
     setIsCurrency(coinToBeUpdated);
-  } else {
-    setIsCurrency({
-      id: nanoid(),
-      currencyName: '',
-      nbrRate: '',
-      buyRate: '',
-      sellRate: '',
-    });
   } },[isIdForCoinUpdate, isListCurrencies])
 
 
@@ -58,7 +56,7 @@ const NewCoinFormAll = ({
       <input
         type="text"
         name="nbrRate"
-        pattern="^\d+(\.\d{1,4})?$"
+        pattern="^\d{1,3}(\.\d{1,4})?$"
         title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
         value={isCurrency.nbrRate}
         required
@@ -71,7 +69,7 @@ const NewCoinFormAll = ({
       <input
         type="text"
         name="buyRate"
-        pattern="^\d+(\.\d{1,4})?$"
+        pattern="^\d{1,3}(\.\d{1,4})?$"
         title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
         value={isCurrency.buyRate}
         required
@@ -84,7 +82,7 @@ const NewCoinFormAll = ({
       <input
         type="text"
         name="sellRate"
-        pattern="^\d+(\.\d{1,4})?$"
+        pattern="^\d{1,3}(\.\d{1,4})?$"
         title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
         value={isCurrency.sellRate}
         required

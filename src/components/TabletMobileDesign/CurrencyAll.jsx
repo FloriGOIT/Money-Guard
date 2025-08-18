@@ -21,9 +21,9 @@ const CurrencyAll = ({ listCurrencies, handleAddCoinModal,handleIdForCoinUpdate 
         {listCurrencies.map(el => (
           <tr key={el.id}>
                         <td className={style.nonRate}>{el.currencyName}</td>
-            <td className={style.withRate}>{el.nbrRate}</td>
-            <td className={style.withRate}>{el.buyRate}</td>
-            <td className={style.withRate}>{el.sellRate}</td>
+            <td className={style.withRate}>{Number(el.nbrRate).toFixed(4)}</td>
+            <td className={style.withRate}>{Number(el.buyRate).toFixed(4)}</td>
+            <td className={style.withRate}>{Number(el.sellRate).toFixed(4)}</td>
             <td className={style.smallBtn} style={{paddingLeft:"5px"}}>
                 <div className={style.deletCurrency}>
                   <MdDeleteOutline />
