@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import BigBtnWithColorAll from './BigBtnWithColorAll';
 import BigBtnNoColorAll from './BigBtnNoColorAll';
 
-const NewCoinFormAll = ({ handleAddCoin }) => {
+const NewCoinFormAll = ({ handleAddNewCoin,handleAddCoinModal }) => {
   const [isCurrency, setIsCurrency] = useState({
     id: nanoid(),
     currencyName: '',
@@ -13,33 +13,10 @@ const NewCoinFormAll = ({ handleAddCoin }) => {
     sellRate: '',
   });
 
-  /*const handleSubmit = e => {
 
-    e.preventDefault();
-    const localStorageArr = JSON.parse(localStorage.getItem("moneyGuardCurrency"));
-    const index = localStorageArr.findIndex(c => c.id === isCurrency.id);
-    console.log("index",index)
-    if (index !== -1) {
-      localStorageArr[index] = isCurrency;
-    } else {
-      localStorageArr.push(isCurrency); 
-    };
-
-    localStorage.setItem("moneyGuardCurrency", JSON.stringify(localStorageArr))
-
-    setIsCurrency({
-      id:nanoid(),
-      currencyName: '',
-      nbrRate: '',
-      buyRate: '',
-      sellRate: '',
-    });
-
-  };
-  */
-
+  const handleSubmit = () => handleAddNewCoin(isCurrency)
   return (
-    <form className={style.newCoinAllForm}>
+    <form className={style.newCoinAllForm} onSubmit={handleSubmit}>
       <input
         type="text"
         name="currencyName"
@@ -96,8 +73,8 @@ const NewCoinFormAll = ({ handleAddCoin }) => {
         }
       />
       <div className={style.bigButtons}>
-        <BigBtnWithColorAll valueBtn="Save"/>
-        <BigBtnNoColorAll  valueBtn="Close"/>
+        <BigBtnWithColorAll valueBtn="Save" type="submit" />
+        <BigBtnNoColorAll valueBtn="Close" handleAddCoinModal={handleAddCoinModal } />
       </div>
     </form>
   );
@@ -105,6 +82,4 @@ const NewCoinFormAll = ({ handleAddCoin }) => {
 
 export default NewCoinFormAll;
 
-/*
 
-*/

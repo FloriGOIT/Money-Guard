@@ -1,5 +1,6 @@
 import style from '../moneyGuard.module.scss';
-import { useState } from 'react';
+import currency from 'helpers/currencyBNR';
+import { useState,useEffect } from 'react';
 import Balance from 'components/Balance';
 import CurrencyAll from './CurrencyAll';
 import ListCardsAll from 'components/TabletMobileDesign/ListCardsAll';
@@ -9,17 +10,31 @@ import NewCoinFormAll from './NewCoinFormAll';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 
 const AllinOne = ({ info }) => {
+  const currenciesLocalStorage = localStorage.getItem("moneyGuardCurrency");
+  const currenciesParces = JSON.parse(currenciesLocalStorage)
   const [isHomeNavSelected, setIsHomeNavSelected] = useState(false);
-  const [isNewCoinModalOn, setisNewCoinModalOn] = useState(false)
+  const [isListCurrencies, setIsListCurrencies] = useState(currenciesParces || currency);
+  const [isNewCoinModalOn, setisNewCoinModalOn] = useState(false);
+  
+  useEffect(() => {
+ localStorage.setItem("moneyGuardCurrency", JSON.stringify(isListCurrencies))
+}, [isListCurrencies])
 
+
+  const handleAddNewCoin = value => {
+    setIsListCurrencies(prev => [...prev, value]);
+    setisNewCoinModalOn(prev=> !prev)
+  }
+  
   const [isYearMonthForFilter, setisYearMonthForFilter] = useState({
     year: currentYear,
     month: currentMonthLetter,
   });
+  //
 
   const handleYearMonth = value => setisYearMonthForFilter(value);
   const handleNav = () => setIsHomeNavSelected(pre => !pre);
-  const handleAddCoin = () => setisNewCoinModalOn(prev=> !prev)
+  const handleAddCoinModal = () => setisNewCoinModalOn(prev=> !prev)
 
   return (
     <section className={style.allinOneWrapper}>
@@ -27,7 +42,7 @@ const AllinOne = ({ info }) => {
         <div className={style.allinOneContainerPermanent}>
           <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
           <Balance info={info} />
-        <CurrencyAll handleAddCoin={handleAddCoin} />
+        <CurrencyAll handleAddCoinModal={handleAddCoinModal} listCurrencies={isListCurrencies} />
         </div>
         <div className={style.allinOneContainerRight}>
           <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
@@ -37,7 +52,7 @@ const AllinOne = ({ info }) => {
           />
       </div>
      {isNewCoinModalOn? <div className={style.newCoinAllFormContainer}>
-        <NewCoinFormAll  /> 
+        <NewCoinFormAll handleAddNewCoin={handleAddNewCoin} handleAddCoinModal={handleAddCoinModal} /> 
       </div> : null}
     </section>
   );
