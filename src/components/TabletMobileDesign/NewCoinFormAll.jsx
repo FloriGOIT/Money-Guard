@@ -11,7 +11,7 @@ const NewCoinFormAll = ({
   isListCurrencies,
 }) => {
 
-  const [isCurrency, setIsCurrency] = useState({
+  const [isCoin, setIsCoin] = useState({
       id: nanoid(),
       currencyName: '',
       nbrRate: '',
@@ -27,13 +27,13 @@ const NewCoinFormAll = ({
     );
     
     if (isIdForCoinUpdate) {
-    setIsCurrency(coinToBeUpdated);
+    setIsCoin(coinToBeUpdated);
   } },[isIdForCoinUpdate, isListCurrencies])
 
 
   const handleSubmit = e => {
     e.preventDefault();
-    handleAddNewCoin(isCurrency);
+    handleAddNewCoin(isCoin);
   };
   return (
     <form className={style.newCoinAllForm} onSubmit={handleSubmit}>
@@ -42,12 +42,12 @@ const NewCoinFormAll = ({
         name="currencyName"
         pattern="^[A-Za-z]{3}$"
         title="Enter exactly 3 letters.Example: USD, RON, EUR"
-        value={isCurrency.currencyName}
+        value={isCoin.currencyName}
         required
         autoComplete="off"
         placeholder="Currency name"
         onChange={e =>
-          setIsCurrency(prev => ({
+          setIsCoin(prev => ({
             ...prev,
             currencyName: e.target.value.toUpperCase(),
           }))
@@ -58,12 +58,12 @@ const NewCoinFormAll = ({
         name="nbrRate"
         pattern="^\d{1,3}(\.\d{1,4})?$"
         title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
-        value={isCurrency.nbrRate}
+        value={isCoin.nbrRate}
         required
         autoComplete="off"
         placeholder="Central bank rate"
         onChange={e =>
-          setIsCurrency(prev => ({ ...prev, nbrRate: e.target.value }))
+          setIsCoin(prev => ({ ...prev, nbrRate: e.target.value }))
         }
       />
       <input
@@ -71,12 +71,12 @@ const NewCoinFormAll = ({
         name="buyRate"
         pattern="^\d{1,3}(\.\d{1,4})?$"
         title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
-        value={isCurrency.buyRate}
+        value={isCoin.buyRate}
         required
         autoComplete="off"
         placeholder="Buy rate"
         onChange={e =>
-          setIsCurrency(prev => ({ ...prev, buyRate: e.target.value }))
+          setIsCoin(prev => ({ ...prev, buyRate: e.target.value }))
         }
       />
       <input
@@ -84,12 +84,12 @@ const NewCoinFormAll = ({
         name="sellRate"
         pattern="^\d{1,3}(\.\d{1,4})?$"
         title="Number with up to 4 decimal places. Use dot as separator. Example: 5.00"
-        value={isCurrency.sellRate}
+        value={isCoin.sellRate}
         required
         autoComplete="off"
         placeholder="Sell rate"
         onChange={e =>
-          setIsCurrency(prev => ({ ...prev, sellRate: e.target.value }))
+          setIsCoin(prev => ({ ...prev, sellRate: e.target.value }))
         }
       />
       <div className={style.bigButtons}>
