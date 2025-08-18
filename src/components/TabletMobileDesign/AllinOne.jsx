@@ -15,6 +15,7 @@ const AllinOne = ({ info }) => {
   const [isHomeNavSelected, setIsHomeNavSelected] = useState(false);
   const [isListCurrencies, setIsListCurrencies] = useState(currenciesParces || currency);
   const [isNewCoinModalOn, setisNewCoinModalOn] = useState(false);
+  const [isIdForCoinUpdate, setIsIdForCoinUpdate] = useState("")
   
   useEffect(() => {
  localStorage.setItem("moneyGuardCurrency", JSON.stringify(isListCurrencies))
@@ -34,15 +35,16 @@ const AllinOne = ({ info }) => {
 
   const handleYearMonth = value => setisYearMonthForFilter(value);
   const handleNav = () => setIsHomeNavSelected(pre => !pre);
-  const handleAddCoinModal = () => setisNewCoinModalOn(prev=> !prev)
-
+  const handleAddCoinModal = () => setisNewCoinModalOn(prev => !prev);
+  const handleIdForCoinUpdate = id => {setIsIdForCoinUpdate(id);handleAddCoinModal()}
+  
   return (
     <section className={style.allinOneWrapper}>
 
         <div className={style.allinOneContainerPermanent}>
           <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
           <Balance info={info} />
-        <CurrencyAll handleAddCoinModal={handleAddCoinModal} listCurrencies={isListCurrencies} />
+        <CurrencyAll handleAddCoinModal={handleAddCoinModal} listCurrencies={isListCurrencies} handleIdForCoinUpdate={handleIdForCoinUpdate} />
         </div>
         <div className={style.allinOneContainerRight}>
           <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
@@ -52,7 +54,7 @@ const AllinOne = ({ info }) => {
           />
       </div>
      {isNewCoinModalOn? <div className={style.newCoinAllFormContainer}>
-        <NewCoinFormAll handleAddNewCoin={handleAddNewCoin} handleAddCoinModal={handleAddCoinModal} /> 
+        <NewCoinFormAll handleAddNewCoin={handleAddNewCoin} handleAddCoinModal={handleAddCoinModal} isIdForCoinUpdate={isIdForCoinUpdate} isListCurrencies={isListCurrencies} /> 
       </div> : null}
     </section>
   );

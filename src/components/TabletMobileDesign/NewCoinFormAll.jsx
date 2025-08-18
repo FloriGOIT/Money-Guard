@@ -1,20 +1,42 @@
 import style from '../moneyGuard.module.scss';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import BigBtnWithColorAll from './BigBtnWithColorAll';
 import BigBtnNoColorAll from './BigBtnNoColorAll';
 
-const NewCoinFormAll = ({ handleAddNewCoin,handleAddCoinModal }) => {
-  const [isCurrency, setIsCurrency] = useState({
-    id: nanoid(),
-    currencyName: '',
-    nbrRate: '',
-    buyRate: '',
-    sellRate: '',
-  });
+const NewCoinFormAll = ({
+  handleAddNewCoin,
+  handleAddCoinModal,
+  isIdForCoinUpdate,
+  isListCurrencies,
+}) => {
+
+  const [isCurrency, setIsCurrency] = useState({});
 
 
-  const handleSubmit = () => handleAddNewCoin(isCurrency)
+
+  useEffect(() => {
+      const coinToBeUpdated = isListCurrencies.find(
+    el => el.id === isIdForCoinUpdate
+    );
+    
+    if (isIdForCoinUpdate) {
+    setIsCurrency(coinToBeUpdated);
+  } else {
+    setIsCurrency({
+      id: nanoid(),
+      currencyName: '',
+      nbrRate: '',
+      buyRate: '',
+      sellRate: '',
+    });
+  } },[isIdForCoinUpdate, isListCurrencies])
+
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    handleAddNewCoin(isCurrency);
+  };
   return (
     <form className={style.newCoinAllForm} onSubmit={handleSubmit}>
       <input
@@ -74,12 +96,13 @@ const NewCoinFormAll = ({ handleAddNewCoin,handleAddCoinModal }) => {
       />
       <div className={style.bigButtons}>
         <BigBtnWithColorAll valueBtn="Save" type="submit" />
-        <BigBtnNoColorAll valueBtn="Close" handleAddCoinModal={handleAddCoinModal } />
+        <BigBtnNoColorAll
+          valueBtn="Close"
+          handleAddCoinModal={handleAddCoinModal}
+        />
       </div>
     </form>
   );
 };
 
 export default NewCoinFormAll;
-
-
