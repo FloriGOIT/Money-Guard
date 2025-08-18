@@ -221,6 +221,8 @@ const NewCard = ({ info }) => {
             </Link>
           </div>
         </form>
+      
+      
       </div>
     </section>
   );

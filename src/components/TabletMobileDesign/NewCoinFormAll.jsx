@@ -36,7 +36,7 @@ const NewCoinFormAll = ({
     handleAddNewCoin(isCoin);
   };
   return (
-    <form className={style.newCoinAllForm} onSubmit={handleSubmit}>
+    <form className={style.newCoinFormAll} onSubmit={handleSubmit}>
       <input
         type="text"
         name="currencyName"

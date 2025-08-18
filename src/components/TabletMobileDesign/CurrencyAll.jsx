@@ -4,7 +4,7 @@ import { MdDeleteOutline } from 'react-icons/md';
 import AddButton from './AddButton';
 
 
-const CurrencyAll = ({ listCurrencies, handleAddCoinModal,handleIdForCoinUpdate }) => {
+const CurrencyAll = ({ listCurrencies, handleAddCoinModal,handleIdForCoinUpdate,handleIdForCoinDel }) => {
   
   return (
     <table className={style.currencyTableAll}>
@@ -24,7 +24,7 @@ const CurrencyAll = ({ listCurrencies, handleAddCoinModal,handleIdForCoinUpdate 
             <td className={style.withRate}>{Number(el.nbrRate).toFixed(4)}</td>
             <td className={style.withRate}>{Number(el.buyRate).toFixed(4)}</td>
             <td className={style.withRate}>{Number(el.sellRate).toFixed(4)}</td>
-            <td className={style.smallBtn} style={{paddingLeft:"5px"}}>
+            <td className={style.smallBtn} style={{paddingLeft:"5px"}} onClick={()=>handleIdForCoinDel(el.id)}>
                 <div className={style.deletCurrency}>
                   <MdDeleteOutline />
                 </div>

@@ -7,6 +7,7 @@ import ListCardsAll from 'components/TabletMobileDesign/ListCardsAll';
 import ModalTimeAll from 'components/TabletMobileDesign/ModalTimeAll';
 import NavAll from 'components/TabletMobileDesign/NavAll';
 import NewCoinFormAll from './NewCoinFormAll';
+import NewCardFormAll from './NewCardFormAll';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 
 const AllinOne = ({ info }) => {
@@ -14,9 +15,10 @@ const AllinOne = ({ info }) => {
   const currenciesParces = JSON.parse(currenciesLocalStorage)
   const [isHomeNavSelected, setIsHomeNavSelected] = useState(false);
   const [isListCurrencies, setIsListCurrencies] = useState(currenciesParces || currency);
-  const [isNewCoinModalOn, setisNewCoinModalOn] = useState(false);
+  const [isNewCoinModalOn, setIsNewCoinModalOn] = useState(false);
+  const [isNewCardModalOn, setIsNewCardModalOn] = useState(true);
   const [isIdForCoinUpdate, setIsIdForCoinUpdate] = useState("")
-  
+
   useEffect(() => {
  localStorage.setItem("moneyGuardCurrency", JSON.stringify(isListCurrencies))
 }, [isListCurrencies])
@@ -31,7 +33,7 @@ const AllinOne = ({ info }) => {
       setIsIdForCoinUpdate("");
     }
     
-    setisNewCoinModalOn(prev=> !prev)
+    setIsNewCoinModalOn(prev=> !prev)
   }
   
   const [isYearMonthForFilter, setisYearMonthForFilter] = useState({
@@ -42,16 +44,19 @@ const AllinOne = ({ info }) => {
 
   const handleYearMonth = value => setisYearMonthForFilter(value);
   const handleNav = () => setIsHomeNavSelected(pre => !pre);
-  const handleAddCoinModal = () => setisNewCoinModalOn(prev => !prev);
+  const handleAddCoinModal = () => setIsNewCoinModalOn(prev => !prev);
   const handleIdForCoinUpdate = id => {setIsIdForCoinUpdate(id);handleAddCoinModal()}
-  
+  const handleIdForCoinDel = id => {
+  const newListCurrency = isListCurrencies.filter(el => el.id !== id);
+    setIsListCurrencies(newListCurrency)
+  }
   return (
     <section className={style.allinOneWrapper}>
 
-        <div className={style.allinOneContainerPermanent}>
+        <div className={style.allinOneContainerLeft}>
           <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
           <Balance info={info} />
-        <CurrencyAll handleAddCoinModal={handleAddCoinModal} listCurrencies={isListCurrencies} handleIdForCoinUpdate={handleIdForCoinUpdate} />
+        <CurrencyAll handleAddCoinModal={handleAddCoinModal} listCurrencies={isListCurrencies} handleIdForCoinUpdate={handleIdForCoinUpdate} handleIdForCoinDel={handleIdForCoinDel} />
         </div>
         <div className={style.allinOneContainerRight}>
           <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
@@ -60,9 +65,10 @@ const AllinOne = ({ info }) => {
             isYearMonthForFilter={isYearMonthForFilter}
           />
       </div>
-     {isNewCoinModalOn? <div className={style.newCoinAllFormContainer}>
+     {isNewCoinModalOn? <div className={style.newCoinFormAllModal}>
         <NewCoinFormAll handleAddNewCoin={handleAddNewCoin} handleAddCoinModal={handleAddCoinModal} isIdForCoinUpdate={isIdForCoinUpdate} isListCurrencies={isListCurrencies} /> 
       </div> : null}
+      {isNewCardModalOn? <div className={style.newCardFormAllModal}><NewCardFormAll/></div> : null }
     </section>
   );
 };
