@@ -1,20 +1,117 @@
 import style from '../moneyGuard.module.scss';
-import { useState } from 'react';
+import {useEffect, useState } from 'react';
 import { mainIncomes, mainExpenses,allCategories } from '../../helpers/categories';
-const NewCardFormAll = () => {
-         const [isExpense, setIsExpense] = useState(false);
-         const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
-         //const [isOption, setIsOption] = useState('Select a category');
-         //const [isDate, setIsDate] = useState(today);
-         //const [isAmount, setIsAmount] = useState("");
-         //const [isDetails, setIsDetails] = useState("");
-         //const [isColor, setIsColor] = useState("")
-let arrCategory = isExpense ? mainExpenses: mainIncomes ;        
-  return (
-    <div className={style.newCardFormAllContainer}>
-      <h2>Add transaction</h2>
+import { FaAngleDown } from 'react-icons/fa6';
+import { FaChevronUp } from 'react-icons/fa';
+//import { Link,useParams } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
+import { nanoid } from 'nanoid';
+import { today,months } from "../../helpers/timeInfo";
 
-        <form className={style.newCardFormAll} >
+
+const NewCardFormAll = ({ info }) => {
+
+  const [isExpense, setIsExpense] = useState(false);
+  const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
+  const [isOption, setIsOption] = useState('Select a category');
+  const [isDate, setIsDate] = useState(today);
+  const [isAmount, setIsAmount] = useState("");
+  const [isDetails, setIsDetails] = useState("");
+  const [isColor, setIsColor] = useState("")
+  //const navigate = useNavigate(); plusy
+
+  const monthPreLether = months.filter(month => month.number === isDate.split("-")[1] );
+  const monthLether = monthPreLether[0].name;
+      const defaultCard = {
+      id: nanoid(),
+        date: isDate,
+        year: isDate.split("-")[0],
+      month:monthLether,
+      type: isExpense,
+      category: isOption,
+      details: isDetails,
+        amount: isAmount,
+      color:isColor
+      }
+
+  //const { id } = useParams(); plusy
+  const id = "";
+  // const selectedCard = info.find(card => card.id === id); plusy
+
+  /*
+  useEffect(()=>{ if (selectedCard) {
+    
+    setIsExpense(selectedCard.type); 
+    setIsOption(selectedCard.category);
+    setIsDate(selectedCard.date);
+    setIsAmount(selectedCard.amount);
+    setIsDetails(selectedCard.details);
+    setIsColor(selectedCard.color)
+  }},[selectedCard])
+    plusy */ 
+ 
+
+  let arrCategory = isExpense ? mainExpenses: mainIncomes ;
+  const buttonArrow = isListCategoriesOn ? <FaChevronUp /> : <FaAngleDown />;
+
+  const handleToggle = () => {
+    setIsExpense(prev => !prev);
+    setIsOption('Select a category');
+  };
+  const handleSelectedCategory = e => {
+    e.preventDefault();
+    setIsListCategoriesOn(prev => !prev);
+  };
+  const handleOption = input => {
+    setIsOption(input);
+    const identifyColor = allCategories.find(category => category.type === input)
+    setIsColor(identifyColor.color)
+    setIsListCategoriesOn(prev => !prev);
+  };
+
+
+  
+  const submitNewCard = (e) => {
+    e.preventDefault();
+    const index = info.findIndex(card => card.id === id);
+    if (id) { 
+      info.splice(index, 1); }
+
+
+    if (isOption === 'Select a category') {
+      alert("Please select a type of income or expense.");
+      return;
+    }
+
+    if (isAmount === '') {
+      alert("Please add a value higher than 0.00");
+      return;
+    }
+    if (Number(defaultCard.year) < 2020) { alert("Please enter a date that starts with year 2020"); return }
+    if (index !== -1) { info[index] = defaultCard }
+    else{info.push(defaultCard);}
+    
+    localStorage.setItem("listCards", JSON.stringify(info))
+    setIsExpense(false);
+    setIsListCategoriesOn(false);
+    setIsOption('Select a category');
+    setIsDate(today);
+    setIsAmount("");
+    setIsDetails("");
+    setIsColor("")
+
+
+  //navigate("/") plusy
+ 
+    
+  };
+
+  return (
+
+      <section className={style.newCardContainer}>
+        <h2>Add transaction</h2>
+        
+        <form className={style.newCardForm} onSubmit={submitNewCard}>
           <div className={style.newCardToggle}>
             <span style={{ color: isExpense ? 'white' : 'rgb(194, 240, 126)' }}>
               Income
@@ -24,7 +121,7 @@ let arrCategory = isExpense ? mainExpenses: mainIncomes ;
                 type="checkbox"
                 name="toggleNewCard"
                 checked={isExpense}
-                //onChange={handleToggle}
+                onChange={handleToggle}
                 autoComplete="off"
               />
               <span className={`${style.slider} ${style.round}`}></span>
@@ -37,17 +134,17 @@ let arrCategory = isExpense ? mainExpenses: mainIncomes ;
           <div className={`${style.rowFormNewCard} ${style.categorySelection}`}>
             <input
               type="text"
-              //value={isOption}
+              value={isOption}
               readOnly
               name="selectAcategory"
-              //style={{ color: isOption === 'Select a category' ? "rgba(206, 204, 204, 0.664)" : "white" }}
+              style={{ color: isOption === 'Select a category' ? "rgba(206, 204, 204, 0.664)" : "white" }}
               autoComplete="off"
             />
             <button
-              //onClick={handleSelectedCategory}
+              onClick={handleSelectedCategory}
               className={style.rowFormNewCardElem2}
             >
-              ➡️
+              {buttonArrow}
             </button>
           </div>
 
@@ -58,7 +155,7 @@ let arrCategory = isExpense ? mainExpenses: mainIncomes ;
                   key={category.type}
                   value={category.type.toLowerCase()}
                   className={style.newCardOption }
-                  //onClick={() => handleOption(category.type)}
+                  onClick={() => handleOption(category.type)}
                 >
                   <input
                     type="text"
@@ -82,18 +179,18 @@ let arrCategory = isExpense ? mainExpenses: mainIncomes ;
               type="text"
               name="amount"
               pattern="^\d+(\.\d{1,2})?$"
-              //value={isAmount}
+              value={isAmount}
               title="Enter an amount highet than 0, that has the followig format 5, 5.5 or 5.00"
               placeholder="0.00"
               required
               autoComplete="off"
-              //onChange={e=>setIsAmount(e.target.value)}
+              onChange={e=>setIsAmount(e.target.value)}
             />
             <input
               type="date"
               name="dateNewCard"
               className={style.date}
-              //onChange={e => setIsDate(e.target.value)}
+              onChange={e => setIsDate(e.target.value)}
               autoComplete="off"
             />
           </div>
@@ -103,18 +200,43 @@ let arrCategory = isExpense ? mainExpenses: mainIncomes ;
               type="text"
               name="comment"
               className={style.comment}
-              //value={isDetails}
+              value={isDetails}
               placeholder="-"
               autoComplete="off"
-               //onChange={e=>setIsDetails(e.target.value)}
+               onChange={e=>setIsDetails(e.target.value)}
             />
           </div>
 
+          <div className={style.newCardButtons}>
 
+              <button
+                type="submit"
+                className={`${style.bigButton} ${style.selectedBtn}`}
+              >Add
+              </button>
+
+
+            <button
+              to="/"
+              className={`${style.bigButton} ${style.notSelectedBtn}`}
+            >
+              Cancel
+            </button>
+          </div>
         </form>
-    </div>
+      
+      
+      </section>
+
   );
 };
+
+
+/*
+
+
+*/
+
 
 export default NewCardFormAll;
 
