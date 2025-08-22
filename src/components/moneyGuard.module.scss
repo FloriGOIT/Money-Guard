@@ -1251,7 +1251,7 @@ ul li {
   flex-direction: row;
   box-sizing: border-box;
   position: relative;
-
+  overflow-x: hidden;
   .allinOneContainerLeft {
     box-sizing: border-box;
     display: flex;
@@ -1259,7 +1259,7 @@ ul li {
     gap: 50px;
     padding-left: 20px;
     padding-top: 30px;
-    width: 33vw;
+    width: 34vw;
     //width: 5vw;
     overflow: hidden;
     border-right: 2px solid rgba(206, 204, 204, 0.364);
@@ -1321,131 +1321,149 @@ ul li {
       }
     }
   }
-
-  .totalSum {
-    border: 1px solid rgba(206, 204, 204, 0.364);
-    width: inherit;
-    box-sizing: border-box;
+  .preBalance {
     background-color: rgba(115, 38, 187, 0.789);
     padding: 10px 10px;
     border-radius: 8px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 25px;
-    font-weight: 100;
-    color: white;
-  }
-
-  .currencyTableAll {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 398px;
-    height: 250px;
     border: 1px solid rgba(206, 204, 204, 0.364);
-    border-right: none;
-    border-radius: 10px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    min-width: 320px;
+          .totalSum {
+      width: inherit;
+      box-sizing: border-box;
+      margin: 18px auto;
+      font-size: 25px;
+      font-weight: 100;
+      color: white;
+      text-align: center;
+      width: 320px; 
+      p{display: flex;
+        flex-direction: row;
+        justify-content: space-between; }
+    }
+  }
+  .preCurrencyTableAll {
     background-color: rgb(92, 38, 187, 0.705);
     background-image: url('../helpers/images/graphBackground.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    color: white;
-    table-layout: fixed;
-    border-collapse: collapse;
-    padding: 10px;
-    padding-right: 0px;
-    thead {
+    border: 1px solid rgba(206, 204, 204, 0.364);
+    border-right: none;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    .currencyTableAll {
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 405px;
+      height: 250px;
+      margin: 0 auto;
+      color: white;
+      table-layout: fixed;
+      border-collapse: collapse;
+      padding: 10px;
+      padding-right: 0px;
 
-      th {
-        font-size: 25px;
-        font-weight: 100;
-        text-align: center;
-        &.nonRate {
-          width: 38px;
-        }
-        &.withRate {
-          width: 70px;
-        }
-        .addButtonAll {
-          margin-left: 50px;
-        }
-      }
-    }
-    tbody {
-      overflow: auto;
-      &::-webkit-scrollbar {
-        width: 8px;
-      }
 
-      &::-webkit-scrollbar-track {
-        background: rgba(115, 38, 187, 0.705);
-        border-radius: 8px;
-      }
+      thead {
+        box-sizing: border-box;
 
-      &::-webkit-scrollbar-thumb {
-        background: rgba(206, 204, 204, 0.664);
-        border-radius: 8px;
-      }
-
-      &::-webkit-scrollbar-thumb:hover {
-        background: rgb(206, 204, 204);
-      }
-      td {
-        font-size: 19px;
-        padding: 8px 4px;
-        &.nonRate {
-          color: wheat;
-          font-weight: 600;
-        }
-        &.withRate {
-          width: 70px;
+        th {
+          font-size: 25px;
+          font-weight: 100;
           text-align: center;
+
+          &.nonRate {
+            width: 38px;
+          }
+
+          &.withRate {
+            width: 70px;
+          }
+
+          .addButtonAll {
+            margin-left: 50px;
+          }
         }
-        &.smallBtn {
-          .editCurrency,
-          .deletCurrency {
-            padding: 0px;
+      }
+
+      tbody {
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: rgba(115, 38, 187, 0.705);
+          border-radius: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba(206, 204, 204, 0.664);
+          border-radius: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background: rgb(206, 204, 204);
+        }
+
+        td {
+          font-size: 19px;
+          padding: 8px 4px;
+
+          &.nonRate {
+            color: wheat;
+            font-weight: 600;
+          }
+
+          &.withRate {
+            width: 70px;
             text-align: center;
-            font-size: 18px;
-            font-weight: 400;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            height: 28px;
-            color: white;
-            box-sizing: border-box;
-            width: 51px;
-
-            &:hover {
-              box-shadow: 2px 2px 3px rgb(66, 3, 124);
-            }
-
-            svg {
-              padding-top: 5px;
-            }
           }
 
-          .deletCurrency {
-            background: -webkit-linear-gradient(
-              to right,
-              #f3a73c,
-              hwb(288 30% 11%)
-            );
-            background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-            color: white;
-          }
+          &.smallBtn {
+            .editCurrency,
+            .deletCurrency {
+              padding: 0px;
+              text-align: center;
+              font-size: 18px;
+              font-weight: 400;
+              border: none;
+              border-radius: 20px;
+              cursor: pointer;
+              height: 28px;
+              color: white;
+              box-sizing: border-box;
+              width: 51px;
 
-          .editCurrency {
-            background-color: white;
-            color: rgb(92, 38, 187);
+              &:hover {
+                box-shadow: 2px 2px 3px rgb(66, 3, 124);
+              }
+
+              svg {
+                padding-top: 5px;
+              }
+            }
+
+            .deletCurrency {
+              background: -webkit-linear-gradient(
+                to right,
+                #f3a73c,
+                hwb(288 30% 11%)
+              );
+              background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+              color: white;
+            }
+
+            .editCurrency {
+              background-color: white;
+              color: rgb(92, 38, 187);
+            }
           }
         }
       }
@@ -1465,7 +1483,7 @@ ul li {
       flex-direction: row;
       gap: 30px;
       width: 65vw;
-      margin-left: 20px;
+      margin-left: calc((100vw - 33vw - 850px) / 2);
 
       .headerPeriodOff {
         border: 1px solid rgba(206, 204, 204, 0.364);
@@ -1545,10 +1563,10 @@ ul li {
     .listCardsTabletContainer {
       position: absolute;
       top: 100px;
-      left: 20px;
+      left: calc((100vw - 33vw - 850px) / 2);
       box-sizing: border-box;
       padding: 0px 0px;
-      width: 65vw;
+      width: 850px;
       table {
         table-layout: fixed;
         border-collapse: collapse;
@@ -1711,7 +1729,6 @@ ul li {
         font-weight: 400;
         font-size: 20px;
       }
-
     }
   }
 
@@ -1721,13 +1738,13 @@ ul li {
     width: 100%;
     height: 100%;
     z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: rgba(152, 137, 165, 0.699);
-    .newCardContainer{margin-top: calc((100vh - 490px) / 2);
-    .bigButtons{margin-top: 20px;}}
-
+    .newCardContainer {
+      margin-top: calc((100vh - 490px) / 2);
+      .bigButtons {
+        margin-top: 20px;
+      }
+    }
   }
   .addButtonAll {
     background: -webkit-linear-gradient(to right, #f3a73c, hwb(288 30% 11%));

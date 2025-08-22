@@ -10,7 +10,7 @@ import NewCoinFormAll from './NewCoinFormAll';
 import NewCardFormAll from './NewCardFormAll';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 
-const AllinOne = ({ info }) => {
+const AllinOne = ({ info, handleDeleteCard }) => {
   const currenciesLocalStorage = localStorage.getItem("moneyGuardCurrency");
   const currenciesParces = JSON.parse(currenciesLocalStorage)
   const [isHomeNavSelected, setIsHomeNavSelected] = useState(false);
@@ -18,7 +18,7 @@ const AllinOne = ({ info }) => {
   const [isNewCoinModalOn, setIsNewCoinModalOn] = useState(false);
   const [isNewCardModalOn, setIsNewCardModalOn] = useState(false);
   const [isIdForCoinUpdate, setIsIdForCoinUpdate] = useState("")
- 
+  const [isIdForCardUpdate, setIsIdForCardUpdate] = useState("")
   useEffect(() => {
  localStorage.setItem("moneyGuardCurrency", JSON.stringify(isListCurrencies))
 }, [isListCurrencies])
@@ -45,10 +45,12 @@ const AllinOne = ({ info }) => {
   const handleYearMonth = value => setisYearMonthForFilter(value);
   const handleNav = () => setIsHomeNavSelected(pre => !pre);
   const handleAddCoinModal = () => setIsNewCoinModalOn(prev => !prev);
-  const handleIdForCoinUpdate = id => {setIsIdForCoinUpdate(id);handleAddCoinModal()}
+  const handleIdForCoinUpdate = id => { setIsIdForCoinUpdate(id); handleAddCoinModal() }
+  const handleIdForCardUpdate = id => setIsIdForCardUpdate(id);
   const handleIdForCoinDel = id => {
   const newListCurrency = isListCurrencies.filter(el => el.id !== id);
-    setIsListCurrencies(newListCurrency)
+    setIsListCurrencies(newListCurrency);
+    setIsIdForCoinUpdate("")
   }
   const handleAddCardModal = () => setIsNewCardModalOn(prev => !prev);
 
@@ -56,13 +58,16 @@ const AllinOne = ({ info }) => {
     <section className={style.allinOneWrapper}>
 
         <div className={style.allinOneContainerLeft}>
-          <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
+        <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
+        <div className={style.preBalance}>
           <Balance info={info} />
+        </div>
+          
         <CurrencyAll handleAddCoinModal={handleAddCoinModal} listCurrencies={isListCurrencies} handleIdForCoinUpdate={handleIdForCoinUpdate} handleIdForCoinDel={handleIdForCoinDel} />
         </div>
         <div className={style.allinOneContainerRight}>
           <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
-          <ListCardsAll handleAddCardModal={handleAddCardModal}
+        <ListCardsAll handleAddCardModal={handleAddCardModal} handleDeleteCard={handleDeleteCard} handleIdForCardUpdate={handleIdForCardUpdate} 
             info={info}
             isYearMonthForFilter={isYearMonthForFilter}
           />
@@ -70,7 +75,7 @@ const AllinOne = ({ info }) => {
      {isNewCoinModalOn? <div className={style.newCoinFormAllModal}>
         <NewCoinFormAll handleAddNewCoin={handleAddNewCoin} handleAddCoinModal={handleAddCoinModal} isIdForCoinUpdate={isIdForCoinUpdate} isListCurrencies={isListCurrencies} /> 
       </div> : null}
-      {isNewCardModalOn ? <div className={style.newCardFormAllModal} ><NewCardFormAll handleAddCardModal={handleAddCardModal} info={info} /></div> : null }
+      {isNewCardModalOn ? <div className={style.newCardFormAllModal} ><NewCardFormAll handleIdForCardUpdate={handleIdForCardUpdate} handleAddCardModal={handleAddCardModal} info={info} isIdForCardUpdate={isIdForCardUpdate} /></div> : null }
     </section>
   );
 };

@@ -7,12 +7,13 @@ import { ImPlus } from 'react-icons/im';
 import AddButton from './AddButton';
 
 
-const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal }) => {
+const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal,handleDeleteCard,handleIdForCardUpdate }) => {
   
   const filteredInfoOnPeriod = info.filter(el => Number(el.year) === Number(isYearMonthForFilter.year))
                                    .filter(el => {if(isYearMonthForFilter.month === "-"){ return el }
-                                                  else{ return el.month === isYearMonthForFilter.month}})
-  
+                                   else { return el.month === isYearMonthForFilter.month }
+                                   })
+  const handleAddNewCard = () => { handleAddCardModal(); handleIdForCardUpdate("") }
   return (
     <div className={style.listCardsTabletContainer}>
       <table>
@@ -25,7 +26,7 @@ const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal }) => {
             <th style={{width: "100px"}}>Category</th>
             <th style={{width: "340px"}}>Comment</th>
             <th style={{width: "80px"}}>Sum</th>
-            <th onClick={handleAddCardModal}><AddButton /></th>
+            <th onClick={handleAddNewCard}><AddButton /></th>
             <th></th>
           </tr>
         </thead>
@@ -39,14 +40,14 @@ const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal }) => {
               <td className={style.cardCategory} style={{width: "100px"}}>{card.category}</td>
               <td className={style.cardDetails} style={{width: "340px", color: "wheat"}}>{card.details}</td>
               <td className={style.cardAmount} style={{width: "80px"}}>{new Intl.NumberFormat('fr-FR').format(Number(card.amount).toFixed(2))}</td>
-              <td className={style.cardButton} style={{padding:"0px 5px 5px 5px"}}>
-                <div className={style.deletCurrency}>
+              <td className={style.cardButton} style={{ padding: "0px 5px 5px 5px" }} onClick={() =>handleDeleteCard(card.id)}>
+                <div className={style.deletCurrency} >
                   <MdDeleteOutline />
                 </div>
               </td>
-              <td className={style.cardButton} style={{padding:"0px 5px 5px 5px"}}>
-                <div className={style.editCurrency}>
-                  <MdOutlineModeEdit />
+              <td className={style.cardButton} style={{ padding: "0px 5px 5px 5px" }} onClick={() => { handleIdForCardUpdate(card.id);; handleAddCardModal()}}>
+                <div className={style.editCurrency} >
+                  <MdOutlineModeEdit/>
                 </div>
               </td>
             </tr>

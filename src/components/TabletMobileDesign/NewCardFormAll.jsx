@@ -7,14 +7,12 @@ import {
 } from '../../helpers/categories';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
-//import { Link,useParams } from 'react-router-dom';
-//import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { today, months } from '../../helpers/timeInfo';
 import BigBtnWithColorAll from './BigBtnWithColorAll';
 import BigBtnNoColorAll from './BigBtnNoColorAll';
 
-const NewCardFormAll = ({ info, handleAddCardModal }) => {
+const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdForCardUpdate }) => {
   const [isExpense, setIsExpense] = useState(false);
   const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
   const [isOption, setIsOption] = useState('Select a category');
@@ -22,7 +20,6 @@ const NewCardFormAll = ({ info, handleAddCardModal }) => {
   const [isAmount, setIsAmount] = useState('');
   const [isDetails, setIsDetails] = useState('');
   const [isColor, setIsColor] = useState('');
-  //const navigate = useNavigate(); plusy
 
   const monthPreLether = months.filter(
     month => month.number === isDate.split('-')[1]
@@ -40,11 +37,9 @@ const NewCardFormAll = ({ info, handleAddCardModal }) => {
     color: isColor,
   };
 
-  //const { id } = useParams(); plusy
-  //const id = '';  plusy
-  // const selectedCard = info.find(card => card.id === id); plusy
+ const selectedCard = info.find(card => card.id === isIdForCardUpdate)
+ console.log("selectedCard",selectedCard)
 
-  /*
   useEffect(()=>{ if (selectedCard) {
     
     setIsExpense(selectedCard.type); 
@@ -54,7 +49,8 @@ const NewCardFormAll = ({ info, handleAddCardModal }) => {
     setIsDetails(selectedCard.details);
     setIsColor(selectedCard.color)
   }},[selectedCard])
-    plusy */
+
+
 
   let arrCategory = isExpense ? mainExpenses : mainIncomes;
   const buttonArrow = isListCategoriesOn ? <FaChevronUp /> : <FaAngleDown />;
@@ -78,22 +74,11 @@ const NewCardFormAll = ({ info, handleAddCardModal }) => {
 
   const submitNewCard = e => {
     e.preventDefault();
-    info.push(defaultCard);
-    handleAddCardModal();
-    localStorage.setItem('listCards', JSON.stringify(info));
-    setIsExpense(false);
-    setIsListCategoriesOn(false);
-    setIsOption('Select a category');
-    setIsDate(today);
-    setIsAmount('');
-    setIsDetails('');
-    setIsColor('');
-    /*
-    
-    const index = info.findIndex(card => card.id === id);
-    if (id) {
-      info.splice(index, 1);
-    }
+
+    const index = info.findIndex(card => card.id === isIdForCardUpdate);
+    if (isIdForCardUpdate) {
+      info.splice(index, 1,defaultCard);
+    }else{info.push(defaultCard);}
 
     if (isOption === 'Select a category') {
       alert('Please select a type of income or expense.');
@@ -108,16 +93,17 @@ const NewCardFormAll = ({ info, handleAddCardModal }) => {
       alert('Please enter a date that starts with year 2020');
       return;
     }
-    if (index !== -1) {
-      info[index] = defaultCard;
-    } else {
-      info.push(defaultCard);
-    }
-
-
-    
-    //navigate("/") plusy
-    */
+       
+    localStorage.setItem('listCards', JSON.stringify(info));
+    setIsExpense(false);
+    setIsListCategoriesOn(false);
+    setIsOption('Select a category');
+    setIsDate(today);
+    setIsAmount('');
+    setIsDetails('');
+    setIsColor('');
+    handleIdForCardUpdate("")
+ handleAddCardModal();
   };
 
   return (
@@ -212,6 +198,7 @@ const NewCardFormAll = ({ info, handleAddCardModal }) => {
             className={style.date}
             onChange={e => setIsDate(e.target.value)}
             autoComplete="off"
+            value={isDate}
           />
         </div>
 

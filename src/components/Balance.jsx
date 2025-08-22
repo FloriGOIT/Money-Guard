@@ -12,7 +12,7 @@ const Balance = ({info}) => {
 
   return (
     <div className={style.totalSum}>
-      <span>
+      <p>
         Balance: <br />
         <span
           style={{
@@ -24,7 +24,7 @@ const Balance = ({info}) => {
           {new Intl.NumberFormat('fr-FR').format(balance.toFixed(2))}
         </span>{' '}
         RON
-      </span>
+      </p>
     </div>
   );
 };
