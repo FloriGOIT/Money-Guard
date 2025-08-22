@@ -7,7 +7,7 @@ import { ImPlus } from 'react-icons/im';
 import AddButton from './AddButton';
 
 
-const ListCardsAll = ({ info, isYearMonthForFilter,handleModal }) => {
+const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal }) => {
   
   const filteredInfoOnPeriod = info.filter(el => Number(el.year) === Number(isYearMonthForFilter.year))
                                    .filter(el => {if(isYearMonthForFilter.month === "-"){ return el }
@@ -25,7 +25,7 @@ const ListCardsAll = ({ info, isYearMonthForFilter,handleModal }) => {
             <th style={{width: "100px"}}>Category</th>
             <th style={{width: "340px"}}>Comment</th>
             <th style={{width: "80px"}}>Sum</th>
-            <th><AddButton handleModal={handleModal} /></th>
+            <th onClick={handleAddCardModal}><AddButton /></th>
             <th></th>
           </tr>
         </thead>

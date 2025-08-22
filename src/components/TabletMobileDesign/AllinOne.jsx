@@ -16,9 +16,9 @@ const AllinOne = ({ info }) => {
   const [isHomeNavSelected, setIsHomeNavSelected] = useState(false);
   const [isListCurrencies, setIsListCurrencies] = useState(currenciesParces || currency);
   const [isNewCoinModalOn, setIsNewCoinModalOn] = useState(false);
-  const [isNewCardModalOn, setIsNewCardModalOn] = useState(true);
+  const [isNewCardModalOn, setIsNewCardModalOn] = useState(false);
   const [isIdForCoinUpdate, setIsIdForCoinUpdate] = useState("")
-
+ 
   useEffect(() => {
  localStorage.setItem("moneyGuardCurrency", JSON.stringify(isListCurrencies))
 }, [isListCurrencies])
@@ -62,15 +62,15 @@ const AllinOne = ({ info }) => {
         </div>
         <div className={style.allinOneContainerRight}>
           <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
-          <ListCardsAll handleModal={handleAddCardModal}
+          <ListCardsAll handleAddCardModal={handleAddCardModal}
             info={info}
             isYearMonthForFilter={isYearMonthForFilter}
           />
       </div>
      {isNewCoinModalOn? <div className={style.newCoinFormAllModal}>
-        <NewCoinFormAll handleAddNewCoin={handleAddNewCoin} handleModal={handleAddCoinModal} isIdForCoinUpdate={isIdForCoinUpdate} isListCurrencies={isListCurrencies} /> 
+        <NewCoinFormAll handleAddNewCoin={handleAddNewCoin} handleAddCoinModal={handleAddCoinModal} isIdForCoinUpdate={isIdForCoinUpdate} isListCurrencies={isListCurrencies} /> 
       </div> : null}
-      {isNewCardModalOn? <div className={style.newCardFormAllModal} ><NewCardFormAll handleModal={handleAddCardModal}/></div> : null }
+      {isNewCardModalOn ? <div className={style.newCardFormAllModal} ><NewCardFormAll handleAddCardModal={handleAddCardModal} info={info} /></div> : null }
     </section>
   );
 };

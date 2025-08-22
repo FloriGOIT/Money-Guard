@@ -1,6 +1,6 @@
 import style from './moneyGuard.module.scss';
 
-const Balance = ({info,handleFormatNumber}) => {
+const Balance = ({info}) => {
   const balance = info.reduce((acc, data) => {
     if (data.type === false) {
       return acc + Number(data.amount);

@@ -14,7 +14,7 @@ import { today, months } from '../../helpers/timeInfo';
 import BigBtnWithColorAll from './BigBtnWithColorAll';
 import BigBtnNoColorAll from './BigBtnNoColorAll';
 
-const NewCardFormAll = ({ info,handleModal }) => {
+const NewCardFormAll = ({ info, handleAddCardModal }) => {
   const [isExpense, setIsExpense] = useState(false);
   const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
   const [isOption, setIsOption] = useState('Select a category');
@@ -78,7 +78,16 @@ const NewCardFormAll = ({ info,handleModal }) => {
 
   const submitNewCard = e => {
     e.preventDefault();
-    //handleAddCardModal();
+    info.push(defaultCard);
+    handleAddCardModal();
+    localStorage.setItem('listCards', JSON.stringify(info));
+    setIsExpense(false);
+    setIsListCategoriesOn(false);
+    setIsOption('Select a category');
+    setIsDate(today);
+    setIsAmount('');
+    setIsDetails('');
+    setIsColor('');
     /*
     
     const index = info.findIndex(card => card.id === id);
@@ -105,19 +114,10 @@ const NewCardFormAll = ({ info,handleModal }) => {
       info.push(defaultCard);
     }
 
-    localStorage.setItem('listCards', JSON.stringify(info));
-    setIsExpense(false);
-    setIsListCategoriesOn(false);
-    setIsOption('Select a category');
-    setIsDate(today);
-    setIsAmount('');
-    setIsDetails('');
-    setIsColor('');
+
     
     //navigate("/") plusy
     */
-    
-
   };
 
   return (
@@ -230,7 +230,10 @@ const NewCardFormAll = ({ info,handleModal }) => {
         <div className={style.bigButtons}>
           <BigBtnWithColorAll type="submit" valueBtn="Add" />
 
-          <BigBtnNoColorAll valueBtn="Cancel" handleModal={handleModal} />
+          <BigBtnNoColorAll
+            valueBtn="Cancel"
+            handleModal={handleAddCardModal}
+          />
         </div>
       </form>
     </section>

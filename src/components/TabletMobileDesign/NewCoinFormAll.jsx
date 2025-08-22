@@ -35,6 +35,17 @@ const NewCoinFormAll = ({
     e.preventDefault();
     handleAddNewCoin(isCoin);
   };
+  const handleCancel = e => {
+    e.preventDefault();
+    setIsCoin({
+      id: nanoid(),
+      currencyName: '',
+      nbrRate: '',
+      buyRate: '',
+      sellRate: '',
+    });
+    handleAddCoinModal();
+  }
   return (
     <form className={style.newCoinFormAll} onSubmit={handleSubmit}>
       <input
@@ -96,7 +107,7 @@ const NewCoinFormAll = ({
         <BigBtnWithColorAll valueBtn="Save" type="submit" />
         <BigBtnNoColorAll
           valueBtn="Close"
-          handleAddCoinModal={handleAddCoinModal}
+          handleModal={handleCancel}
         />
       </div>
     </form>
