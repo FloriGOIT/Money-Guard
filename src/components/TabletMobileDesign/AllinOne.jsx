@@ -50,6 +50,8 @@ const AllinOne = ({ info }) => {
   const newListCurrency = isListCurrencies.filter(el => el.id !== id);
     setIsListCurrencies(newListCurrency)
   }
+  const handleAddCardModal = () => setIsNewCardModalOn(prev => !prev);
+
   return (
     <section className={style.allinOneWrapper}>
 
@@ -60,15 +62,15 @@ const AllinOne = ({ info }) => {
         </div>
         <div className={style.allinOneContainerRight}>
           <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
-          <ListCardsAll
+          <ListCardsAll handleModal={handleAddCardModal}
             info={info}
             isYearMonthForFilter={isYearMonthForFilter}
           />
       </div>
      {isNewCoinModalOn? <div className={style.newCoinFormAllModal}>
-        <NewCoinFormAll handleAddNewCoin={handleAddNewCoin} handleAddCoinModal={handleAddCoinModal} isIdForCoinUpdate={isIdForCoinUpdate} isListCurrencies={isListCurrencies} /> 
+        <NewCoinFormAll handleAddNewCoin={handleAddNewCoin} handleModal={handleAddCoinModal} isIdForCoinUpdate={isIdForCoinUpdate} isListCurrencies={isListCurrencies} /> 
       </div> : null}
-      {isNewCardModalOn? <div className={style.newCardFormAllModal}><NewCardFormAll/></div> : null }
+      {isNewCardModalOn? <div className={style.newCardFormAllModal} ><NewCardFormAll handleModal={handleAddCardModal}/></div> : null }
     </section>
   );
 };
