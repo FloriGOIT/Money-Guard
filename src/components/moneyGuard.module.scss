@@ -1258,7 +1258,7 @@ ul li {
     flex-direction: column;
     gap: 50px;
     padding-left: 20px;
-    padding-top: 30px;
+    padding-top: 28px;
     width: 34vw;
     //width: 5vw;
     overflow: hidden;
@@ -1344,6 +1344,7 @@ ul li {
     }
   }
   .preCurrencyTableAll {
+    box-sizing: border-box;
     background-color: rgb(92, 38, 187, 0.705);
     background-image: url('../helpers/images/graphBackground.jpg');
     background-repeat: no-repeat;
@@ -1365,7 +1366,7 @@ ul li {
       color: white;
       table-layout: fixed;
       border-collapse: collapse;
-      padding: 10px;
+      padding: 10px ;
       padding-right: 0px;
 
 
@@ -1386,7 +1387,7 @@ ul li {
           }
 
           .addButtonAll {
-            margin-left: 47px;
+            margin-left: 56px;
           }
         }
       }
@@ -1473,18 +1474,21 @@ ul li {
   .allinOneContainerRight {
     position: relative;
     width: 70vw;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-top: 30px;
+
+    .homeSection {
+            display: flex;
+              flex-direction: column;
+              gap: 40px;
+              margin-top: 30px;
+      };
     .modalTimeSelect {
       z-index: 1;
       display: flex;
       flex-direction: row;
       gap: 30px;
-      width: 65vw;
+    
       margin-left: calc((100vw - 33vw - 850px) / 2);
-
+     
       .headerPeriodOff {
         border: 1px solid rgba(206, 204, 204, 0.364);
         box-sizing: border-box;
@@ -1562,7 +1566,7 @@ ul li {
     }
     .listCardsTabletContainer {
       position: absolute;
-      top: 100px;
+      top: 120px;
       left: calc((100vw - 33vw - 850px) / 2);
       box-sizing: border-box;
       padding: 0px 0px;

@@ -1,6 +1,6 @@
 import style from '../moneyGuard.module.scss';
 import currency from 'helpers/currencyBNR';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Balance from 'components/Balance';
 import CurrencyAll from './CurrencyAll';
 import ListCardsAll from 'components/TabletMobileDesign/ListCardsAll';
@@ -11,31 +11,38 @@ import NewCardFormAll from './NewCardFormAll';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 
 const AllinOne = ({ info, handleDeleteCard }) => {
-  const currenciesLocalStorage = localStorage.getItem("moneyGuardCurrency");
-  const currenciesParces = JSON.parse(currenciesLocalStorage)
-  const [isHomeNavSelected, setIsHomeNavSelected] = useState(false);
-  const [isListCurrencies, setIsListCurrencies] = useState(currenciesParces || currency);
+  const currenciesLocalStorage = localStorage.getItem('moneyGuardCurrency');
+  const currenciesParces = JSON.parse(currenciesLocalStorage);
+  const [isHomeNavSelected, setIsHomeNavSelected] = useState(true);
+  const [isListCurrencies, setIsListCurrencies] = useState(
+    currenciesParces || currency
+  );
   const [isNewCoinModalOn, setIsNewCoinModalOn] = useState(false);
   const [isNewCardModalOn, setIsNewCardModalOn] = useState(false);
-  const [isIdForCoinUpdate, setIsIdForCoinUpdate] = useState("")
-  const [isIdForCardUpdate, setIsIdForCardUpdate] = useState("")
+  const [isIdForCoinUpdate, setIsIdForCoinUpdate] = useState('');
+  const [isIdForCardUpdate, setIsIdForCardUpdate] = useState('');
   useEffect(() => {
- localStorage.setItem("moneyGuardCurrency", JSON.stringify(isListCurrencies))
-}, [isListCurrencies])
-
+    localStorage.setItem(
+      'moneyGuardCurrency',
+      JSON.stringify(isListCurrencies)
+    );
+  }, [isListCurrencies]);
 
   const handleAddNewCoin = value => {
-    if (!isIdForCoinUpdate) { setIsListCurrencies(prev => [...prev, value]) }
-    else {
-      const findIndex = isListCurrencies.findIndex(el=>el.id===isIdForCoinUpdate)
+    if (!isIdForCoinUpdate) {
+      setIsListCurrencies(prev => [...prev, value]);
+    } else {
+      const findIndex = isListCurrencies.findIndex(
+        el => el.id === isIdForCoinUpdate
+      );
       isListCurrencies.splice(findIndex, 1, value);
       setIsListCurrencies(isListCurrencies);
-      setIsIdForCoinUpdate("");
+      setIsIdForCoinUpdate('');
     }
-    
-    setIsNewCoinModalOn(prev=> !prev)
-  }
-  
+
+    setIsNewCoinModalOn(prev => !prev);
+  };
+
   const [isYearMonthForFilter, setisYearMonthForFilter] = useState({
     year: currentYear,
     month: currentMonthLetter,
@@ -45,41 +52,76 @@ const AllinOne = ({ info, handleDeleteCard }) => {
   const handleYearMonth = value => setisYearMonthForFilter(value);
   const handleNav = () => setIsHomeNavSelected(pre => !pre);
   const handleAddCoinModal = () => setIsNewCoinModalOn(prev => !prev);
-  const handleIdForCoinUpdate = id => { setIsIdForCoinUpdate(id); handleAddCoinModal() }
+  const handleIdForCoinUpdate = id => {
+    setIsIdForCoinUpdate(id);
+    handleAddCoinModal();
+  };
   const handleIdForCardUpdate = id => setIsIdForCardUpdate(id);
   const handleIdForCoinDel = id => {
-  const newListCurrency = isListCurrencies.filter(el => el.id !== id);
+    const newListCurrency = isListCurrencies.filter(el => el.id !== id);
     setIsListCurrencies(newListCurrency);
-    setIsIdForCoinUpdate("")
-  }
+    setIsIdForCoinUpdate('');
+  };
   const handleAddCardModal = () => setIsNewCardModalOn(prev => !prev);
 
   return (
     <section className={style.allinOneWrapper}>
-
-        <div className={style.allinOneContainerLeft}>
+      <div className={style.allinOneContainerLeft}>
         <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
+
         <div className={style.preBalance}>
           <Balance info={info} />
         </div>
-          
-        <CurrencyAll handleAddCoinModal={handleAddCoinModal} listCurrencies={isListCurrencies} handleIdForCoinUpdate={handleIdForCoinUpdate} handleIdForCoinDel={handleIdForCoinDel} />
-        </div>
-        <div className={style.allinOneContainerRight}>
-          <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
-        <ListCardsAll handleAddCardModal={handleAddCardModal} handleDeleteCard={handleDeleteCard} handleIdForCardUpdate={handleIdForCardUpdate} 
-            info={info}
-            isYearMonthForFilter={isYearMonthForFilter}
-          />
+
+        <CurrencyAll
+          handleAddCoinModal={handleAddCoinModal}
+          listCurrencies={isListCurrencies}
+          handleIdForCoinUpdate={handleIdForCoinUpdate}
+          handleIdForCoinDel={handleIdForCoinDel}
+        />
       </div>
-     {isNewCoinModalOn? <div className={style.newCoinFormAllModal}>
-        <NewCoinFormAll handleAddNewCoin={handleAddNewCoin} handleAddCoinModal={handleAddCoinModal} isIdForCoinUpdate={isIdForCoinUpdate} isListCurrencies={isListCurrencies} /> 
-      </div> : null}
-      {isNewCardModalOn ? <div className={style.newCardFormAllModal} ><NewCardFormAll handleIdForCardUpdate={handleIdForCardUpdate} handleAddCardModal={handleAddCardModal} info={info} isIdForCardUpdate={isIdForCardUpdate} /></div> : null }
+
+      <div className={style.allinOneContainerRight}>
+        {isHomeNavSelected ? (
+          <section className={style.homeSection}>
+            <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
+            <ListCardsAll
+              handleAddCardModal={handleAddCardModal}
+              handleDeleteCard={handleDeleteCard}
+              handleIdForCardUpdate={handleIdForCardUpdate}
+              info={info}
+              isYearMonthForFilter={isYearMonthForFilter}
+            />
+          </section>
+        ) : <section className={style.StatisticsSection}>
+            <p>Stats</p>
+          </section>}
+      </div>
+
+      {isNewCoinModalOn ? (
+        <div className={style.newCoinFormAllModal}>
+          <NewCoinFormAll
+            handleAddNewCoin={handleAddNewCoin}
+            handleAddCoinModal={handleAddCoinModal}
+            isIdForCoinUpdate={isIdForCoinUpdate}
+            isListCurrencies={isListCurrencies}
+          />
+        </div>
+      ) : null}
+      {isNewCardModalOn ? (
+        <div className={style.newCardFormAllModal}>
+          <NewCardFormAll
+            handleIdForCardUpdate={handleIdForCardUpdate}
+            handleAddCardModal={handleAddCardModal}
+            info={info}
+            isIdForCardUpdate={isIdForCardUpdate}
+          />
+        </div>
+      ) : null}
     </section>
   );
 };
 
 export default AllinOne;
 
-//      <NewCoinAll />       
+//      <NewCoinAll />
