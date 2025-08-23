@@ -907,6 +907,7 @@ ul li {
 
 //Statistics
 .statisticsWrapper {
+
   h2 {
     color: white;
     font-size: 30px;
@@ -926,7 +927,7 @@ ul li {
   box-sizing: border-box;
   color: white;
   width: 300px;
-  margin: 0px auto 0px auto;
+  margin: 0px auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1242,7 +1243,7 @@ ul li {
   background-image: url('../helpers/images/coins.png'),
     url('../helpers/images/simpleBackground.jpg');
   background-repeat: no-repeat, no-repeat;
-  background-position: center top 55px, center;
+  background-position: center, center;
   background-size: cover, cover;
   background-attachment: fixed;
   min-height: 100vh;
@@ -1251,7 +1252,7 @@ ul li {
   flex-direction: row;
   box-sizing: border-box;
   position: relative;
-  overflow-x: hidden;
+        overflow-y: auto;
   .allinOneContainerLeft {
     box-sizing: border-box;
     display: flex;
@@ -1259,7 +1260,7 @@ ul li {
     gap: 50px;
     padding-left: 20px;
     padding-top: 28px;
-    width: 34vw;
+    width: 35vw;
     //width: 5vw;
     overflow: hidden;
     border-right: 2px solid rgba(206, 204, 204, 0.364);
@@ -1329,7 +1330,7 @@ ul li {
     border-bottom-right-radius: 0px;
     border: 1px solid rgba(206, 204, 204, 0.364);
     min-width: 320px;
-          .totalSum {
+    .totalSum {
       width: inherit;
       box-sizing: border-box;
       margin: 18px auto;
@@ -1337,10 +1338,12 @@ ul li {
       font-weight: 100;
       color: white;
       text-align: center;
-      width: 320px; 
-      p{display: flex;
+      width: 320px;
+      p {
+        display: flex;
         flex-direction: row;
-        justify-content: space-between; }
+        justify-content: space-between;
+      }
     }
   }
   .preCurrencyTableAll {
@@ -1366,9 +1369,8 @@ ul li {
       color: white;
       table-layout: fixed;
       border-collapse: collapse;
-      padding: 10px ;
+      padding: 10px;
       padding-right: 0px;
-
 
       thead {
         box-sizing: border-box;
@@ -1474,220 +1476,219 @@ ul li {
   .allinOneContainerRight {
     position: relative;
     width: 70vw;
-
-    .homeSection {
-            display: flex;
-              flex-direction: column;
-              gap: 40px;
-              margin-top: 30px;
-      };
-    .modalTimeSelect {
-      z-index: 1;
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
     
+    .homeSection {
+      display: flex;
+      flex-direction: column;
+      gap: 43px;
+      margin-top: 30px;
+      width: fit-content;
       margin-left: calc((100vw - 33vw - 850px) / 2);
-     
-      .headerPeriodOff {
-        border: 1px solid rgba(206, 204, 204, 0.364);
-        box-sizing: border-box;
-        font-size: 16px;
-        font-weight: 600;
+      .modalTimeSelect {
+        z-index: 1;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        width: 200px;
-        padding: 5px 10px;
-        background-color: rgba(115, 38, 187, 0.876);
-        border-radius: 8px;
+        gap: 30px;
 
-        span {
-          padding-left: 6px;
-          padding-top: 7px;
-          color: white;
-          font-size: 18px;
-        }
-
-        button {
-          border: none;
-          background-color: rgba(115, 38, 187, 0.876);
-          color: white;
-          font-size: 21px;
-          margin-top: 5px;
-          cursor: pointer;
-        }
-      }
-
-      .headerPeriodOn {
-        border-radius: 10px 10px 0px 0px;
-      }
-
-      .listPeriod {
-        box-sizing: border-box;
-        width: 200px;
-        background: linear-gradient(
-          140deg,
-          rgb(247, 201, 141) 10%,
-          rgb(151, 85, 204) 45%,
-          rgb(123, 20, 192) 80%
-        );
-        border: 1px solid rgba(206, 204, 204, 0.364);
-        border-radius: 0px 0px 10px 10px;
-        border-top: none;
-
-        li {
-          cursor: pointer;
-        }
-
-        li button {
-          background-color: inherit;
-          box-sizing: border-box;
-          width: 100%;
-          border: none;
-          outline: none;
-          color: white;
-          font-size: 16px;
-          font-weight: 400;
-          padding: 5px 15px;
-          cursor: pointer;
-        }
-
-        li:hover {
-          background-color: rgb(160, 116, 236);
-        }
-
-        li:last-of-type:hover,
-        li:last-of-type button:hover {
-          background-color: rgb(160, 116, 236);
-          border-radius: 0px 0px 8px 8px;
-        }
-      }
-    }
-    .listCardsTabletContainer {
-      position: absolute;
-      top: 120px;
-      left: calc((100vw - 33vw - 850px) / 2);
-      box-sizing: border-box;
-      padding: 0px 0px;
-      width: 850px;
-      table {
-        table-layout: fixed;
-        border-collapse: collapse;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
-        text-align: center;
-        background-color: rgba(115, 38, 187, 0.876);
-        padding: 0px;
-
-        thead {
-          display: block;
-          font-size: 20px;
-          background-color: rgb(53, 21, 104, 0.876);
-          padding: 9px 10px 8px 10px;
+        .headerPeriodOff {
           border: 1px solid rgba(206, 204, 204, 0.364);
-          border-bottom: none;
+          box-sizing: border-box;
+          font-size: 16px;
+          font-weight: 600;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 200px;
+          padding: 5px 10px;
+          background-color: rgba(115, 38, 187, 0.876);
+          border-radius: 8px;
+
+          span {
+            padding-left: 6px;
+            padding-top: 7px;
+            color: white;
+            font-size: 18px;
+          }
+
+          button {
+            border: none;
+            background-color: rgba(115, 38, 187, 0.876);
+            color: white;
+            font-size: 21px;
+            margin-top: 5px;
+            cursor: pointer;
+          }
+        }
+
+        .headerPeriodOn {
+          border-radius: 10px 10px 0px 0px;
+        }
+
+        .listPeriod {
+          box-sizing: border-box;
+          width: 200px;
+          background: linear-gradient(
+            140deg,
+            rgb(247, 201, 141) 10%,
+            rgb(151, 85, 204) 45%,
+            rgb(123, 20, 192) 80%
+          );
+          border: 1px solid rgba(206, 204, 204, 0.364);
+          border-radius: 0px 0px 10px 10px;
+          border-top: none;
+
+          li {
+            cursor: pointer;
+          }
+
+          li button {
+            background-color: inherit;
+            box-sizing: border-box;
+            width: 100%;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 5px 15px;
+            cursor: pointer;
+          }
+
+          li:hover {
+            background-color: rgb(160, 116, 236);
+          }
+
+          li:last-of-type:hover,
+          li:last-of-type button:hover {
+            background-color: rgb(160, 116, 236);
+            border-radius: 0px 0px 8px 8px;
+          }
+        }
+      }
+      .listCardsTabletContainer {
+        box-sizing: border-box;
+        padding: 0px 0px;
+        width: 850px;
+        table {
+          table-layout: fixed;
+          border-collapse: collapse;
           border-top-left-radius: 8px;
           border-top-right-radius: 8px;
-          .plusMinus {
-            font-size: 25px;
-            padding-top: 15px;
-          }
-          .addButtonAll {
-            margin-left: 37px;
-          }
-        }
-
-        tbody {
-          border: 1px solid rgba(206, 204, 204, 0.364);
-          border-radius: 8px;
-          border-top-left-radius: 0px;
-          border-top: none;
-          display: block;
-          padding: 0px 10px 0px 10px;
-          overflow-y: scroll;
-          max-height: 400px;
-          tr {
-            border-bottom: 2px solid rgba(206, 204, 204, 0.664);
-            margin: 5px 0px;
-          }
-          &::-webkit-scrollbar {
-            width: 8px;
-          }
-
-          &::-webkit-scrollbar-track {
-            background: rgba(115, 38, 187, 0.705);
-            border-radius: 8px;
-          }
-
-          &::-webkit-scrollbar-thumb {
-            background: rgba(206, 204, 204, 0.664);
-            border-radius: 8px;
-          }
-
-          &::-webkit-scrollbar-thumb:hover {
-            background: rgb(206, 204, 204);
-          }
-
-          .imPlus {
-            color: rgb(207, 47, 47);
-            text-align: center;
-          }
-          .imMinus {
-            color: rgb(119, 235, 65);
-            text-align: center;
-          }
-        }
-
-        tr {
-          display: table;
-          width: 100%;
-          table-layout: fixed;
-          color: white;
-          font-weight: 600;
-        }
-
-        .editCurrency,
-        .deletCurrency {
-          padding: 0px;
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
           text-align: center;
-          font-size: 18px;
-          font-weight: 400;
-          border: none;
-          border-radius: 20px;
-          cursor: pointer;
-          height: 28px;
-          color: white;
-          box-sizing: border-box;
-          width: 51px;
+          background-color: rgba(115, 38, 187, 0.876);
+          padding: 0px;
 
-          &:hover {
-            box-shadow: 2px 2px 3px rgb(66, 3, 124);
+          thead {
+            display: block;
+            font-size: 20px;
+            background-color: rgb(53, 21, 104, 0.876);
+            padding: 9px 10px 8px 10px;
+            border: 1px solid rgba(206, 204, 204, 0.364);
+            border-bottom: none;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            .plusMinus {
+              font-size: 25px;
+              padding-top: 15px;
+            }
+            .addButtonAll {
+              margin-left: 37px;
+            }
           }
 
-          svg {
-            padding-top: 5px;
+          tbody {
+            border: 1px solid rgba(206, 204, 204, 0.364);
+            border-radius: 8px;
+            border-top-left-radius: 0px;
+            border-top: none;
+            display: block;
+            padding: 0px 10px 0px 10px;
+            overflow-y: scroll;
+            max-height: 400px;
+            tr {
+              border-bottom: 2px solid rgba(206, 204, 204, 0.664);
+              margin: 5px 0px;
+            }
+            &::-webkit-scrollbar {
+              width: 8px;
+            }
+
+            &::-webkit-scrollbar-track {
+              background: rgba(115, 38, 187, 0.705);
+              border-radius: 8px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background: rgba(206, 204, 204, 0.664);
+              border-radius: 8px;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+              background: rgb(206, 204, 204);
+            }
+
+            .imPlus {
+              color: rgb(207, 47, 47);
+              text-align: center;
+            }
+            .imMinus {
+              color: rgb(119, 235, 65);
+              text-align: center;
+            }
           }
-        }
 
-        .deletCurrency {
-          background: -webkit-linear-gradient(
-            to right,
-            #f3a73c,
-            hwb(288 30% 11%)
-          );
-          background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-          color: white;
-        }
+          tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            color: white;
+            font-weight: 600;
+          }
 
-        .editCurrency {
-          background-color: white;
-          color: rgb(92, 38, 187);
+          .editCurrency,
+          .deletCurrency {
+            padding: 0px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 400;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            height: 28px;
+            color: white;
+            box-sizing: border-box;
+            width: 51px;
+
+            &:hover {
+              box-shadow: 2px 2px 3px rgb(66, 3, 124);
+            }
+
+            svg {
+              padding-top: 5px;
+            }
+          }
+
+          .deletCurrency {
+            background: -webkit-linear-gradient(
+              to right,
+              #f3a73c,
+              hwb(288 30% 11%)
+            );
+            background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
+            color: white;
+          }
+
+          .editCurrency {
+            background-color: white;
+            color: rgb(92, 38, 187);
+          }
         }
       }
     }
+
+
 
   }
 

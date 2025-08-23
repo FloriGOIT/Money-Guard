@@ -9,6 +9,7 @@ import NavAll from 'components/TabletMobileDesign/NavAll';
 import NewCoinFormAll from './NewCoinFormAll';
 import NewCardFormAll from './NewCardFormAll';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
+import StatisticsAll from './StatisticsAll';
 
 const AllinOne = ({ info, handleDeleteCard }) => {
   const currenciesLocalStorage = localStorage.getItem('moneyGuardCurrency');
@@ -93,8 +94,8 @@ const AllinOne = ({ info, handleDeleteCard }) => {
               isYearMonthForFilter={isYearMonthForFilter}
             />
           </section>
-        ) : <section className={style.StatisticsSection}>
-            <p>Stats</p>
+        ) : <section className={style.statisticsSection}>
+            <StatisticsAll info={info} />
           </section>}
       </div>
 
