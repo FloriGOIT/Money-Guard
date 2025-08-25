@@ -65,11 +65,11 @@ const DonutChart = ({ info }) => {
             transform: 'translateX(-50%)',
             fontWeight: 'bold',
             fontSize: '28px',
-            color: 'rgba(253, 248, 248, 0.56)',
+            color: 'white',
             paddingLeft:"10px"
           }}
         >
-          {totalSum.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+          {new Intl.NumberFormat('fr-FR').format(totalSum.toFixed(2))}
         </div>
       </div>
     </div>

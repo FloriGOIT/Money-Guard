@@ -906,14 +906,6 @@ ul li {
 }
 
 //Statistics
-.statisticsWrapper {
-
-  h2 {
-    color: white;
-    font-size: 30px;
-    font-weight: 300;
-  }
-}
 
 .chartWrapper {
   text-align: center;
@@ -924,6 +916,11 @@ ul li {
 }
 
 .statistics {
+  h2 {
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+  }
   box-sizing: border-box;
   color: white;
   width: 300px;
@@ -1030,7 +1027,7 @@ ul li {
     padding: 0px 15px;
     border-bottom: 2px solid rgba(165, 163, 163, 0.664);
     padding-bottom: 5px;
-
+    font-weight: 700;
     .categoryWithColor {
       display: flex;
       flex-direction: row;
@@ -1063,11 +1060,13 @@ ul li {
     }
 
     .totalExpenses span:last-of-type {
-      color: rgb(211, 76, 76);
+      color: rgb(165, 25, 25);
+      font-weight: 700;
     }
 
     .totalIncomes span:last-of-type {
       color: rgb(194, 240, 126);
+      font-weight: 700;
     }
   }
 }
@@ -1252,14 +1251,14 @@ ul li {
   flex-direction: row;
   box-sizing: border-box;
   position: relative;
-        overflow-y: auto;
+  overflow-y: auto;
   .allinOneContainerLeft {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 50px;
     padding-left: 20px;
-    padding-top: 28px;
+    padding-top: 30px;
     width: 35vw;
     //width: 5vw;
     overflow: hidden;
@@ -1476,7 +1475,7 @@ ul li {
   .allinOneContainerRight {
     position: relative;
     width: 70vw;
-    
+
     .homeSection {
       display: flex;
       flex-direction: column;
@@ -1687,9 +1686,189 @@ ul li {
         }
       }
     }
+    .statisticsSection {
+      .chartWrapper {
+        margin-top: 30px;
+        text-align: center;
 
+        .chart {
+          margin: 0 auto;
+        }
+      }
 
+      .statistics {
+        box-sizing: border-box;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        padding-top: 30px;
+        .leftSideStatistics,
+        .rightSideStatistics {
+          min-width: 300px;
+        }
+        .leftSideStatistics {
+          h2 {
+            color: white;
+            font-size: 30px;
+            font-weight: 300;
+            margin-bottom: 15px;
+          }
 
+          .statisticsPeriod {
+            .headerPeriodOff {
+              box-sizing: border-box;
+              font-size: 16px;
+              font-weight: 600;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              width: inherit;
+              padding: 5px 10px;
+              border: 1px solid rgba(206, 204, 204, 0.664);
+              background-color: rgb(75, 40, 168);
+              border-radius: 10px;
+
+              span {
+                padding-left: 6px;
+                padding-top: 7px;
+              }
+
+              button {
+                border: none;
+                background-color: inherit;
+                color: inherit;
+                font-size: 21px;
+                margin-top: 5px;
+                cursor: pointer;
+              }
+            }
+
+            .headerPeriodOn {
+              border-radius: 10px 10px 0px 0px;
+            }
+
+            .listPeriod {
+              box-sizing: border-box;
+              width: 300px;
+              background: linear-gradient(
+                140deg,
+                rgb(247, 201, 141) 10%,
+                rgb(151, 85, 204) 45%,
+                rgb(123, 20, 192) 80%
+              );
+              border: 1px solid rgba(206, 204, 204, 0.664);
+              border-radius: 0px 0px 10px 10px;
+              border-top: none;
+
+              li {
+                cursor: pointer;
+              }
+
+              li button {
+                background-color: inherit;
+                box-sizing: border-box;
+                width: 100%;
+                border: none;
+                outline: none;
+                color: white;
+                font-size: 16px;
+                font-weight: 400;
+                padding: 5px 15px;
+                cursor: pointer;
+              }
+
+              li:hover {
+                background-color: rgb(160, 116, 236);
+              }
+
+              li:last-of-type:hover,
+              li:last-of-type button:hover {
+                background-color: rgb(160, 116, 236);
+                border-radius: 0px 0px 10px 10px;
+              }
+            }
+            
+          }
+          .statisticsPeriod:nth-of-type(2){
+                      margin-top: 20px;
+                    }
+        }
+        .rightSideStatistics {
+          margin-left: 50px;
+
+          .tableHeaderCategories {
+            box-sizing: border-box;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            padding: 15px 15px 15px 15px;
+            border: 1px solid rgba(206, 204, 204, 0.664);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: rgb(75, 40, 168);
+
+            span {
+              font-size: 25px;
+              font-weight: 400;
+            }
+          }
+
+          .tableRowsCategories {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0px 15px;
+            border-bottom: 2px solid rgba(165, 163, 163, 0.664);
+            padding-bottom: 5px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-size: 19px;
+            .categoryWithColor {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              gap: 10px;
+
+              span:first-of-type {
+                display: block;
+                width: 20px;
+                height: 20px;
+                border-radius: 20%;
+              }
+            }
+          }
+
+          .totalCategories {
+            padding: 0px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+
+            .totalExpenses,
+            .totalIncomes {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              font-size: 25px;
+              font-weight: 400;
+            }
+
+            .totalExpenses span:last-of-type {
+              color: rgb(165, 25, 25);
+              font-weight: 700;
+            }
+
+            .totalIncomes span:last-of-type {
+              color: rgb(194, 240, 126);
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
   }
 
   .newCoinFormAllModal {

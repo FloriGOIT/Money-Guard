@@ -1,4 +1,3 @@
-
 import style from '../moneyGuard.module.scss';
 import { months, currentYear } from '../../helpers/timeInfo';
 import ModalTime from '../ModalTime';
@@ -92,11 +91,10 @@ const StatisticsAll = ({ info }) => {
       return { number: year, name: year };
     });
 
-
   return (
-
-      <div className={style.statistics}>
-        <h2>Statistics</h2>
+    <div className={style.statistics}>
+      <div className={style.leftSideStatistics}>
+        <h2>Expenses statistics</h2>
         <ModalTime
           initialValue={isSelectedYear}
           infoPeriod={filterYearsForSelection}
@@ -112,10 +110,14 @@ const StatisticsAll = ({ info }) => {
           name="months"
         />
 
-        {infoReducer.expenses > 0 ? <div className={style.chartWrapper}>
-          <DonutChart info={cumulatedExpenes} />
-        </div> : null}
+        {infoReducer.expenses > 0 ? (
+          <div className={style.chartWrapper}>
+            <DonutChart info={cumulatedExpenes} />
+          </div>
+        ) : null}
+      </div>
 
+      <div className={style.rightSideStatistics}>
         <div className={style.tableHeaderCategories}>
           <span>Category</span>
           <span>Sum</span>
@@ -128,7 +130,9 @@ const StatisticsAll = ({ info }) => {
                 <span>{expense.category}</span>
               </div>
               <span className={style.categoryAmount}>
-                {Number(expense.total).toFixed(2)}
+                {new Intl.NumberFormat('fr-FR').format(
+                  expense.total.toFixed(2)
+                )}
               </span>
             </div>
           );
@@ -137,16 +141,24 @@ const StatisticsAll = ({ info }) => {
         <div className={style.totalCategories}>
           <div className={style.totalIncomes}>
             <span>Incomes:</span>
-            <span>{Number(infoReducer.incomes).toFixed(2)}</span>
+            <span>
+              {new Intl.NumberFormat('fr-FR').format(
+                infoReducer.incomes.toFixed(2)
+              )}
+            </span>
           </div>
 
           <div className={style.totalExpenses}>
             <span>Expenses:</span>
-            <span>{Number(infoReducer.expenses).toFixed(2)}</span>
+            <span>
+              {new Intl.NumberFormat('fr-FR').format(
+                infoReducer.expenses.toFixed(2)
+              )}
+            </span>
           </div>
         </div>
       </div>
-
+    </div>
   );
 };
 

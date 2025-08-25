@@ -14,7 +14,7 @@ import StatisticsAll from './StatisticsAll';
 const AllinOne = ({ info, handleDeleteCard }) => {
   const currenciesLocalStorage = localStorage.getItem('moneyGuardCurrency');
   const currenciesParces = JSON.parse(currenciesLocalStorage);
-  const [isHomeNavSelected, setIsHomeNavSelected] = useState(true);
+  const [isHomeNavSelected, setIsHomeNavSelected] = useState(false);
   const [isListCurrencies, setIsListCurrencies] = useState(
     currenciesParces || currency
   );
@@ -95,7 +95,7 @@ const AllinOne = ({ info, handleDeleteCard }) => {
             />
           </section>
         ) : <section className={style.statisticsSection}>
-            <StatisticsAll info={info} />
+            <StatisticsAll info={info} handleYearMonth={handleYearMonth} isYearMonthForFilter={isYearMonthForFilter}  />
           </section>}
       </div>
 
