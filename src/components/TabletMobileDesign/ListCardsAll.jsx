@@ -14,6 +14,7 @@ const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal,handleDele
                                    else { return el.month === isYearMonthForFilter.month }
                                    })
   const handleAddNewCard = () => { handleAddCardModal(); handleIdForCardUpdate("") }
+  
   return (
     <div className={style.listCardsTabletContainer}>
       <table>
