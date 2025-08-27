@@ -4,6 +4,8 @@ body {
   box-sizing: border-box;
   margin: 0px;
 }
+.fallBackSpinner{width: 100vw; height:100vh; background-color: rgb(74, 55, 179); 
+display: flex; justify-content: center; align-items: center;}
 
 ul li {
   list-style-type: none;
@@ -312,9 +314,14 @@ ul li {
   min-height: calc(100vh - 64px);
   background: radial-gradient(
     circle,
-    rgb(69 77 219) 30%,
-    rgb(54 40 168) 66%,
-    rgb(36, 18, 87) 100%
+    rgb(69, 77, 219) 5%,
+    rgb(63, 71, 214) 18%,
+    rgb(56, 63, 206) 27%,
+    rgba(64, 47, 194, 0.977 ) 45%,
+    rgb(50, 41, 187,0.912) 66%,
+    rgb(41, 56, 187,0.932) 73%,
+    rgba(63, 70, 214, 0.932) 90%,
+
   );
 }
 
@@ -613,7 +620,7 @@ ul li {
     circle,
     rgb(69 77 219) 30%,
     rgb(54 40 168) 66%,
-    rgb(36, 18, 87) 100%
+    rgb(36, 18, 87, 0.9) 100%
   );
 }
 

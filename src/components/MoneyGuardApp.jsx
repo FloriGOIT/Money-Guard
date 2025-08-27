@@ -1,7 +1,8 @@
-import { lazy,Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import AllinOne from './TabletMobileDesign/AllinOne';
+import FallBackSpinner from "./FallBackSpinner"
 const Login = lazy(() => import('../pages/Login'));
 const Register = lazy(() => import('../pages/Register'));
 const SharedLayout = lazy(() => import('./SharedLayout'));
@@ -11,7 +12,6 @@ const NewCard = lazy(() => import('../pages/NewCard'));
 const Currency = lazy(() => import('../pages/Currency'));
 const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
 const NewCoin = lazy(() => import('./NewCoin'));
-
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -51,7 +51,7 @@ const MoneyGuardApp = () => {
   return (
     <>
       {isMobile ? (
-        <Suspense fallback={<div>Loading ...</div>}>
+        <Suspense fallback={<FallBackSpinner/>}>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

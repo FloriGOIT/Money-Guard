@@ -3,6 +3,7 @@ import style from './moneyGuard.module.scss';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { Link, Outlet } from 'react-router-dom';
 
+
 const SharedLayout = () => {
   return (
     <section className={style.sharedLayoutWrapper}>
@@ -16,8 +17,9 @@ const SharedLayout = () => {
         </div>
       </header>
 
+      
+        <Outlet />
 
-      <Outlet />
     </section>
   );
 };
