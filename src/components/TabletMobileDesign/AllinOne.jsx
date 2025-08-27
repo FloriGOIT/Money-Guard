@@ -10,6 +10,7 @@ import NewCoinFormAll from './NewCoinFormAll';
 import NewCardFormAll from './NewCardFormAll';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 import StatisticsAll from './StatisticsAll';
+import Header from 'components/Header';
 
 const AllinOne = ({ info, handleDeleteCard }) => {
   const currenciesLocalStorage = localStorage.getItem('moneyGuardCurrency');
@@ -67,7 +68,9 @@ const AllinOne = ({ info, handleDeleteCard }) => {
 
   return (
     <section className={style.allinOneWrapper}>
-      <div className={style.allinOneContainerLeft}>
+      <Header />
+      <div className={style.notSharedLayout}>
+              <div className={style.allinOneContainerLeft}>
         <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
 
         <div className={style.preBalance}>
@@ -119,6 +122,8 @@ const AllinOne = ({ info, handleDeleteCard }) => {
           />
         </div>
       ) : null}
+      </div>
+
     </section>
   );
 };

@@ -62,10 +62,10 @@ const DonutChart = ({ info }) => {
             position: 'absolute',
             top: '120px',
             left: '50%',
-            transform: 'translateX(-50%)',
-            fontWeight: 'bold',
-            fontSize: '28px',
-            color: 'white',
+            transform: 'translateX(-52%)',
+            fontWeight: '900',
+            fontSize: '30px',
+            color: 'rgb(165,25,25)',
             paddingLeft:"10px"
           }}
         >
