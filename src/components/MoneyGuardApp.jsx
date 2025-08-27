@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy,Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import AllinOne from './TabletMobileDesign/AllinOne';
@@ -11,7 +11,6 @@ const NewCard = lazy(() => import('../pages/NewCard'));
 const Currency = lazy(() => import('../pages/Currency'));
 const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
 const NewCoin = lazy(() => import('./NewCoin'));
-
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -29,8 +28,12 @@ const useIsMobile = () => {
 
 const MoneyGuardApp = () => {
   const isMobile = useIsMobile();
-  const localDataCardsNotParsed = localStorage.getItem('listCards') || '[]';
-  const localDataCardsParsed = JSON.parse(localDataCardsNotParsed);
+  let localDataCardsParsed = [];
+  try {
+    localDataCardsParsed = JSON.parse(localStorage.getItem('listCards')) || [];
+  } catch {
+    localDataCardsParsed = [];
+  }
   const localDataCards = localDataCardsParsed.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
@@ -42,46 +45,49 @@ const MoneyGuardApp = () => {
   );
 
   const handleDeleteCard = idCardForDel => {
-    const nmodifiedIsArr = isArr.filter(card => card.id !== idCardForDel);
-    setIsArr(nmodifiedIsArr);
+    const modifiedIsArr = isArr.filter(card => card.id !== idCardForDel);
+    setIsArr(modifiedIsArr);
   };
   return (
     <>
-      {isMobile ? 
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/" element={<SharedLayout />}>
-            <Route
-              index
-              element={
-                <Home info={isArr} handleDeleteCard={handleDeleteCard} />
-              }
-            />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/newCard" element={<NewCard info={isArr} />} />
-            <Route path="/newCard/:id" element={<NewCard info={isArr} />} />
-            <Route
-              path="/statistics"
-              element={<ExpensesStatistics info={isArr} />}
-            />
-            <Route path="/currency" element={<Currency />} />
-            <Route
-              path="/currency/:name"
-              element={<NewCoin origin="/currency" />}
-            />
-            <Route
-              path="/currency/newCoin"
-              element={<NewCoin origin="/currency" />}
-            />
-
-          </Route>
-        </Routes>
-       : 
-        <AllinOne info={isArr}
-                  handleDeleteCard={handleDeleteCard}
-                  origin="/all"/>
-      }
+      {isMobile ? (
+        <Suspense fallback={<div>Loading ...</div>}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<SharedLayout />}>
+              <Route
+                index
+                element={
+                  <Home info={isArr} handleDeleteCard={handleDeleteCard} />
+                }
+              />
+              <Route path="logout" element={<Logout />} />
+              <Route path="newCard" element={<NewCard info={isArr} />} />
+              <Route path="newCard/:id" element={<NewCard info={isArr} />} />
+              <Route
+                path="statistics"
+                element={<ExpensesStatistics info={isArr} />}
+              />
+              <Route path="currency" element={<Currency />} />
+              <Route
+                path="currency/:name"
+                element={<NewCoin origin="/currency" />}
+              />
+              <Route
+                path="currency/newCoin"
+                element={<NewCoin origin="/currency" />}
+              />
+            </Route>
+          </Routes>
+        </Suspense>
+      ) : (
+        <AllinOne
+          info={isArr}
+          handleDeleteCard={handleDeleteCard}
+          origin="/all"
+        />
+      )}
     </>
   );
 };
