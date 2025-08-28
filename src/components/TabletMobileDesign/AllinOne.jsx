@@ -70,60 +70,65 @@ const AllinOne = ({ info, handleDeleteCard }) => {
     <section className={style.allinOneWrapper}>
       <Header />
       <div className={style.notSharedLayout}>
-              <div className={style.allinOneContainerLeft}>
-        <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
+        <div className={style.allinOneContainerLeft}>
+          <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
 
-        <div className={style.preBalance}>
-          <Balance info={info} />
-        </div>
+          <div className={style.preBalance}>
+            <Balance info={info} />
+          </div>
 
-        <CurrencyAll
-          handleAddCoinModal={handleAddCoinModal}
-          listCurrencies={isListCurrencies}
-          handleIdForCoinUpdate={handleIdForCoinUpdate}
-          handleIdForCoinDel={handleIdForCoinDel}
-        />
-      </div>
-
-      <div className={style.allinOneContainerRight}>
-        {isHomeNavSelected ? (
-          <section className={style.homeSection}>
-            <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
-            <ListCardsAll
-              handleAddCardModal={handleAddCardModal}
-              handleDeleteCard={handleDeleteCard}
-              handleIdForCardUpdate={handleIdForCardUpdate}
-              info={info}
-              isYearMonthForFilter={isYearMonthForFilter}
-            />
-          </section>
-        ) : <section className={style.statisticsSection}>
-            <StatisticsAll info={info} handleYearMonth={handleYearMonth} isYearMonthForFilter={isYearMonthForFilter}  />
-          </section>}
-      </div>
-
-      {isNewCoinModalOn ? (
-        <div className={style.newCoinFormAllModal}>
-          <NewCoinFormAll
-            handleAddNewCoin={handleAddNewCoin}
+          <CurrencyAll
             handleAddCoinModal={handleAddCoinModal}
-            isIdForCoinUpdate={isIdForCoinUpdate}
-            isListCurrencies={isListCurrencies}
+            listCurrencies={isListCurrencies}
+            handleIdForCoinUpdate={handleIdForCoinUpdate}
+            handleIdForCoinDel={handleIdForCoinDel}
           />
         </div>
-      ) : null}
-      {isNewCardModalOn ? (
-        <div className={style.newCardFormAllModal}>
-          <NewCardFormAll
-            handleIdForCardUpdate={handleIdForCardUpdate}
-            handleAddCardModal={handleAddCardModal}
-            info={info}
-            isIdForCardUpdate={isIdForCardUpdate}
-          />
-        </div>
-      ) : null}
-      </div>
 
+        <div className={style.allinOneContainerRight}>
+          {isHomeNavSelected ? (
+            <section className={style.homeSection}>
+              <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />
+              <ListCardsAll
+                handleAddCardModal={handleAddCardModal}
+                handleDeleteCard={handleDeleteCard}
+                handleIdForCardUpdate={handleIdForCardUpdate}
+                info={info}
+                isYearMonthForFilter={isYearMonthForFilter}
+              />
+            </section>
+          ) : (
+            <section className={style.statisticsSection}>
+              <StatisticsAll
+                info={info}
+                handleYearMonth={handleYearMonth}
+                isYearMonthForFilter={isYearMonthForFilter}
+              />
+            </section>
+          )}
+        </div>
+
+        {isNewCoinModalOn ? (
+          <div className={style.newCoinFormAllModal}>
+            <NewCoinFormAll
+              handleAddNewCoin={handleAddNewCoin}
+              handleAddCoinModal={handleAddCoinModal}
+              isIdForCoinUpdate={isIdForCoinUpdate}
+              isListCurrencies={isListCurrencies}
+            />
+          </div>
+        ) : null}
+        {isNewCardModalOn ? (
+          <div className={style.newCardFormAllModal}>
+            <NewCardFormAll
+              handleIdForCardUpdate={handleIdForCardUpdate}
+              handleAddCardModal={handleAddCardModal}
+              info={info}
+              isIdForCardUpdate={isIdForCardUpdate}
+            />
+          </div>
+        ) : null}
+      </div>
     </section>
   );
 };
