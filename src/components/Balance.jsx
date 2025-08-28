@@ -1,6 +1,6 @@
 import style from './moneyGuard.module.scss';
 
-const Balance = ({info}) => {
+const Balance = ({ info }) => {
   const balance = info.reduce((acc, data) => {
     if (data.type === false) {
       return acc + Number(data.amount);
@@ -12,8 +12,8 @@ const Balance = ({info}) => {
 
   return (
     <div className={style.totalSum}>
+      <p> Balance: </p>
       <p>
-        Balance: <br />
         <span
           style={{
             color: balance <= 0 ? '#be242496' : 'rgb(194, 240, 126)',
@@ -22,8 +22,8 @@ const Balance = ({info}) => {
         >
           {' '}
           {new Intl.NumberFormat('fr-FR').format(balance.toFixed(2))}
-        </span>{' '}
-        RON
+        </span>
+        <span style={{marginLeft: "10px"}}>RON</span>
       </p>
     </div>
   );

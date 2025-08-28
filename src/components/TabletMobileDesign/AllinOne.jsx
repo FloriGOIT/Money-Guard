@@ -15,7 +15,7 @@ import Header from 'components/Header';
 const AllinOne = ({ info, handleDeleteCard }) => {
   const currenciesLocalStorage = localStorage.getItem('moneyGuardCurrency');
   const currenciesParces = JSON.parse(currenciesLocalStorage);
-  const [isHomeNavSelected, setIsHomeNavSelected] = useState(false);
+  const [isHomeNavSelected, setIsHomeNavSelected] = useState(true);
   const [isListCurrencies, setIsListCurrencies] = useState(
     currenciesParces || currency
   );
@@ -71,10 +71,12 @@ const AllinOne = ({ info, handleDeleteCard }) => {
       <Header />
       <div className={style.notSharedLayout}>
         <div className={style.allinOneContainerLeft}>
-          <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
+          <div className={style.navAndBalance}>
+            <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
 
-          <div className={style.preBalance}>
-            <Balance info={info} />
+            <div className={style.preBalance}>
+              <Balance info={info} />
+            </div>
           </div>
 
           <CurrencyAll

@@ -33,7 +33,11 @@ const NewCoinFormAll = ({
 
   const handleSubmit = e => {
     e.preventDefault();
-    handleAddNewCoin(isCoin);
+    const checkDuplicate = isListCurrencies.find(el => el.currencyName === isCoin.currencyName);
+    console.log("checkDuplicate", checkDuplicate)
+    if (checkDuplicate) { alert("This currency is already available. Enter other name or cancel request.") }
+    else{handleAddNewCoin(isCoin);}
+    
   };
   const handleCancel = e => {
     e.preventDefault();
