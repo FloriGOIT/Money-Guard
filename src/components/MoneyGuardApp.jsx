@@ -1,8 +1,10 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import AllinOne from './TabletMobileDesign/AllinOne';
-import FallBackSpinner from "./FallBackSpinner"
+import FallBackSpinner from './FallBackSpinner';
+const AllinOne = lazy(() =>
+  import('../components/TabletMobileDesign/AllinOne')
+);
 const Login = lazy(() => import('../pages/Login'));
 const Register = lazy(() => import('../pages/Register'));
 const SharedLayout = lazy(() => import('./SharedLayout'));
@@ -51,7 +53,7 @@ const MoneyGuardApp = () => {
   return (
     <>
       {isMobile ? (
-        <Suspense fallback={<FallBackSpinner/>}>
+        <Suspense fallback={<FallBackSpinner />}>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -77,16 +79,18 @@ const MoneyGuardApp = () => {
               <Route
                 path="currency/newCoin"
                 element={<NewCoin origin="/currency" />}
-              />
+              />  
             </Route>
           </Routes>
         </Suspense>
       ) : (
-        <AllinOne
-          info={isArr}
-          handleDeleteCard={handleDeleteCard}
-          origin="/all"
-        />
+        <Suspense fallback={<FallBackSpinner />}>
+          <AllinOne
+            info={isArr}
+            handleDeleteCard={handleDeleteCard}
+            origin="/all"
+          />
+        </Suspense>
       )}
     </>
   );
