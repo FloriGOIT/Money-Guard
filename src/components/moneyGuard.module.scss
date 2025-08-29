@@ -1419,10 +1419,7 @@ ul li {
           background-position: center;
           background-size: cover;
           border: 1px solid rgba(206, 204, 204, 0.364);
-          //border-right: none; // particular LAPTOP
           border-radius: 10px;
-          //border-top-right-radius: 0px; // particular LAPTOP
-          //border-bottom-right-radius: 0px; // particular LAPTOP
 
           .currencyTableAll {
             box-sizing: border-box;
@@ -1546,10 +1543,8 @@ ul li {
         .homeSection {
           display: flex;
           flex-direction: column;
-
           margin-top: 20px;
           width: fit-content;
-          //margin-left: calc((100vw - 33vw - 850px) / 2);
 
           .modalTimeSelect {
             position: absolute;
@@ -1638,7 +1633,6 @@ ul li {
           .listCardsTabletContainer {
             box-sizing: border-box;
             padding: 0px 0px;
-            //width: 850px;
             margin-top: 60px;
 
             table {
@@ -1683,7 +1677,7 @@ ul li {
                 display: block;
                 padding: 0px 10px 0px 10px;
                 overflow-y: scroll;
-                max-height: 378px; //
+                max-height: 390px; //
 
                 tr {
                   border-bottom: 2px solid rgba(206, 204, 204, 0.664);
@@ -2075,7 +2069,7 @@ ul li {
         flex-direction: column;
         padding-left: 20px;
         gap: 30px;
-        width: 460px;
+        width: 440px;
         justify-content: flex-start;
         margin-bottom: 0px;
         .navAndBalance {
@@ -2093,28 +2087,38 @@ ul li {
             }
           }
         }
-
-        .currencyTableAll {
-          width: 415px;
+        .preCurrencyTableAll {
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+          .currencyTableAll {
+            width: 415px;
+          }
         }
       }
 
       .allinOneContainerRight {
         border-top: none;
-        padding-left: calc((100vw - 820px - 460px) / 2);
+        padding-left: calc((100vw - 820px - 430px) / 2);
         padding-top: 30px;
         .homeSection {
+          margin-top: 0px;
+          .modalTimeSelect {
+            top: 20;
+          }
           .listCardsTabletContainer {
             width: 800px;
-            margin-top: 80px;
+            margin-top: 70px;
             table {
               thead th:nth-of-type(4) {
                 width: 300px;
               }
 
-              tbody .cardDetails {
-                width: 300px;
-                color: wheat;
+              tbody {
+                max-height: 402px;
+                .cardDetails {
+                  width: 300px;
+                  color: wheat;
+                }
               }
             }
           }
@@ -2134,13 +2138,35 @@ ul li {
     }
     .notSharedLayout {
       .allinOneContainerLeft {
+        padding-left: 30px;
         gap: 50px;
         .navAndBalance {
           margin-top: 50px;
           gap: 50px;
         }
       }
-
+      .allinOneContainerRight {
+        padding-top: 80px;
+        .homesection {
+          .listCardsTabletContainer {
+            width: 850px;
+            table {
+              thead {
+                th:nth-of-type(4) {
+                  width: 400px;
+                }
+              }
+            }
+            tbody {
+              max-height: 500px;
+              .cardDetails {
+                width: 400px;
+                color: wheat;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
