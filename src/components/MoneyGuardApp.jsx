@@ -79,17 +79,23 @@ const MoneyGuardApp = () => {
               <Route
                 path="currency/newCoin"
                 element={<NewCoin origin="/currency" />}
-              />  
+              />
             </Route>
           </Routes>
         </Suspense>
       ) : (
         <Suspense fallback={<FallBackSpinner />}>
-          <AllinOne
-            info={isArr}
-            handleDeleteCard={handleDeleteCard}
-            origin="/all"
-          />
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/" element={ <AllinOne
+                  info={isArr}
+                  handleDeleteCard={handleDeleteCard}
+                  origin="/all"
+                />
+              } />
+            <Route path="/logout" element={<Logout />} />
+          </Routes>
         </Suspense>
       )}
     </>

@@ -1,25 +1,13 @@
-import Logo from './Logo';
 import style from './moneyGuard.module.scss';
-import { RiLogoutCircleRLine } from 'react-icons/ri';
-import { Link, Outlet } from 'react-router-dom';
-
+import { Outlet } from 'react-router-dom';
+import Header from './Header';
 
 const SharedLayout = () => {
   return (
     <section className={style.sharedLayoutWrapper}>
-      <header className={style.sharedLayoutHeader}>
-        <Logo />
-        <div className={style.sharedLayoutUser}>
-          <p>Florentina</p>
-          <Link to="/logout" title="Log Out">
-            <RiLogoutCircleRLine />
-          </Link>
-        </div>
-      </header>
+      <Header />
 
-      
-        <Outlet />
-
+      <Outlet />
     </section>
   );
 };

@@ -1,20 +1,21 @@
+
 import Logo from './Logo';
 import style from './moneyGuard.module.scss';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({handleLogOutModal}) => {
   return (
-<section className={style.sharedLayoutWrapper}>
       <header className={style.sharedLayoutHeader}>
         <Logo />
         <div className={style.sharedLayoutUser}>
           <p>Florentina</p>
-          <button to="/logout" title="Log Out">
+          <Link to="/logout" title="Log Out">
             <RiLogoutCircleRLine />
-          </button>
+          </Link>
         </div>
       </header>
-</section>
+
   );
 };
 export default Header;

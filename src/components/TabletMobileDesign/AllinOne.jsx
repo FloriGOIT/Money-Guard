@@ -68,7 +68,10 @@ const AllinOne = ({ info, handleDeleteCard }) => {
 
   return (
     <section className={style.allinOneWrapper}>
-      <Header />
+      <section className={style.sharedLayoutWrapper}>
+        <Header  />
+      </section>
+      
       <div className={style.notSharedLayout}>
         <div className={style.allinOneContainerLeft}>
           <div className={style.navAndBalance}>
@@ -130,6 +133,7 @@ const AllinOne = ({ info, handleDeleteCard }) => {
             />
           </div>
         ) : null}
+
       </div>
     </section>
   );

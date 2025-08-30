@@ -17,6 +17,7 @@ const FormLogIn = () => {
           required
           pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
           title="Please enter a valid email address (e.g., name@example.com)."
+          autoComplete='off'
         />
       </div>
 
@@ -29,6 +30,7 @@ const FormLogIn = () => {
           required
           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$"
           title="Password must be at least 8 characters, include uppercase and lowercase letters, a number, and a special character."
+          autoComplete='off'
         />
       </div>
 

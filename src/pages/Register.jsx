@@ -19,7 +19,8 @@ const Register = () => {
             placeholder="Name"
             required
             pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s\-']{2,50}$"
-  title="Please enter a valid name. Only letters, spaces, hyphens, and apostrophes are allowed."
+              title="Please enter a valid name. Only letters, spaces, hyphens, and apostrophes are allowed."
+              autoComplete='off'
           />
         </div>
         <div className={style.formInput}>
@@ -30,7 +31,8 @@ const Register = () => {
             name="email"
             required
             pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-            title="Please enter a valid email address (e.g., name@example.com)."
+              title="Please enter a valid email address (e.g., name@example.com)."
+              autoComplete='off'
           />
         </div>
 
@@ -42,7 +44,8 @@ const Register = () => {
             name="psw"
             required
             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$"
-            title="Password must be at least 8 characters, include uppercase and lowercase letters, a number, and a special character."
+              title="Password must be at least 8 characters, include uppercase and lowercase letters, a number, and a special character."
+              autoComplete='off'
           />
         </div>
         
@@ -54,7 +57,8 @@ const Register = () => {
             name="pswConfirmed"
             required
             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$"
-            title="Password must be at least 8 characters, include uppercase and lowercase letters, a number, and a special character."
+              title="Password must be at least 8 characters, include uppercase and lowercase letters, a number, and a special character."
+              autoComplete='off'
           />
         </div>
         <Link className={`${style.bigButton} ${style.selectedBtn}`}>
