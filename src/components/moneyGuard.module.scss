@@ -133,7 +133,7 @@ ul li {
       font-weight: 400;
       border-bottom: 1px solid hsla(0, 2%, 80%, 0.664);
       padding: 0px 8px;
-      max-width: 280px;
+      max-width: 300px;
 
       svg {
         min-height: 40px;
@@ -536,7 +536,7 @@ ul li {
 
 //Log out
 .logoutWrapper {
-  padding-top: calc((100vh - 260px - 64px) / 2);
+
 
   .logoutContainer {
     display: flex;
@@ -1291,7 +1291,7 @@ ul li {
         }
         input,
         input:placeholder-shown {
-          font-size: 23px;
+          font-size: 23px; padding-bottom: 5px;
         }
         
       }
@@ -2212,85 +2212,3 @@ ul li {
     }
   }
 }
-/*
-@media screen and (min-width: 768px) {
-    .logWrapper,
-    .regWrapper,
-    .homePageWrapper,
-    .newCardWrapper,
-    .logoutWrapper,
-    .statisticsWrapper,
-    .currencyWrapper,
-    .newCoinWrapper {
-      background-image: url('../helpers/images/coins.png'),
-        url('../helpers/images/simpleBackground.jpg');
-      background-repeat: no-repeat, no-repeat;
-      background-position: center top 55px, center;
-      background-size: cover, cover;
-      background-attachment: fixed;
-    }
-  
-    .loginContainer,
-    .registerContainer,
-    .newCardContainer,
-    .logoutContainer,
-    .newCoinContainer {
-      padding: 10px 0px 15px 0px;
-      border-radius: 20px;
-      width: 450px;
-      margin: 0px auto;
-      box-shadow: 2px 2px 3px rgb(66, 3, 124);
-      background-color: rgb(101, 41, 204);
-      background-color: radial-gradient(circle,
-          rgb(124, 69, 219) 40%,
-          rgb(75, 40, 168, 0.92) 76%,
-          rgb(36, 18, 87) 100%);
-    }
-  
-    .newCoinWrapper {
-      padding-top: calc((100vh - 500px - 64px) / 2);
-    }
-}
-
-*/
-
-/*
-        .notSharedLayout {
-          .allinOneContainerLeft {
-            padding-left: 30px;
-            gap: 50px;
-    
-            .navAndBalance {
-              margin-top: 50px;
-              gap: 50px;
-            }
-          }
-    
-          .allinOneContainerRight {
-            padding-top: 80px;
-    
-            .homesection {
-              .listCardsTabletContainer {
-                width: 850px;
-    
-                table {
-                  thead {
-                    th:nth-of-type(4) {
-                      width: 400px;
-                    }
-                  }
-    
-                  tbody {
-                    max-height: 500px;
-    
-                    .cardDetails {
-                      width: 400px;
-                      color: wheat;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-*/
