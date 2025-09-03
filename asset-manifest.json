@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Money-Guard/static/css/main.7587c129.css",
-    "main.js": "/Money-Guard/static/js/main.27d11937.js",
+    "main.css": "/Money-Guard/static/css/main.3c7bc1bc.css",
+    "main.js": "/Money-Guard/static/js/main.f8071c81.js",
     "static/js/822.9aa78c90.chunk.js": "/Money-Guard/static/js/822.9aa78c90.chunk.js",
     "static/js/275.cc3a3ffc.chunk.js": "/Money-Guard/static/js/275.cc3a3ffc.chunk.js",
     "static/js/285.7be3c492.chunk.js": "/Money-Guard/static/js/285.7be3c492.chunk.js",
@@ -21,12 +21,12 @@
     "static/js/315.b791e8e8.chunk.js": "/Money-Guard/static/js/315.b791e8e8.chunk.js",
     "static/js/330.68c5288a.chunk.js": "/Money-Guard/static/js/330.68c5288a.chunk.js",
     "static/js/744.60cc1b8d.chunk.js": "/Money-Guard/static/js/744.60cc1b8d.chunk.js",
-    "static/media/coins.png": "/Money-Guard/static/media/coins.f85438744af5a1dfd63d.png",
+    "static/media/coins.png": "/Money-Guard/static/media/coins.e4b78f73a56971e9af0e.png",
     "static/media/graphBackground.jpg": "/Money-Guard/static/media/graphBackground.aed08a265cc39497e972.jpg",
     "static/media/simpleBackground.jpg": "/Money-Guard/static/media/simpleBackground.9bc29dfea499d3921a98.jpg",
     "index.html": "/Money-Guard/index.html",
-    "main.7587c129.css.map": "/Money-Guard/static/css/main.7587c129.css.map",
-    "main.27d11937.js.map": "/Money-Guard/static/js/main.27d11937.js.map",
+    "main.3c7bc1bc.css.map": "/Money-Guard/static/css/main.3c7bc1bc.css.map",
+    "main.f8071c81.js.map": "/Money-Guard/static/js/main.f8071c81.js.map",
     "822.9aa78c90.chunk.js.map": "/Money-Guard/static/js/822.9aa78c90.chunk.js.map",
     "275.cc3a3ffc.chunk.js.map": "/Money-Guard/static/js/275.cc3a3ffc.chunk.js.map",
     "285.7be3c492.chunk.js.map": "/Money-Guard/static/js/285.7be3c492.chunk.js.map",
@@ -48,7 +48,7 @@
     "744.60cc1b8d.chunk.js.map": "/Money-Guard/static/js/744.60cc1b8d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7587c129.css",
-    "static/js/main.27d11937.js"
+    "static/css/main.3c7bc1bc.css",
+    "static/js/main.f8071c81.js"
   ]
 }
