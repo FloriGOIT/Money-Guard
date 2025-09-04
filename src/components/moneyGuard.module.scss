@@ -421,15 +421,15 @@ ul li {
 
     .cardwithColor {
       width: 285px;
-      border-radius: 10px;
+      border-radius: 8px;
       margin: 0px auto 15px auto;
 
       .card {
         background-color: rgb(92, 38, 187);
         width: 280px;
         border: 1px solid rgba(58, 28, 143, 1);
-        border-bottom-right-radius: 10px;
-        border-top-right-radius: 10px;
+        border-bottom-right-radius: 8px;
+        border-top-right-radius: 8px;
         margin-left: 5px;
         display: flex;
         flex-direction: column;
