@@ -319,9 +319,8 @@ ul li {
 
   .listCards {
     width: 300px;
-    margin-bottom: 0px;
     margin: 0 auto;
-
+    padding-bottom: 30px;
     .totalSum {
       box-sizing: border-box;
       background-color: rgba(93, 38, 187);
@@ -1510,16 +1509,18 @@ ul li {
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 3px;
             width: 437px;
             height: 245px;
             margin: 0 auto;
             color: white;
             table-layout: fixed;
             border-collapse: collapse;
+            padding-left: 10px;
+            padding-bottom: 5px;
             thead {
               box-sizing: border-box;
-              padding: 10px 10px 0px 10px;
+              padding: 15px 10px 0px 10px;
               th {
                 font-size: 25px;
                 font-weight: 100;
@@ -1534,14 +1535,15 @@ ul li {
                 }
 
                 .addButtonAll {
-                  margin-left: 50px;
+                  margin-left: 43px;
                 }
               }
             }
 
             tbody {
-              overflow: auto;
+              height: 410px;
               padding: 0 10px;
+              overflow-y: scroll;
               &::-webkit-scrollbar {
                 width: 8px;
               }
@@ -1562,8 +1564,8 @@ ul li {
 
               td {
                 font-size: 19px;
-                padding: 8px 4px;
-
+                padding: 7px 4px 0px 4px;
+              
                 &.nonRate {
                   color: wheat;
                   font-weight: 600;
@@ -1618,6 +1620,7 @@ ul li {
                   }
                 }
               }
+
             }
           }
         }
@@ -2115,10 +2118,11 @@ ul li {
           border-top-right-radius: 0px;
           border-bottom-right-radius: 0px;
           .currencyTableAll {
-            width: 415px;
+            padding-left: 5px;
+            width: 420px;
             thead {
               th .addButtonAll {
-                margin-left: 40px;
+                margin-left: 30px;
               }
             }
           }

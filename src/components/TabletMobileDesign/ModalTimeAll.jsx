@@ -63,7 +63,7 @@ const ModalTimeAll = ({ info, handleYearMonth }) => {
   };
 
   return (
-    <div className={style.modalTimeSelect} ref={modalRefMonth}>
+    <div className={style.modalTimeSelect} ref={modalRefYear}>
       <div className={style.years}>
         <div
           className={
@@ -96,7 +96,7 @@ const ModalTimeAll = ({ info, handleYearMonth }) => {
         )}
       </div>
 
-      <div className={style.months}>
+      <div className={style.months} ref={modalRefMonth}>
         <div
           className={
             isModalMonthOn
