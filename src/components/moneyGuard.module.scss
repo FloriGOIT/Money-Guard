@@ -1541,7 +1541,7 @@ ul li {
             }
 
             tbody {
-              height: 410px;
+              height: 400px;
               padding: 0 10px;
               overflow-y: scroll;
               &::-webkit-scrollbar {
@@ -1564,7 +1564,7 @@ ul li {
 
               td {
                 font-size: 19px;
-                padding: 7px 4px 0px 4px;
+                padding: 7px 4px 1px 4px;
               
                 &.nonRate {
                   color: wheat;
@@ -2119,7 +2119,7 @@ ul li {
           border-bottom-right-radius: 0px;
           .currencyTableAll {
             padding-left: 5px;
-            width: 420px;
+            width: 414px;
             thead {
               th .addButtonAll {
                 margin-left: 30px;
