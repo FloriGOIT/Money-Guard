@@ -299,9 +299,13 @@ ul li {
   min-height: calc(100vh - 0px); //64px
   background: radial-gradient(
     circle,
-    rgb(124, 69, 219) 30%,
-    rgb(75, 40, 168, 0.92) 66%,
-    rgb(36, 18, 87) 100%
+    rgb(69, 77, 219) 5%,
+    rgb(63, 71, 214) 18%,
+    rgb(56, 63, 206) 27%,
+    rgba(64, 47, 194, 0.977) 45%,
+    rgb(50, 41, 187, 0.912) 66%,
+    rgb(41, 56, 187, 0.932) 73%,
+    rgba(63, 70, 214, 0.932) 90%
   );
 }
 
@@ -594,9 +598,9 @@ ul li {
   height: 100vh;
   background: radial-gradient(
     circle,
-    rgb(124, 69, 219) 30%,
-    rgb(75, 40, 168, 0.92) 66%,
-    rgb(36, 18, 87) 100%
+    rgb(111, 63, 194) 30%,
+    rgb(86, 48, 190) 66%,
+    rgb(55, 27, 133) 100%
   );
 }
 
@@ -1316,10 +1320,12 @@ ul li {
         flex-direction: column;
         gap: 20px;
         width: 400px;
-        background: radial-gradient(circle,
-              rgb(107, 61, 185) 30%,
-              rgb(84, 47, 185) 66%,
-              rgb(55, 27, 133) 100%);
+        background: radial-gradient(
+          circle,
+          rgb(69 77 219) 20%,
+          rgb(66, 48, 202) 75%,
+          rgba(34, 27, 139, 0.9) 100%
+        );
         border-radius: 8px;
         padding: 30px 0px;
 
@@ -1365,9 +1371,9 @@ ul li {
         box-sizing: border-box;
         background: radial-gradient(
           circle,
-          rgb(107, 61, 185) 30%,
-          rgb(84, 47, 185) 66%,
-          rgb(55, 27, 133) 100%
+          rgb(69 77 219) 20%,
+          rgb(66, 48, 202) 75%,
+          rgba(34, 27, 139, 0.9) 100%
         );
         padding: 30px 50px;
         border-radius: 8px;
@@ -2106,7 +2112,7 @@ ul li {
           border-bottom-right-radius: 0px;
           .currencyTableAll {
             padding-left: 5px;
-            width: 414px;
+            width: 415px;
             thead {
               th .addButtonAll {
                 margin-left: 30px;
