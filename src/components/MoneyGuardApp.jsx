@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import FallBackSpinner from './FallBackSpinner';
 const AllinOne = lazy(() =>
   import('../components/TabletMobileDesign/AllinOne')
@@ -14,6 +14,8 @@ const NewCard = lazy(() => import('../pages/NewCard'));
 const Currency = lazy(() => import('../pages/Currency'));
 const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
 const NewCoin = lazy(() => import('./NewCoin'));
+
+
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -28,9 +30,20 @@ const useIsMobile = () => {
   return isMobile;
 };
 
+
+function usePreviousWindowWidth(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
+}
+
+
 const MoneyGuardApp = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
+  const prevIsMobile = usePreviousWindowWidth(isMobile);
   let localDataCardsParsed = [];
   try {
     localDataCardsParsed = JSON.parse(localStorage.getItem('listCards')) || [];
@@ -43,10 +56,10 @@ const MoneyGuardApp = () => {
   const [isArr, setIsArr] = useState(localDataCards);
 
   useEffect(() => {
-    if (!isMobile) {
+    if (prevIsMobile === true && isMobile === false) {
       navigate('/');
     }
-  }, [isMobile, navigate]);
+  }, [prevIsMobile,isMobile, navigate]);
 
   useEffect(
     () => localStorage.setItem('listCards', JSON.stringify(isArr)),
