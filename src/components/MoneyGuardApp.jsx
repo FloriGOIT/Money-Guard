@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import FallBackSpinner from './FallBackSpinner';
 const AllinOne = lazy(() =>
   import('../components/TabletMobileDesign/AllinOne')
@@ -42,13 +42,16 @@ const MoneyGuardApp = () => {
   );
   const [isArr, setIsArr] = useState(localDataCards);
 
-  useEffect(() => { if(!isMobile){navigate("/")}},[isMobile,navigate])
+  useEffect(() => {
+    if (!isMobile) {
+      navigate('/');
+    }
+  }, [isMobile, navigate]);
 
   useEffect(
     () => localStorage.setItem('listCards', JSON.stringify(isArr)),
     [isArr]
   );
-
 
   const handleDeleteCard = idCardForDel => {
     const modifiedIsArr = isArr.filter(card => card.id !== idCardForDel);
@@ -92,13 +95,17 @@ const MoneyGuardApp = () => {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/" element={ <AllinOne
+            <Route
+              path="/"
+              element={
+                <AllinOne
                   info={isArr}
                   handleDeleteCard={handleDeleteCard}
                   origin="/all"
                 />
-              } />
-            <Route path="/logout" element={<Logout />} />
+              }
+            />
+            <Route path="logout" element={<Logout />} />
           </Routes>
         </Suspense>
       )}
@@ -107,5 +114,3 @@ const MoneyGuardApp = () => {
 };
 
 export default MoneyGuardApp;
-
-
