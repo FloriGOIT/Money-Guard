@@ -65,7 +65,7 @@ const DonutChart = ({ info }) => {
             transform: 'translateX(-52%)',
             fontWeight: '900',
             fontSize: '30px',
-            color: 'rgb(165,25,25)',
+            color: 'rgba(255, 130, 130, 1)',
             paddingLeft:"10px"
           }}
         >
