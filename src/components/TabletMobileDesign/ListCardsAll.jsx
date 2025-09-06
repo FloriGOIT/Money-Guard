@@ -61,18 +61,4 @@ const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal,handleDele
 
 export default ListCardsAll;
 
-/* 
 
-          <tr>
-            <th  style={{width: "100px"}}>Date</th>
-            <th className={style.piPlusMinusBold}>
-              <PiPlusMinusBold className={style.plusMinus} />
-            </th>
-            <th style={{width: "100px"}}>Category</th>
-            <th style={{width: "340px"}}>Comment</th>
-            <th style={{width: "80px"}}>Sum</th>
-            <th onClick={handleAddNewCard}><AddButton /></th>
-            <th></th>
-          </tr>
-
-*/

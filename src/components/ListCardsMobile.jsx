@@ -1,11 +1,11 @@
 import style from './moneyGuard.module.scss';
 import Card from './Card';
-import { IoAddSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import ModalTime from './ModalTime';
 import { useState,useEffect } from 'react';
 import { months, currentYear } from 'helpers/timeInfo';
 import Balance from './Balance';
+import AddButton from './TabletMobileDesign/AddButton';
 
 const ListCardsMobile = ({ info, handleDeleteCard }) => {
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
@@ -72,7 +72,7 @@ const handleMonth = value => setIsSelectedMonth(value);
         />
       ))}
       <Link to="/newCard" className={style.addCardButton}>
-        <IoAddSharp />
+        <AddButton />
       </Link>
     </section>
   );
