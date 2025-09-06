@@ -538,8 +538,8 @@ ul li {
       height: 50px;
       border-radius: 40%;
       .addButtonSVG {
-          font-size: 35px;
-        }
+        font-size: 35px;
+      }
     }
   }
 }
@@ -919,20 +919,19 @@ ul li {
 }
 
 .statistics {
-    box-sizing: border-box;
-      color: white;
-      width: 300px;
-      margin: 0px auto;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+  box-sizing: border-box;
+  color: white;
+  width: 300px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
   h2 {
     color: white;
     font-size: 30px;
     font-weight: 300;
   }
-
 
   .statisticsPeriod {
     .headerPeriodOff {
@@ -1098,15 +1097,15 @@ ul li {
       .addCoinButton {
         display: flex;
         justify-content: flex-end;
-            .addButtonAll {
-                width: 50px;
-                height: 50px;
-                border-radius: 40%;
-            
-                .addButtonSVG {
-                  font-size: 35px;
-                }
-              }
+        .addButtonAll {
+          width: 50px;
+          height: 50px;
+          border-radius: 40%;
+
+          .addButtonSVG {
+            font-size: 35px;
+          }
+        }
       }
     }
   }
