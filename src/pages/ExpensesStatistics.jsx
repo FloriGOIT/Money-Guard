@@ -131,7 +131,7 @@ const ExpensesStatistics = ({ info }) => {
                 <span>{expense.category}</span>
               </div>
               <span className={style.categoryAmount}>
-                {Number(expense.total).toFixed(2)}
+                {new Intl.NumberFormat('fr-FR').format(Number(expense.total).toFixed(2)) }
               </span>
             </div>
           );
@@ -140,12 +140,12 @@ const ExpensesStatistics = ({ info }) => {
         <div className={style.totalCategories}>
           <div className={style.totalIncomes}>
             <span>Incomes:</span>
-            <span>{Number(infoReducer.incomes).toFixed(2)}</span>
+            <span>{new Intl.NumberFormat('fr-FR').format(Number(infoReducer.incomes).toFixed(2)) }</span>
           </div>
 
           <div className={style.totalExpenses}>
             <span>Expenses:</span>
-            <span>{Number(infoReducer.expenses).toFixed(2)}</span>
+            <span>{new Intl.NumberFormat('fr-FR').format(Number(infoReducer.expenses).toFixed(2)) }</span>
           </div>
         </div>
       </div>

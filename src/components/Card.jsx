@@ -30,7 +30,7 @@ const Card = ({data,handleDeleteCard}) => {
 
         <div className={styles.cardRow}>
           <span className={styles.cardRowName}>Sum</span>
-          <span className={styles.cardRowValue}>{amount}</span>
+          <span className={styles.cardRowValue}>{new Intl.NumberFormat('fr-FR').format(Number(amount).toFixed(2))}</span>
         </div>
 
         <div className={styles.cardRowButtons}>
