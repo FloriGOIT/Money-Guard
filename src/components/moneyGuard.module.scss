@@ -532,8 +532,14 @@ ul li {
     .addButtonAll {
       position: fixed;
       bottom: 0;
-      left: calc(100vw - 60px);
+      left: calc(100vw - 80px);
       margin-bottom: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 40%;
+      .addButtonSVG {
+          font-size: 35px;
+        }
     }
   }
 }
@@ -913,18 +919,20 @@ ul li {
 }
 
 .statistics {
+    box-sizing: border-box;
+      color: white;
+      width: 300px;
+      margin: 0px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
   h2 {
     color: white;
     font-size: 30px;
     font-weight: 300;
   }
-  box-sizing: border-box;
-  color: white;
-  width: 300px;
-  margin: 0px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+
 
   .statisticsPeriod {
     .headerPeriodOff {
@@ -1090,26 +1098,15 @@ ul li {
       .addCoinButton {
         display: flex;
         justify-content: flex-end;
-
-        svg {
-          font-size: 30px;
-          font-weight: 900;
-          border-radius: 40%;
-          text-align: center;
-          padding: 8px 8px 8px 8px;
-          background: -webkit-linear-gradient(
-            to right,
-            #f3a73c,
-            hwb(288 30% 11%)
-          );
-          background: linear-gradient(to right, #f3a73c, hwb(288 30% 11%));
-          color: white;
-          border: none;
-
-          &:hover {
-            box-shadow: 2px 2px 3px rgb(66, 3, 124);
-          }
-        }
+            .addButtonAll {
+                width: 50px;
+                height: 50px;
+                border-radius: 40%;
+            
+                .addButtonSVG {
+                  font-size: 35px;
+                }
+              }
       }
     }
   }
@@ -1539,7 +1536,7 @@ ul li {
                 }
 
                 .addButtonAll {
-                  margin-left: 43px;
+                  margin-left: 40px;
                 }
               }
             }
@@ -1756,7 +1753,7 @@ ul li {
                 }
 
                 .addButtonAll {
-                  margin-left: 37px;
+                  margin-left: 35px;
                 }
               }
 
@@ -2098,7 +2095,7 @@ ul li {
             width: 415px;
             thead {
               th .addButtonAll {
-                margin-left: 30px;
+                margin-left: 25px;
               }
             }
           }
