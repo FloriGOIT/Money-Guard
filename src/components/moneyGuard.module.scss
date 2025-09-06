@@ -1108,79 +1108,96 @@ ul li {
         }
       }
     }
-  }
-}
+    //mobile
+    .currencyTable {
+      font-size: 18px;
+      width: 310px;
+      height: 350px;
+      overflow-y: scroll;
+      border-radius: 10px;
+      padding: 10px 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: rgb(92, 38, 187);
+      background-image: url('../helpers/images/graphBackground.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 2px 2px 3px rgb(66, 3, 124);
+      &::-webkit-scrollbar {
+          width: 8px;
+        }
+      
+        &::-webkit-scrollbar-track {
+          background: rgba(115, 38, 187, 0.705);
+          border-radius: 8px;
+        }
+      
+        &::-webkit-scrollbar-thumb {
+          background: rgba(206, 204, 204, 0.664);
+          border-radius: 8px;
+        }
+      
+        &::-webkit-scrollbar-thumb:hover {
+          background: rgb(206, 204, 204);
+        }
+      .currencyTableHeader {
+        padding-left: 45px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 173px;
 
-.currencyTable {
-  font-size: 18px;
-  width: 300px;
-  border-radius: 10px;
-  padding: 10px 10px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: rgb(92, 38, 187);
-  background-image: url('../helpers/images/graphBackground.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  box-shadow: 2px 2px 3px rgb(66, 3, 124);
+        span {
+          font-weight: 600;
+          font-size: 16px;
+          display: block;
+          text-align: center;
+          width: 50px;
+          color: white;
+        }
+      }
 
-  .currencyTableHeader {
-    padding-left: 45px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 173px;
+      .currencyTableRow {
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
 
-    span {
-      font-weight: 600;
-      font-size: 16px;
-      display: block;
-      text-align: center;
-      width: 50px;
-      color: white;
-    }
-  }
+        .currencyTableRate {
+          width: 50px;
+        }
 
-  .currencyTableRow {
-    color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 16px;
+        .currencyTableNotRate,
+        .currencyTableContent {
+          font-weight: 600;
+        }
+      }
 
-    .currencyTableRate {
-      width: 50px;
-    }
+      .editCurrency,
+      .deletCurrency {
+        padding: 0px;
+        background-color: inherit;
+        text-align: center;
+        font-size: 22px;
+        border: none;
+        border-radius: 30%;
+        cursor: pointer;
+        height: 28px;
+        color: rgba(206, 204, 204, 0.664);
 
-    .currencyTableNotRate,
-    .currencyTableContent {
-      font-weight: 600;
-    }
-  }
+        svg {
+          padding-top: 3px;
+        }
 
-  .editCurrency,
-  .deletCurrency {
-    padding: 0px;
-    background-color: inherit;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 400;
-    border: none;
-    border-radius: 30%;
-    cursor: pointer;
-    height: 28px;
-    color: rgba(206, 204, 204, 0.664);
-
-    svg {
-      padding-top: 5px;
-    }
-
-    &:hover {
-      color: white;
+        &:hover {
+          color: white;
+        }
+      }
     }
   }
 }
