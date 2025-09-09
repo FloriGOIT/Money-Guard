@@ -1127,22 +1127,22 @@ ul li {
       background-size: cover;
       box-shadow: 2px 2px 3px rgb(66, 3, 124);
       &::-webkit-scrollbar {
-          width: 8px;
-        }
-      
-        &::-webkit-scrollbar-track {
-          background: rgba(115, 38, 187, 0.705);
-          border-radius: 8px;
-        }
-      
-        &::-webkit-scrollbar-thumb {
-          background: rgba(206, 204, 204, 0.664);
-          border-radius: 8px;
-        }
-      
-        &::-webkit-scrollbar-thumb:hover {
-          background: rgb(206, 204, 204);
-        }
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: rgba(115, 38, 187, 0.705);
+        border-radius: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba(206, 204, 204, 0.664);
+        border-radius: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgb(206, 204, 204);
+      }
       .currencyTableHeader {
         padding-left: 45px;
         display: flex;
@@ -1171,7 +1171,7 @@ ul li {
         .currencyTableRate {
           width: 50px;
         }
-
+                .currencyTableNotRate{color:wheat}
         .currencyTableNotRate,
         .currencyTableContent {
           font-weight: 600;
@@ -2107,11 +2107,17 @@ ul li {
           border-top-right-radius: 0px;
           border-bottom-right-radius: 0px;
           .currencyTableAll {
-            padding-left: 5px;
-            width: 415px;
+            padding: 0px 3px 0px 5px;
+            width: 420px;
+            box-sizing: border-box;
             thead {
               th .addButtonAll {
                 margin-left: 25px;
+              }
+            }
+            tbody {
+              &.withRate {
+                text-align: center;
               }
             }
           }
@@ -2169,7 +2175,7 @@ ul li {
     .notSharedLayout {
       .allinOneContainerLeft {
         padding-left: 40px;
-        width: 470px;
+        width: 460px;
         .navAndBalance {
           margin-top: 50px;
           .preBalance {
@@ -2178,6 +2184,7 @@ ul li {
         }
         .preCurrencyTableAll {
           margin-top: 30px;
+          padding: 0px;
         }
       }
       .allinOneContainerRight {

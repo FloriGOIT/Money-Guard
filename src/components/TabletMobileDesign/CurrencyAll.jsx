@@ -9,6 +9,12 @@ const CurrencyAll = ({
   handleIdForCoinUpdate,
   handleIdForCoinDel,
 }) => {
+ const fourDecimalsNumber = value =>{ return new Intl.NumberFormat('fr-FR', { 
+  minimumFractionDigits: 4, 
+  maximumFractionDigits: 4 
+ }).format(Number(value));
+  } 
+  
   return (
     <div className={style.preCurrencyTableAll}>
       <table className={style.currencyTableAll}>
@@ -28,13 +34,13 @@ const CurrencyAll = ({
             <tr key={el.id}>
               <td className={style.nonRate}>{el.currencyName}</td>
               <td className={style.withRate}>
-                {new Intl.NumberFormat('fr-FR').format(Number(el.nbrRate).toFixed(5))}
+                {fourDecimalsNumber(el.nbrRate)}
               </td>
               <td className={style.withRate}>
-                {new Intl.NumberFormat('fr-FR').format(Number(el.buyRate).toFixed(4))}
+                {fourDecimalsNumber(el.buyRate)}
               </td>
               <td className={style.withRate}>
-                {new Intl.NumberFormat('fr-FR').format(Number(el.sellRate).toFixed(4))}
+                {fourDecimalsNumber(el.sellRate)}
               </td>
               <td
                 className={style.smallBtn}
