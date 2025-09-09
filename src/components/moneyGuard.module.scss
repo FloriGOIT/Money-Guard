@@ -121,6 +121,7 @@ ul li {
 
 .loginContainer,
 .registerContainer {
+  margin-top: -50px;
   .logoWrapper {
     color: white;
     font-size: 24px;
@@ -128,7 +129,7 @@ ul li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: -25px;
+    
     img {
       width: 30px;
       height: 30px;
@@ -551,7 +552,7 @@ ul li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    margin-top: -50px;
     p {
       color: rgba(236, 230, 230, 0.664);
       font-size: 30px;
@@ -631,7 +632,7 @@ ul li {
   align-items: center;
   gap: 18px;
   color: white;
-
+  margin-top: -50px;
   h2 {
     font-size: 24px;
   }
@@ -1204,7 +1205,10 @@ ul li {
 
 //NewCoin
 .newCoinWrapper {
-  padding-top: calc((100vh - 320px - 64px) / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -50px;
 }
 
 .newCoinContainer {
@@ -1295,6 +1299,7 @@ ul li {
 @media screen and (min-width: 768px) {
   .loginContainer,
   .registerContainer {
+    margin-top: 0px;
     .formLogReg {
       gap: 30px;
       margin: 30px auto 0px auto;
