@@ -28,13 +28,13 @@ const CurrencyAll = ({
             <tr key={el.id}>
               <td className={style.nonRate}>{el.currencyName}</td>
               <td className={style.withRate}>
-                {Number(el.nbrRate).toFixed(4)}
+                {new Intl.NumberFormat('fr-FR').format(Number(el.nbrRate).toFixed(5))}
               </td>
               <td className={style.withRate}>
-                {Number(el.buyRate).toFixed(4)}
+                {new Intl.NumberFormat('fr-FR').format(Number(el.buyRate).toFixed(4))}
               </td>
               <td className={style.withRate}>
-                {Number(el.sellRate).toFixed(4)}
+                {new Intl.NumberFormat('fr-FR').format(Number(el.sellRate).toFixed(4))}
               </td>
               <td
                 className={style.smallBtn}
