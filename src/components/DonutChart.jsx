@@ -50,7 +50,7 @@ const DonutChart = ({ info }) => {
             nameKey="category"
           >
             {info.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.color} />
+              <Cell style={{outline: 'none'}} key={`cell-${index}`} fill={entry.color} />
             ))}
           </Pie>
           <Tooltip content={<CustomTooltip />} info={info} />

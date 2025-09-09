@@ -99,7 +99,7 @@ const ExpensesStatistics = ({ info }) => {
       <Nav />
       
       <div className={style.statistics}>
-        <h2>Statistics</h2>
+        <h2>Expenses statistics</h2>
         <ModalTime
           initialValue={isSelectedYear}
           infoPeriod={filterYearsForSelection}
