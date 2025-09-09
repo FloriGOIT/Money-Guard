@@ -188,6 +188,7 @@ const NewCard = ({ info }) => {
               name="dateNewCard"
               className={style.date}
               onChange={e => setIsDate(e.target.value)}
+              value={isDate}
               autoComplete="off"
             />
           </div>

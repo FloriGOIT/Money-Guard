@@ -140,5 +140,3 @@ const AllinOne = ({ info, handleDeleteCard }) => {
 };
 
 export default AllinOne;
-
-//      <NewCoinAll />

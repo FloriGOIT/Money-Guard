@@ -107,11 +107,18 @@ ul li {
   height: 100vh;
   box-sizing: border-box;
   background: radial-gradient(
-    circle,
-    rgb(124, 69, 219) 30%,
-    rgb(75, 40, 168, 0.92) 66%,
-    rgb(36, 18, 87) 100%
-  );
+      circle,
+      rgb(124, 69, 219, 0.87) 30%,
+      rgba(75, 40, 168, 0.87) 66%,
+      rgb(36, 18, 87, 0.87) 100%
+    ),
+    url('../helpers/images/coins.png');
+
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+  background-size: cover, cover;
+  background-attachment: fixed, fixed;
+
   width: 100vw;
   margin: 0px;
   display: flex;
@@ -129,7 +136,7 @@ ul li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     img {
       width: 30px;
       height: 30px;
@@ -1173,7 +1180,9 @@ ul li {
         .currencyTableRate {
           width: 50px;
         }
-                .currencyTableNotRate{color:wheat}
+        .currencyTableNotRate {
+          color: wheat;
+        }
         .currencyTableNotRate,
         .currencyTableContent {
           font-weight: 600;
@@ -1209,7 +1218,6 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .newCoinContainer {
@@ -2117,8 +2125,15 @@ ul li {
             width: 420px;
             box-sizing: border-box;
             thead {
-              th .addButtonAll {
-                margin-left: 25px;
+              th {
+                &.withRate {
+                  width: 71px;
+                  padding: 0px;
+                }
+
+                .addButtonAll {
+                  margin-left: 38px;
+                }
               }
             }
             tbody {
