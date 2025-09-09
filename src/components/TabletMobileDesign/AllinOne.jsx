@@ -41,8 +41,9 @@ const AllinOne = ({ info, handleDeleteCard }) => {
       setIsListCurrencies(isListCurrencies);
       setIsIdForCoinUpdate('');
     }
-
+    
     setIsNewCoinModalOn(prev => !prev);
+    
   };
 
   const [isYearMonthForFilter, setisYearMonthForFilter] = useState({

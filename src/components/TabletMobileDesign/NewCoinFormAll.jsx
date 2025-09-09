@@ -1,5 +1,5 @@
 import style from '../moneyGuard.module.scss';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import BigBtnWithColorAll from './BigBtnWithColorAll';
 import BigBtnNoColorAll from './BigBtnNoColorAll';
@@ -10,34 +10,44 @@ const NewCoinFormAll = ({
   isIdForCoinUpdate,
   isListCurrencies,
 }) => {
-
   const [isCoin, setIsCoin] = useState({
-      id: nanoid(),
-      currencyName: '',
-      nbrRate: '',
-      buyRate: '',
-      sellRate: '',
-    });
-
-
+    id: nanoid(),
+    currencyName: '',
+    nbrRate: '',
+    buyRate: '',
+    sellRate: '',
+  });
 
   useEffect(() => {
-      const coinToBeUpdated = isListCurrencies.find(
-    el => el.id === isIdForCoinUpdate
+    const coinToBeUpdated = isListCurrencies.find(
+      el => el.id === isIdForCoinUpdate
     );
-    
+
     if (isIdForCoinUpdate) {
-    setIsCoin(coinToBeUpdated);
-  } },[isIdForCoinUpdate, isListCurrencies])
-
-
+      setIsCoin(coinToBeUpdated);
+    }
+  }, [isIdForCoinUpdate, isListCurrencies]);
+    
   const handleSubmit = e => {
     e.preventDefault();
-    const checkDuplicate = isListCurrencies.find(el => el.currencyName === isCoin.currencyName);
-    console.log("checkDuplicate", checkDuplicate)
-    if (checkDuplicate) { alert("This currency is already available. Enter other name or cancel request.") }
-    else{handleAddNewCoin(isCoin);}
-    
+ if(!isIdForCoinUpdate){      const checkDuplicate = isListCurrencies.find(
+        el => el.currencyName === isCoin.currencyName
+      );
+      if (checkDuplicate) {
+        alert(
+          'This currency is already available. Enter other name or cancel request.'
+        );
+      } else {
+        handleAddNewCoin(isCoin);
+      }
+}
+ else { handleAddNewCoin(isCoin); setIsCoin({
+    id: nanoid(),
+    currencyName: '',
+    nbrRate: '',
+    buyRate: '',
+    sellRate: '',
+  }) }
   };
   const handleCancel = e => {
     e.preventDefault();
@@ -49,7 +59,8 @@ const NewCoinFormAll = ({
       sellRate: '',
     });
     handleAddCoinModal();
-  }
+  };
+  console.log("isIdForCoinUpdate",isIdForCoinUpdate)
   return (
     <form className={style.newCoinFormAll} onSubmit={handleSubmit}>
       <input
@@ -109,10 +120,7 @@ const NewCoinFormAll = ({
       />
       <div className={style.bigButtons}>
         <BigBtnWithColorAll valueBtn="Save" type="submit" />
-        <BigBtnNoColorAll
-          valueBtn="Close"
-          handleModal={handleCancel}
-        />
+        <BigBtnNoColorAll valueBtn="Close" handleModal={handleCancel} />
       </div>
     </form>
   );
