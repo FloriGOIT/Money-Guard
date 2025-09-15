@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "frontend/src"
   },
-  "include": ["src", "server.js"]
+  "include": ["frontend/src", "server.js"]
 }
