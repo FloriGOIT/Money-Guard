@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
-import MoneyGuardApp from './MoneyGuardApp';
+import MoneyGuardApp from '../src/components/MoneyGuardApp';
 
 const App = () => {
   return (
