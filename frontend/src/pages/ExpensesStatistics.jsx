@@ -1,10 +1,9 @@
-import Nav from 'components/Nav';
+import Nav from '../components/Nav';
 import style from '../components/moneyGuard.module.scss';
-import { months } from '../helpers/timeInfo';
-import { currentYear } from '../helpers/timeInfo';
+import { months,currentYear } from '../helpers/timeInfo';
 import ModalTime from '../components/ModalTime';
 import { useEffect, useState } from 'react';
-import DonutChart from 'components/DonutChart';
+import DonutChart from '../components/DonutChart';
 
 const ExpensesStatistics = ({ info }) => {
   const [isSelectedMonth, setIsSelectedMonth] = useState('-');

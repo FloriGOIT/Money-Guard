@@ -1,6 +1,6 @@
 import style from '../components/moneyGuard.module.scss';
 import {useEffect, useState } from 'react';
-import { mainIncomes, mainExpenses,allCategories } from 'helpers/categories';
+import { mainIncomes, mainExpenses,allCategories } from '../helpers/categories';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 import { Link,useParams } from 'react-router-dom';

@@ -1,7 +1,7 @@
 import style from '../components/moneyGuard.module.scss';
 import Nav from '../components/Nav';
-import CurrencyTable from 'components/CurrencyTable';
-import AddButton from 'components/TabletMobileDesign/AddButton';
+import CurrencyTable from '../components/CurrencyTable';
+import AddButton from '../components/TabletMobileDesign/AddButton';
 import { Link } from 'react-router-dom';
 const Currency = () => {
   const returnLocation = '/currency';

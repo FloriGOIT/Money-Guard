@@ -3,7 +3,7 @@ import Card from './Card';
 import { Link } from 'react-router-dom';
 import ModalTime from './ModalTime';
 import { useState,useEffect } from 'react';
-import { months, currentYear } from 'helpers/timeInfo';
+import { months, currentYear } from '../helpers/timeInfo';
 import Balance from './Balance';
 import AddButton from './TabletMobileDesign/AddButton';
 

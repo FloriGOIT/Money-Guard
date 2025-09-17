@@ -2,7 +2,7 @@ import style from '../components/moneyGuard.module.scss';
 import { IoMdMail } from 'react-icons/io';
 import { PiLockKeyFill } from 'react-icons/pi';
 import { BiSolidUser } from "react-icons/bi";
-import Logo from 'components/Logo';
+import Logo from '../components/Logo';
 import { Link } from 'react-router-dom';
 
 const Register = () => {

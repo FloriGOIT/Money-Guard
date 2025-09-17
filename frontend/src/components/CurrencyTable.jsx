@@ -1,5 +1,5 @@
 import style from './moneyGuard.module.scss';
-import currency from 'helpers/currencyBNR';
+import currency from '../helpers/currencyBNR';
 import { Link } from 'react-router-dom';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { MdDeleteOutline } from 'react-icons/md';

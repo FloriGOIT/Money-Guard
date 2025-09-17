@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaChevronUp } from 'react-icons/fa';
 import { nanoid } from 'nanoid';
-import { currentYear, currentMonthLetter } from 'helpers/timeInfo';
+import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 
 const ModalTimeAll = ({ info, handleYearMonth }) => {
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);

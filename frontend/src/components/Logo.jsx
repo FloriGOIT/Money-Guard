@@ -1,5 +1,5 @@
 import logo from '../helpers/images/logo.png';
-import style from '../components/moneyGuard.module.scss';
+import style from './moneyGuard.module.scss';
 
 const Logo = () => {
   return (
