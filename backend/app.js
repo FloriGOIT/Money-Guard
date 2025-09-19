@@ -22,7 +22,6 @@ app.get("/", (_, res) => { res.status(200).send("Hello amaizing world! 🌍") })
 
 app.get("/animals", (_, res) => { res.status(200).json(dataForTest) })
 app.post("/animals", (req, res) => {
-        console.log("POST /animals received:", req.body);
         const animal = { id: nanoid(), ...req.body };
         dataForTest.push(animal);
         res.status(201).json({ message: "Animal added", animal });

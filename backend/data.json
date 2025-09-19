@@ -1,7 +1,5 @@
-[
-        {"id":"1233asa", "name":"Flower", "description":"pink"},
-        {"id":"12ds3asa", "name":"Tree", "description":"black"},
-        {"id":"1233sda", "name":"Sky", "description":"blue"},
-        {"id":"3233asa", "name":"Rock", "description":"gray"},
-        {"id":"14232asa", "name":"Gras", "description":"green"}
-]
+{
+  "animal": "giraffe",
+  "carnivor": false,
+  "preferes": "gras"
+}

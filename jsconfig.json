@@ -2,5 +2,5 @@
   "compilerOptions": {
     "baseUrl": "frontend/src"
   },
-  "include": ["frontend/src"]
+  "include": ["frontend/src", "backend"]
 }
