@@ -22,17 +22,23 @@ app.get("/", (_, res) => { res.status(200).send("Hello amaizing world! 🌍") })
 
 app.get("/animals", (_, res) => { res.status(200).json(dataForTest) })
 app.post("/animals", (req, res) => {
-        const animal = { id: nanoid(), ...req.body };
+        const animalName = req.body.animal;
+        const isDuplicatedAnimal = dataForTest.findIndex(el => el.animal === animalName)
+        if(isDuplicatedAnimal === -1){        const animal = { id: nanoid(), ...req.body };
         dataForTest.push(animal);
-        res.status(201).json({ message: "Animal added", animal });
+                res.status(201).json({ message: "Animal added", animal });
+        }
+        else{res.status(400).json({ error: "Animal already preasent in the lits." })}
+
 });
 app.put("/animals/:name", (req, res) => {
         const animalName = req.params.name;
-        console.log("animalName", animalName);
-        const identifiedAnimal = dataForTest.findIndex(el => el.animal === animalName)
-        if (identifiedAnimal === -1) { dataForTest.push({ id: nanoid(), ...req.body }) }
-        else{dataForTest.splice(identifiedAnimal,1,{...req.body })}
-        res.status(201).json(dataForTest)
+        const identifiedAnimal = dataForTest.find(el => el.animal === animalName)
+        if (identifiedAnimal === undefined) { dataForTest.push({ id: nanoid(), ...req.body }) }
+        else {
+                Object.assign(identifiedAnimal, req.body)
+        }
+        res.status(201).json({message: `${animalName} item was updated`})
 })
 
 app.delete("/animals/:name", (req, res) => {
@@ -40,7 +46,7 @@ app.delete("/animals/:name", (req, res) => {
         const identifiedAnimal = dataForTest.findIndex(el => el.animal === animalName);
         if (identifiedAnimal === -1) { res.status(404).send("No animal was matched based on the name.") }
         else{        dataForTest.splice(identifiedAnimal, 1);
-        res.status(200).json(dataForTest)}
+        res.status(200).json({message: `${animalName} item was deleted.`})}
 
 })
 
