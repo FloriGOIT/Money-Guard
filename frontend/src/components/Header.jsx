@@ -9,7 +9,6 @@ const Header = ({handleLogOutModal}) => {
       <header className={style.sharedLayoutHeader}>
         <Logo />
       </header>
-
   );
 };
 export default Header;
