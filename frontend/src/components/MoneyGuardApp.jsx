@@ -5,11 +5,11 @@ import FallBackSpinner from './FallBackSpinner';
 const AllinOne = lazy(() =>
   import('../components/TabletMobileDesign/AllinOne')
 );
-const Login = lazy(() => import('../pages/Login'));
-const Register = lazy(() => import('../pages/Register'));
+//const Login = lazy(() => import('../pages/Login'));
+//const Register = lazy(() => import('../pages/Register'));
 const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('../pages/Home'));
-const Logout = lazy(() => import('../pages/Logout'));
+//const Logout = lazy(() => import('../pages/Logout'));
 const NewCard = lazy(() => import('../pages/NewCard'));
 const Currency = lazy(() => import('../pages/Currency'));
 const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
@@ -70,6 +70,61 @@ const MoneyGuardApp = () => {
 
   const MobileRoutes = () => (
     <Routes>
+
+      <Route path="/" element={<SharedLayout />}>
+        <Route
+          index
+          element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />}
+        />
+        <Route path="newCard" element={<NewCard info={isArr} />} />
+        <Route path="newCard/:id" element={<NewCard info={isArr} />} />
+        <Route
+          path="statistics"
+          element={<ExpensesStatistics info={isArr} />}
+        />
+        <Route path="currency" element={<Currency />} />
+        <Route path="currency/:name" element={<NewCoin origin="/currency" />} />
+        <Route
+          path="currency/newCoin"
+          element={<NewCoin origin="/currency" />}
+        />
+      </Route>
+    </Routes>
+  );
+
+  const DesktopRoutes = () => (
+    <Routes>
+
+      <Route
+        path="/"
+        element={
+          <AllinOne
+            info={isArr}
+            handleDeleteCard={handleDeleteCard}
+            origin="/all"
+          />
+        }
+      />
+
+    </Routes>
+  );
+
+  return (
+    <>
+      <Suspense fallback={<FallBackSpinner />}>
+        {isMobile ? <MobileRoutes /> : <DesktopRoutes />}
+      </Suspense>
+    </>
+  );
+};
+
+export default MoneyGuardApp;
+
+
+/*
+
+  const MobileRoutes = () => (
+    <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/" element={<SharedLayout />}>
@@ -112,13 +167,4 @@ const MoneyGuardApp = () => {
     </Routes>
   );
 
-  return (
-    <>
-      <Suspense fallback={<FallBackSpinner />}>
-        {isMobile ? <MobileRoutes /> : <DesktopRoutes />}
-      </Suspense>
-    </>
-  );
-};
-
-export default MoneyGuardApp;
+*/
