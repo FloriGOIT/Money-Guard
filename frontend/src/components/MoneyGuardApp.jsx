@@ -5,11 +5,9 @@ import FallBackSpinner from './FallBackSpinner';
 const AllinOne = lazy(() =>
   import('../components/TabletMobileDesign/AllinOne')
 );
-//const Login = lazy(() => import('../pages/Login'));
-//const Register = lazy(() => import('../pages/Register'));
+
 const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('../pages/Home'));
-//const Logout = lazy(() => import('../pages/Logout'));
 const NewCard = lazy(() => import('../pages/NewCard'));
 const Currency = lazy(() => import('../pages/Currency'));
 const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
@@ -122,7 +120,9 @@ export default MoneyGuardApp;
 
 
 /*
-
+//const Login = lazy(() => import('../pages/Login'));
+//const Register = lazy(() => import('../pages/Register'));
+//const Logout = lazy(() => import('../pages/Logout'));
   const MobileRoutes = () => (
     <Routes>
       <Route path="/login" element={<Login />} />

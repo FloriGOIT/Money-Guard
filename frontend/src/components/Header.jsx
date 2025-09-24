@@ -1,8 +1,7 @@
 
 import Logo from './Logo';
 import style from './moneyGuard.module.scss';
-//import { RiLogoutCircleRLine } from 'react-icons/ri';
-//import { Link } from 'react-router-dom';
+
 
 const Header = ({handleLogOutModal}) => {
   return (
@@ -14,6 +13,8 @@ const Header = ({handleLogOutModal}) => {
 export default Header;
 
 /*
+//import { RiLogoutCircleRLine } from 'react-icons/ri';
+//import { Link } from 'react-router-dom';
 const Header = ({handleLogOutModal}) => {
   return (
       <header className={style.sharedLayoutHeader}>
