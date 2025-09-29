@@ -92,7 +92,6 @@ const MoneyGuardApp = () => {
 
   const DesktopRoutes = () => (
     <Routes>
-
       <Route
         path="/"
         element={
