@@ -10,7 +10,7 @@ const dataForTest = [
   { "id": "3", "animal": "bee", "carnivor": false, "preferes": "pollen" },
 ];
 
-const PORT = 5000;
+const PORT = 3000;
 const app = express();
 
 app.use(logger("dev"));
@@ -33,12 +33,10 @@ app.post("/animals", (req, res) => {
 });
 app.put("/animals/:name", (req, res) => {
         const animalName = req.params.name;
-        const identifiedAnimal = dataForTest.find(el => el.animal === animalName)
-        if (identifiedAnimal === undefined) { dataForTest.push({ id: nanoid(), ...req.body }) }
-        else {
-                Object.assign(identifiedAnimal, req.body)
-        }
-        res.status(201).json({message: `${animalName} item was updated`})
+        const findAnimalByName = dataForTest.find(el => el.animal === animalName);
+        if (findAnimalByName === undefined) { dataForTest.push({id:nanoid(), ...req.body})}
+        else { Object.assign(findAnimalByName, {...findAnimalByName,...req.body}) }
+        res.status(201).json({message:`${animalName} was updated.`})
 })
 
 app.delete("/animals/:name", (req, res) => {
