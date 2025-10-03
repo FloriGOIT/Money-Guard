@@ -48,7 +48,7 @@ fetchdata()
 
  
 app.get("/", (req, res) => {
-  res.send("Server is up and wrolling!");
+  res.send("Server is up and workoking!");
 });
 
 const infoLocation = path.join(__dirname, "data.json");
@@ -69,12 +69,51 @@ app.get("/animals", async (req, res) => {
 
 app.post("/animals", async (req, res) => {
   try {
+     //definesc noul animal, aduc lista exitenta, populez lista existenta, o salvez pe cea noua
+  const newAnimal = { id: nanoid(), ...req.body };
+  const currentList = await fs.readFile(infoLocation, "utf-8");
+    const parseCurrentList = JSON.parse(currentList);
+    const isDupicated = parseCurrentList.findIndex(el => el.animal === newAnimal.animal);
+    if(isDupicated === -1){parseCurrentList.push(newAnimal);
+    }
+    else {
+      parseCurrentList.splice(isDupicated, 1, newAnimal); 
+    }
+        await fs.writeFile(infoLocation, JSON.stringify(parseCurrentList, null, 2), { encoding: "utf-8" });
+  res.status(200).json({ "message": "New animal was added in the list."})
+  }
+  catch(error){res.json({ "message": "Please recheck your request, the appending failed." });}
+
+})
+
+app.delete("/animals/:name", async (req, res) => {
+  //identific animalul din site; aduc lista curenta si sterg animalul; salvez noua lista
+  try {
+    const identifiedAnimal = req.params.name;
+  const currentList = await fs.readFile(infoLocation, "utf-8");
+  const parseCurrentList = JSON.parse(currentList);
+  const indexAnimal = parseCurrentList.findIndex(el => el.animal === identifiedAnimal);
+  if (indexAnimal === -1) { res.json({ "message": "No item found with this name" }) }
+  else {
+    parseCurrentList.splice(indexAnimal, 1);
+    await fs.writeFile(infoLocation, JSON.stringify(parseCurrentList, null, 2), {encoding:"utf-8"})
+    res.json({ "message": "Item was deleted." })
+  }
+  }
+  catch(error){res.json({ "message": "Please recheck your request and try again." })}
+
+})
+
+app.listen(PORT, () => {
+  console.log("Server is running on port 5000 -path and fs - exercise.");
+});
+
+/*
+app.post("/animals", async (req, res) => {
+  try {
     const newItem = { id: nanoid(), ...req.body };
-    console.log(newItem);
     const listAnimals = await fs.readFile(infoLocation, "utf-8");
-    console.log(listAnimals);
     const parsedInfo = JSON.parse(listAnimals);
-    console.log("parsedInfo", parsedInfo);
     parsedInfo.push(newItem);
     await fs.writeFile(infoLocation, JSON.stringify(parsedInfo, null, 2), {
       encoding: "utf-8",
@@ -85,7 +124,4 @@ app.post("/animals", async (req, res) => {
     res.json({ message: "Please recheck your request, the appending failed." });
   }
 });
-
-app.listen(PORT, () => {
-  console.log("Server is running on port 5000 -path and fs - exercise.");
-});
+*/
