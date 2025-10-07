@@ -1,14 +1,1 @@
-[
-  {
-    "id": "Abp6FfmA7tLK8n4vbBGTa",
-    "animal": "duffy duck",
-    "carnivor": true,
-    "preferes": "insects and vegetables"
-  },
-  {
-    "id": "efavymCaE2G-RB_Aq9trg",
-    "animal": "donald",
-    "preferes": "disney food",
-    "carnivor": false
-  }
-]
+[]

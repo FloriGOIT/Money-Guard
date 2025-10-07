@@ -7,7 +7,7 @@ const animalMongooseSchema = new mongoose.Schema({
         preferes: {type: String, required: true, minLength:3, maxLength:50}
 })
 
-const AnimalMongo = mongoose.model("AnimalMongo", animalMongooseSchema)
+const AnimalMongo = mongoose.model("AnimalMongo", animalMongooseSchema, "animals")
 module.exports = AnimalMongo
  
 //const newAnimal = new AnimalMongo(req.body)

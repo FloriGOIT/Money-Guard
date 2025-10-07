@@ -2,7 +2,8 @@ const express = require("express");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const Joi = require("joi");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const AnimalMongo = require("./schemaMongoose")
 const fs = require("fs").promises;
 const path = require("path");
 const PORT = 5000;
@@ -12,6 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(logger("dev"));
 app.use(cookieParser());
+
+mongoose.connect("mongodb+srv://florivachente:Pr0gr1m1t01r3@clusterflorentinavachen.wvt36rz.mongodb.net/test") // 👈 local MongoDB
+  .then(() => console.log("✅ Connected to MongoDB successfully"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 const APIcall =
   "https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&q=london&image_type=photo&pretty=true&per_page=4";
@@ -66,9 +71,8 @@ const infoLocation = path.join(__dirname, "data.json");
 
 app.get("/animals", async (req, res) => {
   try {
-    const listAnimals = await fs.readFile(infoLocation, "utf-8");
-    console.log("Items listed successfully.");
-    res.json(JSON.parse(listAnimals));
+    const listAnimals = await AnimalMongo.find({})
+    res.json(listAnimals);
   } catch (error) {
     console.log("Error when trying to list the animals", error);
     res.json({
@@ -84,23 +88,8 @@ app.post("/animals", async (req, res) => {
     if (error) {
       return res.status(400).json({ message: error.details[0].message });
     }
-
-    const newAnimal = { id: nanoid(), ...req.body };
-    const currentList = await fs.readFile(infoLocation, "utf-8");
-    const parseCurrentList = JSON.parse(currentList);
-    const isDupicated = parseCurrentList.findIndex(
-      (el) => el.animal === newAnimal.animal
-    );
-    if (isDupicated === -1) {
-      parseCurrentList.push(newAnimal);
-    } else {
-      parseCurrentList.splice(isDupicated, 1, newAnimal);
-    }
-    await fs.writeFile(
-      infoLocation,
-      JSON.stringify(parseCurrentList, null, 2),
-      { encoding: "utf-8" }
-    );
+    const newAnimal = new AnimalMongo(req.body);
+    const saveNewAnimal = await newAnimal.save();
     res.status(200).json({ message: "New animal was added in the list." });
   } catch (error) {
     res.json({ message: "Please recheck your request, the appending failed." });
@@ -134,3 +123,51 @@ app.delete("/animals/:name", async (req, res) => {
 app.listen(PORT, () => {
   console.log("Server is running on port 5000 -path and fs - exercise.");
 });
+
+
+/*  FS + PATH
+
+app.get("/animals", async (req, res) => {
+  try {
+    const listAnimals = await fs.readFile(infoLocation, "utf-8");
+    console.log("Items listed successfully.");
+    res.json(JSON.parse(listAnimals));
+  } catch (error) {
+    console.log("Error when trying to list the animals", error);
+    res.json({
+      message:
+        "There has been an error when listing the information. Please recheck!",
+    });
+  }
+});
+
+app.post("/animals", async (req, res) => {
+  try {
+    const { error } = animalValidJoi.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+    
+    const newAnimal = { id: nanoid(), ...req.body };
+    const currentList = await fs.readFile(infoLocation, "utf-8");
+    const parseCurrentList = JSON.parse(currentList);
+    const isDupicated = parseCurrentList.findIndex(
+      (el) => el.animal === newAnimal.animal
+    );
+    if (isDupicated === -1) {
+      parseCurrentList.push(newAnimal);
+    } else {
+      parseCurrentList.splice(isDupicated, 1, newAnimal);
+    }
+    await fs.writeFile(
+      infoLocation,
+      JSON.stringify(parseCurrentList, null, 2),
+      { encoding: "utf-8" }
+    );
+    res.status(200).json({ message: "New animal was added in the list." });
+  } catch (error) {
+    res.json({ message: "Please recheck your request, the appending failed." });
+  }
+});
+
+*/
