@@ -1,20 +1,14 @@
 [
   {
-    "id": "nmNkszvvyDMLoaHezcufp",
-    "animal": "girafa",
-    "carnivor": false,
-    "preferes": "gras"
-  },
-  {
     "id": "Abp6FfmA7tLK8n4vbBGTa",
     "animal": "duffy duck",
     "carnivor": true,
     "preferes": "insects and vegetables"
   },
   {
-    "id": "pbnrEe0RhEa1AVZgb38gJ",
-    "animal": "miki mouse",
-    "carnivor": true,
-    "preferes": "Ka:se"
+    "id": "efavymCaE2G-RB_Aq9trg",
+    "animal": "donald",
+    "preferes": "disney food",
+    "carnivor": false
   }
 ]

@@ -1,6 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
+const Joi = require("joi");
+const mongoose = require("mongoose")
 const fs = require("fs").promises;
 const path = require("path");
 const PORT = 5000;
@@ -13,6 +15,8 @@ app.use(cookieParser());
 
 const APIcall =
   "https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&q=london&image_type=photo&pretty=true&per_page=4";
+
+//promises exemples
 /*
 //new Promise(()=>{})
 const fetchData = new Promise((resolve, reject) => {
@@ -45,8 +49,15 @@ const fetchdata = async () => {
 }
 fetchdata()
 */
+//promises exemples
 
- 
+const animalValidJoi = Joi.object({
+  //animal:  carnivor: preferes
+  animal: Joi.string().min(3).max(20).required(),
+  carnivor: Joi.boolean().required(),
+  preferes: Joi.string().min(3).max(50).required(),
+});
+
 app.get("/", (req, res) => {
   res.send("Server is up and workoking!");
 });
@@ -69,59 +80,57 @@ app.get("/animals", async (req, res) => {
 
 app.post("/animals", async (req, res) => {
   try {
-     //definesc noul animal, aduc lista exitenta, populez lista existenta, o salvez pe cea noua
-  const newAnimal = { id: nanoid(), ...req.body };
-  const currentList = await fs.readFile(infoLocation, "utf-8");
-    const parseCurrentList = JSON.parse(currentList);
-    const isDupicated = parseCurrentList.findIndex(el => el.animal === newAnimal.animal);
-    if(isDupicated === -1){parseCurrentList.push(newAnimal);
+    const { error } = animalValidJoi.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
     }
-    else {
-      parseCurrentList.splice(isDupicated, 1, newAnimal); 
-    }
-        await fs.writeFile(infoLocation, JSON.stringify(parseCurrentList, null, 2), { encoding: "utf-8" });
-  res.status(200).json({ "message": "New animal was added in the list."})
-  }
-  catch(error){res.json({ "message": "Please recheck your request, the appending failed." });}
 
-})
+    const newAnimal = { id: nanoid(), ...req.body };
+    const currentList = await fs.readFile(infoLocation, "utf-8");
+    const parseCurrentList = JSON.parse(currentList);
+    const isDupicated = parseCurrentList.findIndex(
+      (el) => el.animal === newAnimal.animal
+    );
+    if (isDupicated === -1) {
+      parseCurrentList.push(newAnimal);
+    } else {
+      parseCurrentList.splice(isDupicated, 1, newAnimal);
+    }
+    await fs.writeFile(
+      infoLocation,
+      JSON.stringify(parseCurrentList, null, 2),
+      { encoding: "utf-8" }
+    );
+    res.status(200).json({ message: "New animal was added in the list." });
+  } catch (error) {
+    res.json({ message: "Please recheck your request, the appending failed." });
+  }
+});
 
 app.delete("/animals/:name", async (req, res) => {
-  //identific animalul din site; aduc lista curenta si sterg animalul; salvez noua lista
   try {
     const identifiedAnimal = req.params.name;
-  const currentList = await fs.readFile(infoLocation, "utf-8");
-  const parseCurrentList = JSON.parse(currentList);
-  const indexAnimal = parseCurrentList.findIndex(el => el.animal === identifiedAnimal);
-  if (indexAnimal === -1) { res.json({ "message": "No item found with this name" }) }
-  else {
-    parseCurrentList.splice(indexAnimal, 1);
-    await fs.writeFile(infoLocation, JSON.stringify(parseCurrentList, null, 2), {encoding:"utf-8"})
-    res.json({ "message": "Item was deleted." })
+    const currentList = await fs.readFile(infoLocation, "utf-8");
+    const parseCurrentList = JSON.parse(currentList);
+    const indexAnimal = parseCurrentList.findIndex(
+      (el) => el.animal === identifiedAnimal
+    );
+    if (indexAnimal === -1) {
+      res.json({ message: "No item found with this name" });
+    } else {
+      parseCurrentList.splice(indexAnimal, 1);
+      await fs.writeFile(
+        infoLocation,
+        JSON.stringify(parseCurrentList, null, 2),
+        { encoding: "utf-8" }
+      );
+      res.json({ message: "Item was deleted." });
+    }
+  } catch (error) {
+    res.json({ message: "Please recheck your request and try again." });
   }
-  }
-  catch(error){res.json({ "message": "Please recheck your request and try again." })}
-
-})
+});
 
 app.listen(PORT, () => {
   console.log("Server is running on port 5000 -path and fs - exercise.");
 });
-
-/*
-app.post("/animals", async (req, res) => {
-  try {
-    const newItem = { id: nanoid(), ...req.body };
-    const listAnimals = await fs.readFile(infoLocation, "utf-8");
-    const parsedInfo = JSON.parse(listAnimals);
-    parsedInfo.push(newItem);
-    await fs.writeFile(infoLocation, JSON.stringify(parsedInfo, null, 2), {
-      encoding: "utf-8",
-    });
-    res.json({ message: "New item was added." });
-  } catch (error) {
-    console.log("Issue when appending new animal", error);
-    res.json({ message: "Please recheck your request, the appending failed." });
-  }
-});
-*/
