@@ -3,16 +3,10 @@ const router = express.Router();
 const { nanoid } = require("nanoid");
 const Joi = require("joi");
 const animalJoi = require("./schemas/schemaJoi.js");
-
-const animals = [
-  { id: 12345, name: "cat", carnivor: true, details: "friendly with humans" },
-];
-
-router.get("/", (req, res) => {
-  res.json(animals);
-});
-
-router.post("/", async (req, res, next) => {
+const animals = [{ id: 12345, name: "cat", carnivor: true, details: "friendly with humans" },];
+//TRY AND CATCH  mandatory     module.exports = router; return mandatory
+router.get("/", (req, res) => {res.json(animals);});
+router.post("/", (req, res, next) => {
   try {
     const { error } = animalJoi.validate(req.body);
     if (error) {
@@ -28,7 +22,6 @@ router.post("/", async (req, res, next) => {
     res.json({ message: error.message });
   }
 });
-
 router.put("/:name", (req, res, next) => {
   try {
     const animalName = req.params.name;
@@ -52,7 +45,6 @@ router.put("/:name", (req, res, next) => {
     res.json({ message: error.message });
   }
 });
-
 router.delete("/:name", (req, res, next) => {
   try {
     const animalName = req.params.name;

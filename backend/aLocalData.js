@@ -1,8 +1,5 @@
 const express = require("express");
 require("dotenv").config();
-
-console.log("PORT from env:", process.env.PORT);
-
 const createError = require("http-errors");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
@@ -23,6 +20,7 @@ app.use("/animals", animalsRouter);
 app.use((req, res, next) => {
   next(createError(404));
 });
+
 
 // Error handler
 app.use((err, req, res, next) => {

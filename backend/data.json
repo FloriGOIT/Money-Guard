@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "id": 12345,
+    "name": "Pisica",
+    "carnivor": true,
+    "details": "Keine Katze heute.",
+    "feet": 4
+  },
+  {
+    "id": "pYz5NTEXvrae07zIOgvMU",
+    "details": "Ein animal fu:r draussen",
+    "name": "Hase",
+    "carnivor": false,
+    "feet": "2"
+  },
+  {
+    "id": "bgxnaBL8EZ_hFQnJlkmKy",
+    "details": "Meine Eltern haben ein grau und schwarz Hund",
+    "name": "Hund",
+    "carnivor": false,
+    "feet": "4"
+  },
+  {
+    "id": "Xq0z6M-5JvJnW8nsLvg6l",
+    "details": "Ich hatte nie eine Eule.",
+    "name": "Eule",
+    "carnivor": true,
+    "feet": 4
+  }
+]

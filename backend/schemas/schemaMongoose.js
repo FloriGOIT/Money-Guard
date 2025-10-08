@@ -1,4 +1,15 @@
 
+
+
+
+
+
+//const newAnimal = new AnimalMongo(req.body)
+// const saveNewAnimal =await newAnimal.save()
+
+/*
+
+
 const mongoose = require("mongoose")
 
 const animalMongooseSchema = new mongoose.Schema({
@@ -9,6 +20,4 @@ const animalMongooseSchema = new mongoose.Schema({
 
 const AnimalMongo = mongoose.model("AnimalMongo", animalMongooseSchema, "animals")
 module.exports = AnimalMongo
- 
-//const newAnimal = new AnimalMongo(req.body)
-// const saveNewAnimal =await newAnimal.save()
+ */
