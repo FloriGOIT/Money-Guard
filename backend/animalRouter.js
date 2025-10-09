@@ -1,73 +1,63 @@
+
+//express, nanoid, router, mongoose
 const express = require("express");
 const router = express.Router();
+require("dotenv").config();
+const mongoose = require("mongoose");
 const { nanoid } = require("nanoid");
-const Joi = require("joi");
 const animalJoi = require("./schemas/schemaJoi.js");
-const animals = [{ id: 12345, name: "cat", carnivor: true, details: "friendly with humans" },];
-//TRY AND CATCH  mandatory     module.exports = router; return mandatory
-router.get("/", (req, res) => {res.json(animals);});
-router.post("/", (req, res, next) => {
+const AnimalMongo = require("./schemas/schemaMongoose.js");
+
+
+mongoose.connect(process.env.MONGO_URI)
+.then(()=>console.log(`Connection to Mongo has been made.`))
+.catch((error)=>console.log(`Connection to Mongo failed.`, error.message))
+
+router.get("/", async (req, res, next) => {
   try {
-    const { error } = animalJoi.validate(req.body);
-    if (error) {
-      return res.status(400).json({ message: error.details[0].message });
+    const defaultData = await AnimalMongo.find()
+    return res.send(defaultData)
+   }
+catch(error){ return res.send({message: error.message})}})
+
+router.post("/", async (req, res, next) => {
+  try {
+    const { error } = animalJoi.validate(req.body)
+    if (error) { return res.send({ messageJoi: error.message }) }
+    const newAnimal = new AnimalMongo(req.body);
+    const dbInfo = await AnimalMongo.find({});
+    const isDuplicated = dbInfo.findIndex(el => el.name === newAnimal.name);
+    if (isDuplicated === -1) {
+      await newAnimal.save();
+      return res.send({ messageTry: `Animal ${newAnimal.name} was added.` })
+    }
+    else{return res.send({messageTry: `Animal ${newAnimal.name} was already added.`})}
+
+   }
+  catch(error){return res.send({errorCatched: error.message})}
+})
+
+router.put("/:name", async (req, res, next) => {
+  try { 
+    const { error } = animalJoi.validate(req.body)
+    if(error){return res.send({errorJOi: error.message})}
+    const nameParam = req.params.name;
+    const dbInfo = await AnimalMongo.find({});
+    const isDuplicated = dbInfo.findIndex(el => el.name === nameParam);
+    if (isDuplicated === -1) {
+      const newAnimal = new AnimalMongo(req.body);
+      await newAnimal.save();
+      return res.send({messageTry: `Animal ${newAnimal.name} was added not updated.` })
+    }
+    else {
+      const animalFiltered = dbInfo.find(el=> el.name ===nameParam)
+      const updateAnimal = await AnimalMongo.findByIdAndUpdate(animalFiltered.id, req.body);
+      return res.send({messageTry: `Animal ${animalFiltered.name} was updated not added.`})
+
     }
 
-    const newAnimal = { id: nanoid(), details: "", ...req.body };
-    animals.push(newAnimal);
-    res
-      .status(200)
-      .json({ message: `Item: ${newAnimal.name} was added to the list.` });
-  } catch (error) {
-    res.json({ message: error.message });
   }
-});
-router.put("/:name", (req, res, next) => {
-  try {
-    const animalName = req.params.name;
-    const indexAnimal = animals.findIndex((el) => el.name === animalName);
-    if (indexAnimal === -1) {
-      const newAnimal = { id: nanoid(), details: "", ...req.body };
-      animals.push(newAnimal);
-      res
-        .status(200)
-        .json({ message: `Item: ${newAnimal.name} was ADDED to the list.` });
-    } else {
-      const updateAnimal = animals.find((el) => el.name === animalName);
-      Object.assign(updateAnimal, req.body);
-      res
-        .status(200)
-        .json({
-          message: `Item: ${updateAnimal.name} was UPDATED to the list.`,
-        });
-    }
-  } catch (error) {
-    res.json({ message: error.message });
-  }
-});
-router.delete("/:name", (req, res, next) => {
-  try {
-    const animalName = req.params.name;
-    const indexAnimal = animals.findIndex((el) => el.name === animalName);
-    if (indexAnimal === -1) {
-      res
-        .status(200)
-        .json({
-          message: `Item ${animalName} was not found in the list of animals.`,
-        });
-    } else {
-      animals.splice(indexAnimal, 1);
-      res
-        .status(200)
-        .json({
-          message: `Item ${animalName} was deleted from the list of animals.`,
-        });
-    }
-  } catch (error) {
-    res.json({ mesage: error.message });
-  }
-});
+  catch(error){return res.send({errorCatched: error.message})}
+})
 
-module.exports = router;
-
-// do i use try + catch even on get request?
+module.exports=router
