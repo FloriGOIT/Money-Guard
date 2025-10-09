@@ -7,7 +7,6 @@ const mongoose = require("mongoose");
 const animalJoi = require("./schemas/schemaJoi.js");
 const AnimalMongo = require("./schemas/schemaMongoose.js");
 
-
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>console.log(`Connection to Mongo has been made.`))
 .catch((error)=>console.log(`Connection to Mongo failed.`, error.message))
@@ -31,11 +30,9 @@ router.post("/", async (req, res, next) => {
       return res.send({ messageTry: `Animal ${newAnimal.name} was added.` })
     }
     else { return res.send({ messageTry: `Animal ${newAnimal.name} was already added.` }) }
-
   }
   catch (error) { return res.send({ errorCatched: error.message }) }
 });
-
 
 router.put("/:name", async (req, res, next) => {
   try{  const { error } = animalJoi.validate(req.body);
@@ -45,7 +42,6 @@ router.put("/:name", async (req, res, next) => {
   if (!replacedAnimal) { return res.send({ message: `Animal does not exist in the list.` }) }
   else{return res.send(replacedAnimal)}}
   catch(error){return res.send({errorCaught: error.message})}
-
 })
 
 router.patch("/:name", async (req, res, next) => {
