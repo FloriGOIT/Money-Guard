@@ -24,11 +24,10 @@ app.use((req, res, next) => {
 
 // Error handler
 app.use((err, req, res, next) => {
-  res.status(err.status || 500);
-  res.send(`
-    <h1>Error status: ${err.status}</h1>
-    <p>Possible issue : ${err.message}</p>
-  `);
+  res.status(err.status || 500).send({
+    status: err.status || 500,
+    message:err.message
+  })
 });
 
 // Start server

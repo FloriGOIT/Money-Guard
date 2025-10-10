@@ -9,31 +9,34 @@ const AnimalMongo = require("./schemas/schemaMongoose.js");
 
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>console.log(`Connection to Mongo has been made.`))
-.catch((error)=>console.log(`Connection to Mongo failed.`, error.message))
+  .catch((error) => console.log(`Connection to Mongo failed.`, error.message))
+const APIcall =
+  "https://pixabay.com/api/?key=42799638-b50871d8c9a958480a9d6ba7c&image_type=photo&pretty=true&per_page=4";//&q=london
 
-router.get("/", async (req, res, next) => {
-  try {
-    const defaultData = await AnimalMongo.find()
-    return res.send(defaultData)
-   }
-catch(error){ return res.send({message: error.message})}})
-
-router.post("/", async (req, res, next) => {
-  try {
-    const { error } = animalJoi.validate(req.body)
-    if (error) { return res.send({ messageJoi: error.message }) }
-    const newAnimal = new AnimalMongo(req.body);
-    const dbInfo = await AnimalMongo.find({});
-    const isDuplicated = dbInfo.findIndex(el => el.name === newAnimal.name);
-    if (isDuplicated === -1) {
-      await newAnimal.save();
-      return res.send({ messageTry: `Animal ${newAnimal.name} was added.` })
-    }
-    else { return res.send({ messageTry: `Animal ${newAnimal.name} was already added.` }) }
+const handleFetch = async (value) =>
+{
+  try { 
+    const fetching = await fetch(`${APIcall}&q=${value}`);
+    console.log(fetching)
+    if (!fetching.ok) { console.log("error1: ",error.message) }
+    const parsefetch = await fetching.json();
+    return parsefetch.hits
   }
-  catch (error) { return res.send({ errorCatched: error.message }) }
-});
+  catch(error){console.log("error2: ", error.message)}
+ }
 
+
+router.get("/", async (req,res,next) => {
+try{  //const queryValue = req.query.name ? { name: req.query.name.trim() } : {};
+  const data = await handleFetch(req.query.name);
+  const finalInfo = data.map(el => { const newEl = { name: `${req.query.name}-${el.id}`, details: el.tags }; return newEl });
+
+    res.status(200).send(finalInfo);
+  }
+  catch(error){next(error)}
+})
+
+  
 router.put("/:name", async (req, res, next) => {
   try{  const { error } = animalJoi.validate(req.body);
   if (error) { return res.send({ errorJoi: error.message }) }

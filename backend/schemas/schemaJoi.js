@@ -10,7 +10,13 @@ const animalJoi = Joi.object({
         )
 })
 
-module.exports = animalJoi
+const errorJoihandle = (req, res, next) => {
+        const { error } = animalJoi.validate(req.body);
+        if (error) { return res.status(400).send({ error: error.message }) }
+        next()
+}
+
+module.exports = {animalJoi,errorJoihandle}
 
 /*
 const Joi = require("joi");

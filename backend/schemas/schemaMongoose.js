@@ -8,13 +8,8 @@ const animalMongoSchema = new mongoose.Schema({
         details: { type: String, minLength: 3, maxLength: 100, required: true},
         feet: {type: mongoose.Schema.Types.Mixed, default:"several"}
 })
-
 const animalMongoModel = mongoose.model("AnimalMongo", animalMongoSchema, "animals")
-        
 module.exports = animalMongoModel
-
-
-
 
 //const newAnimal = new AnimalMongo(req.body)
 // const saveNewAnimal =await newAnimal.save()
