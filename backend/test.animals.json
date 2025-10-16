@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "68efa6c5d9b09ed88bc7dfc0"
+  },
+  "name": "Wildente-8622063",
+  "carnivor": false,
+  "details": "wild duck, bird, fauna, nature, water bird, duck, lake, flying, animal, wildlife, duck, duck, duck, duck, duck",
+  "feet": "several",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68efa6c5d9b09ed88bc7dfc2"
+  },
+  "name": "Wildente-6994736",
+  "carnivor": false,
+  "details": "wild duck, water bird, nature, lake, waterfowl",
+  "feet": "several",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68efa6c5d9b09ed88bc7dfc4"
+  },
+  "name": "Wildente-8080570",
+  "carnivor": false,
+  "details": "duck, wild duck, bird, species, grass, nature",
+  "feet": "several",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68efa6d4d9b09ed88bc7dfc7"
+  },
+  "name": "affe-4336422",
+  "carnivor": false,
+  "details": "totenkopfäffchen, säugetier, natur, zoo, tiergarten, affe, squirrel monkey, monkey, mammal",
+  "feet": "several",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68efa6d4d9b09ed88bc7dfc9"
+  },
+  "name": "affe-6921008",
+  "carnivor": false,
+  "details": "baby monkey, nature, monkey, primate, animal, wildlife",
+  "feet": "several",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68efa6d4d9b09ed88bc7dfcb"
+  },
+  "name": "affe-7797970",
+  "carnivor": false,
+  "details": "barbary macaque, monkey, animal, barbary ape, macaque, mammal, primate, baby monkey, wildlife, nature, endangered, monkey, monkey, monkey, monkey, monkey",
+  "feet": "several",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68efa6dbd9b09ed88bc7dfcd"
+  },
+  "name": "gans-7035704",
+  "carnivor": false,
+  "details": "egyptian goose chick, bird, goose, egyptian goose, wildlife, nature, cute, sweet, urban wildlife",
+  "feet": "several",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68efa6dbd9b09ed88bc7dfcf"
+  },
+  "name": "gans-3500908",
+  "carnivor": false,
+  "details": "goose, bird, greylag goose, animal, bill, domestic goose, poultry, plumage, goose beak, head, feathers, water bird, nature, close up, goose, goose, goose, goose, goose",
+  "feet": "several",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68efa6dbd9b09ed88bc7dfd1"
+  },
+  "name": "gans-7161308",
+  "carnivor": false,
+  "details": "gosling, goose, egyptian goose, bird, meadow, hatchling, grass, baby, young, avian, wildlife, wildbird, nature, gosling, gosling, goose, goose, goose, goose, goose, bird, baby, baby",
+  "feet": "several",
+  "__v": 0
+}]
