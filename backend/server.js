@@ -3,6 +3,7 @@ require("dotenv").config();
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const creatError = require("http-errors");
+const cors = require("cors");
 
 
 const app = express();
@@ -10,7 +11,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(cors());
 
 
 app.get("/", (req, res) => {
