@@ -1,3 +1,11 @@
+let y = "Backend is runninggg!"
+
+const arrayNumbers = [1, 2, 5, 12, 54, 67];
+console.log("🟡 This is my arrayNumbers:",arrayNumbers)
+console.log("💌 Cum te numesti?")
+console.log("🔰 Je suis a commence de mes etudes. Je peux parler aussi em francais avec toi.")
+
+
 const express = require("express")
 require("dotenv").config();
 const logger = require("morgan");
@@ -15,7 +23,7 @@ app.use(cors());
 
 
 app.get("/", (req, res) => {
-  res.send("Backend is running!");
+        res.send(`<h1>${y}</h1>`);
 });
 
 app.use((req, res, next) => {
@@ -30,4 +38,4 @@ app.use((err, req, res, next) => {
 })
 
 const PORT = process.env.PORT
-app.listen(PORT, () => console.log(`Server conected at ${PORT}`));
+app.listen(PORT);
