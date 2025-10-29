@@ -62,9 +62,11 @@ const MoneyGuardApp = () => {
   );
 
   const handleDeleteCard = idCardForDel => {
-    const modifiedIsArr = isArr.filter(card => card.id !== idCardForDel);
+    const modifiedIsArr = isArr.filter(card => card.idFrontend !== idCardForDel);
     setIsArr(modifiedIsArr);
   };
+
+  console.log("localDataCardsParsed",localDataCardsParsed)
 
   const MobileRoutes = () => (
     <Routes>
@@ -118,52 +120,3 @@ const MoneyGuardApp = () => {
 export default MoneyGuardApp;
 
 
-/*
-//const Login = lazy(() => import('../pages/Login'));
-//const Register = lazy(() => import('../pages/Register'));
-//const Logout = lazy(() => import('../pages/Logout'));
-  const MobileRoutes = () => (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/" element={<SharedLayout />}>
-        <Route
-          index
-          element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />}
-        />
-        <Route path="logout" element={<Logout />} />
-        <Route path="newCard" element={<NewCard info={isArr} />} />
-        <Route path="newCard/:id" element={<NewCard info={isArr} />} />
-        <Route
-          path="statistics"
-          element={<ExpensesStatistics info={isArr} />}
-        />
-        <Route path="currency" element={<Currency />} />
-        <Route path="currency/:name" element={<NewCoin origin="/currency" />} />
-        <Route
-          path="currency/newCoin"
-          element={<NewCoin origin="/currency" />}
-        />
-      </Route>
-    </Routes>
-  );
-
-  const DesktopRoutes = () => (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route
-        path="/"
-        element={
-          <AllinOne
-            info={isArr}
-            handleDeleteCard={handleDeleteCard}
-            origin="/all"
-          />
-        }
-      />
-      <Route path="logout" element={<Logout />} />
-    </Routes>
-  );
-
-*/

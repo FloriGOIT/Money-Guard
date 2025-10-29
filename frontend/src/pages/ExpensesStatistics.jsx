@@ -41,7 +41,7 @@ const ExpensesStatistics = ({ info }) => {
   }, [info, isSelectedMonth, isSelectedYear]);
 
   const expensesArr =
-    selectedMonthAndYear.filter(transaction => transaction.type) || [];
+    selectedMonthAndYear.filter(transaction => transaction.expense) || [];
   const expensesArrReducer = expensesArr.reduce((acc, item) => {
     const { category, amount, color } = item;
     const numericAmount = parseFloat(amount);
@@ -66,9 +66,9 @@ const ExpensesStatistics = ({ info }) => {
   const infoReducer = selectedMonthAndYear.reduce(
     (acc, item) => {
       const category =
-        item.type === true
+        item.expense === true
           ? 'expenses'
-          : item.type === false
+          : item.expense === false
           ? 'incomes'
           : null;
       if (!category) return acc;

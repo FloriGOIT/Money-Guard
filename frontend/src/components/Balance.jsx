@@ -2,9 +2,9 @@ import style from './moneyGuard.module.scss';
 
 const Balance = ({ info }) => {
   const balance = info.reduce((acc, data) => {
-    if (data.type === false) {
+    if (data.expense === false) {
       return acc + Number(data.amount);
-    } else if (data.type === true) {
+    } else if (data.expense === true) {
       return acc - Number(data.amount);
     }
     return acc;

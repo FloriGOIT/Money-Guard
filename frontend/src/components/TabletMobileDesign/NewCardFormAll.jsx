@@ -25,29 +25,29 @@ const NewCardFormAll = ({
   const [isAmount, setIsAmount] = useState('');
   const [isDetails, setIsDetails] = useState('');
   const [isColor, setIsColor] = useState('');
-
+ console.log("inffooo", info)
   const monthPreLether = months.filter(
     month => month.number === isDate.split('-')[1]
   );
   const monthLether = monthPreLether[0].name;
   const defaultCard = {
-    id: nanoid(),
+    idFrontend: nanoid(),
     date: isDate,
     year: isDate.split('-')[0],
     month: monthLether,
-    type: isExpense,
+    expense: isExpense,
     category: isOption,
     details: isDetails,
     amount: isAmount,
     color: isColor,
   };
 
-  const selectedCard = info.find(card => card.id === isIdForCardUpdate);
+  const selectedCard = info.find(card => card.idFrontend === isIdForCardUpdate);
   console.log('selectedCard', selectedCard);
 
   useEffect(() => {
     if (selectedCard) {
-      setIsExpense(selectedCard.type);
+      setIsExpense(selectedCard.expense);
       setIsOption(selectedCard.category);
       setIsDate(selectedCard.date);
       setIsAmount(selectedCard.amount);
@@ -70,7 +70,7 @@ const NewCardFormAll = ({
   const handleOption = input => {
     setIsOption(input);
     const identifyColor = allCategories.find(
-      category => category.type === input
+      category => category.expense === input
     );
     setIsColor(identifyColor.color);
     setIsListCategoriesOn(prev => !prev);
@@ -94,7 +94,6 @@ const NewCardFormAll = ({
     }
     console.log('defaultCard', defaultCard);
 
-    localStorage.setItem('listCards', JSON.stringify(info));
 
     try {
       const responseFetch = await fetch('http://localhost:5000/', {
@@ -111,11 +110,12 @@ const NewCardFormAll = ({
 let updatedInfo;
 if (isIdForCardUpdate) {
   updatedInfo = info.map(card =>
-    card.id === isIdForCardUpdate ? defaultCard : card
+    card.idFrontend === isIdForCardUpdate ? defaultCard : card
   );
 } else {
   updatedInfo = [...info, defaultCard];
-}
+      }
+      console.log("updatedInfo",updatedInfo)
 localStorage.setItem('listCards', JSON.stringify(updatedInfo));
     } catch (error) {
       console.error('Error saving card:', error.message);
@@ -182,15 +182,15 @@ localStorage.setItem('listCards', JSON.stringify(updatedInfo));
           <ul className={style.newCardList}>
             {arrCategory.map(category => (
               <li
-                key={category.type}
-                value={category.type.toLowerCase()}
+                key={category.expense}
+                value={category.expense.toLowerCase()}
                 className={style.newCardOption}
-                onClick={() => handleOption(category.type)}
+                onClick={() => handleOption(category.expense)}
               >
                 <input
                   type="text"
-                  name={category.type}
-                  value={category.type}
+                  name={category.expense}
+                  value={category.expense}
                   readOnly
                   autoComplete="off"
                   required
@@ -254,15 +254,8 @@ localStorage.setItem('listCards', JSON.stringify(updatedInfo));
   );
 };
 
-/*
 
-
-*/
 
 export default NewCardFormAll;
 
-/*
 
-
-          
-          */

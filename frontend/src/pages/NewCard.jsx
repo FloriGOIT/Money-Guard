@@ -27,7 +27,7 @@ const NewCard = ({ info }) => {
         date: isDate,
         year: isDate.split("-")[0],
       month:monthLether,
-      type: isExpense,
+      expense: isExpense,
       category: isOption,
       details: isDetails,
         amount: isAmount,
@@ -36,11 +36,11 @@ const NewCard = ({ info }) => {
 
   const { id } = useParams();
   
-  const selectedCard = info.find(card => card.id === id);
+  const selectedCard = info.find(card => card.idFrontend === id);
 
   useEffect(()=>{ if (selectedCard) {
     
-    setIsExpense(selectedCard.type); 
+    setIsExpense(selectedCard.expense); 
     setIsOption(selectedCard.category);
     setIsDate(selectedCard.date);
     setIsAmount(selectedCard.amount);
@@ -62,7 +62,7 @@ const NewCard = ({ info }) => {
   };
   const handleOption = input => {
     setIsOption(input);
-    const identifyColor = allCategories.find(category => category.type === input)
+    const identifyColor = allCategories.find(category => category.expense === input)
     setIsColor(identifyColor.color)
     setIsListCategoriesOn(prev => !prev);
   };
@@ -71,7 +71,7 @@ const NewCard = ({ info }) => {
   
   const submitNewCard = (e) => {
     e.preventDefault();
-    const index = info.findIndex(card=>card.id===id)
+    const index = info.findIndex(card=>card.idFrontend===id)
     if (id) { info.splice(index, 1); }
 
 
@@ -149,15 +149,15 @@ const NewCard = ({ info }) => {
             <ul className={style.newCardList}>
               {arrCategory.map(category => (
                 <li
-                  key={category.type}
-                  value={category.type.toLowerCase()}
+                  key={category.expense}
+                  value={category.expense.toLowerCase()}
                   className={style.newCardOption }
-                  onClick={() => handleOption(category.type)}
+                  onClick={() => handleOption(category.expense)}
                 >
                   <input
                     type="text"
-                    name={category.type}
-                    value={category.type}
+                    name={category.expense}
+                    value={category.expense}
                     readOnly
                     autoComplete="off"
                     required
