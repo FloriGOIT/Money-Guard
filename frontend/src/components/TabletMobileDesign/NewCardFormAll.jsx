@@ -12,7 +12,12 @@ import { today, months } from '../../helpers/timeInfo';
 import BigBtnWithColorAll from './BigBtnWithColorAll';
 import BigBtnNoColorAll from './BigBtnNoColorAll';
 
-const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdForCardUpdate }) => {
+const NewCardFormAll = ({
+  info,
+  handleAddCardModal,
+  isIdForCardUpdate,
+  handleIdForCardUpdate,
+}) => {
   const [isExpense, setIsExpense] = useState(false);
   const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
   const [isOption, setIsOption] = useState('Select a category');
@@ -37,20 +42,19 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
     color: isColor,
   };
 
- const selectedCard = info.find(card => card.id === isIdForCardUpdate)
- console.log("selectedCard",selectedCard)
+  const selectedCard = info.find(card => card.id === isIdForCardUpdate);
+  console.log('selectedCard', selectedCard);
 
-  useEffect(()=>{ if (selectedCard) {
-    
-    setIsExpense(selectedCard.type); 
-    setIsOption(selectedCard.category);
-    setIsDate(selectedCard.date);
-    setIsAmount(selectedCard.amount);
-    setIsDetails(selectedCard.details);
-    setIsColor(selectedCard.color)
-  }},[selectedCard])
-
-
+  useEffect(() => {
+    if (selectedCard) {
+      setIsExpense(selectedCard.type);
+      setIsOption(selectedCard.category);
+      setIsDate(selectedCard.date);
+      setIsAmount(selectedCard.amount);
+      setIsDetails(selectedCard.details);
+      setIsColor(selectedCard.color);
+    }
+  }, [selectedCard]);
 
   let arrCategory = isExpense ? mainExpenses : mainIncomes;
   const buttonArrow = isListCategoriesOn ? <FaChevronUp /> : <FaAngleDown />;
@@ -72,13 +76,8 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
     setIsListCategoriesOn(prev => !prev);
   };
 
-  const submitNewCard = e => {
+  const submitNewCard = async e => {
     e.preventDefault();
-
-    const index = info.findIndex(card => card.id === isIdForCardUpdate);
-    if (isIdForCardUpdate) {
-      info.splice(index, 1,defaultCard);
-    }else{info.push(defaultCard);}
 
     if (isOption === 'Select a category') {
       alert('Please select a type of income or expense.');
@@ -93,8 +92,33 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
       alert('Please enter a date that starts with year 2020');
       return;
     }
-       
+    console.log('defaultCard', defaultCard);
+
     localStorage.setItem('listCards', JSON.stringify(info));
+
+    try {
+      const responseFetch = await fetch('http://localhost:5000/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(defaultCard),
+      });
+
+      if (!responseFetch.ok) {
+        throw new Error('Failed to save the card');
+      }
+      await responseFetch.json();
+
+      const index = info.findIndex(card => card.id === isIdForCardUpdate);
+      if (isIdForCardUpdate) {
+        info.splice(index, 1, defaultCard);
+      } else {
+        info.push(defaultCard);
+      }
+      localStorage.setItem('listCards', JSON.stringify(info));
+    } catch (error) {
+      console.error('Error saving card:', error.message);
+    }
+
     setIsExpense(false);
     setIsListCategoriesOn(false);
     setIsOption('Select a category');
@@ -102,8 +126,8 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
     setIsAmount('');
     setIsDetails('');
     setIsColor('');
-    handleIdForCardUpdate("")
- handleAddCardModal();
+    handleIdForCardUpdate('');
+    handleAddCardModal();
   };
 
   return (
@@ -210,6 +234,7 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
             value={isDetails}
             placeholder="-"
             autoComplete="off"
+            maxLength="48"
             onChange={e => setIsDetails(e.target.value)}
           />
         </div>

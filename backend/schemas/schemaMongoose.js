@@ -1,18 +1,36 @@
-
+const { string, required, boolean } = require("joi");
 const mongoose = require("mongoose");
 
-const newCardMongo = new mongoose.Schema({
-        id: { type: String, required: true },
-        date: { type: Date, required: true },
-        type: { type: Boolean, required: true },
-        category: { type: String, required: true },
-        details: { type: String, required: true, default:""  },
-        amount: { type: String, required: true  } 
-})
+const newCardDbSchema = new mongoose.Schema({
+  amount: {
+    type: string,
+    required: true,
+    validateAmount: {
+      validator: function (value) {
+        return value !== 0 && value.trim.length > 0;
+      },
+      message: "Please enter a number higher than 0 and for decimals use dot.",
+    },
+  },
 
-const newCardMongoose = mongoose.Model("NewCardMongo", newCardMongo, "moneyGuard-cards" )
+  category: { type: String, required: true },
+  color: { type: String, required: true },
+  date: { type: String, required: true },
+  details: { type: String, required: true, maxLength: 48 },
+  idFrontEnd: { type: String, required: true },
+  month: { type: String, required: true },
+  income: { type: boolean, required: true },
+  year: { type: string, required: true, minLength: 4, maxLength: 4 },
+});
 
-module.exports = newCardMongoose;
+const NewMongooseCard = mongoose.model(
+  "NewMongooseCard",
+  newCardDbSchema,
+  "moneyGuard-cards"
+);
+
+module.exports = NewMongooseCard;
+
 /*
 const mongoose = require("mongoose");
 
@@ -24,4 +42,11 @@ const animalMongoSchema = new mongoose.Schema({
 })
 const animalMongoModel = mongoose.model("AnimalMongo", animalMongoSchema, "animals")
 module.exports = animalMongoModel
+
+                validate: {
+                        validator: function (amount) {
+                                return amount !== 0 && amount.trim.length > 0
+                        },
+                        message: "The amount entered must be higher than 0 and for decimals use dot."
+                }
 */
