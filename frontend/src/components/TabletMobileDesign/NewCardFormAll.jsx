@@ -108,13 +108,15 @@ const NewCardFormAll = ({
       }
       await responseFetch.json();
 
-      const index = info.findIndex(card => card.id === isIdForCardUpdate);
-      if (isIdForCardUpdate) {
-        info.splice(index, 1, defaultCard);
-      } else {
-        info.push(defaultCard);
-      }
-      localStorage.setItem('listCards', JSON.stringify(info));
+let updatedInfo;
+if (isIdForCardUpdate) {
+  updatedInfo = info.map(card =>
+    card.id === isIdForCardUpdate ? defaultCard : card
+  );
+} else {
+  updatedInfo = [...info, defaultCard];
+}
+localStorage.setItem('listCards', JSON.stringify(updatedInfo));
     } catch (error) {
       console.error('Error saving card:', error.message);
     }

@@ -1,9 +1,3 @@
-let y = "Backend is runninggg!"
-
-const arrayNumbers = [1, 2, 5, 12, 54, 67];
-console.log("🟡 This is my arrayNumbers:",arrayNumbers)
-console.log("💌 Cum te numesti?")
-console.log("🔰 Je suis a commence de mes etudes. Je peux parler aussi em francais avec toi.")
 
 
 const express = require("express")
@@ -12,7 +6,7 @@ const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const creatError = require("http-errors");
 const cors = require("cors");
-
+const cardRouter = require("../backend/cardRouter.js")
 
 const app = express();
 app.use(logger("dev"));
@@ -20,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
-
+app.use("/", cardRouter)
 
 app.get("/", (req, res) => {
         res.send(`<h1>${y}</h1>`);
@@ -38,4 +32,4 @@ app.use((err, req, res, next) => {
 })
 
 const PORT = process.env.PORT
-app.listen(PORT);
+app.listen(PORT, (req,res,dev) =>{console.log("HELLO port 5000!")});
