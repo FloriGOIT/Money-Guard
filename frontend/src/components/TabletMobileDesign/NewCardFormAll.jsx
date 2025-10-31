@@ -14,6 +14,7 @@ import BigBtnNoColorAll from './BigBtnNoColorAll';
 
 const NewCardFormAll = ({
   info,
+  setIsArr,
   handleAddCardModal,
   isIdForCardUpdate,
   handleIdForCardUpdate,
@@ -43,7 +44,6 @@ const NewCardFormAll = ({
   };
 
   const selectedCard = info.find(card => card.idFrontend === isIdForCardUpdate);
-
 
   useEffect(() => {
     if (selectedCard) {
@@ -92,8 +92,6 @@ const NewCardFormAll = ({
       alert('Please enter a date that starts with year 2020');
       return;
     }
-   
-
 
     try {
       const responseFetch = await fetch('http://localhost:5000/', {
@@ -107,16 +105,19 @@ const NewCardFormAll = ({
       }
       await responseFetch.json();
 
-let updatedInfo;
-if (isIdForCardUpdate) {
-  updatedInfo = info.map(card =>
-    card.idFrontend === isIdForCardUpdate ? defaultCard : card
-  );
-} else {
-  updatedInfo = [...info, defaultCard];
+      let updatedInfo = [...info];
+      if (isIdForCardUpdate) {
+        const filterCardBasedOnID = info.filter(
+          card => card.idFrontend === isIdForCardUpdate
+        );
+        updatedInfo = [...updatedInfo, ...filterCardBasedOnID];
+        setIsArr(updatedInfo)
+      } else {
+        updatedInfo = [...info, defaultCard];
+        setIsArr(updatedInfo)
       }
 
-localStorage.setItem('listCards', JSON.stringify(updatedInfo));
+      localStorage.setItem('listCards', JSON.stringify(updatedInfo));
     } catch (error) {
       console.error('Error saving card:', error.message);
     }
@@ -254,8 +255,4 @@ localStorage.setItem('listCards', JSON.stringify(updatedInfo));
   );
 };
 
-
-
 export default NewCardFormAll;
-
-

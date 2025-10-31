@@ -12,7 +12,7 @@ import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 import StatisticsAll from './StatisticsAll';
 import Header from '../../components/Header';
 
-const AllinOne = ({ info, handleDeleteCard }) => {
+const AllinOne = ({ info,setIsArr, handleDeleteCard }) => {
 
   const currenciesLocalStorage = localStorage.getItem('moneyGuardCurrency');
   const currenciesParces = JSON.parse(currenciesLocalStorage);
@@ -131,6 +131,7 @@ const AllinOne = ({ info, handleDeleteCard }) => {
               handleIdForCardUpdate={handleIdForCardUpdate}
               handleAddCardModal={handleAddCardModal}
               info={info}
+              setIsArr={setIsArr}
               isIdForCardUpdate={isIdForCardUpdate}
             />
           </div>

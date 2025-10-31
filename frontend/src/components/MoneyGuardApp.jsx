@@ -76,8 +76,8 @@ const MoneyGuardApp = () => {
           index
           element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />}
         />
-        <Route path="newCard" element={<NewCard info={isArr} />} />
-        <Route path="newCard/:id" element={<NewCard info={isArr} />} />
+        <Route path="newCard" element={<NewCard info={isArr} setIsArr={setIsArr} />} />
+        <Route path="newCard/:id" element={<NewCard info={isArr} setIsArr={setIsArr}/>} />
         <Route
           path="statistics"
           element={<ExpensesStatistics info={isArr} />}
@@ -99,6 +99,7 @@ const MoneyGuardApp = () => {
         element={
           <AllinOne
             info={isArr}
+            setIsArr={setIsArr}
             handleDeleteCard={handleDeleteCard}
             origin="/all"
           />
