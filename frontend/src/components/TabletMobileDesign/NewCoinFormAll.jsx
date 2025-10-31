@@ -60,7 +60,7 @@ const NewCoinFormAll = ({
     });
     handleAddCoinModal();
   };
-  console.log("isIdForCoinUpdate",isIdForCoinUpdate)
+ 
   return (
     <form className={style.newCoinFormAll} onSubmit={handleSubmit}>
       <input

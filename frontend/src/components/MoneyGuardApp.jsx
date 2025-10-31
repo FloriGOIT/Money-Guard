@@ -66,7 +66,7 @@ const MoneyGuardApp = () => {
     setIsArr(modifiedIsArr);
   };
 
-  console.log("localDataCardsParsed",localDataCardsParsed)
+
 
   const MobileRoutes = () => (
     <Routes>

@@ -8,7 +8,7 @@ import AddButton from './AddButton';
 
 
 const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal,handleDeleteCard,handleIdForCardUpdate }) => {
-  console.log("list",info)
+
   const filteredInfoOnPeriod = info.filter(el => Number(el.year) === Number(isYearMonthForFilter.year))
                                    .filter(el => {if(isYearMonthForFilter.month === "-"){ return el }
                                    else { return el.month === isYearMonthForFilter.month }

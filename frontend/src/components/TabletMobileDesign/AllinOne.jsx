@@ -13,7 +13,7 @@ import StatisticsAll from './StatisticsAll';
 import Header from '../../components/Header';
 
 const AllinOne = ({ info, handleDeleteCard }) => {
-  console.log("all",info)
+
   const currenciesLocalStorage = localStorage.getItem('moneyGuardCurrency');
   const currenciesParces = JSON.parse(currenciesLocalStorage);
   const [isHomeNavSelected, setIsHomeNavSelected] = useState(true);

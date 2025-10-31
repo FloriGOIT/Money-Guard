@@ -25,7 +25,7 @@ const NewCardFormAll = ({
   const [isAmount, setIsAmount] = useState('');
   const [isDetails, setIsDetails] = useState('');
   const [isColor, setIsColor] = useState('');
- console.log("inffooo", info)
+
   const monthPreLether = months.filter(
     month => month.number === isDate.split('-')[1]
   );
@@ -43,7 +43,7 @@ const NewCardFormAll = ({
   };
 
   const selectedCard = info.find(card => card.idFrontend === isIdForCardUpdate);
-  console.log('selectedCard', selectedCard);
+
 
   useEffect(() => {
     if (selectedCard) {
@@ -70,7 +70,7 @@ const NewCardFormAll = ({
   const handleOption = input => {
     setIsOption(input);
     const identifyColor = allCategories.find(
-      category => category.expense === input
+      category => category.type === input
     );
     setIsColor(identifyColor.color);
     setIsListCategoriesOn(prev => !prev);
@@ -92,7 +92,7 @@ const NewCardFormAll = ({
       alert('Please enter a date that starts with year 2020');
       return;
     }
-    console.log('defaultCard', defaultCard);
+   
 
 
     try {
@@ -115,7 +115,7 @@ if (isIdForCardUpdate) {
 } else {
   updatedInfo = [...info, defaultCard];
       }
-      console.log("updatedInfo",updatedInfo)
+
 localStorage.setItem('listCards', JSON.stringify(updatedInfo));
     } catch (error) {
       console.error('Error saving card:', error.message);
@@ -182,15 +182,15 @@ localStorage.setItem('listCards', JSON.stringify(updatedInfo));
           <ul className={style.newCardList}>
             {arrCategory.map(category => (
               <li
-                key={category.expense}
-                value={category.expense.toLowerCase()}
+                key={category.type}
+                value={category.type.toLowerCase()}
                 className={style.newCardOption}
-                onClick={() => handleOption(category.expense)}
+                onClick={() => handleOption(category.type)}
               >
                 <input
                   type="text"
-                  name={category.expense}
-                  value={category.expense}
+                  name={category.type}
+                  value={category.type}
                   readOnly
                   autoComplete="off"
                   required
