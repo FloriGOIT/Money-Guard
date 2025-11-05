@@ -1,4 +1,4 @@
-import style from '../moneyGuard.module.scss';
+import style from "../moneyGuard.module.scss"
 import { useEffect, useState } from 'react';
 import {
   mainIncomes,
@@ -12,13 +12,7 @@ import { today, months } from '../../helpers/timeInfo';
 import BigBtnWithColorAll from './BigBtnWithColorAll';
 import BigBtnNoColorAll from './BigBtnNoColorAll';
 
-const NewCardFormAll = ({
-  info,
-  setIsArr,
-  handleAddCardModal,
-  isIdForCardUpdate,
-  handleIdForCardUpdate,
-}) => {
+const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdForCardUpdate }) => {
   const [isExpense, setIsExpense] = useState(false);
   const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
   const [isOption, setIsOption] = useState('Select a category');
@@ -32,7 +26,7 @@ const NewCardFormAll = ({
   );
   const monthLether = monthPreLether[0].name;
   const defaultCard = {
-    idFrontend: nanoid(),
+    id: nanoid(),
     date: isDate,
     year: isDate.split('-')[0],
     month: monthLether,
@@ -43,18 +37,20 @@ const NewCardFormAll = ({
     color: isColor,
   };
 
-  const selectedCard = info.find(card => card.idFrontend === isIdForCardUpdate);
+ const selectedCard = info.find(card => card.idFrontend === isIdForCardUpdate)
+ console.log("isIdForCardUpdate2",isIdForCardUpdate)
 
-  useEffect(() => {
-    if (selectedCard) {
-      setIsExpense(selectedCard.expense);
-      setIsOption(selectedCard.category);
-      setIsDate(selectedCard.date);
-      setIsAmount(selectedCard.amount);
-      setIsDetails(selectedCard.details);
-      setIsColor(selectedCard.color);
-    }
-  }, [selectedCard]);
+  useEffect(()=>{ if (selectedCard) {
+    
+    setIsExpense(selectedCard.expense); 
+    setIsOption(selectedCard.category);
+    setIsDate(selectedCard.date);
+    setIsAmount(selectedCard.amount);
+    setIsDetails(selectedCard.details);
+    setIsColor(selectedCard.color)
+  }},[selectedCard])
+
+
 
   let arrCategory = isExpense ? mainExpenses : mainIncomes;
   const buttonArrow = isListCategoriesOn ? <FaChevronUp /> : <FaAngleDown />;
@@ -76,8 +72,13 @@ const NewCardFormAll = ({
     setIsListCategoriesOn(prev => !prev);
   };
 
-  const submitNewCard = async e => {
+  const submitNewCard = e => {
     e.preventDefault();
+
+      const index = info.findIndex(card => card.idFrontend === isIdForCardUpdate);
+    if (index !== -1) {
+      info.splice(index, 1,defaultCard);
+    }else{info.push(defaultCard);}
 
     if (isOption === 'Select a category') {
       alert('Please select a type of income or expense.');
@@ -92,36 +93,9 @@ const NewCardFormAll = ({
       alert('Please enter a date that starts with year 2020');
       return;
     }
+    console.log("defaultCard",defaultCard)   
 
-    try {
-      const responseFetch = await fetch('http://localhost:5000/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(defaultCard),
-      });
-
-      if (!responseFetch.ok) {
-        throw new Error('Failed to save the card');
-      }
-      await responseFetch.json();
-
-      let updatedInfo = [...info];
-      if (isIdForCardUpdate) {
-        const filterCardBasedOnID = info.filter(
-          card => card.idFrontend === isIdForCardUpdate
-        );
-        updatedInfo = [...updatedInfo, ...filterCardBasedOnID];
-        setIsArr(updatedInfo)
-      } else {
-        updatedInfo = [...info, defaultCard];
-        setIsArr(updatedInfo)
-      }
-
-      localStorage.setItem('listCards', JSON.stringify(updatedInfo));
-    } catch (error) {
-      console.error('Error saving card:', error.message);
-    }
-
+    localStorage.setItem('listCards', JSON.stringify(info));
     setIsExpense(false);
     setIsListCategoriesOn(false);
     setIsOption('Select a category');
@@ -129,8 +103,8 @@ const NewCardFormAll = ({
     setIsAmount('');
     setIsDetails('');
     setIsColor('');
-    handleIdForCardUpdate('');
-    handleAddCardModal();
+    handleIdForCardUpdate("");
+ handleAddCardModal();
   };
 
   return (
@@ -237,7 +211,7 @@ const NewCardFormAll = ({
             value={isDetails}
             placeholder="-"
             autoComplete="off"
-            maxLength="48"
+            maxLength="48" 
             onChange={e => setIsDetails(e.target.value)}
           />
         </div>
@@ -247,12 +221,14 @@ const NewCardFormAll = ({
 
           <BigBtnNoColorAll
             valueBtn="Cancel"
-            handleModal={handleAddCardModal}
+            handleAddCardModal={handleAddCardModal}
+            handleIdForCardUpdate={handleIdForCardUpdate}
           />
         </div>
       </form>
     </section>
   );
 };
+
 
 export default NewCardFormAll;

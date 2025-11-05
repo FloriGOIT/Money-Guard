@@ -46,7 +46,7 @@ const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal,handleDele
                   <MdDeleteOutline />
                 </div>
               </td>
-              <td className={style.cardButton} style={{ padding: "0px 5px 5px 5px" }} onClick={() => { handleIdForCardUpdate(card.idFrontend);; handleAddCardModal()}}>
+              <td className={style.cardButton} style={{ padding: "0px 5px 5px 5px" }} onClick={() => { handleIdForCardUpdate(card.idFrontend); handleAddCardModal()}}>
                 <div className={style.editCurrency} >
                   <MdOutlineModeEdit/>
                 </div>

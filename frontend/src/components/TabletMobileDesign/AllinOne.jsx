@@ -24,6 +24,7 @@ const AllinOne = ({ info,setIsArr, handleDeleteCard }) => {
   const [isNewCardModalOn, setIsNewCardModalOn] = useState(false);
   const [isIdForCoinUpdate, setIsIdForCoinUpdate] = useState('');
   const [isIdForCardUpdate, setIsIdForCardUpdate] = useState('');
+  console.log("isIdForCardUpdate",isIdForCardUpdate)
   useEffect(() => {
     localStorage.setItem(
       'moneyGuardCurrency',
@@ -66,7 +67,7 @@ const AllinOne = ({ info,setIsArr, handleDeleteCard }) => {
     setIsListCurrencies(newListCurrency);
     setIsIdForCoinUpdate('');
   };
-  const handleAddCardModal = () => setIsNewCardModalOn(prev => !prev);
+  const handleAddCardModal = () => {if(setIsNewCardModalOn){} setIsNewCardModalOn(prev => !prev);  };  // resume activity
 
   return (
     <section className={style.allinOneWrapper}>
