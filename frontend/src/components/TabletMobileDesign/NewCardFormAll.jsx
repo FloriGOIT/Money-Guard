@@ -26,7 +26,7 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
   );
   const monthLether = monthPreLether[0].name;
   const defaultCard = {
-    id: nanoid(),
+    idFrontend: nanoid(),
     date: isDate,
     year: isDate.split('-')[0],
     month: monthLether,
@@ -38,7 +38,7 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
   };
 
  const selectedCard = info.find(card => card.idFrontend === isIdForCardUpdate)
- console.log("isIdForCardUpdate2",isIdForCardUpdate)
+ 
 
   useEffect(()=>{ if (selectedCard) {
     
@@ -93,8 +93,7 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
       alert('Please enter a date that starts with year 2020');
       return;
     }
-    console.log("defaultCard",defaultCard)   
-
+ 
     localStorage.setItem('listCards', JSON.stringify(info));
     setIsExpense(false);
     setIsListCategoriesOn(false);

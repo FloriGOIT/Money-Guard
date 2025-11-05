@@ -9,7 +9,8 @@ import AddButton from './AddButton';
 
 const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal,handleDeleteCard,handleIdForCardUpdate }) => {
 
-  const filteredInfoOnPeriod = info.filter(el => Number(el.year) === Number(isYearMonthForFilter.year))
+  const filteredInfoOnPeriod = info.sort((a,b)=> new Date(b.date) - new Date(a.date))
+                                   .filter(el => Number(el.year) === Number(isYearMonthForFilter.year))
                                    .filter(el => {if(isYearMonthForFilter.month === "-"){ return el }
                                    else { return el.month === isYearMonthForFilter.month }
                                    })
@@ -36,7 +37,7 @@ const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal,handleDele
             <tr key={card.idFrontend} >
               <td className={style.cardDate} style={{width: "100px"}}>{card.date}</td>
               <td className={style.cardType}>
-                {card.espense ? <ImPlus className={style.imPlus}/> : <ImMinus className={style.imMinus}/>}
+                {card.expense ? <ImMinus className={style.imMinus}/> : <ImPlus className={style.imPlus}/>}
               </td>
               <td className={style.cardCategory} style={{width: "100px"}}>{card.category}</td>
               <td className={style.cardDetails} >{card.details}</td>

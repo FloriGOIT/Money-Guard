@@ -23,7 +23,7 @@ const NewCard = ({ info }) => {
   const monthPreLether = months.filter(month => month.number === isDate.split("-")[1] );
   const monthLether = monthPreLether[0].name;
       const defaultCard = {
-      id: nanoid(),
+      idFrontend: nanoid(),
         date: isDate,
         year: isDate.split("-")[0],
       month:monthLether,
@@ -34,9 +34,9 @@ const NewCard = ({ info }) => {
       color:isColor
       }
 
-  const { id } = useParams();
+  const { idCardParam } = useParams();
   
-  const selectedCard = info.find(card => card.idFrontend === id);
+  const selectedCard = info.find(card => card.idFrontend === idCardParam);
 
   useEffect(()=>{ if (selectedCard) {
     
@@ -71,8 +71,8 @@ const NewCard = ({ info }) => {
   
   const submitNewCard = (e) => {
     e.preventDefault();
-    const index = info.findIndex(card=>card.idFrontend===id)
-    if (id) { info.splice(index, 1); }
+    const index = info.findIndex(card=>card.idFrontend===idCardParam)
+    if (idCardParam) { info.splice(index, 1); }
 
 
     if (isOption === 'Select a category') {
