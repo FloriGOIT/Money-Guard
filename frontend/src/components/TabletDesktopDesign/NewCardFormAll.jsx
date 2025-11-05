@@ -12,7 +12,7 @@ import { today, months } from '../../helpers/timeInfo';
 import BigBtnWithColorAll from './BigBtnWithColorAll';
 import BigBtnNoColorAll from './BigBtnNoColorAll';
 
-const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdForCardUpdate }) => {
+const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdForCardUpdate,handleInfoAllCards }) => {
   const [isExpense, setIsExpense] = useState(false);
   const [isListCategoriesOn, setIsListCategoriesOn] = useState(false);
   const [isOption, setIsOption] = useState('Select a category');
@@ -74,12 +74,12 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
 
   const submitNewCard = e => {
     e.preventDefault();
-
-      const index = info.findIndex(card => card.idFrontend === isIdForCardUpdate);
+     const modifyingListOfCards = [...info]
+      const index = modifyingListOfCards.findIndex(card => card.idFrontend === isIdForCardUpdate);
     if (index !== -1) {
-      info.splice(index, 1,defaultCard);
-    }else{info.push(defaultCard);}
-
+      modifyingListOfCards.splice(index, 1, defaultCard);
+    }else{modifyingListOfCards.push(defaultCard); }
+    handleInfoAllCards(modifyingListOfCards)
     if (isOption === 'Select a category') {
       alert('Please select a type of income or expense.');
       return;

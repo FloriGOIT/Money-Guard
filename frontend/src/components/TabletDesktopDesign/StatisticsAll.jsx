@@ -2,7 +2,7 @@ import style from '../moneyGuard.module.scss';
 import { months, currentYear } from '../../helpers/timeInfo';
 import ModalTime from '../ModalTime';
 import { useEffect, useState } from 'react';
-import DonutChart from '../../components/DonutChart';
+import DonutChart from '../DonutChart';
 
 const StatisticsAll = ({ info }) => {
   const [isSelectedMonth, setIsSelectedMonth] = useState('-');

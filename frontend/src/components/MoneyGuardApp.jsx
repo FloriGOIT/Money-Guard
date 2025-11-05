@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import FallBackSpinner from './FallBackSpinner';
 const AllinOne = lazy(() =>
-  import('../components/TabletMobileDesign/AllinOne')
+  import('./TabletDesktopDesign/AllinOne')
 );
 
 const SharedLayout = lazy(() => import('./SharedLayout'));
@@ -65,7 +65,7 @@ const MoneyGuardApp = () => {
     const modifiedIsArr = isArr.filter(card => card.idFrontend !== idCardForDel);
     setIsArr(modifiedIsArr);
   };
-
+  const handleInfoAllCards = list => setIsArr(list)
 
 
   const MobileRoutes = () => (
@@ -76,8 +76,8 @@ const MoneyGuardApp = () => {
           index
           element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />}
         />
-        <Route path="newCard" element={<NewCard info={isArr} setIsArr={setIsArr} />} />
-        <Route path="newCard/:id" element={<NewCard info={isArr} setIsArr={setIsArr}/>} />
+        <Route path="newCard" element={<NewCard info={isArr} handleInfoAllCards={handleInfoAllCards} />} />
+        <Route path="newCard/:id" element={<NewCard info={isArr} handleInfoAllCards={handleInfoAllCards}/>} />
         <Route
           path="statistics"
           element={<ExpensesStatistics info={isArr} />}
@@ -99,7 +99,7 @@ const MoneyGuardApp = () => {
         element={
           <AllinOne
             info={isArr}
-            setIsArr={setIsArr}
+            handleInfoAllCards={handleInfoAllCards}
             handleDeleteCard={handleDeleteCard}
             origin="/all"
           />

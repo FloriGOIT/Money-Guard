@@ -1,18 +1,18 @@
 import style from '../moneyGuard.module.scss';
 import currency from '../../helpers/currencyBNR';
 import { useState, useEffect } from 'react';
-import Balance from '../../components/Balance';
+import Balance from '../Balance';
 import CurrencyAll from './CurrencyAll';
-import ListCardsAll from '../../components/TabletMobileDesign/ListCardsAll';
-import ModalTimeAll from '../../components/TabletMobileDesign/ModalTimeAll';
-import NavAll from '../../components/TabletMobileDesign/NavAll';
+import ListCardsAll from './ListCardsAll';
+import ModalTimeAll from './ModalTimeAll';
+import NavAll from './NavAll';
 import NewCoinFormAll from './NewCoinFormAll';
 import NewCardFormAll from './NewCardFormAll';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 import StatisticsAll from './StatisticsAll';
-import Header from '../../components/Header';
+import Header from '../Header';
 
-const AllinOne = ({ info,setIsArr, handleDeleteCard }) => {
+const AllinOne = ({ info, handleInfoAllCards, handleDeleteCard }) => {
 
   const currenciesLocalStorage = localStorage.getItem('moneyGuardCurrency');
   const currenciesParces = JSON.parse(currenciesLocalStorage);
@@ -132,7 +132,7 @@ const AllinOne = ({ info,setIsArr, handleDeleteCard }) => {
               handleIdForCardUpdate={handleIdForCardUpdate}
               handleAddCardModal={handleAddCardModal}
               info={info}
-              setIsArr={setIsArr}
+              handleInfoAllCards={handleInfoAllCards}
               isIdForCardUpdate={isIdForCardUpdate}
             />
           </div>
