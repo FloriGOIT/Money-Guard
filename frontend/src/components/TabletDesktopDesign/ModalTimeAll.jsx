@@ -6,8 +6,9 @@ import { nanoid } from 'nanoid';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 
 const ModalTimeAll = ({ info, handleYearMonth }) => {
+  const selectedMonthRef = useRef(currentMonthLetter);
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
-  const [isSelectedMonth, setIsSelectedMonth] = useState(currentMonthLetter);
+  const [isSelectedMonth, setIsSelectedMonth] = useState(selectedMonthRef.current);
   const [isModalYearOn, setisModalYearOn] = useState(false);
   const [isModalMonthOn, setisModalMonthOn] = useState(false);
 
@@ -49,15 +50,18 @@ const ModalTimeAll = ({ info, handleYearMonth }) => {
     .map(el => el.month)
     .filter((el, idx, arr) => arr.indexOf(el) === idx);
   optionsMonths.push("-");
-  const handleOptionYear = value => {
+
+const handleOptionYear = (value) => {
     setisModalYearOn(false);
+    selectedMonthRef.current = "-";
     setIsSelectedMonth("-");
-    handleYearMonth(prev => ({ ...prev, year: value, month:"-" }));
+    handleYearMonth({ year: value, month: "-" });
     setIsSelectedYear(value);
   };
 
-  const handleOptionMonth = value => {
+  const handleOptionMonth = (value) => {
     setisModalMonthOn(false);
+    selectedMonthRef.current = value;
     setIsSelectedMonth(value);
     handleYearMonth(prev => ({ ...prev, month: value }));
   };
