@@ -49,8 +49,8 @@ const AllinOne = ({ info, handleInfoAllCards, handleDeleteCard }) => {
   };
 
   const [isYearMonthForFilter, setisYearMonthForFilter] = useState({
-    year: currentYear,
-    month: currentMonthLetter,
+    year: "",
+    month: "",
   });
   //
 
