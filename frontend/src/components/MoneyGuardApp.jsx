@@ -2,10 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import FallBackSpinner from './FallBackSpinner';
-const AllinOne = lazy(() =>
-  import('./TabletDesktopDesign/AllinOne')
-);
 
+const AllinOne = lazy(() => import('./TabletDesktopDesign/AllinOne'));//desktop
 const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('../pages/Home'));
 const NewCard = lazy(() => import('../pages/NewCard'));
@@ -13,19 +11,19 @@ const Currency = lazy(() => import('../pages/Currency'));
 const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
 const NewCoin = lazy(() => import('./NewCoin'));
 
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+const useIsMobile = (breakPoint = 768) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < breakPoint);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < breakPoint);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [breakPoint]);
 
   return isMobile;
-};
+};//as putea intelege mai bine
 
 function usePreviousWindowWidth(value) {
   const ref = useRef();
@@ -36,7 +34,7 @@ function usePreviousWindowWidth(value) {
 }
 
 const MoneyGuardApp = () => {
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(768);
   const navigate = useNavigate();
   const prevIsMobile = usePreviousWindowWidth(isMobile);
   let localDataCardsParsed = [];
@@ -101,7 +99,7 @@ const MoneyGuardApp = () => {
             info={isArr}
             handleInfoAllCards={handleInfoAllCards}
             handleDeleteCard={handleDeleteCard}
-            origin="/all"
+            origin="/all"//as putea intelege mai bine
           />
         }
       />
