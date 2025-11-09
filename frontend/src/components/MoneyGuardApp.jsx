@@ -26,17 +26,15 @@ const useIsMobile = (breakPoint = 768) => {
 };//as putea intelege mai bine
 
 function usePreviousWindowWidth(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  }, [value]);
-  return ref.current;
+  const prevIsMobileState = useRef();
+  useEffect(() => { prevIsMobileState.current = value }, [value]);
+  return prevIsMobileState.current
 }
 
 const MoneyGuardApp = () => {
-  const isMobile = useIsMobile(768);
+  const isMobile = useIsMobile();
   const navigate = useNavigate();
-  const prevIsMobile = usePreviousWindowWidth(isMobile);
+  const prevIsMobileState = usePreviousWindowWidth(isMobile);
   let localDataCardsParsed = [];
   try {
     localDataCardsParsed = JSON.parse(localStorage.getItem('listCards')) || [];
@@ -48,11 +46,10 @@ const MoneyGuardApp = () => {
   );
   const [isArr, setIsArr] = useState(localDataCards);
 
-  useEffect(() => {
-    if (prevIsMobile === true && isMobile === false) {
-      navigate('/');
-    }
-  }, [prevIsMobile, isMobile, navigate]);
+
+  useEffect(()=>{if(prevIsMobileState !== isMobile){navigate("/")}},[isMobile,prevIsMobileState,navigate])
+
+
 
   useEffect(
     () => localStorage.setItem('listCards', JSON.stringify(isArr)),
