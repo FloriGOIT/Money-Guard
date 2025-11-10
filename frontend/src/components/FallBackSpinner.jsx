@@ -5,7 +5,7 @@ import style from "./moneyGuard.module.scss"
 const FallBackSpinner = () => {
         return (
                 <div className={style.fallBackSpinner}>
-                        <FadeLoader  color="white" size={108}  />
+                        <FadeLoader  color="white" size={120}  />
                 </div>
         )
 }

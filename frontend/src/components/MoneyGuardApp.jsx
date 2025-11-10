@@ -8,19 +8,20 @@ const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('../pages/Home'));
 const NewCard = lazy(() => import('../pages/NewCard'));
 const Currency = lazy(() => import('../pages/Currency'));
-const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
 const NewCoin = lazy(() => import('./NewCoin'));
+const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
 
-const useIsMobile = (breakPoint = 768) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < breakPoint);
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < breakPoint);
+      setIsMobile(window.innerWidth < 768);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [breakPoint]);
+  }, []);
 
   return isMobile;
 };//as putea intelege mai bine
