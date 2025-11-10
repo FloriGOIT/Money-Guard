@@ -46,7 +46,7 @@ const handleMonth = value => setIsSelectedMonth(value);
 
   return (
     <section className={style.listCards}>
-      <Balance info={infoListCards} />
+      <Balance infoListCards={infoListCards} />
 
       <ModalTime
         initialValue={isSelectedYear}
