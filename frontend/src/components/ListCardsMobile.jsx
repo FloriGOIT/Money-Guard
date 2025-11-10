@@ -7,14 +7,14 @@ import { months, currentYear } from '../helpers/timeInfo';
 import Balance from './Balance';
 import AddButton from './TabletDesktopDesign/AddButton';
 
-const ListCardsMobile = ({ info, handleDeleteCard }) => {
+const ListCardsMobile = ({ infoListCards, handleDeleteCard }) => {
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
   const [isSelectedMonth, setIsSelectedMonth] = useState('-');
   const [arrayMonthInSelectedYear, setArrayMonthInSelectedYear] = useState([]);
 
 
   const handleYear = value => setIsSelectedYear(value);
-  const filterYearsForSelection = info
+  const filterYearsForSelection = infoListCards
     .map(card => card.year)
     .filter((el, index, arr) => arr.indexOf(el) === index)
     .sort((a, b) => a.localeCompare(b))
@@ -25,7 +25,7 @@ const ListCardsMobile = ({ info, handleDeleteCard }) => {
 const handleMonth = value => setIsSelectedMonth(value);
   
     useEffect(() => {
-      const selectedYear = info.filter(
+      const selectedYear = infoListCards.filter(
         info => Number(info.year) === Number(isSelectedYear)
       );
       const availableMonths = selectedYear.map(info => info.month);
@@ -36,9 +36,9 @@ const handleMonth = value => setIsSelectedMonth(value);
       filteredMonths.push({ number: '-', name: '-' });
   
       setArrayMonthInSelectedYear(filteredMonths);
-    }, [isSelectedYear, info]);
+    }, [isSelectedYear, infoListCards]);
 
-  const arrDataByYear = info.filter(data => Number(data.year) === Number(isSelectedYear))
+  const arrDataByYear = infoListCards.filter(data => Number(data.year) === Number(isSelectedYear))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
   const arrDataByYearAndMonth = arrDataByYear.filter(data => data.month === isSelectedMonth)
   const arrDataToDisplay = isSelectedMonth === "-" ? arrDataByYear : arrDataByYearAndMonth
@@ -46,7 +46,7 @@ const handleMonth = value => setIsSelectedMonth(value);
 
   return (
     <section className={style.listCards}>
-      <Balance info={info} />
+      <Balance info={infoListCards} />
 
       <ModalTime
         initialValue={isSelectedYear}

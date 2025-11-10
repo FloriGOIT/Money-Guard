@@ -7,14 +7,13 @@ const AllinOne = lazy(() => import('./TabletDesktopDesign/AllinOne'));//desktop
 const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('../pages/Home'));
 const NewCard = lazy(() => import('../pages/NewCard'));
-const Currency = lazy(() => import('../pages/Currency'));
 const NewCoin = lazy(() => import('./NewCoin'));
+const Currency = lazy(() => import('../pages/Currency'));
 const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
 
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -22,9 +21,10 @@ const useIsMobile = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
   return isMobile;
 };//as putea intelege mai bine
+
+
 
 function usePreviousWindowWidth(value) {
   const prevIsMobileState = useRef();
@@ -33,6 +33,7 @@ function usePreviousWindowWidth(value) {
 }
 
 const MoneyGuardApp = () => {
+
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const prevIsMobileState = usePreviousWindowWidth(isMobile);
@@ -49,13 +50,11 @@ const MoneyGuardApp = () => {
 
 
   useEffect(()=>{if(prevIsMobileState !== isMobile){navigate("/")}},[isMobile,prevIsMobileState,navigate])
-
-
-
   useEffect(
     () => localStorage.setItem('listCards', JSON.stringify(isArr)),
     [isArr]
   );
+
 
   const handleDeleteCard = idCardForDel => {
     const modifiedIsArr = isArr.filter(card => card.idFrontend !== idCardForDel);
@@ -70,7 +69,7 @@ const MoneyGuardApp = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route
           index
-          element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />}
+          element={<Home infoListCards={isArr} handleDeleteCard={handleDeleteCard} />}
         />
         <Route path="newCard" element={<NewCard info={isArr} handleInfoAllCards={handleInfoAllCards} />} />
         <Route path="newCard/:id" element={<NewCard info={isArr} handleInfoAllCards={handleInfoAllCards}/>} />
