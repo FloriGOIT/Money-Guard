@@ -26,7 +26,7 @@ const NewCoin = ({origin}) => {
     }
   }, [param]);
 
-
+  console.log("isCurrency",isCurrency)
 
   const handleSubmit = e => {
 
@@ -40,7 +40,7 @@ const NewCoin = ({origin}) => {
     }}
 
     const index = localStorageArr.findIndex(c => c.id === isCurrency.id);
-
+    console.log("index",index)
     if (index !== -1) {
       localStorageArr[index] = isCurrency;
     } else {

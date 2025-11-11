@@ -23,24 +23,24 @@ const NewCard = ({ info }) => {
   const monthPreLether = months.filter(month => month.number === isDate.split("-")[1] );
   const monthLether = monthPreLether[0].name;
       const defaultCard = {
-      idFrontend: nanoid(),
+      id: nanoid(),
         date: isDate,
         year: isDate.split("-")[0],
       month:monthLether,
-      expense: isExpense,
+      type: isExpense,
       category: isOption,
       details: isDetails,
         amount: isAmount,
       color:isColor
       }
 
-  const { idCardParam } = useParams();
+  const { id } = useParams();
   
-  const selectedCard = info.find(card => card.idFrontend === idCardParam);
+  const selectedCard = info.find(card => card.id === id);
 
   useEffect(()=>{ if (selectedCard) {
     
-    setIsExpense(selectedCard.expense); 
+    setIsExpense(selectedCard.type); 
     setIsOption(selectedCard.category);
     setIsDate(selectedCard.date);
     setIsAmount(selectedCard.amount);
@@ -62,7 +62,7 @@ const NewCard = ({ info }) => {
   };
   const handleOption = input => {
     setIsOption(input);
-    const identifyColor = allCategories.find(category => category.expense === input)
+    const identifyColor = allCategories.find(category => category.type === input)
     setIsColor(identifyColor.color)
     setIsListCategoriesOn(prev => !prev);
   };
@@ -71,8 +71,8 @@ const NewCard = ({ info }) => {
   
   const submitNewCard = (e) => {
     e.preventDefault();
-    const index = info.findIndex(card=>card.idFrontend===idCardParam)
-    if (idCardParam) { info.splice(index, 1); }
+    const index = info.findIndex(card=>card.id===id)
+    if (id) { info.splice(index, 1); }
 
 
     if (isOption === 'Select a category') {
@@ -149,15 +149,15 @@ const NewCard = ({ info }) => {
             <ul className={style.newCardList}>
               {arrCategory.map(category => (
                 <li
-                  key={category.expense}
-                  value={category.expense.toLowerCase()}
+                  key={category.type}
+                  value={category.type.toLowerCase()}
                   className={style.newCardOption }
-                  onClick={() => handleOption(category.expense)}
+                  onClick={() => handleOption(category.type)}
                 >
                   <input
                     type="text"
-                    name={category.expense}
-                    value={category.expense}
+                    name={category.type}
+                    value={category.type}
                     readOnly
                     autoComplete="off"
                     required

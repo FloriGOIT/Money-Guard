@@ -2,18 +2,20 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import FallBackSpinner from './FallBackSpinner';
+const AllinOne = lazy(() =>
+  import('../components/TabletMobileDesign/AllinOne')
+);
 
-const AllinOne = lazy(() => import('./TabletDesktopDesign/AllinOne'));//desktop
 const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('../pages/Home'));
 const NewCard = lazy(() => import('../pages/NewCard'));
-const NewCoin = lazy(() => import('./NewCoin'));
 const Currency = lazy(() => import('../pages/Currency'));
 const ExpensesStatistics = lazy(() => import('../pages/ExpensesStatistics'));
-
+const NewCoin = lazy(() => import('./NewCoin'));
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -21,22 +23,22 @@ const useIsMobile = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
   return isMobile;
-};//as putea intelege mai bine
-
-
+};
 
 function usePreviousWindowWidth(value) {
-  const prevIsMobileState = useRef();
-  useEffect(() => { prevIsMobileState.current = value }, [value]);
-  return prevIsMobileState.current
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
 }
 
 const MoneyGuardApp = () => {
-
   const isMobile = useIsMobile();
   const navigate = useNavigate();
-  const prevIsMobileState = usePreviousWindowWidth(isMobile);
+  const prevIsMobile = usePreviousWindowWidth(isMobile);
   let localDataCardsParsed = [];
   try {
     localDataCardsParsed = JSON.parse(localStorage.getItem('listCards')) || [];
@@ -48,20 +50,21 @@ const MoneyGuardApp = () => {
   );
   const [isArr, setIsArr] = useState(localDataCards);
 
+  useEffect(() => {
+    if (prevIsMobile === true && isMobile === false) {
+      navigate('/');
+    }
+  }, [prevIsMobile, isMobile, navigate]);
 
-  useEffect(()=>{if(prevIsMobileState !== isMobile){navigate("/")}},[isMobile,prevIsMobileState,navigate])
   useEffect(
     () => localStorage.setItem('listCards', JSON.stringify(isArr)),
     [isArr]
   );
 
-
   const handleDeleteCard = idCardForDel => {
-    const modifiedIsArr = isArr.filter(card => card.idFrontend !== idCardForDel);
+    const modifiedIsArr = isArr.filter(card => card.id !== idCardForDel);
     setIsArr(modifiedIsArr);
   };
-  const handleInfoAllCards = list => setIsArr(list)
-
 
   const MobileRoutes = () => (
     <Routes>
@@ -69,10 +72,10 @@ const MoneyGuardApp = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route
           index
-          element={<Home infoListCards={isArr} handleDeleteCard={handleDeleteCard} />}
+          element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />}
         />
-        <Route path="newCard" element={<NewCard info={isArr} handleInfoAllCards={handleInfoAllCards} />} />
-        <Route path="newCard/:id" element={<NewCard info={isArr} handleInfoAllCards={handleInfoAllCards}/>} />
+        <Route path="newCard" element={<NewCard info={isArr} />} />
+        <Route path="newCard/:id" element={<NewCard info={isArr} />} />
         <Route
           path="statistics"
           element={<ExpensesStatistics info={isArr} />}
@@ -94,9 +97,8 @@ const MoneyGuardApp = () => {
         element={
           <AllinOne
             info={isArr}
-            handleInfoAllCards={handleInfoAllCards}
             handleDeleteCard={handleDeleteCard}
-            origin="/all"//as putea intelege mai bine
+            origin="/all"
           />
         }
       />
@@ -116,3 +118,52 @@ const MoneyGuardApp = () => {
 export default MoneyGuardApp;
 
 
+/*
+//const Login = lazy(() => import('../pages/Login'));
+//const Register = lazy(() => import('../pages/Register'));
+//const Logout = lazy(() => import('../pages/Logout'));
+  const MobileRoutes = () => (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/" element={<SharedLayout />}>
+        <Route
+          index
+          element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />}
+        />
+        <Route path="logout" element={<Logout />} />
+        <Route path="newCard" element={<NewCard info={isArr} />} />
+        <Route path="newCard/:id" element={<NewCard info={isArr} />} />
+        <Route
+          path="statistics"
+          element={<ExpensesStatistics info={isArr} />}
+        />
+        <Route path="currency" element={<Currency />} />
+        <Route path="currency/:name" element={<NewCoin origin="/currency" />} />
+        <Route
+          path="currency/newCoin"
+          element={<NewCoin origin="/currency" />}
+        />
+      </Route>
+    </Routes>
+  );
+
+  const DesktopRoutes = () => (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route
+        path="/"
+        element={
+          <AllinOne
+            info={isArr}
+            handleDeleteCard={handleDeleteCard}
+            origin="/all"
+          />
+        }
+      />
+      <Route path="logout" element={<Logout />} />
+    </Routes>
+  );
+
+*/

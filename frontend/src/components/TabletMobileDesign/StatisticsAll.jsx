@@ -1,11 +1,10 @@
-import Nav from '../components/Nav';
-import style from '../components/moneyGuard.module.scss';
-import { months,currentYear } from '../helpers/timeInfo';
-import ModalTime from '../components/ModalTime';
+import style from '../moneyGuard.module.scss';
+import { months, currentYear } from '../../helpers/timeInfo';
+import ModalTime from '../ModalTime';
 import { useEffect, useState } from 'react';
-import DonutChart from '../components/DonutChart';
+import DonutChart from '../../components/DonutChart';
 
-const ExpensesStatistics = ({ info }) => {
+const StatisticsAll = ({ info }) => {
   const [isSelectedMonth, setIsSelectedMonth] = useState('-');
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
   const [arrayMonthInSelectedYear, setArrayMonthInSelectedYear] = useState([]);
@@ -92,12 +91,9 @@ const ExpensesStatistics = ({ info }) => {
       return { number: year, name: year };
     });
 
-
   return (
-    <section className={style.statisticsWrapper}>
-      <Nav />
-      
-      <div className={style.statistics}>
+    <div className={style.statistics}>
+      <div className={style.leftSideStatistics}>
         <h2>Expenses statistics</h2>
         <ModalTime
           initialValue={isSelectedYear}
@@ -114,10 +110,14 @@ const ExpensesStatistics = ({ info }) => {
           name="months"
         />
 
-        {infoReducer.expenses > 0 ? <div className={style.chartWrapper}>
-          <DonutChart info={cumulatedExpenes} />
-        </div> : null}
+        {infoReducer.expenses > 0 ? (
+          <div className={style.chartWrapper}>
+            <DonutChart info={cumulatedExpenes} />
+          </div>
+        ) : null}
+      </div>
 
+      <div className={style.rightSideStatistics}>
         <div className={style.tableHeaderCategories}>
           <span>Category</span>
           <span>Sum</span>
@@ -130,7 +130,9 @@ const ExpensesStatistics = ({ info }) => {
                 <span>{expense.category}</span>
               </div>
               <span className={style.categoryAmount}>
-                {new Intl.NumberFormat('fr-FR').format(Number(expense.total).toFixed(2)) }
+                {new Intl.NumberFormat('fr-FR').format(
+                  expense.total.toFixed(2)
+                )}
               </span>
             </div>
           );
@@ -139,20 +141,28 @@ const ExpensesStatistics = ({ info }) => {
         <div className={style.totalCategories}>
           <div className={style.totalIncomes}>
             <span>Incomes:</span>
-            <span>{new Intl.NumberFormat('fr-FR').format(Number(infoReducer.incomes).toFixed(2)) }</span>
+            <span>
+              {new Intl.NumberFormat('fr-FR').format(
+                infoReducer.incomes.toFixed(2)
+              )}
+            </span>
           </div>
 
           <div className={style.totalExpenses}>
             <span>Expenses:</span>
-            <span>{new Intl.NumberFormat('fr-FR').format(Number(infoReducer.expenses).toFixed(2)) }</span>
+            <span>
+              {new Intl.NumberFormat('fr-FR').format(
+                infoReducer.expenses.toFixed(2)
+              )}
+            </span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default ExpensesStatistics;
+export default StatisticsAll;
 
 /*
 

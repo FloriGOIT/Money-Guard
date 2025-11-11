@@ -1,19 +1,18 @@
 import style from '../moneyGuard.module.scss';
 import currency from '../../helpers/currencyBNR';
 import { useState, useEffect } from 'react';
-import Balance from '../Balance';
+import Balance from '../../components/Balance';
 import CurrencyAll from './CurrencyAll';
-import ListCardsAll from './ListCardsAll';
-import ModalTimeAll from './ModalTimeAll';
-import NavAll from './NavAll';
+import ListCardsAll from '../../components/TabletMobileDesign/ListCardsAll';
+import ModalTimeAll from '../../components/TabletMobileDesign/ModalTimeAll';
+import NavAll from '../../components/TabletMobileDesign/NavAll';
 import NewCoinFormAll from './NewCoinFormAll';
 import NewCardFormAll from './NewCardFormAll';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 import StatisticsAll from './StatisticsAll';
-import Header from '../Header';
+import Header from '../../components/Header';
 
-const AllinOne = ({ info, handleInfoAllCards, handleDeleteCard }) => {
-
+const AllinOne = ({ info, handleDeleteCard }) => {
   const currenciesLocalStorage = localStorage.getItem('moneyGuardCurrency');
   const currenciesParces = JSON.parse(currenciesLocalStorage);
   const [isHomeNavSelected, setIsHomeNavSelected] = useState(true);
@@ -24,7 +23,6 @@ const AllinOne = ({ info, handleInfoAllCards, handleDeleteCard }) => {
   const [isNewCardModalOn, setIsNewCardModalOn] = useState(false);
   const [isIdForCoinUpdate, setIsIdForCoinUpdate] = useState('');
   const [isIdForCardUpdate, setIsIdForCardUpdate] = useState('');
-
   useEffect(() => {
     localStorage.setItem(
       'moneyGuardCurrency',
@@ -49,8 +47,8 @@ const AllinOne = ({ info, handleInfoAllCards, handleDeleteCard }) => {
   };
 
   const [isYearMonthForFilter, setisYearMonthForFilter] = useState({
-    year: "",
-    month: "",
+    year: currentYear,
+    month: currentMonthLetter,
   });
   //
 
@@ -67,7 +65,7 @@ const AllinOne = ({ info, handleInfoAllCards, handleDeleteCard }) => {
     setIsListCurrencies(newListCurrency);
     setIsIdForCoinUpdate('');
   };
-  const handleAddCardModal = () => {if(setIsNewCardModalOn){} setIsNewCardModalOn(prev => !prev);  };  // resume activity
+  const handleAddCardModal = () => setIsNewCardModalOn(prev => !prev);
 
   return (
     <section className={style.allinOneWrapper}>
@@ -81,7 +79,7 @@ const AllinOne = ({ info, handleInfoAllCards, handleDeleteCard }) => {
             <NavAll isHomeSelected={isHomeNavSelected} handleNav={handleNav} />
 
             <div className={style.preBalance}>
-              <Balance infoListCards={info} />
+              <Balance info={info} />
             </div>
           </div>
 
@@ -132,7 +130,6 @@ const AllinOne = ({ info, handleInfoAllCards, handleDeleteCard }) => {
               handleIdForCardUpdate={handleIdForCardUpdate}
               handleAddCardModal={handleAddCardModal}
               info={info}
-              handleInfoAllCards={handleInfoAllCards}
               isIdForCardUpdate={isIdForCardUpdate}
             />
           </div>
