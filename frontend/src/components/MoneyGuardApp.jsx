@@ -2,10 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import FallBackSpinner from './FallBackSpinner';
-const AllinOne = lazy(() =>
-  import('../components/TabletMobileDesign/AllinOne')
-);
-
+ 
+const AllinOne = lazy(() => import('../components/TabletMobileDesign/AllinOne'));
 const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('../pages/Home'));
 const NewCard = lazy(() => import('../pages/NewCard'));
@@ -45,13 +43,12 @@ const MoneyGuardApp = () => {
   } catch {
     localDataCardsParsed = [];
   }
-  const localDataCards = localDataCardsParsed.sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
-  const [isArr, setIsArr] = useState(localDataCards);
+
+  const [isArr, setIsArr] = useState(localDataCardsParsed);
+  useEffect(() => {isArr.sort((a,b)=> new Date(b) - new Date(a))}, [isArr])
 
   useEffect(() => {
-    if (prevIsMobile === true && isMobile === false) {
+    if (prevIsMobile !== isMobile) {
       navigate('/');
     }
   }, [prevIsMobile, isMobile, navigate]);

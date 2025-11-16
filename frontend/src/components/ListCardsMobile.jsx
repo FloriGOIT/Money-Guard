@@ -2,15 +2,28 @@ import style from './moneyGuard.module.scss';
 import Card from './Card';
 import { Link } from 'react-router-dom';
 import ModalTime from './ModalTime';
-import { useState,useEffect } from 'react';
-import { months, currentYear } from '../helpers/timeInfo';
+import { useState,useEffect, useRef } from 'react';
+import { months, currentYear, currentMonthLetter } from '../helpers/timeInfo';
 import Balance from './Balance';
 import AddButton from './TabletMobileDesign/AddButton';
 
+
+
+const usePrevYearMonth = (x, y) => {
+  const prevYear = useRef("nadaY");
+  const prevMonth= useRef("nadaM");
+  useEffect(() => {
+    prevYear.current = x;
+    prevMonth.current = y;
+  }, [x, y]);
+  return [prevYear.current, prevMonth.current]
+}
+
 const ListCardsMobile = ({ info, handleDeleteCard }) => {
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
-  const [isSelectedMonth, setIsSelectedMonth] = useState('-');
+  const [isSelectedMonth, setIsSelectedMonth] = useState(currentMonthLetter);
   const [arrayMonthInSelectedYear, setArrayMonthInSelectedYear] = useState([]);
+  const prevValuesModals = usePrevYearMonth(isSelectedYear,isSelectedMonth)
 
 
   const handleYear = value => setIsSelectedYear(value);
@@ -21,8 +34,8 @@ const ListCardsMobile = ({ info, handleDeleteCard }) => {
     .map(year => {
       return { number: year, name: year };
     });
-  
-const handleMonth = value => setIsSelectedMonth(value);
+  console.log("filterYearsForSelection",filterYearsForSelection)
+ const handleMonth = value => setIsSelectedMonth(value);
   
     useEffect(() => {
       const selectedYear = info.filter(
@@ -37,17 +50,18 @@ const handleMonth = value => setIsSelectedMonth(value);
   
       setArrayMonthInSelectedYear(filteredMonths);
     }, [isSelectedYear, info]);
-
+  console.log("arrayMonthInSelectedYear", arrayMonthInSelectedYear)
+  
   const arrDataByYear = info.filter(data => Number(data.year) === Number(isSelectedYear))
-  .sort((a, b) => new Date(b.date) - new Date(a.date));
+                            .sort((a, b) => new Date(b.date) - new Date(a.date));
   const arrDataByYearAndMonth = arrDataByYear.filter(data => data.month === isSelectedMonth)
   const arrDataToDisplay = isSelectedMonth === "-" ? arrDataByYear : arrDataByYearAndMonth
-
+  //useEffect(() => { if(setIsSelectedYear===prevValuesModals[0] || setIsSelectedMonth===prevValuesModals[1]){setIsSelectedYear(prevValuesModals[0]); setIsSelectedMonth(prevValuesModals[1]);} }, [info,prevValuesModals])
 
   return (
     <section className={style.listCards}>
       <Balance info={info} />
-
+      <h3>{prevValuesModals[0]} and {prevValuesModals[1]}</h3>
       <ModalTime
         initialValue={isSelectedYear}
         infoPeriod={filterYearsForSelection}
