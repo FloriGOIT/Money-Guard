@@ -24,7 +24,7 @@ const ListCardsMobile = ({ info, handleDeleteCard }) => {
   const [isSelectedMonth, setIsSelectedMonth] = useState(currentMonthLetter);
   const [arrayMonthInSelectedYear, setArrayMonthInSelectedYear] = useState([]);
   const prevValuesModals = usePrevYearMonth(isSelectedYear,isSelectedMonth)
-
+  console.log("TEST-prevValuesModals: ",prevValuesModals)
 
   const handleYear = value => setIsSelectedYear(value);
   const filterYearsForSelection = info
@@ -61,7 +61,7 @@ const ListCardsMobile = ({ info, handleDeleteCard }) => {
   return (
     <section className={style.listCards}>
       <Balance info={info} />
-      <h3>{prevValuesModals[0]} and {prevValuesModals[1]}</h3>
+
       <ModalTime
         initialValue={isSelectedYear}
         infoPeriod={filterYearsForSelection}
