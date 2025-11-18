@@ -927,6 +927,7 @@ ul li {
 }
 
 .statistics {
+
   box-sizing: border-box;
   color: white;
   width: 300px;
@@ -1886,7 +1887,7 @@ ul li {
 
         .statisticsSection {
           .chartWrapper {
-            margin-top: 30px;
+            margin-top: 15px;
             text-align: center;
 
             .chart {
@@ -1991,7 +1992,7 @@ ul li {
               }
 
               .statisticsPeriod:nth-of-type(2) {
-                margin-top: 20px;
+                margin-top: 15px;
               }
             }
 

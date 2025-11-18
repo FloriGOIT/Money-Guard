@@ -50,7 +50,7 @@ const AllinOne = ({ info, handleDeleteCard }) => {
     year: currentYear,
     month: currentMonthLetter,
   });
-  //
+
 
   const handleYearMonth = value => setisYearMonthForFilter(value);
   const handleNav = () => setIsHomeNavSelected(pre => !pre);

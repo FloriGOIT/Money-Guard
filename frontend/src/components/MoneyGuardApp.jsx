@@ -43,10 +43,9 @@ const MoneyGuardApp = () => {
   } catch {
     localDataCardsParsed = [];
   }
-
+  localDataCardsParsed.sort((a,b)=> new Date(b.date) - new Date(a.date))
   const [isArr, setIsArr] = useState(localDataCardsParsed);
-  useEffect(() => {isArr.sort((a,b)=> new Date(b) - new Date(a))}, [isArr])
-
+  
   useEffect(() => {
     if (prevIsMobile !== isMobile) {
       navigate('/');
