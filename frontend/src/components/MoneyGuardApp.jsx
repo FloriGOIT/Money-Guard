@@ -2,8 +2,10 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import FallBackSpinner from './FallBackSpinner';
- 
-const AllinOne = lazy(() => import('../components/TabletMobileDesign/AllinOne'));
+
+const AllinOne = lazy(() =>
+  import('../components/TabletMobileDesign/AllinOne')
+);
 const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('../pages/Home'));
 const NewCard = lazy(() => import('../pages/NewCard'));
@@ -37,15 +39,30 @@ const MoneyGuardApp = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const prevIsMobile = usePreviousWindowWidth(isMobile);
+  const [cardsDB, setCardsDB] = useState([]);
   let localDataCardsParsed = [];
   try {
     localDataCardsParsed = JSON.parse(localStorage.getItem('listCards')) || [];
   } catch {
     localDataCardsParsed = [];
   }
-  localDataCardsParsed.sort((a,b)=> new Date(b.date) - new Date(a.date))
+  localDataCardsParsed.sort((a, b) => new Date(b.date) - new Date(a.date));
   const [isArr, setIsArr] = useState(localDataCardsParsed);
-  
+
+  useEffect(() => {
+    const handleFetchCards = async () => {
+      try {
+        const fetchData = await fetch("http://localhost:5000/Money-Guard/");
+        const data = await fetchData.json();
+        data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        setCardsDB(data)
+       }
+      catch (error) {console.log(error.message) }
+    };
+    handleFetchCards()
+  },[])
+
+
   useEffect(() => {
     if (prevIsMobile !== isMobile) {
       navigate('/');
@@ -64,7 +81,6 @@ const MoneyGuardApp = () => {
 
   const MobileRoutes = () => (
     <Routes>
-
       <Route path="/" element={<SharedLayout />}>
         <Route
           index
@@ -98,7 +114,6 @@ const MoneyGuardApp = () => {
           />
         }
       />
-
     </Routes>
   );
 
@@ -112,7 +127,6 @@ const MoneyGuardApp = () => {
 };
 
 export default MoneyGuardApp;
-
 
 /*
 //const Login = lazy(() => import('../pages/Login'));

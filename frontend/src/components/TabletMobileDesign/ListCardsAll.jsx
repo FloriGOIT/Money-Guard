@@ -6,7 +6,6 @@ import { PiPlusMinusBold } from 'react-icons/pi';
 import { ImPlus } from 'react-icons/im';
 import AddButton from './AddButton';
 
-
 const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal,handleDeleteCard,handleIdForCardUpdate }) => {
   
   const filteredInfoOnPeriod = info.filter(el => Number(el.year) === Number(isYearMonthForFilter.year))
