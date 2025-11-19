@@ -24,7 +24,7 @@ const newCardDbSchema = new mongoose.Schema({
 const NewMongooseCard = mongoose.model(
   "NewMongooseCard",
   newCardDbSchema,
-  "moneyGuard-cards"
+  "CardList"
 );
 
 module.exports = NewMongooseCard;
