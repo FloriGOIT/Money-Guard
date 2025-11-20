@@ -87,7 +87,7 @@ const MoneyGuardApp = () => {
           element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />}
         />
         <Route path="newCard" element={<NewCard info={isArr} />} />
-        <Route path="newCard/:id" element={<NewCard info={isArr} />} />
+       
         <Route
           path="statistics"
           element={<ExpensesStatistics info={isArr} />}
@@ -176,4 +176,7 @@ export default MoneyGuardApp;
     </Routes>
   );
 
+
+
+  
 */

@@ -38,7 +38,7 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
   };
 
  const selectedCard = info.find(card => card.id === isIdForCardUpdate)
- console.log("selectedCard",selectedCard)
+
 
   useEffect(()=>{ if (selectedCard) {
     
