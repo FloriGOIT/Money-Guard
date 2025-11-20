@@ -74,11 +74,11 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
 
   const submitNewCard = e => {
     e.preventDefault();
-    const infoCopy = [...info];
-    const index = infoCopy.findIndex(card => card.id === isIdForCardUpdate);
+
+    const index = info.findIndex(card => card.id === isIdForCardUpdate);
     if (isIdForCardUpdate) {
-      infoCopy.splice(index, 1,defaultCard);
-    }else{infoCopy.push(defaultCard);}
+      info.splice(index, 1,defaultCard);
+    }else{info.push(defaultCard);}
 
     if (isOption === 'Select a category') {
       alert('Please select a type of income or expense.');
@@ -94,7 +94,7 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
       return;
     }
        
-    localStorage.setItem('listCards', JSON.stringify(infoCopy));
+    localStorage.setItem('listCards', JSON.stringify(info));
     setIsExpense(false);
     setIsListCategoriesOn(false);
     setIsOption('Select a category');
