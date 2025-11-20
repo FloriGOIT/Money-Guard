@@ -23,7 +23,7 @@ const NewCard = ({ info }) => {
   const monthPreLether = months.filter(month => month.number === isDate.split("-")[1] );
   const monthLether = monthPreLether[0].name;
       const defaultCard = {
-      id: nanoid(),
+      idFrontend: nanoid(),
         date: isDate,
         year: isDate.split("-")[0],
       month:monthLether,
@@ -35,8 +35,9 @@ const NewCard = ({ info }) => {
       }
 
   const { id } = useParams();
+  console.log("id", id)
   
-  const selectedCard = info.find(card => card.id === id);
+  const selectedCard = info.find(card => card.idFrontend === id);
 
   useEffect(()=>{ if (selectedCard) {
     
@@ -71,7 +72,7 @@ const NewCard = ({ info }) => {
   
   const submitNewCard = (e) => {
     e.preventDefault();
-    const index = info.findIndex(card=>card.id===id)
+    const index = info.findIndex(card=>card.idFrontend===id)
     if (id) { info.splice(index, 1); }
 
 

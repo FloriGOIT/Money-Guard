@@ -75,7 +75,7 @@ const MoneyGuardApp = () => {
   );
 
   const handleDeleteCard = idCardForDel => {
-    const modifiedIsArr = isArr.filter(card => card.id !== idCardForDel);
+    const modifiedIsArr = isArr.filter(card => card.idFrontend !== idCardForDel);
     setIsArr(modifiedIsArr);
   };
 
@@ -87,33 +87,21 @@ const MoneyGuardApp = () => {
           element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />}
         />
         <Route path="newCard" element={<NewCard info={isArr} />} />
-       
+        <Route path="card/:id" element={<NewCard info={isArr} />} /> 
         <Route
           path="statistics"
           element={<ExpensesStatistics info={isArr} />}
         />
         <Route path="currency" element={<Currency />} />
+        <Route path="currency/newCoin" element={<NewCoin origin="/currency" />} />
         <Route path="currency/:name" element={<NewCoin origin="/currency" />} />
-        <Route
-          path="currency/newCoin"
-          element={<NewCoin origin="/currency" />}
-        />
       </Route>
     </Routes>
   );
 
   const DesktopRoutes = () => (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <AllinOne
-            info={isArr}
-            handleDeleteCard={handleDeleteCard}
-            origin="/all"
-          />
-        }
-      />
+      <Route path="/" element={ <AllinOne info={isArr} handleDeleteCard={handleDeleteCard} origin="/all" /> } />
     </Routes>
   );
 
@@ -177,6 +165,5 @@ export default MoneyGuardApp;
   );
 
 
-
-  
 */
+  

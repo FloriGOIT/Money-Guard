@@ -32,7 +32,7 @@ const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal,handleDele
         </thead>
         <tbody>
           {filteredInfoOnPeriod.map(card => (
-            <tr key={card.id} >
+            <tr key={card.idFrontend} >
               <td className={style.cardDate} style={{width: "100px"}}>{card.date}</td>
               <td className={style.cardType}>
                 {card.type ? <ImPlus className={style.imPlus}/> : <ImMinus className={style.imMinus}/>}
@@ -40,12 +40,12 @@ const ListCardsAll = ({ info, isYearMonthForFilter,handleAddCardModal,handleDele
               <td className={style.cardCategory} style={{width: "100px"}}>{card.category}</td>
               <td className={style.cardDetails} >{card.details}</td>
               <td className={style.cardAmount} style={{width: "80px"}}>{new Intl.NumberFormat('fr-FR').format(Number(card.amount).toFixed(2))}</td>
-              <td className={style.cardButton} style={{ padding: "0px 5px 5px 5px" }} onClick={() =>handleDeleteCard(card.id)}>
+              <td className={style.cardButton} style={{ padding: "0px 5px 5px 5px" }} onClick={() =>handleDeleteCard(card.idFrontend)}>
                 <div className={style.deletCurrency} >
                   <MdDeleteOutline />
                 </div>
               </td>
-              <td className={style.cardButton} style={{ padding: "0px 5px 5px 5px" }} onClick={() => { handleIdForCardUpdate(card.id);; handleAddCardModal()}}>
+              <td className={style.cardButton} style={{ padding: "0px 5px 5px 5px" }} onClick={() => { handleIdForCardUpdate(card.idFrontend);; handleAddCardModal()}}>
                 <div className={style.editCurrency} >
                   <MdOutlineModeEdit/>
                 </div>

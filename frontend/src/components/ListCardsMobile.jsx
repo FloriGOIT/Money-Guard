@@ -44,8 +44,7 @@ const ListCardsMobile = ({ info, handleDeleteCard }) => {
                             .sort((a, b) => new Date(b.date) - new Date(a.date));
   const arrDataByYearAndMonth = arrDataByYear.filter(data => data.month === isSelectedMonth)
   const arrDataToDisplay = isSelectedMonth === "-" ? arrDataByYear : arrDataByYearAndMonth
-  //useEffect(() => { if(setIsSelectedYear===prevValuesModals[0] || setIsSelectedMonth===prevValuesModals[1]){setIsSelectedYear(prevValuesModals[0]); setIsSelectedMonth(prevValuesModals[1]);} }, [info,prevValuesModals])
-
+ console.log("arrDataToDisplay",arrDataToDisplay)
   return (
     <section className={style.listCards}>
       <Balance info={info} />
@@ -68,9 +67,8 @@ const ListCardsMobile = ({ info, handleDeleteCard }) => {
       {arrDataToDisplay.map((data, index) => (
         <Card
           data={data}
-          key={index + 1}
+          key={data.idFrontend}
           handleDeleteCard={handleDeleteCard}
-          id={index + 1}
         />
       ))}
       <Link to="/newCard" className={style.addCardButton}>

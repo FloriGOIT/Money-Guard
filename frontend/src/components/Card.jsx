@@ -4,7 +4,7 @@ import { MdOutlineModeEdit } from 'react-icons/md';
 import { MdDeleteOutline } from 'react-icons/md';
 
 const Card = ({data,handleDeleteCard}) => {
-        const {id, date, type, category, details, amount } = data;
+        const {idFrontend, date, type, category, details, amount } = data;
   return (
     <div className={styles.cardwithColor} style={{backgroundColor: type === false ? "rgb(119, 235, 65)": "rgb(207, 47, 47)" }}>
       <div className={styles.card}>
@@ -34,10 +34,10 @@ const Card = ({data,handleDeleteCard}) => {
         </div>
 
         <div className={styles.cardRowButtons}>
-          <button type="button" className={styles.selectedBtn} onClick={()=>handleDeleteCard(id)}>
+          <button type="button" className={styles.selectedBtn} onClick={()=>handleDeleteCard(idFrontend)}>
             <MdDeleteOutline/>
           </button>
-          <Link to={`/newCard/${id}`}>
+          <Link to={`/newCard/${idFrontend}`}>
             <button type="button" className={styles.notSelectedBtn}>
               <MdOutlineModeEdit />
             </button>

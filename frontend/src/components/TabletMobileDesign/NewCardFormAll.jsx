@@ -26,7 +26,7 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
   );
   const monthLether = monthPreLether[0].name;
   const defaultCard = {
-    id: nanoid(),
+    idFrontend: nanoid(),
     date: isDate,
     year: isDate.split('-')[0],
     month: monthLether,
@@ -37,7 +37,7 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
     color: isColor,
   };
 
- const selectedCard = info.find(card => card.id === isIdForCardUpdate)
+ const selectedCard = info.find(card => card.idFrontend === isIdForCardUpdate)
 
 
   useEffect(()=>{ if (selectedCard) {
@@ -75,7 +75,7 @@ const NewCardFormAll = ({ info, handleAddCardModal, isIdForCardUpdate, handleIdF
   const submitNewCard = e => {
     e.preventDefault();
 
-    const index = info.findIndex(card => card.id === isIdForCardUpdate);
+    const index = info.findIndex(card => card.idFrontend === isIdForCardUpdate);
     if (isIdForCardUpdate) {
       info.splice(index, 1,defaultCard);
     }else{info.push(defaultCard);}

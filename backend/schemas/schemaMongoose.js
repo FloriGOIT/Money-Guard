@@ -17,7 +17,7 @@ const newCardDbSchema = new mongoose.Schema({
   details: { type: String, required: true, maxLength: 48 },
   idFrontend: { type: String, required: true },
   month: { type: String, required: true },
-  expense: { type: Boolean, required: true },
+  type: { type: Boolean, required: true },
   year: { type: String, required: true, minLength: 4, maxLength: 4 },
 });
 

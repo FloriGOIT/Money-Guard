@@ -16,7 +16,7 @@ const NewCoin = ({origin}) => {
 
   const navigate = useNavigate();
   const param = useParams().name;
-
+ console.log("param name COIN:", param)
   useEffect(() => {
 
      const localStorageArr = JSON.parse(localStorage.getItem("moneyGuardCurrency"));
@@ -40,7 +40,7 @@ const NewCoin = ({origin}) => {
     }}
 
     const index = localStorageArr.findIndex(c => c.id === isCurrency.id);
-    console.log("index",index)
+
     if (index !== -1) {
       localStorageArr[index] = isCurrency;
     } else {
