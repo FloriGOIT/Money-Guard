@@ -35,8 +35,7 @@ const NewCard = ({ info }) => {
       }
 
   const { id } = useParams();
-  console.log("id", id)
-  
+ 
   const selectedCard = info.find(card => card.idFrontend === id);
 
   useEffect(()=>{ if (selectedCard) {

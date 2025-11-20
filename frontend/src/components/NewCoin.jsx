@@ -16,7 +16,7 @@ const NewCoin = ({origin}) => {
 
   const navigate = useNavigate();
   const param = useParams().name;
- console.log("param name COIN:", param)
+
   useEffect(() => {
 
      const localStorageArr = JSON.parse(localStorage.getItem("moneyGuardCurrency"));

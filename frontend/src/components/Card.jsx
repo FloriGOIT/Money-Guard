@@ -37,7 +37,7 @@ const Card = ({data,handleDeleteCard}) => {
           <button type="button" className={styles.selectedBtn} onClick={()=>handleDeleteCard(idFrontend)}>
             <MdDeleteOutline/>
           </button>
-          <Link to={`/newCard/${idFrontend}`}>
+          <Link to={`/card/${idFrontend}`}>
             <button type="button" className={styles.notSelectedBtn}>
               <MdOutlineModeEdit />
             </button>

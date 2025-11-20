@@ -44,7 +44,7 @@ const ListCardsMobile = ({ info, handleDeleteCard }) => {
                             .sort((a, b) => new Date(b.date) - new Date(a.date));
   const arrDataByYearAndMonth = arrDataByYear.filter(data => data.month === isSelectedMonth)
   const arrDataToDisplay = isSelectedMonth === "-" ? arrDataByYear : arrDataByYearAndMonth
- console.log("arrDataToDisplay",arrDataToDisplay)
+
   return (
     <section className={style.listCards}>
       <Balance info={info} />
