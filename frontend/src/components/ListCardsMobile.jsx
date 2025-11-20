@@ -2,29 +2,17 @@ import style from './moneyGuard.module.scss';
 import Card from './Card';
 import { Link } from 'react-router-dom';
 import ModalTime from './ModalTime';
-import { useState,useEffect, useRef } from 'react';
+import { useState,useEffect } from 'react';
 import { months, currentYear, currentMonthLetter } from '../helpers/timeInfo';
 import Balance from './Balance';
 import AddButton from './TabletMobileDesign/AddButton';
 
 
-
-const usePrevYearMonth = (x, y) => {
-  const prevYear = useRef("nadaY");
-  const prevMonth= useRef("nadaM");
-  useEffect(() => {
-    prevYear.current = x;
-    prevMonth.current = y;
-  }, [x, y]);
-  return [prevYear.current, prevMonth.current]
-}
-
 const ListCardsMobile = ({ info, handleDeleteCard }) => {
   const [isSelectedYear, setIsSelectedYear] = useState(currentYear);
   const [isSelectedMonth, setIsSelectedMonth] = useState(currentMonthLetter);
   const [arrayMonthInSelectedYear, setArrayMonthInSelectedYear] = useState([]);
-  const prevValuesModals = usePrevYearMonth(isSelectedYear,isSelectedMonth)
-  console.log("TEST-prevValuesModals: ",prevValuesModals)
+
 
   const handleYear = value => setIsSelectedYear(value);
   const filterYearsForSelection = info
@@ -34,7 +22,7 @@ const ListCardsMobile = ({ info, handleDeleteCard }) => {
     .map(year => {
       return { number: year, name: year };
     });
-  console.log("filterYearsForSelection",filterYearsForSelection)
+
  const handleMonth = value => setIsSelectedMonth(value);
   
     useEffect(() => {
@@ -50,7 +38,7 @@ const ListCardsMobile = ({ info, handleDeleteCard }) => {
   
       setArrayMonthInSelectedYear(filteredMonths);
     }, [isSelectedYear, info]);
-  console.log("arrayMonthInSelectedYear", arrayMonthInSelectedYear)
+
   
   const arrDataByYear = info.filter(data => Number(data.year) === Number(isSelectedYear))
                             .sort((a, b) => new Date(b.date) - new Date(a.date));
