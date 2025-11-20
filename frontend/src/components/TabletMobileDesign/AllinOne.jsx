@@ -11,6 +11,7 @@ import NewCardFormAll from './NewCardFormAll';
 import { currentYear, currentMonthLetter } from '../../helpers/timeInfo';
 import StatisticsAll from './StatisticsAll';
 import Header from '../../components/Header';
+import { Outlet } from "react-router-dom"; 
 
 const AllinOne = ({ info, handleDeleteCard }) => {
   const currenciesLocalStorage = localStorage.getItem('moneyGuardCurrency');
@@ -92,6 +93,7 @@ const AllinOne = ({ info, handleDeleteCard }) => {
         </div>
 
         <div className={style.allinOneContainerRight}>
+            <Outlet />
           {isHomeNavSelected ? (
             <section className={style.homeSection}>
               <ModalTimeAll info={info} handleYearMonth={handleYearMonth} />

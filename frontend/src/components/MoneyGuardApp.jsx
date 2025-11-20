@@ -3,9 +3,9 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import FallBackSpinner from './FallBackSpinner';
 
-const AllinOne = lazy(() =>
-  import('../components/TabletMobileDesign/AllinOne')
-);
+const AllinOne = lazy(() => import('../components/TabletMobileDesign/AllinOne'));
+const NewCardFormAll = lazy(() => import("./TabletMobileDesign/NewCardFormAll"));
+const NewCoinFormAll = lazy(() => import("./TabletMobileDesign/NewCoinFormAll"));
 const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('../pages/Home'));
 const NewCard = lazy(() => import('../pages/NewCard'));
@@ -101,7 +101,10 @@ const MoneyGuardApp = () => {
 
   const DesktopRoutes = () => (
     <Routes>
-      <Route path="/" element={ <AllinOne info={isArr} handleDeleteCard={handleDeleteCard} origin="/all" /> } />
+      <Route path="/" element={<AllinOne info={isArr} handleDeleteCard={handleDeleteCard} origin="/all" />} >
+        <Route path="card/:id" element={<NewCardFormAll/> }/>
+        <Route path="currency/:name" element={<NewCoinFormAll/> }/>  
+      </Route>
     </Routes>
   );
 

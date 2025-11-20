@@ -9,7 +9,6 @@ router.post("/", async (req, res, next) => {
       req.body,
       { new: true, upsert: true, runValidators: true }
     );
-    console.log("ok");
     return res.status(200).json(upsertCard);
   } catch (error) {
     next(error);
@@ -24,5 +23,6 @@ router.get("/", async (req, res, next) => {
     next(error);
   }
 });
+
 
 module.exports = router;
