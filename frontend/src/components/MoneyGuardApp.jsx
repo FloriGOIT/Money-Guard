@@ -4,8 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import FallBackSpinner from './FallBackSpinner';
 
 const AllinOne = lazy(() => import('../components/TabletMobileDesign/AllinOne'));
-const NewCardFormAll = lazy(() => import("./TabletMobileDesign/NewCardFormAll"));
-const NewCoinFormAll = lazy(() => import("./TabletMobileDesign/NewCoinFormAll"));
 const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('../pages/Home'));
 const NewCard = lazy(() => import('../pages/NewCard'));
@@ -85,26 +83,23 @@ const MoneyGuardApp = () => {
         <Route
           index
           element={<Home info={isArr} handleDeleteCard={handleDeleteCard} />}
-        />
-        <Route path="newCard" element={<NewCard info={isArr} />} />
-        <Route path="card/:id" element={<NewCard info={isArr} />} /> 
+        />{/*get HTTP request*/}
+        <Route path="newCard" element={<NewCard info={isArr} />} />{/*post HTTP request*/}
+        <Route path="card/:id" element={<NewCard info={isArr} />} /> {/*post or delete HTTP request*/}
         <Route
           path="statistics"
           element={<ExpensesStatistics info={isArr} />}
         />
-        <Route path="currency" element={<Currency />} />
-        <Route path="currency/newCoin" element={<NewCoin origin="/currency" />} />
-        <Route path="currency/:name" element={<NewCoin origin="/currency" />} />
+        <Route path="currency" element={<Currency />} />{/*get HTTP request*/}
+        <Route path="currency/newCoin" element={<NewCoin origin="/currency" />} />{/*post/put HTTP request*/}
+        <Route path="currency/:name" element={<NewCoin origin="/currency" />} />{/*post or delete HTTP request*/}
       </Route>
     </Routes>
   );
 
   const DesktopRoutes = () => (
     <Routes>
-      <Route path="/" element={<AllinOne info={isArr} handleDeleteCard={handleDeleteCard} origin="/all" />} >
-        <Route path="card/:id" element={<NewCardFormAll/> }/>
-        <Route path="currency/:name" element={<NewCoinFormAll/> }/>  
-      </Route>
+      <Route path="/" element={<AllinOne info={isArr} handleDeleteCard={handleDeleteCard} origin="/all" />} />
     </Routes>
   );
 
