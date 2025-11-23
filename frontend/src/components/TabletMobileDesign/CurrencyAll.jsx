@@ -14,7 +14,7 @@ const CurrencyAll = ({
   maximumFractionDigits: 4 
  }).format(Number(value));
   } 
-  
+  console.log("listCurrencies",listCurrencies)
   return (
     <div className={style.preCurrencyTableAll}>
       <table className={style.currencyTableAll}>
@@ -30,22 +30,22 @@ const CurrencyAll = ({
           </tr>
         </thead>
         <tbody>
-          {listCurrencies.map(el => (
-            <tr key={el.id}>
-              <td className={style.nonRate}>{el.currencyName}</td>
+          {listCurrencies.map(coin => (
+            <tr key={coin.currencyName}>
+              <td className={style.nonRate}>{coin.currencyName}</td>
               <td className={style.withRate}>
-                {fourDecimalsNumber(el.nbrRate)}
+                {fourDecimalsNumber(coin.nbrRate)}
               </td>
               <td className={style.withRate}>
-                {fourDecimalsNumber(el.buyRate)}
+                {fourDecimalsNumber(coin.buyRate)}
               </td>
               <td className={style.withRate}>
-                {fourDecimalsNumber(el.sellRate)}
+                {fourDecimalsNumber(coin.sellRate)}
               </td>
               <td
                 className={style.smallBtn}
                 style={{ paddingLeft: '5px' }}
-                onClick={() => handleIdForCoinDel(el.id)}
+                onClick={() => handleIdForCoinDel(coin.idCoinFront)}
               >
                 <div className={style.deletCurrency}>
                   <MdDeleteOutline />
@@ -54,7 +54,7 @@ const CurrencyAll = ({
               <td
                 className={style.smallBtn}
                 style={{ paddingLeft: '10px' }}
-                onClick={() => handleIdForCoinUpdate(el.id)}
+                onClick={() => handleIdForCoinUpdate(coin.idCoinFront)}
               >
                 <div className={style.editCurrency}>
                   <MdOutlineModeEdit />

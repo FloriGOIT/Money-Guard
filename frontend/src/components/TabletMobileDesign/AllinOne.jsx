@@ -36,7 +36,7 @@ const AllinOne = ({ info, handleDeleteCard }) => {
       setIsListCurrencies(prev => [...prev, value]);
     } else {
       const findIndex = isListCurrencies.findIndex(
-        el => el.id === isIdForCoinUpdate
+        el => el.idCoinFront === isIdForCoinUpdate
       );
       isListCurrencies.splice(findIndex, 1, value);
       setIsListCurrencies(isListCurrencies);
@@ -62,7 +62,7 @@ const AllinOne = ({ info, handleDeleteCard }) => {
   };
   const handleIdForCardUpdate = id => setIsIdForCardUpdate(id);
   const handleIdForCoinDel = id => {
-    const newListCurrency = isListCurrencies.filter(el => el.id !== id);
+    const newListCurrency = isListCurrencies.filter(el => el.idCoinFront!== id);
     setIsListCurrencies(newListCurrency);
     setIsIdForCoinUpdate('');
   };

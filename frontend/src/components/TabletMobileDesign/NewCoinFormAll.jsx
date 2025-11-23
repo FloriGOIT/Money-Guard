@@ -11,7 +11,7 @@ const NewCoinFormAll = ({
   isListCurrencies,
 }) => {
   const [isCoin, setIsCoin] = useState({
-    id: nanoid(),
+    idCoinFront: nanoid(),
     currencyName: '',
     nbrRate: '',
     buyRate: '',
@@ -20,17 +20,18 @@ const NewCoinFormAll = ({
 
   useEffect(() => {
     const coinToBeUpdated = isListCurrencies.find(
-      el => el.id === isIdForCoinUpdate
+      el => el.idCoinFront === isIdForCoinUpdate
     );
 
     if (isIdForCoinUpdate) {
       setIsCoin(coinToBeUpdated);
     }
   }, [isIdForCoinUpdate, isListCurrencies]);
-    
+
   const handleSubmit = e => {
     e.preventDefault();
- if(!isIdForCoinUpdate){      const checkDuplicate = isListCurrencies.find(
+    if (!isIdForCoinUpdate) {
+      const checkDuplicate = isListCurrencies.find(
         el => el.currencyName === isCoin.currencyName
       );
       if (checkDuplicate) {
@@ -40,19 +41,21 @@ const NewCoinFormAll = ({
       } else {
         handleAddNewCoin(isCoin);
       }
-}
- else { handleAddNewCoin(isCoin); setIsCoin({
-    id: nanoid(),
-    currencyName: '',
-    nbrRate: '',
-    buyRate: '',
-    sellRate: '',
-  }) }
+    } else {
+      handleAddNewCoin(isCoin);
+      setIsCoin({
+        idCoinFront: nanoid(),
+        currencyName: '',
+        nbrRate: '',
+        buyRate: '',
+        sellRate: '',
+      });
+    }
   };
   const handleCancel = e => {
     e.preventDefault();
     setIsCoin({
-      id: nanoid(),
+      idCoinFront: nanoid(),
       currencyName: '',
       nbrRate: '',
       buyRate: '',

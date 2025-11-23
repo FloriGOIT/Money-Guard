@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid';
 
 const NewCoin = ({origin}) => {
   const [isCurrency, setIsCurrency] = useState({
-    id:nanoid(),
+    idCoinFront:nanoid(),
     currencyName: '',
     nbrRate: "",
     buyRate: "",
@@ -39,7 +39,7 @@ const NewCoin = ({origin}) => {
       alert("This currency is already available. Enter other name or cancel request."); return
     }}
 
-    const index = localStorageArr.findIndex(c => c.id === isCurrency.id);
+    const index = localStorageArr.findIndex(c => c.idCoinFront === isCurrency.idCoinFront);
 
     if (index !== -1) {
       localStorageArr[index] = isCurrency;
@@ -50,7 +50,7 @@ const NewCoin = ({origin}) => {
     localStorage.setItem("moneyGuardCurrency", JSON.stringify(localStorageArr))
 
     setIsCurrency({
-      id:nanoid(),
+      idCoinFront:nanoid(),
       currencyName: '',
       nbrRate: '',
       buyRate: '',
